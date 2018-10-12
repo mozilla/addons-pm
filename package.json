@@ -27,7 +27,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "test-coverage": "npm run test -- --coverage  --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/index.js --collectCoverageFrom=!src/setupTests.js",
+    "test-coverage": "npm run test -- --coverage  --collectCoverageFrom=server/**/*.js --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/index.js --collectCoverageFrom=!src/setupTests.js",
     "eject": "react-scripts eject",
     "lint": "eslint src"
   },
