@@ -1,1 +1,1 @@
-web: bin/start-nginx node src/server/server.js
+web: bin/start-nginx yarn start-server
