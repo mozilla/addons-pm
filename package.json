@@ -37,7 +37,7 @@
     "test-coverage": "npm run test -- --coverage --collectCoverageFrom=src/client/**/*js --collectCoverageFrom=src/server/**/*js",
     "eject": "react-scripts eject",
     "lint": "eslint src",
-    "heroku-postbuild": "yarn build"
+    "heroku-postbuild": "INLINE_RUNTIME_CHUNK=false yarn build"
   },
   "proxy": "http://localhost:5000",
   "devDependencies": {
