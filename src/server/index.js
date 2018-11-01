@@ -20,9 +20,12 @@ app.get('/api/team/', getTeam);
 
 
 function startServer() {
-  const port = process.env.PORT || 5000;
-  app.listen(port);
-  console.log(`Addons-PM Server listening on ${port}`);
+  let portOrSocket = process.env.PORT || 5000;
+  if (process.env.NODE_ENV === 'production') {
+    portOrSocket = '/tmp/nginx.socket';
+  }
+  app.listen(portOrSocket);
+  console.log(`Addons-PM Server listening on ${portOrSocket}`);
 }
 
 if (typeof module !== 'undefined' && !module.parent) {
