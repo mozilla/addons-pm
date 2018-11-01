@@ -47,7 +47,7 @@ http {
      font-src 'self';
      script-src 'self';
      img-src 'self';
-     style-src 'self';
+     style-src 'self'";
 
     if ($http_x_forwarded_proto != 'https') {
       rewrite ^ https://$host$request_uri? permanent;
