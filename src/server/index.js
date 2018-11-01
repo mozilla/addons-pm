@@ -1,3 +1,4 @@
+const fs = require('fs');
 const express = require('express');
 const app = express();
 
@@ -24,7 +25,13 @@ function startServer() {
   if (process.env.NODE_ENV === 'production') {
     portOrSocket = '/tmp/nginx.socket';
   }
+
   app.listen(portOrSocket);
+
+  if (process.env.DYNO) {
+    console.log('This is on Heroku..!!');
+    fs.openSync('/tmp/app-initialized', 'w');
+  }
   console.log(`Addons-PM Server listening on ${portOrSocket}`);
 }
 
