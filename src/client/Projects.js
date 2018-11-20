@@ -146,7 +146,7 @@ class Projects extends Component {
                 <span><Octicon icon={Project} verticalAlign="middle" />{project.name}</span>
                 <div>
                 { teamMembers.map((member) => {
-                  return <Link key={member.login+project.name} to={ `/${year}/${quarter}/${member.login}/` }>
+                  return <Link key={member.login+project.name} to={ `/${year}/${quarter}/${member.login.toLowerCase()}/` }>
                     <Image src={member.avatarUrl} title={member.login} alt={member.login} roundedCircle className="float-right eng-image" height="35" />
                   </Link>
                 })}
