@@ -11,11 +11,14 @@ async function getProjects(year, quarter) {
 
   const headers = new Headers();
   headers.set('Content-Type', 'application/json');
-  const response = await fetch(`${GH_API_ROOT}/projects/?year=${year}&quarter=${quarter}`, {
-    headers: new Headers({
-      'Content-Type': 'application/json',
-    })
-  });
+  const response = await fetch(
+    `${GH_API_ROOT}/projects/?year=${year}&quarter=${quarter}`,
+    {
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      }),
+    },
+  );
   checkStatus(response);
   return parseJSON(response);
 }
@@ -24,12 +27,11 @@ async function getTeam() {
   const response = await fetch(`${GH_API_ROOT}/team/`, {
     headers: new Headers({
       'Content-Type': 'application/json',
-    })
+    }),
   });
   checkStatus(response);
   return parseJSON(response);
 }
-
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
@@ -42,7 +44,7 @@ function checkStatus(response) {
 }
 
 function parseJSON(response) {
-  return response.json()
+  return response.json();
 }
 
 const Client = { checkStatus, getProjects, getTeam };

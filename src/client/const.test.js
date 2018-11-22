@@ -1,7 +1,7 @@
 import * as constants from './const';
 
 describe('const.validYearRX', () => {
-  it('should match valid content',  () => {
+  it('should match valid content', () => {
     expect('2012').toMatch(constants.validYearRX);
     expect('2099').toMatch(constants.validYearRX);
   });
@@ -13,7 +13,7 @@ describe('const.validYearRX', () => {
 });
 
 describe('const.validQuarterRX', () => {
-  it('should match valid content',  () => {
+  it('should match valid content', () => {
     expect('Q1').toMatch(constants.validQuarterRX);
     expect('Q3').toMatch(constants.validQuarterRX);
   });

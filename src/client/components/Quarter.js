@@ -19,14 +19,26 @@ export function Quarter(props) {
 
   return (
     <React.Fragment>
-      <h3 className={classNames({ "active-year": activeYear })}>{props.year}</h3>
+      <h3 className={classNames({ 'active-year': activeYear })}>
+        {props.year}
+      </h3>
       <ul>
-        {
-          quarters.map((quarter) => {
-            const classes = classNames({ "active-date": (`Q${currentQuarter}` === quarter && activeYear === true)});
-            return <li key={`${props.year}-${quarter}`}><Link className={classes} to={`/${props.year}/${quarter}/primary/`}>{quarter}</Link></li>
-          })
-        }
+        {quarters.map((quarter) => {
+          const classes = classNames({
+            'active-date':
+              `Q${currentQuarter}` === quarter && activeYear === true,
+          });
+          return (
+            <li key={`${props.year}-${quarter}`}>
+              <Link
+                className={classes}
+                to={`/${props.year}/${quarter}/primary/`}
+              >
+                {quarter}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </React.Fragment>
   );

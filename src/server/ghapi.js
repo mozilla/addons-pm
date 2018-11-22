@@ -8,7 +8,6 @@ const InMemoryCache = require('apollo-cache-inmemory').InMemoryCache;
 const getProjectsQuery = require('./queries/getProjects').projects;
 const getTeamQuery = require('./queries/getTeam').team;
 
-
 function createClient() {
   const headers = {};
   if (process.env.GH_TOKEN) {

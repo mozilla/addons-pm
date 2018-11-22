@@ -8,7 +8,6 @@ import ghapi from './ghapi';
 import sinon from 'sinon';
 
 describe('API Server', () => {
-
   beforeEach(() => {
     //  Mock API data methods
     const stubGetProjects = sinon.stub(ghapi, 'getProjects');
@@ -24,7 +23,7 @@ describe('API Server', () => {
   it('should return project data', async () => {
     const req = new MockExpressRequest({
       method: 'GET',
-      url: '/api/projects/?year=2018&quarter=Q3'
+      url: '/api/projects/?year=2018&quarter=Q3',
     });
     const res = new MockExpressResponse();
     await getProjects(req, res);
@@ -34,7 +33,7 @@ describe('API Server', () => {
   it('should return team data', async () => {
     const req = new MockExpressRequest({
       method: 'GET',
-      url: '/api/team/'
+      url: '/api/team/',
     });
     const res = new MockExpressResponse();
     await getTeam(req, res);

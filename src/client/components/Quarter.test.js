@@ -16,7 +16,12 @@ describe('Quarter', () => {
 
   it('should render active quarter', () => {
     const wrapper = shallow(<Quarter year="2018" currentQuarter="3" />);
-    expect(wrapper.find('.active-date').childAt(0).text()).toBe('Q3');
+    expect(
+      wrapper
+        .find('.active-date')
+        .childAt(0)
+        .text(),
+    ).toBe('Q3');
   });
 
   it('should throw if invalid year', () => {
@@ -25,4 +30,3 @@ describe('Quarter', () => {
     }).toThrowError(/Invalid year/);
   });
 });
-

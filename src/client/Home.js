@@ -1,24 +1,19 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import {
-  Navbar,
-  Container,
-} from 'react-bootstrap';
+import { Navbar, Container } from 'react-bootstrap';
 
-import { Quarter } from  './components/Quarter';
+import { Quarter } from './components/Quarter';
 import BreadcrumbNav from './components/BreadcrumbNav';
 
 class Home extends Component {
-
   render() {
-
     return (
       <div>
         <Helmet>
           <title>Home Page</title>
         </Helmet>
         <Navbar className="bg-white shadow-sm">
-          <BreadcrumbNav props={this.props}/>
+          <BreadcrumbNav props={this.props} />
         </Navbar>
         <br />
         <Container as="main">
