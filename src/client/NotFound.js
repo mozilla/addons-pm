@@ -11,5 +11,5 @@ const NotFound = () => (
       <p>Sorry we can't find the page you were looking for</p>
     </main>
   </div>
-)
-export default NotFound
+);
+export default NotFound;

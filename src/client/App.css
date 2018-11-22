@@ -54,7 +54,6 @@ h2.card-header {
   box-sizing: content-box;
 }
 
-
 .sidebar {
   position: sticky;
   top: 25px;
@@ -62,13 +61,13 @@ h2.card-header {
   left: 0;
   z-index: -1; /* Behind the navbar */
   padding: 25px 0 0 0; /* Height of navbar */
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
 .sidebar-sticky {
   top: 0;
   height: calc(100vh - 50px);
-  padding-top: .5rem;
+  padding-top: 0.5rem;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
@@ -93,7 +92,7 @@ h2.card-header {
 }
 
 .sidebar-heading {
-  font-size: .75rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
 }
 

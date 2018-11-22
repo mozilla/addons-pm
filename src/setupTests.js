@@ -10,21 +10,21 @@ global.requestAnimationFrame = function(callback) {
 
 global.testData = {
   team: {
-    "data": {
-      "organization": {
-        "team": {
-          "members": {
-            "nodes": [
+    data: {
+      organization: {
+        team: {
+          members: {
+            nodes: [
               {
-                "name": "A user",
-                "login": "testuser",
-                "avatarUrl": "https://not-a-real-icon-service.com/testuser?v=3"
+                name: 'A user',
+                login: 'testuser',
+                avatarUrl: 'https://not-a-real-icon-service.com/testuser?v=3',
               },
               {
-                "name": "Another user",
-                "login": "testUser-2",
-                "avatarUrl": "https://not-a-real-icon-service.com/testuser-2?v=3"
-              }
+                name: 'Another user',
+                login: 'testUser-2',
+                avatarUrl: 'https://not-a-real-icon-service.com/testuser-2?v=3',
+              },
             ],
           },
         },
@@ -38,9 +38,9 @@ global.testData = {
           totalCount: 15,
           nodes: [
             {
-              name: "Add-ons Q3 2018: Test Project 1",
-              state: "OPEN",
-              url: "https://github.com/orgs/mozilla/projects/2",
+              name: 'Add-ons Q3 2018: Test Project 1',
+              state: 'OPEN',
+              url: 'https://github.com/orgs/mozilla/projects/2',
               bodyHTML: `My Project Data HTML
 								<details>
 									<summary>Project Metadata</summary>
@@ -51,81 +51,81 @@ global.testData = {
 										<dd>Primary</dd>
 									</dl>
 								</details>`,
-              updatedAt: "2018-09-18T15:56:15Z",
+              updatedAt: '2018-09-18T15:56:15Z',
               columns: {
                 edges: [
                   {
                     node: {
-                      id: "id1",
-                      name: "To do",
+                      id: 'id1',
+                      name: 'To do',
                       cards: {
-                        totalCount: 10
-                      }
-                    }
+                        totalCount: 10,
+                      },
+                    },
                   },
                   {
                     node: {
-                      id: "id2",
-                      name: "In progress",
+                      id: 'id2',
+                      name: 'In progress',
                       cards: {
-                        totalCount: 1
-                      }
-                    }
+                        totalCount: 1,
+                      },
+                    },
                   },
                   {
                     node: {
-                      id: "id3",
-                      name: "Done",
+                      id: 'id3',
+                      name: 'Done',
                       cards: {
-                        totalCount: 6
-                      }
-                    }
-                  }
-                ]
-              }
+                        totalCount: 6,
+                      },
+                    },
+                  },
+                ],
+              },
             },
             {
-              name: "Add-ons Q3 2018: Test Project 2",
-              state: "OPEN",
-              url: "https://github.com/orgs/mozilla/projects/2",
-              bodyHTML: "My Project Data HTML 2",
-              updatedAt: "2018-08-18T15:55:15Z",
+              name: 'Add-ons Q3 2018: Test Project 2',
+              state: 'OPEN',
+              url: 'https://github.com/orgs/mozilla/projects/2',
+              bodyHTML: 'My Project Data HTML 2',
+              updatedAt: '2018-08-18T15:55:15Z',
               columns: {
                 edges: [
                   {
                     node: {
-                      id: "id1",
-                      name: "To do",
+                      id: 'id1',
+                      name: 'To do',
                       cards: {
-                        totalCount: 5
-                      }
-                    }
+                        totalCount: 5,
+                      },
+                    },
                   },
                   {
                     node: {
-                      id: "id2",
-                      name: "In progress",
+                      id: 'id2',
+                      name: 'In progress',
                       cards: {
-                        totalCount: 5
-                      }
-                    }
+                        totalCount: 5,
+                      },
+                    },
                   },
                   {
                     node: {
-                      id: "id3",
-                      name: "Done",
+                      id: 'id3',
+                      name: 'Done',
                       cards: {
-                        totalCount: 5
-                      }
-                    }
-                  }
-                ]
-              }
+                        totalCount: 5,
+                      },
+                    },
+                  },
+                ],
+              },
             },
             {
-              name: "Add-ons Q3 2018: Test Project 3",
-              state: "OPEN",
-              url: "https://github.com/orgs/mozilla/projects/3",
+              name: 'Add-ons Q3 2018: Test Project 3',
+              state: 'OPEN',
+              url: 'https://github.com/orgs/mozilla/projects/3',
               bodyHTML: `My Project Data HTML
 								<details>
 									<summary>Project Metadata</summary>
@@ -136,43 +136,43 @@ global.testData = {
 										<dd>Secondary</dd>
 									</dl>
 								</details>`,
-              updatedAt: "2018-08-18T13:56:15Z",
+              updatedAt: '2018-08-18T13:56:15Z',
               columns: {
                 edges: [
                   {
                     node: {
-                      id: "id1",
-                      name: "To do",
+                      id: 'id1',
+                      name: 'To do',
                       cards: {
-                        totalCount: 1
-                      }
-                    }
+                        totalCount: 1,
+                      },
+                    },
                   },
                   {
                     node: {
-                      id: "id2",
-                      name: "In progress",
+                      id: 'id2',
+                      name: 'In progress',
                       cards: {
-                        totalCount: 1
-                      }
-                    }
+                        totalCount: 1,
+                      },
+                    },
                   },
-									{
+                  {
                     node: {
-                      id: "id3",
-                      name: "Done",
+                      id: 'id3',
+                      name: 'Done',
                       cards: {
-                        totalCount: 6
-                      }
-                    }
-                  }
-                ]
-              }
+                        totalCount: 6,
+                      },
+                    },
+                  },
+                ],
+              },
             },
             {
-              name: "Add-ons Q3 2018: Test Project 4",
-              state: "OPEN",
-              url: "https://github.com/orgs/mozilla/projects/4",
+              name: 'Add-ons Q3 2018: Test Project 4',
+              state: 'OPEN',
+              url: 'https://github.com/orgs/mozilla/projects/4',
               bodyHTML: `My Project Data HTML
 								<details>
 									<summary>Project Metadata</summary>
@@ -183,44 +183,42 @@ global.testData = {
 										<dd>Wrong</dd>
 									</dl>
 								</details>`,
-              updatedAt: "2018-07-18T13:56:15Z",
+              updatedAt: '2018-07-18T13:56:15Z',
               columns: {
                 edges: [
                   {
                     node: {
-                      id: "id1",
-                      name: "To do",
+                      id: 'id1',
+                      name: 'To do',
                       cards: {
-                        totalCount: 3
-                      }
-                    }
+                        totalCount: 3,
+                      },
+                    },
                   },
                   {
                     node: {
-                      id: "id2",
-                      name: "In progress",
+                      id: 'id2',
+                      name: 'In progress',
                       cards: {
-                        totalCount: 4
-                      }
-                    }
+                        totalCount: 4,
+                      },
+                    },
                   },
-									{
+                  {
                     node: {
-                      id: "id3",
-                      name: "Done",
+                      id: 'id3',
+                      name: 'Done',
                       cards: {
-                        totalCount: 6
-                      }
-                    }
-                  }
-                ]
-              }
+                        totalCount: 6,
+                      },
+                    },
+                  },
+                ],
+              },
             },
-
           ],
         },
       },
-    }
-  }
-
-}
+    },
+  },
+};
