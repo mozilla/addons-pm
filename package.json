@@ -35,12 +35,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test-coverage": "npm run test -- --coverage --collectCoverageFrom=src/client/**/*js --collectCoverageFrom=src/server/**/*js",
+    "test-ci": "npm run test-coverage && codecov",
     "eject": "react-scripts eject",
     "lint": "eslint src",
     "heroku-postbuild": "INLINE_RUNTIME_CHUNK=false yarn build"
   },
   "proxy": "http://localhost:5000",
   "devDependencies": {
+    "codecov": "^3.1.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "fetch-mock": "^7.0.5",
