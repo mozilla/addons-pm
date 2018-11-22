@@ -33,49 +33,66 @@ describe('Projects Page', () => {
 
   it('should render some projects', async () => {
     const wrapper = mount(
-			<MemoryRouter>
-				<Projects match={fakeMatch} location={fakeLocation} />
-			</MemoryRouter>,
-			{ disableLifecycleMethods: true }
-		);
-		const instance = wrapper.find('Projects').instance();
+      <MemoryRouter>
+        <Projects match={fakeMatch} location={fakeLocation} />
+      </MemoryRouter>,
+      { disableLifecycleMethods: true }
+    );
+    const instance = wrapper.find('Projects').instance();
     await instance.componentDidMount();
     wrapper.update();
-		const projectData = instance.state.projects;
+    const projectData = instance.state.projects;
     const expectedNumberOfProjects = projectData.data.organization.projects.nodes.length;
     expect(wrapper.find('.card-wrapper')).toHaveLength(expectedNumberOfProjects);
   });
 
   it('should filter projects by type', async () => {
-		const filteredMatch = { ...fakeMatch };
-		filteredMatch.params = { ...fakeMatch.params, projectType: "primary" };
-		const filteredLocation = { pathname: '/2018/Q3/primary/' };
+    const filteredMatch = { ...fakeMatch };
+    filteredMatch.params = { ...fakeMatch.params, projectType: "primary" };
+    const filteredLocation = { pathname: '/2018/Q3/primary/' };
     const wrapper = mount(
-			<MemoryRouter>
-				<Projects match={filteredMatch} location={filteredLocation} />
-			</MemoryRouter>,
-			{ disableLifecycleMethods: true }
-		);
-		const instance = wrapper.find('Projects').instance();
+      <MemoryRouter>
+        <Projects match={filteredMatch} location={filteredLocation} />
+      </MemoryRouter>,
+      { disableLifecycleMethods: true }
+    );
+    const instance = wrapper.find('Projects').instance();
     await instance.componentDidMount();
     wrapper.update();
     expect(wrapper.find('.card-wrapper')).toHaveLength(1);
   });
 
-  it('should filter projects by engineer', async () => {
-		const filteredMatch = { ...fakeMatch };
-		filteredMatch.params = { ...fakeMatch.params, engineer: "testuser" };
-		const filteredLocation = { pathname: '/2018/Q3/testuser/' };
+  it('should lowercase user links', async () => {
+    const filteredMatch = { ...fakeMatch };
+    filteredMatch.params = { ...fakeMatch.params, projectType: "secondary" };
+    const filteredLocation = { pathname: '/2018/Q3/secondary/' };
     const wrapper = mount(
-			<MemoryRouter>
-				<Projects match={filteredMatch} location={filteredLocation} />
-			</MemoryRouter>,
-			{ disableLifecycleMethods: true }
-		);
-		const instance = wrapper.find('Projects').instance();
+      <MemoryRouter>
+        <Projects match={filteredMatch} location={filteredLocation} />
+      </MemoryRouter>,
+      { disableLifecycleMethods: true }
+    );
+    const instance = wrapper.find('Projects').instance();
     await instance.componentDidMount();
     wrapper.update();
-    expect(wrapper.find('.card-wrapper')).toHaveLength(2);
+    expect(wrapper.find('a[href$="/testuser-2/"]')).toHaveLength(1);
   });
+
+  it('should filter projects by engineer', async () => {
+    const filteredMatch = { ...fakeMatch };
+    filteredMatch.params = { ...fakeMatch.params, engineer: "testuser" };
+    const filteredLocation = { pathname: '/2018/Q3/testuser/' };
+    const wrapper = mount(
+      <MemoryRouter>
+        <Projects match={filteredMatch} location={filteredLocation} />
+      </MemoryRouter>,
+      { disableLifecycleMethods: true }
+    );
+    const instance = wrapper.find('Projects').instance();
+    await instance.componentDidMount();
+    wrapper.update();
+    expect(wrapper.find('.card-wrapper')).toHaveLength(1);
+  });
+
 });
 

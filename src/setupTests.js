@@ -22,7 +22,7 @@ global.testData = {
               },
               {
                 "name": "Another user",
-                "login": "testuser-2",
+                "login": "testUser-2",
                 "avatarUrl": "https://not-a-real-icon-service.com/testuser-2?v=3"
               }
             ],
@@ -131,7 +131,7 @@ global.testData = {
 									<summary>Project Metadata</summary>
 									<dl>
 									  <dt>Engineering</dt>
-										<dd>@testuser</dd>
+										<dd>@testuser-2</dd>
 										<dt>Goal Type</dt>
 										<dd>Secondary</dd>
 									</dl>
