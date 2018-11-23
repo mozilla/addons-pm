@@ -1,3 +1,27 @@
+body {
+  min-width: 400px;
+}
+
+nav[aria-label='breadcrumb'] {
+  min-width: auto;
+  margin-bottom: 10px;
+}
+
+.navbar.d-flex {
+  display: block !important;
+}
+
+@media (min-width: 900px) {
+  nav[aria-label='breadcrumb'] {
+    min-width: auto;
+    margin-bottom: 0;
+  }
+
+  .navbar.d-flex {
+    display: flex !important;
+  }
+}
+
 .App {
   text-align: center;
 }
@@ -98,11 +122,6 @@ h2.card-header {
 
 nav .breadcrumb {
   margin-bottom: 0;
-}
-
-.active-date::after {
-  content: ' ⬅';
-  font-size: 14px;
 }
 
 .navbar-brand svg {

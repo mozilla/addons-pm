@@ -8,6 +8,6 @@ import ReactDOM from 'react-dom';
 import App from './client/App';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import './client/index.css';
+import './client/index.scss';
 
 ReactDOM.render(<App />, document.getElementById('root'));
