@@ -63,22 +63,6 @@ describe('Projects Page', () => {
     expect(wrapper.find('.card-wrapper')).toHaveLength(1);
   });
 
-  it('should lowercase user links', async () => {
-    const filteredMatch = { ...fakeMatch };
-    filteredMatch.params = { ...fakeMatch.params, projectType: 'secondary' };
-    const filteredLocation = { pathname: '/2018/Q3/secondary/' };
-    const wrapper = mount(
-      <MemoryRouter>
-        <Projects match={filteredMatch} location={filteredLocation} />
-      </MemoryRouter>,
-      { disableLifecycleMethods: true },
-    );
-    const instance = wrapper.find('Projects').instance();
-    await instance.componentDidMount();
-    wrapper.update();
-    expect(wrapper.find('a[href$="/testuser-2/"]')).toHaveLength(1);
-  });
-
   it('should filter projects by engineer', async () => {
     const filteredMatch = { ...fakeMatch };
     filteredMatch.params = { ...fakeMatch.params, engineer: 'testuser' };

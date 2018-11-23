@@ -6,19 +6,18 @@ import {
   Card,
   CardDeck,
   Container,
-  Image,
   Nav,
   Navbar,
   Row,
   ProgressBar,
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Link } from 'react-router-dom';
 import TimeAgo from 'react-timeago';
 import Octicon, { Clock, Project } from '@githubprimer/octicons-react';
 
 import Client from './Client';
 import BreadcrumbNav from './components/BreadcrumbNav';
+import Engineer from './components/Engineer';
 
 class Projects extends Component {
   state = {
@@ -204,19 +203,13 @@ class Projects extends Component {
                   <div>
                     {teamMembers.map((member) => {
                       return (
-                        <Link
+                        <Engineer
                           key={member.login + project.name}
-                          to={`/${year}/${quarter}/${member.login.toLowerCase()}/`}
-                        >
-                          <Image
-                            src={member.avatarUrl}
-                            title={member.login}
-                            alt={member.login}
-                            roundedCircle
-                            className="float-right eng-image"
-                            height="35"
-                          />
-                        </Link>
+                          member={member}
+                          project={project}
+                          year={year}
+                          quarter={quarter}
+                        />
                       );
                     })}
                   </div>
