@@ -39,9 +39,9 @@
     "eject": "react-scripts eject",
     "lint": "eslint src",
     "heroku-postbuild": "INLINE_RUNTIME_CHUNK=false yarn build",
-    "prettier": "prettier --write '**'",
+    "prettier-full": "prettier --write '**'",
     "prettier-ci": "npm run prettier -- --list-different || (echo '\n\nThis failure means you did not run `yarn prettier-dev` before committing\n\n' && exit 1)",
-    "prettier-dev": "pretty-quick --branch master"
+    "prettier": "pretty-quick --branch master"
   },
   "proxy": "http://localhost:5000",
   "devDependencies": {
