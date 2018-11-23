@@ -7,6 +7,9 @@ import BreadcrumbNav from './components/BreadcrumbNav';
 
 class Home extends Component {
   render() {
+    const { match } = this.props;
+    const { year } = match.params;
+
     return (
       <div>
         <Helmet>
@@ -19,8 +22,14 @@ class Home extends Component {
         <Container as="main">
           <h2>Addons Projects</h2>
           <p>Choose a quarter:</p>
-          <Quarter year="2018" />
-          <Quarter year="2019" />
+          {year ? (
+            <Quarter year={year} />
+          ) : (
+            <>
+              <Quarter year="2018" />
+              <Quarter year="2019" />
+            </>
+          )}
         </Container>
       </div>
     );

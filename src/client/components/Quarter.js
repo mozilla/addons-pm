@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
+import './Quarter.scss';
+
 const today = new Date();
 let currentYear = today.getFullYear();
 let currentQuarter = Math.floor((today.getMonth() + 3) / 3);
@@ -18,7 +20,7 @@ export function Quarter(props) {
   const activeYear = parseInt(currentYear, 10) === parseInt(props.year, 10);
 
   return (
-    <React.Fragment>
+    <div className="Quarter">
       <h3 className={classNames({ 'active-year': activeYear })}>
         {props.year}
       </h3>
@@ -29,7 +31,10 @@ export function Quarter(props) {
               `Q${currentQuarter}` === quarter && activeYear === true,
           });
           return (
-            <li key={`${props.year}-${quarter}`}>
+            <li
+              key={`${props.year}-${quarter}`}
+              className={`quarter ${quarter}`}
+            >
               <Link
                 className={classes}
                 to={`/${props.year}/${quarter}/primary/`}
@@ -40,6 +45,6 @@ export function Quarter(props) {
           );
         })}
       </ul>
-    </React.Fragment>
+    </div>
   );
 }

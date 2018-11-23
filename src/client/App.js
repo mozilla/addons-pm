@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 
 import { Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -39,6 +39,7 @@ const App = () => {
         </Navbar>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/:year(\d{4})/" component={Home} />
           <Route
             exact
             path="/:year(\d{4})/:quarter(Q[1-4]{1})/"
