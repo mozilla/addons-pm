@@ -46,7 +46,7 @@
   "proxy": "http://localhost:5000",
   "devDependencies": {
     "codecov": "^3.1.0",
-    "enzyme": "^3.6.0",
+    "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "fetch-mock": "^7.0.5",
     "jest-enzyme": "^7.0.0",
