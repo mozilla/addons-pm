@@ -20,7 +20,7 @@
     "isomorphic-fetch": "2.2.1",
     "markdown-it": "^8.4.2",
     "query-string": "^6.1.0",
-    "react": "^16.5.0",
+    "react": "16.6.3",
     "react-bootstrap": "^1.0.0-beta.1",
     "react-dom": "^16.5.0",
     "react-helmet": "^5.2.0",
