@@ -7868,9 +7868,10 @@ react-test-renderer@^16.0.0-0:
     react-is "^16.5.2"
     schedule "^0.5.0"
 
-react-timeago@^4.1.9:
-  version "4.1.9"
-  resolved "https://registry.yarnpkg.com/react-timeago/-/react-timeago-4.1.9.tgz#a5dee4ac072299a9a5ca5a61f56177a80f83c1fb"
+react-timeago@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/react-timeago/-/react-timeago-4.2.0.tgz#4d95d9f5e3d672bfca091c68bd9d2663073a47a4"
+  integrity sha512-dxJTHMNJy38tAx4l70OOR2b0Dh7EU3JnVhaxaxRdoc7avgCgz3eBRe4a0Tsa4F7kHZXnZ8zQe571Kk7oGjeaFw==
 
 react-transition-group@^2.4.0:
   version "2.4.0"
