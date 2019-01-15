@@ -15,7 +15,7 @@
     "classnames": "^2.2.6",
     "dompurify": "^1.0.8",
     "dotenv": "6.1.0",
-    "graphql": "^14.0.2",
+    "graphql": "^14.1.0",
     "graphql-tag": "^2.9.2",
     "isomorphic-fetch": "2.2.1",
     "markdown-it": "^8.4.2",
