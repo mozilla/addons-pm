@@ -54,7 +54,7 @@
     "mock-express-response": "^0.2.2",
     "node-sass": "^4.10.0",
     "prettier": "1.15.2",
-    "pretty-quick": "^1.8.0",
+    "pretty-quick": "^1.10.0",
     "sinon": "^7.1.1"
   },
   "browserslist": [
