@@ -40,7 +40,7 @@
     "lint": "eslint src",
     "heroku-postbuild": "INLINE_RUNTIME_CHUNK=false yarn build",
     "prettier-full": "prettier --write '**'",
-    "prettier-ci": "npm run prettier -- --list-different || (echo '\n\nThis failure means you did not run `yarn prettier-dev` before committing\n\n' && exit 1)",
+    "prettier-ci": "prettier -c '**'",
     "prettier": "pretty-quick --branch master"
   },
   "proxy": "http://localhost:5000",
