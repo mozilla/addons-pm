@@ -732,9 +732,10 @@
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
 
-"@githubprimer/octicons-react@^8.1.0":
+"@githubprimer/octicons-react@8.1.0":
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/@githubprimer/octicons-react/-/octicons-react-8.1.0.tgz#731c40b6b231dcee731f0f2d37c67e7ee857bd6a"
+  integrity sha512-BvUQWjXHTd6bFcibtFclmNrXd7FWnN3csvY7gZfPPr7plcHHPdgKoLNy1CwsCTVsNLL2jM4FkIvemBoFZeZn5w==
   dependencies:
     prop-types "^15.6.1"
 
@@ -1082,9 +1083,10 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-apollo-boost@^0.1.16:
+apollo-boost@0.1.16:
   version "0.1.16"
   resolved "https://registry.yarnpkg.com/apollo-boost/-/apollo-boost-0.1.16.tgz#77f73a30c49ab6d749ddc3e5683a7e322c15f07d"
+  integrity sha512-ppnQr90n2cn0ZMveEbqxW6NxmskIpThiLziLlRpRLy4keoAICg1NZecxJQmeaBLMtyhf5UholAjpS2SLmEJeHg==
   dependencies:
     apollo-cache "^1.1.17"
     apollo-cache-inmemory "^1.2.10"
@@ -1728,9 +1730,10 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
 
-bootstrap@^4.1.3:
+bootstrap@4.1.3:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.1.3.tgz#0eb371af2c8448e8c210411d0cb824a6409a12be"
+  integrity sha512-rDFIzgXcof0jDyjNosjv4Sno77X4KuPeFxG2XZZv1/Kc8DRVGVADdoQyyOVDwPqL36DDmtCQbrpMCqvpPLJQ0w==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -2102,9 +2105,10 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.6:
+classnames@2.2.6, classnames@^2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
 
 clean-css@4.2.x:
   version "4.2.1"
@@ -2172,9 +2176,10 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
-codecov@^3.1.0:
+codecov@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/codecov/-/codecov-3.1.0.tgz#340bd968d361f256976b5af782dd8ba9f82bc849"
+  integrity sha512-aWQc/rtHbcWEQLka6WmBAOpV58J2TwyXqlpAQGhQaSiEUoigTTUk6lLd2vB3kXkhnDyzyH74RXfmV4dq2txmdA==
   dependencies:
     argv "^0.0.2"
     ignore-walk "^3.0.1"
@@ -2922,9 +2927,10 @@ domhandler@^2.3.0:
   dependencies:
     domelementtype "1"
 
-dompurify@^1.0.8:
+dompurify@1.0.8:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-1.0.8.tgz#3fa0d91fde3827d6509d83b43444da56a2796795"
+  integrity sha512-vetRFbN1SXSPfP3ClIiYnxTrXquSqakBEOoB5JESn0SVcSYzpu6ougjakpKnskGctYdlNpwf+riUHSkG7d4XUw==
 
 domutils@1.1:
   version "1.1.6"
@@ -3040,9 +3046,10 @@ entities@^1.1.1, entities@~1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
 
-enzyme-adapter-react-16@^1.5.0:
+enzyme-adapter-react-16@1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.5.0.tgz#50af8d76a45fe0915de932bd95d34cdca75c0be3"
+  integrity sha512-R2LcVvMB2UwPH763d5jDtVedAIcEj+uZjOnq0nd1sOUs6z8TDbyHDvt8VwfrS4wMt7CawoyPmH0XzC8MtEqqDw==
   dependencies:
     enzyme-adapter-utils "^1.8.0"
     function.prototype.name "^1.1.0"
@@ -3073,9 +3080,10 @@ enzyme-to-json@^3.3.0:
   dependencies:
     lodash "^4.17.4"
 
-enzyme@^3.6.0:
+enzyme@3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/enzyme/-/enzyme-3.6.0.tgz#d213f280a258f61e901bc663d4cc2d6fd9a9dec8"
+  integrity sha512-onsINzVLGqKIapTVfWkkw6bYvm1o4CyJ9s8POExtQhAkVa4qFDW6DGCQGRy/5bfZYk+gmUbMNyayXiWDzTkHFQ==
   dependencies:
     array.prototype.flat "^1.2.1"
     cheerio "^1.0.0-rc.2"
@@ -3578,9 +3586,10 @@ fclone@^1.0.11:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/fclone/-/fclone-1.0.11.tgz#10e85da38bfea7fc599341c296ee1d77266ee640"
 
-fetch-mock@^7.0.5:
+fetch-mock@7.0.5:
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-7.0.5.tgz#ce6f8023ecd7c174aafafe32223d112991e3a425"
+  integrity sha512-r2vWR3GnuG7/cML/urY7GrjXAaCSaG6+Ab17fDpVRv0myDkoqHf7qlY3SS/H4oVoKk4Ki00VtcRDjmUuFh8tqw==
   dependencies:
     babel-polyfill "^6.26.0"
     glob-to-regexp "^0.4.0"
@@ -3995,13 +4004,14 @@ graphql-anywhere@^4.1.0-alpha.0, graphql-anywhere@^4.1.19:
   dependencies:
     apollo-utilities "^1.0.21"
 
-graphql-tag@^2.4.2, graphql-tag@^2.9.2:
+graphql-tag@2.9.2, graphql-tag@^2.4.2:
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.9.2.tgz#2f60a5a981375f430bf1e6e95992427dc18af686"
 
-graphql@^14.0.2:
+graphql@14.0.2:
   version "14.0.2"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.0.2.tgz#7dded337a4c3fd2d075692323384034b357f5650"
+  integrity sha512-gUC4YYsaiSJT1h40krG3J+USGlwhzNTXSb4IOZljn9ag5Tj+RkoXrWp+Kh7WyE3t1NCfab5kzCuxBIvOMERMXw==
   dependencies:
     iterall "^1.2.2"
 
@@ -5023,9 +5033,10 @@ jest-environment-node@^23.4.0:
     jest-mock "^23.2.0"
     jest-util "^23.4.0"
 
-jest-enzyme@^7.0.0:
+jest-enzyme@7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/jest-enzyme/-/jest-enzyme-7.0.0.tgz#6556b7cf8687cfafd96e55b996559fe6160f3af7"
+  integrity sha512-RV8Vbzosk/Y9cwOlaHsjKAWXleXABPUDzGnl4G3luHPyyz70Y/AOScb1hMm1DFvIaRAMFiAbjovQPVlEP10kQw==
   dependencies:
     enzyme-matchers "^7.0.0"
     enzyme-to-json "^3.3.0"
@@ -5759,9 +5770,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-markdown-it@^8.4.2:
+markdown-it@8.4.2:
   version "8.4.2"
   resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-8.4.2.tgz#386f98998dc15a37722aa7722084f4020bdd9b54"
+  integrity sha512-GcRz3AWTqSUphY3vsUqQSFMbgR38a4Lh3GWlHRh/7MRwz8mcu9n2IO7HOh+bXHrR9kOPDl5RNCaEsrneb+xhHQ==
   dependencies:
     argparse "^1.0.7"
     entities "~1.1.1"
@@ -6017,9 +6029,10 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
   dependencies:
     minimist "0.0.8"
 
-mock-express-request@^0.2.2:
+mock-express-request@0.2.2, mock-express-request@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/mock-express-request/-/mock-express-request-0.2.2.tgz#4bb8a2ea055d1c700013542c2d551c11771733f0"
+  integrity sha512-EymHjY1k1jWIsaVaCsPdFterWO18gcNwQMb99OryhSBtIA33SZJujOLeOe03Rf2DTV997xLPyl2I098WCFm/mA==
   dependencies:
     accepts "^1.3.4"
     fresh "^0.5.2"
@@ -6029,9 +6042,10 @@ mock-express-request@^0.2.2:
     range-parser "^1.2.0"
     type-is "^1.6.15"
 
-mock-express-response@^0.2.2:
+mock-express-response@0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/mock-express-response/-/mock-express-response-0.2.2.tgz#ad309189d8c829988f7b1fbc905e3cddc56e0cee"
+  integrity sha512-+pRUv25LhyKZVSRCOzoZp8TW0nqvT7UlH7vpVzCibjjEucXL72gTgwEhmqbyTO2LI9IlyIeBBdflR9Ml5KQWMQ==
   dependencies:
     content-disposition "^0.5.2"
     content-type "^1.0.4"
@@ -6266,7 +6280,7 @@ node-releases@^1.0.0-alpha.11, node-releases@^1.0.0-alpha.14:
   dependencies:
     semver "^5.3.0"
 
-node-sass@^4.10.0:
+node-sass@4.10.0:
   version "4.10.0"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.10.0.tgz#dcc2b364c0913630945ccbf7a2bbf1f926effca4"
   integrity sha512-fDQJfXszw6vek63Fe/ldkYXmRYK/QS6NbvM3i5oEo9ntPDy4XX7BcKZyTKv+/kSSxRtXXc7l+MSwEmYc0CSy6Q==
@@ -7428,7 +7442,7 @@ pretty-format@^23.6.0:
     ansi-regex "^3.0.0"
     ansi-styles "^3.2.0"
 
-pretty-quick@^1.8.0:
+pretty-quick@1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/pretty-quick/-/pretty-quick-1.8.0.tgz#067ebe744ddb4e1ed4e1ee1af9648815121f78fc"
   integrity sha512-qV25sQF/ivJpdZ5efwemQYkQJa7sp3HqT/Vf/7z5vGYMcq1VrT2lDpFKAxJPf6219N1YAdR8mGkIhPAZ1odTmQ==
@@ -7567,9 +7581,10 @@ qs@^6.5.1, qs@~6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
 
-query-string@^6.1.0:
+query-string@6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.1.0.tgz#01e7d69f6a0940dac67a937d6c6325647aa4532a"
+  integrity sha512-pNB/Gr8SA8ff8KpUFM36o/WFAlthgaThka5bV19AD9PNTH20Pwq5Zxodif2YyHwrctp6SkL4GqlOot0qR/wGaw==
   dependencies:
     decode-uri-component "^0.2.0"
     strict-uri-encode "^2.0.0"
@@ -7656,9 +7671,10 @@ react-app-polyfill@^0.1.3:
     raf "3.4.0"
     whatwg-fetch "3.0.0"
 
-react-bootstrap@^1.0.0-beta.1:
+react-bootstrap@1.0.0-beta.1:
   version "1.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.0.0-beta.1.tgz#976cd1f94d86785f374b00d7674e03ae72d37c0c"
+  integrity sha512-xuImr1uQorUmqCePlQQKzuYATk09q6sSTOSVHtLkUxGDm9A+3mckmZ5+KyWXK3aSM6VQ/0e63g2JPzAyneAnig==
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@react-bootstrap/react-popper" "1.2.1"
@@ -7707,9 +7723,10 @@ react-dev-utils@^6.0.5:
     strip-ansi "4.0.0"
     text-table "0.2.0"
 
-react-dom@^16.5.0:
+react-dom@16.5.1:
   version "16.5.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.5.1.tgz#29d0c5a01ed3b6b4c14309aa91af6ec4eb4f292c"
+  integrity sha512-l4L9GtX7ezgnDIIr6AaNvGBM4BiK0fSs4/V8bdsu9X6xqrtHr+jp6auT0hbHpN7bH9WRvDBZceWQ9WJ3lGCIvQ==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -7720,9 +7737,10 @@ react-error-overlay@^5.0.5:
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.0.5.tgz#716ff1a92fda76bb89a39adf9ce046a5d740e71a"
 
-react-helmet@^5.2.0:
+react-helmet@5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-5.2.0.tgz#a81811df21313a6d55c5f058c4aeba5d6f3d97a7"
+  integrity sha1-qBgR3yExOm1VxfBYxK66XW89l6c=
   dependencies:
     deep-equal "^1.0.1"
     object-assign "^4.1.1"
@@ -7770,15 +7788,17 @@ react-prop-types@^0.4.0:
   dependencies:
     warning "^3.0.0"
 
-react-router-bootstrap@^0.24.4:
+react-router-bootstrap@0.24.4:
   version "0.24.4"
   resolved "https://registry.yarnpkg.com/react-router-bootstrap/-/react-router-bootstrap-0.24.4.tgz#6e89481d8a8979649a0dd4535e4a68df4a3d0b12"
+  integrity sha512-kEwk3ml4wvE3IbJvRVjx0zBBBxW4JLhD0wyy0hBdlWSdfjvgoHVvlxx9gBPxvEs5VwWlbFvNRyUghLZ2AMcmzg==
   dependencies:
     prop-types "^15.5.10"
 
-react-router-dom@^4.3.1:
+react-router-dom@4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.3.1.tgz#4c2619fc24c4fa87c9fd18f4fb4a43fe63fbd5c6"
+  integrity sha512-c/MlywfxDdCp7EnB7YfPMOfMD3tOtIjrQlj/CKfNMBxdmpJP8xcz5P/UAFn3JbnQCNUxsHyVVqllF9LhgVyFCA==
   dependencies:
     history "^4.7.2"
     invariant "^2.2.4"
@@ -7799,9 +7819,10 @@ react-router@^4.3.1:
     prop-types "^15.6.1"
     warning "^4.0.1"
 
-react-scripts@^2.0.5:
+react-scripts@2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-2.0.5.tgz#74b8e9fa6a7c5f0f11221dd18c10df2ae3df3d69"
+  integrity sha512-ApwQM91U5FK9CPktUJQu+UhGIdgcBqqw0pvCUPYshW1jBhIgl8N3SJtd+o+I+jwRXPWAXcbJNvzsBAFDW5HHAQ==
   dependencies:
     "@babel/core" "7.1.0"
     "@svgr/webpack" "2.4.1"
@@ -7868,9 +7889,10 @@ react-test-renderer@^16.0.0-0:
     react-is "^16.5.2"
     schedule "^0.5.0"
 
-react-timeago@^4.1.9:
+react-timeago@4.1.9:
   version "4.1.9"
   resolved "https://registry.yarnpkg.com/react-timeago/-/react-timeago-4.1.9.tgz#a5dee4ac072299a9a5ca5a61f56177a80f83c1fb"
+  integrity sha512-MKucv9nU65BOPqIrClAFxqvpGCC4RdRpqp0P1YIb7C3yT6TQVdcoOlr0k4TDHvLQhbkwd3nbTxiDQMa3iDlZxg==
 
 react-transition-group@^2.4.0:
   version "2.4.0"
@@ -7881,9 +7903,10 @@ react-transition-group@^2.4.0:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react@^16.5.0:
+react@16.5.1:
   version "16.5.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.5.1.tgz#8cb8e9f8cdcb4bde41c9a138bfbf907e66132372"
+  integrity sha512-E+23+rbpPsJgSX812LQkwupUCFnbVE84+L8uxlkqN5MU0DcraWMlVf9cRvKCKtGu0XvScyRnW7Z+9d7ymkjy3A==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -8512,9 +8535,10 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-sinon@^7.1.1:
+sinon@7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/sinon/-/sinon-7.1.1.tgz#1202f317aa14d93cb9b69ff50b6bd49c0e05ffc9"
+  integrity sha512-iYagtjLVt1vN3zZY7D8oH7dkjNJEjLjyuzy8daX5+3bbQl8gaohrheB9VfH1O3L6LKuue5WTJvFluHiuZ9y3nQ==
   dependencies:
     "@sinonjs/commons" "^1.2.0"
     "@sinonjs/formatio" "^3.0.0"
