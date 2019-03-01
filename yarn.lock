@@ -4231,10 +4231,10 @@ fclone@^1.0.11:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/fclone/-/fclone-1.0.11.tgz#10e85da38bfea7fc599341c296ee1d77266ee640"
 
-fetch-mock@7.0.5:
-  version "7.0.5"
-  resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-7.0.5.tgz#ce6f8023ecd7c174aafafe32223d112991e3a425"
-  integrity sha512-r2vWR3GnuG7/cML/urY7GrjXAaCSaG6+Ab17fDpVRv0myDkoqHf7qlY3SS/H4oVoKk4Ki00VtcRDjmUuFh8tqw==
+fetch-mock@7.3.1:
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-7.3.1.tgz#a3e28d8f141caaf68d78112354381a7303f87049"
+  integrity sha512-euKqWnxeApj0toZ5MSavZJ7IIxbMaHpgteV2GNuz6/slAY0JUbRe95U/ueaz2spT/4nR75H4wpEmy2MMEsCoRg==
   dependencies:
     babel-polyfill "^6.26.0"
     glob-to-regexp "^0.4.0"
