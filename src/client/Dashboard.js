@@ -46,6 +46,7 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <Helmet>
+          <body className="dash" />
           <title>Dashboard</title>
         </Helmet>
         <Container as="main">

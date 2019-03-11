@@ -2,11 +2,11 @@ import React from 'react';
 import './App.scss';
 
 import { Nav, Navbar } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import Octicon, { Project } from '@githubprimer/octicons-react';
+import Octicon, { MarkGithub } from '@githubprimer/octicons-react';
 
 import Home from './Home';
 import Dashboard from './Dashboard';
@@ -14,26 +14,41 @@ import Projects from './Projects';
 import NotFound from './NotFound';
 
 const App = () => {
+  console.log(window.location.pathname);
+
   return (
     <Router>
       <div>
         <Helmet defaultTitle="Add-ons PM" titleTemplate="%s - Add-ons PM" />
         <Navbar bg="dark" variant="dark">
-          <LinkContainer to="/">
-            <Navbar.Brand>
-              <Octicon icon={Project} verticalAlign="middle" /> Addons PM
-            </Navbar.Brand>
-          </LinkContainer>
-          <Nav>
+          <Navbar.Brand>Addons PM</Navbar.Brand>
+          <Nav className="mr-auto">
+            <Nav.Item>
+              <IndexLinkContainer to="/">
+                <Nav.Link eventKey={1}>Projects</Nav.Link>
+              </IndexLinkContainer>
+            </Nav.Item>
+            <Nav.Item>
+              <LinkContainer to="/dashboard/">
+                <Nav.Link eventKey={2}>Dashboard</Nav.Link>
+              </LinkContainer>
+            </Nav.Item>
+          </Nav>
+          <Nav className="mr-sm-2">
             <Nav.Item>
               <Nav.Link
                 data-ref="src"
-                eventKey={1}
+                eventKey="src"
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://github.com/mozilla/addons-pm/"
               >
-                Source Code
+                <Octicon
+                  icon={MarkGithub}
+                  verticalAlign="middle"
+                  ariaLabel="View on Github"
+                  size="medium"
+                />
               </Nav.Link>
             </Nav.Item>
           </Nav>
