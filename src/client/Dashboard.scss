@@ -39,14 +39,14 @@
       border-bottom-right-radius: 0.25rem;
     }
   }
-}
 
-.card-header {
-  color: #ccc;
-  font-weight: 200;
-  text-shadow: -1px -1px rgba(0, 0, 0, 0.8);
-}
+  .card-header {
+    color: #ccc;
+    font-weight: 200;
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.8);
+  }
 
-.repo-card .card-header {
-  font-weight: 400;
+  .repo-card .card-header {
+    font-weight: 400;
+  }
 }
