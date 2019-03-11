@@ -9,6 +9,7 @@ import { Helmet } from 'react-helmet';
 import Octicon, { Project } from '@githubprimer/octicons-react';
 
 import Home from './Home';
+import Dashboard from './Dashboard';
 import Projects from './Projects';
 import NotFound from './NotFound';
 
@@ -39,6 +40,7 @@ const App = () => {
         </Navbar>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/dashboard/" component={Dashboard} />
           <Route exact path="/:year(\d{4})/" component={Home} />
           <Route
             exact

@@ -33,6 +33,16 @@ async function getTeam() {
   return parseJSON(response);
 }
 
+async function getIssueCounts() {
+  const response = await fetch(`${GH_API_ROOT}/issue-counts/`, {
+    headers: new Headers({
+      'Content-Type': 'application/json',
+    }),
+  });
+  checkStatus(response);
+  return parseJSON(response);
+}
+
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
@@ -47,5 +57,10 @@ function parseJSON(response) {
   return response.json();
 }
 
-const Client = { checkStatus, getProjects, getTeam };
+const Client = {
+  checkStatus,
+  getProjects,
+  getTeam,
+  getIssueCounts,
+};
 export default Client;

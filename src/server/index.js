@@ -17,8 +17,14 @@ const getTeam = async (req, res) => {
   res.json(team);
 };
 
+const getIssueCounts = async (req, res) => {
+  const issueCounts = await ghapi.getIssueCounts();
+  res.json(issueCounts);
+};
+
 app.get('/api/projects/', getProjects);
 app.get('/api/team/', getTeam);
+app.get('/api/issue-counts/', getIssueCounts);
 
 function startServer() {
   let portOrSocket = process.env.PORT || 5000;
@@ -42,5 +48,6 @@ if (typeof module !== 'undefined' && !module.parent) {
 module.exports = {
   getProjects,
   getTeam,
+  getIssueCounts,
   startServer,
 };

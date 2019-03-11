@@ -7,6 +7,7 @@ const createHttpLink = require('apollo-link-http').createHttpLink;
 const InMemoryCache = require('apollo-cache-inmemory').InMemoryCache;
 const getProjectsQuery = require('./queries/getProjects').projects;
 const getTeamQuery = require('./queries/getTeam').team;
+const getIssueCountQuery = require('./queries/getIssueCounts').issueCounts;
 
 function createClient() {
   const headers = {};
@@ -45,7 +46,16 @@ async function getTeam() {
   return data;
 }
 
+async function getIssueCounts() {
+  const client = createClient();
+  const data = await client.query({
+    query: getIssueCountQuery,
+  });
+  return data;
+}
+
 module.exports = {
   getProjects,
   getTeam,
+  getIssueCounts,
 };

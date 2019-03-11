@@ -1,0 +1,29 @@
+.outer {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  overflow: visible;
+
+  svg {
+    height: 100%;
+  }
+
+  circle {
+    fill: #3db8a4;
+  }
+
+  text {
+    fill: #fff;
+    font-size: 3.5rem;
+    font-family: sans-serif;
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.warning circle {
+  fill: rgb(222, 80, 41);
+}
+.total circle {
+  fill: #45a1ff;
+}

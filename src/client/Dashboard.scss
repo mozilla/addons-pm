@@ -1,0 +1,52 @@
+.dashboard {
+  background: #1e2430;
+}
+
+.dashboard .container {
+  max-width: 100%;
+  padding: 0.2rem 0.6rem;
+}
+
+.card-grp {
+  display: flex;
+  margin: 0.6rem 0rem;
+
+  &:first-of-type,
+  &:last-of-type {
+    margin: 0.6rem 0;
+  }
+
+  .card {
+    max-height: 100%;
+    margin: 0;
+    border-radius: 0;
+
+    &:focus {
+      z-index: 100;
+    }
+
+    &:hover {
+      text-decoration: none !important;
+    }
+
+    &:first-child {
+      border-top-left-radius: 0.25rem;
+      border-bottom-left-radius: 0.25rem;
+    }
+
+    &:last-child {
+      border-top-right-radius: 0.25rem;
+      border-bottom-right-radius: 0.25rem;
+    }
+  }
+}
+
+.card-header {
+  color: #ccc;
+  font-weight: 200;
+  text-shadow: -1px -1px rgba(0, 0, 0, 0.8);
+}
+
+.repo-card .card-header {
+  font-weight: 400;
+}
