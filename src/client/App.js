@@ -14,8 +14,6 @@ import Projects from './Projects';
 import NotFound from './NotFound';
 
 const App = () => {
-  console.log(window.location.pathname);
-
   return (
     <Router>
       <div>
