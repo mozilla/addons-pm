@@ -11,11 +11,10 @@ import Octicon, { MarkGithub } from '@githubprimer/octicons-react';
 import Home from './Home';
 import Dashboard from './Dashboard';
 import Projects from './Projects';
+import Contrib from './Contrib';
 import NotFound from './NotFound';
 
 const App = () => {
-  console.log(window.location.pathname);
-
   return (
     <Router>
       <div>
@@ -31,6 +30,16 @@ const App = () => {
             <Nav.Item>
               <LinkContainer to="/dashboard/">
                 <Nav.Link eventKey={2}>Dashboard</Nav.Link>
+              </LinkContainer>
+            </Nav.Item>
+            <Nav.Item>
+              <LinkContainer
+                to="/contrib/maybe-good-first-bugs/?dir=desc&sort=updatedAt"
+                isActive={(match, location) => {
+                  return location.pathname.indexOf('/contrib') > -1;
+                }}
+              >
+                <Nav.Link eventKey={3}>Contributions</Nav.Link>
               </LinkContainer>
             </Nav.Item>
           </Nav>
@@ -56,6 +65,11 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/dashboard/" component={Dashboard} />
+          <Route
+            exact
+            path="/contrib/:type(good-first-bugs|maybe-good-first-bugs)/"
+            component={Contrib}
+          />
           <Route exact path="/:year(\d{4})/" component={Home} />
           <Route
             exact

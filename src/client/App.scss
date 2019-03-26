@@ -133,3 +133,68 @@ nav .breadcrumb {
   font-size: 22px;
   margin: 20px 0 15px 15px;
 }
+
+th a {
+  &:link,
+  &:visited,
+  &:focus,
+  &:active {
+    color: #000;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.sort-direction {
+    white-space: nowrap;
+    overflow: hidden;
+
+    &::after {
+      display: inline-block;
+      content: '';
+      margin: 0 0 2px 5px;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+    }
+
+    &.asc::after {
+      border-bottom: 5px solid black;
+    }
+
+    &.desc::after {
+      border-top: 5px solid black;
+    }
+  }
+}
+
+.p1,
+.p2,
+.p3,
+.p4,
+.p5 {
+  border-radius: 3px;
+  color: #fff;
+  padding: 5px 5px 3px;
+  font-size: 12px;
+}
+
+.p1 {
+  background: #ff0039;
+}
+
+.p2 {
+  background: #d70022;
+}
+
+.p3 {
+  background: #a4000f;
+}
+
+.p4 {
+  background: #5a0002;
+}
+
+.p5 {
+  background: #3e0200;
+}
