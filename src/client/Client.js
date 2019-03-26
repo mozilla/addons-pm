@@ -43,6 +43,26 @@ async function getIssueCounts() {
   return parseJSON(response);
 }
 
+async function getGoodFirstBugs() {
+  const response = await fetch(`${GH_API_ROOT}/good-first-bugs/`, {
+    headers: new Headers({
+      'Content-Type': 'application/json',
+    }),
+  });
+  checkStatus(response);
+  return parseJSON(response);
+}
+
+async function getMaybeGoodFirstBugs() {
+  const response = await fetch(`${GH_API_ROOT}/maybe-good-first-bugs/`, {
+    headers: new Headers({
+      'Content-Type': 'application/json',
+    }),
+  });
+  checkStatus(response);
+  return parseJSON(response);
+}
+
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
@@ -62,5 +82,7 @@ const Client = {
   getProjects,
   getTeam,
   getIssueCounts,
+  getGoodFirstBugs,
+  getMaybeGoodFirstBugs,
 };
 export default Client;

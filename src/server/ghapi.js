@@ -8,6 +8,10 @@ const InMemoryCache = require('apollo-cache-inmemory').InMemoryCache;
 const getProjectsQuery = require('./queries/getProjects').projects;
 const getTeamQuery = require('./queries/getTeam').team;
 const getIssueCountQuery = require('./queries/getIssueCounts').issueCounts;
+const getGoodFirstBugsQuery = require('./queries/getGoodFirstBugs')
+  .goodFirstBugs;
+const getMaybeGoodFirstBugsQuery = require('./queries/getMaybeGoodFirstBugs')
+  .maybeGoodFirstBugs;
 
 function createClient() {
   const headers = {};
@@ -54,8 +58,26 @@ async function getIssueCounts() {
   return data;
 }
 
+async function getGoodFirstBugs() {
+  const client = createClient();
+  const data = await client.query({
+    query: getGoodFirstBugsQuery,
+  });
+  return data;
+}
+
+async function getMaybeGoodFirstBugs() {
+  const client = createClient();
+  const data = await client.query({
+    query: getMaybeGoodFirstBugsQuery,
+  });
+  return data;
+}
+
 module.exports = {
   getProjects,
   getTeam,
   getIssueCounts,
+  getGoodFirstBugs,
+  getMaybeGoodFirstBugs,
 };

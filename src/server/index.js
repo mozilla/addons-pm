@@ -22,9 +22,21 @@ const getIssueCounts = async (req, res) => {
   res.json(issueCounts);
 };
 
+const getGoodFirstBugs = async (req, res) => {
+  const goodFirstBugs = await ghapi.getGoodFirstBugs();
+  res.json(goodFirstBugs);
+};
+
+const getMaybeGoodFirstBugs = async (req, res) => {
+  const maybeGoodFirstBugs = await ghapi.getMaybeGoodFirstBugs();
+  res.json(maybeGoodFirstBugs);
+};
+
 app.get('/api/projects/', getProjects);
 app.get('/api/team/', getTeam);
 app.get('/api/issue-counts/', getIssueCounts);
+app.get('/api/good-first-bugs/', getGoodFirstBugs);
+app.get('/api/maybe-good-first-bugs/', getMaybeGoodFirstBugs);
 
 function startServer() {
   let portOrSocket = process.env.PORT || 5000;
