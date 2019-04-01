@@ -27,7 +27,7 @@ function getFakeRouterParams({ pathname = '/2018/Q3/', params = {} } = {}) {
 describe('BreadcrumbNav', () => {
   it('should render BreadcrumbNav without error', () => {
     const wrapper = shallow(<BreadcrumbNav {...getFakeRouterParams()} />);
-    expect(wrapper.find('LinkContainer').length).toBe(3);
+    expect(wrapper.find('withRouter(LinkContainer)').length).toBe(3);
   });
 
   it('should render engineer', () => {
@@ -43,11 +43,16 @@ describe('BreadcrumbNav', () => {
         })}
       />,
     );
-    expect(wrapper.find('LinkContainer[to="/"]').length).toBe(1);
-    expect(wrapper.find('LinkContainer[to="/2018/"]').length).toBe(1);
-    expect(wrapper.find('LinkContainer[to="/2018/Q3/"]').length).toBe(1);
+    expect(wrapper.find('withRouter(LinkContainer)[to="/"]').length).toBe(1);
+    expect(wrapper.find('withRouter(LinkContainer)[to="/2018/"]').length).toBe(
+      1,
+    );
     expect(
-      wrapper.find('LinkContainer[to="/2018/Q3/willdurand/"]').length,
+      wrapper.find('withRouter(LinkContainer)[to="/2018/Q3/"]').length,
+    ).toBe(1);
+    expect(
+      wrapper.find('withRouter(LinkContainer)[to="/2018/Q3/willdurand/"]')
+        .length,
     ).toBe(1);
   });
 
@@ -64,12 +69,16 @@ describe('BreadcrumbNav', () => {
         })}
       />,
     );
-    expect(wrapper.find('LinkContainer[to="/"]').length).toBe(1);
-    expect(wrapper.find('LinkContainer[to="/2018/"]').length).toBe(1);
-    expect(wrapper.find('LinkContainer[to="/2018/Q3/"]').length).toBe(1);
-    expect(wrapper.find('LinkContainer[to="/2018/Q3/primary/"]').length).toBe(
+    expect(wrapper.find('withRouter(LinkContainer)[to="/"]').length).toBe(1);
+    expect(wrapper.find('withRouter(LinkContainer)[to="/2018/"]').length).toBe(
       1,
     );
+    expect(
+      wrapper.find('withRouter(LinkContainer)[to="/2018/Q3/"]').length,
+    ).toBe(1);
+    expect(
+      wrapper.find('withRouter(LinkContainer)[to="/2018/Q3/primary/"]').length,
+    ).toBe(1);
   });
 
   it('should render no quarter if missing', () => {
@@ -83,15 +92,19 @@ describe('BreadcrumbNav', () => {
         })}
       />,
     );
-    expect(wrapper.find('LinkContainer[to="/"]').length).toBe(1);
-    expect(wrapper.find('LinkContainer[to="/2018/"]').length).toBe(1);
+    expect(wrapper.find('withRouter(LinkContainer)[to="/"]').length).toBe(1);
+    expect(wrapper.find('withRouter(LinkContainer)[to="/2018/"]').length).toBe(
+      1,
+    );
     expect(
       wrapper
-        .find('LinkContainer[to="/2018/"]')
+        .find('withRouter(LinkContainer)[to="/2018/"]')
         .childAt(0)
         .prop('active'),
     ).toBe(true);
-    expect(wrapper.find('LinkContainer[to="/2018/Q3/"]').length).toBe(0);
+    expect(
+      wrapper.find('withRouter(LinkContainer)[to="/2018/Q3/"]').length,
+    ).toBe(0);
   });
 
   it('should render no year if missing', () => {
@@ -106,14 +119,18 @@ describe('BreadcrumbNav', () => {
         })}
       />,
     );
-    expect(wrapper.find('LinkContainer[to="/"]').length).toBe(1);
+    expect(wrapper.find('withRouter(LinkContainer)[to="/"]').length).toBe(1);
     expect(
       wrapper
-        .find('LinkContainer[to="/"]')
+        .find('withRouter(LinkContainer)[to="/"]')
         .childAt(0)
         .prop('active'),
     ).toBe(true);
-    expect(wrapper.find('LinkContainer[to="/2018/"]').length).toBe(0);
-    expect(wrapper.find('LinkContainer[to="/2018/Q3/"]').length).toBe(0);
+    expect(wrapper.find('withRouter(LinkContainer)[to="/2018/"]').length).toBe(
+      0,
+    );
+    expect(
+      wrapper.find('withRouter(LinkContainer)[to="/2018/Q3/"]').length,
+    ).toBe(0);
   });
 });
