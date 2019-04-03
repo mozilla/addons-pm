@@ -5,13 +5,13 @@ const goodFirstBugs = gql`
     good_first_bugs: search(
       type: ISSUE
       query: """
-       repo:mozilla/addons
+      repo:mozilla/addons
       repo:mozilla/addons-server
-       repo:mozilla/addons-frontend
-       repo:mozilla/addons-linter
-       label:"contrib: good first bug"
-       is:open
-       sort:updated-desc
+      repo:mozilla/addons-frontend
+      repo:mozilla/addons-linter
+      label:"contrib: good first bug"
+      is:open
+      sort:updated-desc
       """
       first: 100
     ) {
@@ -19,6 +19,7 @@ const goodFirstBugs = gql`
       results: edges {
         issue: node {
           ... on Issue {
+            number
             updatedAt
             title
             url
