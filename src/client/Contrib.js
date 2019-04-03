@@ -203,7 +203,7 @@ class Contrib extends Component {
           </td>
           <td>
             <a href={issue.url} target="_blank" rel="noopener noreferrer">
-              {issue.title}
+              <strong>#{issue.number}:</strong> {issue.title}
             </a>
           </td>
           <td>{issue.repository.name.replace('addons-', '')}</td>

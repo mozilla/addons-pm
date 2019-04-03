@@ -19,6 +19,7 @@ const maybeGoodFirstBugs = gql`
       results: edges {
         issue: node {
           ... on Issue {
+            number
             updatedAt
             title
             url
