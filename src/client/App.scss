@@ -2,6 +2,12 @@ body {
   min-width: 400px;
 }
 
+@media (min-width: 1200px) {
+  main.container {
+    max-width: 1360px;
+  }
+}
+
 nav[aria-label='breadcrumb'] {
   min-width: auto;
   margin-bottom: 10px;

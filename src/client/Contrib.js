@@ -4,6 +4,8 @@ import { Container, Nav, Navbar, Table } from 'react-bootstrap';
 import TimeAgo from 'react-timeago';
 import queryString from 'query-string';
 
+import Octicon, { Link } from '@githubprimer/octicons-react';
+
 import { LinkContainer } from 'react-router-bootstrap';
 import Client from './Client';
 import {
@@ -203,7 +205,8 @@ class Contrib extends Component {
           </td>
           <td>
             <a href={issue.url} target="_blank" rel="noopener noreferrer">
-              <strong>#{issue.number}:</strong> {issue.title}
+              <strong>#{issue.number}:</strong> {issue.title}{' '}
+              <Octicon icon={Link} verticalAlign="middle" />
             </a>
           </td>
           <td>{issue.repository.name.replace('addons-', '')}</td>
@@ -297,7 +300,9 @@ class Contrib extends Component {
                     {this.renderHeaderLink('mentorAssigned', 'Has Mentor?')}
                   </th>
                 ) : null}
-                <th>{this.renderHeaderLink('updatedAt', 'Last Update')}</th>
+                <th className="last-updated">
+                  {this.renderHeaderLink('updatedAt', 'Last Update')}
+                </th>
               </tr>
             </thead>
             <tbody>{this.renderRows(data)}</tbody>
