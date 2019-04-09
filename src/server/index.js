@@ -3,13 +3,21 @@ const express = require('express');
 const app = express();
 
 const ghapi = require('./ghapi');
+const validYearRX = /^20\d{2}$/;
+const validQuarterRX = /^Q[1-4]{1}$/;
 
-const getProjects = async (req, res) => {
+const getProjects = async (req, res, next) => {
   const { year, quarter } = req.query;
-  const projects = await ghapi.getProjects({
-    projectSearch: `Add-ons ${quarter} ${year}`,
-  });
-  res.json(projects);
+  if (!validYearRX.test(year)) {
+    res.status(400).json({ error: 'Incorrect year format' });
+  } else if (!validQuarterRX.test(quarter)) {
+    res.status(400).json({ error: 'Incorrect quarter format' });
+  } else {
+    const projects = await ghapi.getProjects({
+      projectSearch: `Add-ons ${quarter} ${year}`,
+    });
+    res.json(projects);
+  }
 };
 
 const getTeam = async (req, res) => {

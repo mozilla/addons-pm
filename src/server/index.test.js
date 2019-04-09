@@ -26,10 +26,43 @@ describe('API Server', () => {
     const req = new MockExpressRequest({
       method: 'GET',
       url: '/api/projects/?year=2018&quarter=Q3',
+      query: {
+        year: '2018',
+        quarter: 'Q3',
+      },
     });
     const res = new MockExpressResponse();
     await getProjects(req, res);
     expect(res._getJSON()).toEqual(testData.projects);
+  });
+
+  it('should return a 400 for an invalid year', async () => {
+    const req = new MockExpressRequest({
+      method: 'GET',
+      url: '/api/projects/?year=whatever&quarter=Q3',
+      query: {
+        year: 'whatever',
+        quarter: 'Q3',
+      },
+    });
+
+    const res = new MockExpressResponse();
+    await getProjects(req, res);
+    expect(res.statusCode).toEqual(400);
+  });
+
+  it('should return a 400 for an invalid quarter', async () => {
+    const req = new MockExpressRequest({
+      method: 'GET',
+      url: '/api/projects/?year=2018&quarter=whatever',
+      query: {
+        year: '2018',
+        quarter: 'whatever',
+      },
+    });
+    const res = new MockExpressResponse();
+    await getProjects(req, res);
+    expect(res.statusCode).toEqual(400);
   });
 
   it('should return team data', async () => {
