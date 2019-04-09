@@ -37,10 +37,10 @@ http {
     port_in_redirect off;
 
     more_clear_headers 'X-Powered-By';
-    add_header X-Frame-Options DENY;
-    add_header X-Content-Type-Options nosniff;
-    add_header X-XSS-Protection "1; mode=block";
-    add_header Strict-Transport-Security max-age=31536000;
+    add_header X-Frame-Options DENY always;
+    add_header X-Content-Type-Options nosniff always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header Strict-Transport-Security max-age=31536000 always;
     add_header Content-Security-Policy "
      default-src 'none';
      base-uri 'self';
@@ -50,7 +50,7 @@ http {
      font-src 'self';
      script-src 'self';
      img-src 'self' https://*.githubusercontent.com/u/;
-     style-src 'self' 'unsafe-inline'";
+     style-src 'self' 'unsafe-inline'" always;
 
     if ($http_x_forwarded_proto != 'https') {
       rewrite ^ https://$host$request_uri? permanent;
@@ -65,15 +65,15 @@ http {
       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
       proxy_set_header Host $http_host;
 
-      add_header X-Frame-Options DENY;
-      add_header X-Content-Type-Options nosniff;
-      add_header X-XSS-Protection "1; mode=block";
-      add_header Strict-Transport-Security max-age=31536000;
+      add_header X-Frame-Options DENY always;
+      add_header X-Content-Type-Options nosniff always;
+      add_header X-XSS-Protection "1; mode=block" always;
+      add_header Strict-Transport-Security max-age=31536000 always;
       add_header Content-Security-Policy "
        default-src 'none';
        base-uri 'none';
        form-action 'none';
-       object-src 'none'";
+       object-src 'none'" always;
 
       proxy_pass http://node_api_server;
     }
