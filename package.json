@@ -43,6 +43,7 @@
     "prettier-ci": "prettier -c '**'",
     "prettier": "pretty-quick --branch master",
     "stmux": "stmux -nM -t addons-pm -e 'error,!0 errors,!no errors'",
+    "stylelint": "stylelint --syntax scss **/*.scss",
     "start": "yarn stmux [ 'yarn test' .. [ 'yarn react-scripts start' : 'yarn start-server' ]]"
   },
   "devDependencies": {
@@ -57,6 +58,9 @@
     "prettier": "1.17.0",
     "pretty-quick": "1.10.0",
     "sinon": "7.3.2",
+    "stylelint": "9.2.0",
+    "stylelint-config-standard": "18.2.0",
+    "stylelint-config-suitcss": "14.0.0",
     "stmux": "1.6.1"
   },
   "browserslist": [
