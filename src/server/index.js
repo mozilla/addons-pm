@@ -20,6 +20,20 @@ const getProjects = async (req, res, next) => {
   }
 };
 
+const getMilestoneIssues = async (req, res) => {
+  const { milestone } = req.query;
+  const query = `repo:mozilla/addons
+    repo:mozilla/addons-server
+    repo:mozilla/addons-frontend
+    repo:mozilla/addons-linter
+    repo:mozilla/addons-code-manager
+    milestone:${milestone}`;
+  const milestoneIssues = await ghapi.getMilestoneIssues({
+    query: query,
+  });
+  res.json(milestoneIssues);
+};
+
 const getTeam = async (req, res) => {
   const team = await ghapi.getTeam();
   res.json(team);
@@ -45,6 +59,7 @@ app.get('/api/team/', getTeam);
 app.get('/api/issue-counts/', getIssueCounts);
 app.get('/api/good-first-bugs/', getGoodFirstBugs);
 app.get('/api/maybe-good-first-bugs/', getMaybeGoodFirstBugs);
+app.get('/api/milestone-issues/', getMilestoneIssues);
 
 function startServer() {
   let portOrSocket = process.env.PORT || 5000;

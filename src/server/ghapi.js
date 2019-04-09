@@ -12,6 +12,9 @@ const getGoodFirstBugsQuery = require('./queries/getGoodFirstBugs')
   .goodFirstBugs;
 const getMaybeGoodFirstBugsQuery = require('./queries/getMaybeGoodFirstBugs')
   .maybeGoodFirstBugs;
+const getMilestoneIssuesQuery = require('./queries/getMilestoneIssues')
+  .milestoneIssues;
+
 
 function createClient() {
   const headers = {};
@@ -37,6 +40,15 @@ async function getProjects(variables) {
   const client = createClient();
   const data = await client.query({
     query: getProjectsQuery,
+    variables,
+  });
+  return data;
+}
+
+async function getMilestoneIssues(variables) {
+  const client = createClient();
+  const data = await client.query({
+    query: getMilestoneIssuesQuery,
     variables,
   });
   return data;
@@ -80,4 +92,5 @@ module.exports = {
   getIssueCounts,
   getGoodFirstBugs,
   getMaybeGoodFirstBugs,
+  getMilestoneIssues,
 };

@@ -12,6 +12,7 @@ import Home from './Home';
 import Dashboard from './Dashboard';
 import Projects from './Projects';
 import Contrib from './Contrib';
+import Milestones from './Milestones';
 import NotFound from './NotFound';
 
 const App = () => {
@@ -28,8 +29,18 @@ const App = () => {
               </IndexLinkContainer>
             </Nav.Item>
             <Nav.Item>
+              <LinkContainer
+                to="/milestones/latest/"
+                isActive={(match, location) => {
+                  return location.pathname.indexOf('/milestones') > -1;
+                }}
+              >
+                <Nav.Link eventKey={2}>Milestones</Nav.Link>
+              </LinkContainer>
+            </Nav.Item>
+            <Nav.Item>
               <LinkContainer to="/dashboard/">
-                <Nav.Link eventKey={2}>Dashboard</Nav.Link>
+                <Nav.Link eventKey={3}>Dashboard</Nav.Link>
               </LinkContainer>
             </Nav.Item>
             <Nav.Item>
@@ -39,7 +50,7 @@ const App = () => {
                   return location.pathname.indexOf('/contrib') > -1;
                 }}
               >
-                <Nav.Link eventKey={3}>Contributions</Nav.Link>
+                <Nav.Link eventKey={4}>Contributions</Nav.Link>
               </LinkContainer>
             </Nav.Item>
           </Nav>
@@ -64,6 +75,16 @@ const App = () => {
         </Navbar>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/milestones/:milestone(20[123]{1}\d{1}.[01]{1}\d{1}.[0123]{1}\d{1})/"
+            component={Milestones}
+          />
+          <Route
+            exact
+            path="/milestones/:milestone(latest)/"
+            component={Milestones}
+          />
           <Route exact path="/dashboard/" component={Dashboard} />
           <Route
             exact
