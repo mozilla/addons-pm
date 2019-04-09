@@ -43,6 +43,9 @@ http {
     add_header Strict-Transport-Security max-age=31536000;
     add_header Content-Security-Policy "
      default-src 'none';
+     base-uri 'self';
+     form-action 'none';
+     object-src 'none';
      connect-src 'self';
      font-src 'self';
      script-src 'self';
@@ -61,6 +64,17 @@ http {
     location /api/ {
       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
       proxy_set_header Host $http_host;
+
+      add_header X-Frame-Options DENY;
+      add_header X-Content-Type-Options nosniff;
+      add_header X-XSS-Protection "1; mode=block";
+      add_header Strict-Transport-Security max-age=31536000;
+      add_header Content-Security-Policy "
+       default-src 'none';
+       base-uri 'none';
+       form-action 'none';
+       object-src 'none'";
+
       proxy_pass http://node_api_server;
     }
   }
