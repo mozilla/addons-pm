@@ -1,9 +1,55 @@
 .Milestones {
   th.issue {
-    width: 40%;
+    width: 45%;
   }
 
   h2 {
     margin-top: 30px;
+  }
+
+  .label {
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: normal;
+    min-width: 8em;
+    padding: 5px;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  .assignee {
+    img,
+    svg {
+      border: 2px solid #ccc;
+      border-radius: 50%;
+      box-sizing: content-box;
+      display: inline-block;
+      height: 25px;
+      width: 25px;
+    }
+
+    .contributor svg {
+      box-sizing: border-box;
+      color: red;
+      height: 28px;
+      padding-top: 2px;
+      position: relative;
+      width: 28px;
+    }
+  }
+
+  .projectLink {
+    font-size: 13px;
+    display: inline-block;
+    color: #666;
+
+    svg {
+      box-sizing: border-box;
+    }
+  }
+
+  .issueLink {
+    display: block;
   }
 }

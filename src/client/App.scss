@@ -180,7 +180,9 @@ th a {
 .p2,
 .p3,
 .p4,
-.p5 {
+.p5,
+.unprioritized {
+  background: #666;
   border-radius: 3px;
   color: #fff;
   font-size: 12px;
@@ -205,4 +207,30 @@ th a {
 
 .p5 {
   background: #3e0200;
+}
+
+
+.no,
+.yes {
+  background: green;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 5px 3px;
+}
+
+.no {
+  background: orange;
+}
+
+table {
+  border: 0;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  max-width: 100%;
+  width: 100%;
+}
+
+td.centered {
+  text-align: center;
 }

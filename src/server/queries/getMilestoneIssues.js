@@ -11,6 +11,7 @@ const milestoneIssues = gql`
       results: edges {
         issue: node {
           ... on Issue {
+            state,
             number
             updatedAt
             title
@@ -34,6 +35,7 @@ const milestoneIssues = gql`
               nodes {
                 project {
                   name
+                  url
                 }
               }
             }

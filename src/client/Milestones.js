@@ -4,34 +4,41 @@ import { Container, Nav, Navbar, Table } from 'react-bootstrap';
 import TimeAgo from 'react-timeago';
 import queryString from 'query-string';
 
-import Octicon, { Link } from '@githubprimer/octicons-react';
+import Octicon, { Alert, Link, Heart, Person } from '@githubprimer/octicons-react';
 
 import { LinkContainer } from 'react-router-bootstrap';
+import { getMilestonePagination } from './utils';
 import Client from './Client';
 import {
   alphaSort,
+  colourIsLight,
   dateSort,
-  numericSort,
   hasLabelContainingString,
+  hasLabel,
 } from './utils';
 
-import { priorities } from './const';
+import { colors, priorities } from '../const';
 
 import './Milestones.scss';
+
+
 
 class Milestones extends Component {
   state = {
     milestoneIssues: null,
+    pagination: {},
   };
 
   formatData(data) {
     let issues = [];
+
     data.forEach((item) => {
       const issue = {
         ...item.issue,
         priority: null,
-        assigned: false,
-        mentorAssigned: false,
+        hasProject: false,
+        isContrib: false,
+        assignee: '00_unassigned',
       };
       const labels = issue.labels.nodes || [];
       priorities.forEach((priority) => {
@@ -41,13 +48,52 @@ class Milestones extends Component {
       });
       if (hasLabelContainingString(labels, 'contrib: assigned')) {
         issue.isContrib = true;
+        issue.assignee = '01_contributor';
       }
       if (issue.repository && issue.repository.name) {
         issue.repo = issue.repository.name;
       }
+      if (issue.projectCards.nodes.length) {
+        issue.hasProject = true;
+        issue.projectUrl = issue.projectCards.nodes[0].project.url;
+        issue.projectName = issue.projectCards.nodes[0].project.name;
+      }
+
+      issue.stateLabel = issue.state.toLowerCase();
+      issue.stateLabelColor = issue.state === 'CLOSED' ? colors.closed : colors.open;
+
+      if (issue.state === 'OPEN' && hasLabel(labels, 'state: pull request ready')) {
+        issue.stateLabel = 'PR ready';
+        issue.stateLabelColor = colors.prReady;
+      } else if (issue.state === 'OPEN' && hasLabel(labels, 'state: in progress')) {
+        issue.stateLabel = 'in progress';
+        issue.stateLabelColor = colors.inProgress;
+      } else if (issue.state === 'CLOSED' && hasLabel(labels, 'state: verified fixed')) {
+        issue.stateLabel = 'verified fixed';
+        issue.stateLabelColor = colors.verified;
+      } else if (issue.state === 'CLOSED' && hasLabel(labels, 'qa: not needed')) {
+        issue.stateLabel = 'closed QA-';
+        issue.stateLabelColor = colors.verified;
+      }
+
+      issue.stateLabelTextColor = colourIsLight(issue.stateLabelColor) ? '#000' : '#fff';
+
+      if (issue.assignees.nodes.length) {
+        issue.assignee = issue.assignees.nodes[0].login;
+      }
+
       issues.push(issue);
     });
+
     return issues;
+  }
+
+  renderBoolAsYesOrNo(issue, prop) {
+    let comp = <span className="no">NO</span>;
+    if (issue[prop] === true) {
+      comp = <span className="yes">YES</span>;
+    }
+    return comp;
   }
 
   setArrow(column) {
@@ -60,18 +106,46 @@ class Milestones extends Component {
     return className;
   }
 
+  async componentDidUpdate(prevProps, prevState) {
+    await this.updateComponentData(prevProps, prevState);
+  }
+
   async componentDidMount() {
-    const [goodFirstBugs, maybeGoodFirstBugs] = await Promise.all([
-      Client.getGoodFirstBugs(),
-      Client.getMaybeGoodFirstBugs(),
-    ]);
+    await this.updateComponentData();
+  }
+
+  async updateComponentData(prevProps, prevState) {
+    const { match } = this.props;
+    const { milestone, year, month, day } = match.params;
+
+    // Check if we need to recalculate anything.
+    if (prevProps && prevProps.match) {
+      const prevMatch = prevProps.match;
+      if (prevMatch.params.milestone === milestone && prevMatch.params.year === year &&
+          prevMatch.params.month === month && prevMatch.params.day === day) {
+        console.log('No changes to milestone props, skipping update');
+        return;
+      }
+    }
+
+    let milestoneTag;
+    let milestonePagination;
+
+    if (milestone === 'latest') {
+      milestonePagination = getMilestonePagination();
+      milestoneTag = milestonePagination.current;
+      // For latest the start date is updated to match the next release since that is used for display.
+      milestonePagination.start = milestonePagination.current;
+    } else {
+      milestoneTag = `${year}.${month}.${day}`;
+      milestonePagination = getMilestonePagination({ startDate: new Date(year, month - 1, day) });
+    }
+
+    const milestoneIssues = await Client.getMilestoneIssues(milestoneTag);
+
     this.setState({
-      goodFirstBugs: this.formatData(
-        goodFirstBugs.data.good_first_bugs.results,
-      ),
-      maybeGoodFirstBugs: this.formatData(
-        maybeGoodFirstBugs.data.maybe_good_first_bugs.results,
-      ),
+      pagination: milestonePagination,
+      milestoneIssues: milestoneIssues.data ? this.formatData(milestoneIssues.data.milestone_issues.results) : [],
     });
   }
 
@@ -83,6 +157,8 @@ class Milestones extends Component {
     updatedAt: {
       sortFunc: dateSort,
     },
+    hasProject: {},
+    state: {},
   };
 
   sortData({ columnKey, direction } = {}) {
@@ -140,10 +216,19 @@ class Milestones extends Component {
     );
   }
 
+  renderAssignee(issue) {
+    if (issue.assignees.nodes.length) {
+      const issueAssignee = issue.assignees.nodes[0];
+      return <span><img className="avatar" src={issueAssignee.avatarUrl} alt="" /> {issueAssignee.login}</span>
+    } else if (issue.assignee === '01_contributor') {
+      return <span className="contributor"><Octicon icon={Heart} verticalAlign='middle' /> Contributor</span>
+    }
+    return <span className="unassigned"><Octicon icon={Person} verticalAlign='middle' /> Unassigned</span>
+  }
+
   renderRows(data) {
     const rows = [];
-    const colSpan = 4;
-    const { match } = this.props;
+    const colSpan = 7;
 
     if (!data) {
       return (
@@ -157,35 +242,34 @@ class Milestones extends Component {
       return (
         <tr>
           <td colSpan={colSpan}>
-            <div className="not-found">
-              <p>
-                No issues found! Time to deploy the team to find some quality
-                bugs!
-              </p>
-            </div>
+            <p>There are no issues associated with this milestone yet.</p>
           </td>
         </tr>
       );
     }
-
     for (var i = 0; i < data.length; i++) {
       const issue = data[i] || {};
       rows.push(
         <tr key={`issue-${i}`}>
+          <td className="assignee">{this.renderAssignee(issue)}</td>
           <td>
-            <span className={issue.priority}>
-              {issue.priority.toUpperCase()}
+            <span className={issue.priority || 'unprioritized' }>
+              {issue.priority ? issue.priority.toUpperCase() : <Octicon icon={Alert} />}
             </span>
           </td>
           <td>
-            <a href={issue.url} target="_blank" rel="noopener noreferrer">
+            <a className="issueLink" href={issue.url} target="_blank" rel="noopener noreferrer">
               <strong>#{issue.number}:</strong> {issue.title}{' '}
               <Octicon icon={Link} verticalAlign="middle" />
             </a>
+            {issue.hasProject ? <a href={issue.projectUrl} target="_blank" rel="noopener noreferrer" className="projectLink">{issue.projectName}</a> : null}
           </td>
           <td>{issue.repository.name.replace('addons-', '')}</td>
           <td>
             <TimeAgo date={issue.updatedAt} />
+          </td>
+          <td>
+           <span className="label" style={{ backgroundColor: issue.stateLabelColor, color: issue.stateLabelTextColor}}>{issue.stateLabel}</span>
           </td>
         </tr>,
       );
@@ -194,14 +278,10 @@ class Milestones extends Component {
   }
 
   render() {
-    const { match, location } = this.props;
+    const { location } = this.props;
     const qs = queryString.parse(location.search);
-
-    let data;
-
-    const milestone = '2019.04.04';
-
-    data = this.sortData({ columnKey: qs.sort, direction: qs.dir });
+    const milestone = this.state.pagination.start || 'Loading...';
+    const data = this.sortData({ columnKey: qs.sort, direction: qs.dir });
 
     return (
       <div className="Milestones">
@@ -216,20 +296,38 @@ class Milestones extends Component {
         >
           <Nav variant="pills">
             <Nav.Item>
-              <LinkContainer to="/milestones/previous/" exact>
-                <Nav.Link eventKey="mgfb" className="previous">
+              <LinkContainer to={`/milestones/${this.state.pagination.prevFromStart}/?dir=asc&sort=assignee`} active={false} exact>
+                <Nav.Link eventKey="prev" className="previous">
                   Previous
                 </Nav.Link>
               </LinkContainer>
             </Nav.Item>
             <Nav.Item>
-              <LinkContainer to="/milestones/next/" exact>
-                <Nav.Link eventKey="gfb" className="next">
+              <LinkContainer to={`/milestones/${this.state.pagination.nextFromStart}/?dir=asc&sort=assignee`} active={false} exact>
+                <Nav.Link eventKey="next" className="next">
                   Next
                 </Nav.Link>
               </LinkContainer>
             </Nav.Item>
           </Nav>
+          <Nav variant="pills">
+            <Nav.Item>
+              <LinkContainer
+                to={`/milestones/${this.state.pagination.current}/?dir=asc&sort=assignee`}
+                isActive={(match, location) => {
+                  return (
+                    location.pathname.indexOf(this.state.pagination.current) > -1 ||
+                    location.pathname.indexOf('latest') > -1
+                  );
+                }}
+              >
+                <Nav.Link eventKey="current" className="current">
+                  Current Milestone
+                </Nav.Link>
+              </LinkContainer>
+            </Nav.Item>
+          </Nav>
+
         </Navbar>
         <Container as="main" bg="light">
           <h2>Issues for milestone: {milestone}</h2>
@@ -242,7 +340,6 @@ class Milestones extends Component {
                   {this.renderHeaderLink('title', 'Issue')}
                 </th>
                 <th>{this.renderHeaderLink('repo', 'Repo')}</th>
-                <th>{this.renderHeaderLink('isProjectBug', 'Project Bug?')}</th>
                 <th className="last-updated">
                   {this.renderHeaderLink('updatedAt', 'Last Update')}
                 </th>

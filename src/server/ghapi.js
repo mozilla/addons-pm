@@ -5,6 +5,7 @@ require('isomorphic-fetch');
 const ApolloClient = require('apollo-client').ApolloClient;
 const createHttpLink = require('apollo-link-http').createHttpLink;
 const InMemoryCache = require('apollo-cache-inmemory').InMemoryCache;
+const IntrospectionFragmentMatcher = require('apollo-cache-inmemory').IntrospectionFragmentMatcher;
 const getProjectsQuery = require('./queries/getProjects').projects;
 const getTeamQuery = require('./queries/getTeam').team;
 const getIssueCountQuery = require('./queries/getIssueCounts').issueCounts;
@@ -15,6 +16,8 @@ const getMaybeGoodFirstBugsQuery = require('./queries/getMaybeGoodFirstBugs')
 const getMilestoneIssuesQuery = require('./queries/getMilestoneIssues')
   .milestoneIssues;
 
+const introspectionQueryResultData = require('./fragmentTypes.json');
+
 
 function createClient() {
   const headers = {};
@@ -24,6 +27,10 @@ function createClient() {
     throw new Error('No GH_TOKEN found');
   }
 
+  const fragmentMatcher = new IntrospectionFragmentMatcher({
+    introspectionQueryResultData
+  });
+
   // For fetches to work correctly we use a new client instance for
   // each request to avoid stale data.
   const client = new ApolloClient({
@@ -31,7 +38,7 @@ function createClient() {
       uri: 'https://api.github.com/graphql',
       headers,
     }),
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({ fragmentMatcher }),
   });
   return client;
 }

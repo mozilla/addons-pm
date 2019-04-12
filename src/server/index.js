@@ -3,14 +3,15 @@ const express = require('express');
 const app = express();
 
 const ghapi = require('./ghapi');
-const validYearRX = /^20\d{2}$/;
-const validQuarterRX = /^Q[1-4]{1}$/;
+
+const constants = require('../const');
+
 
 const getProjects = async (req, res, next) => {
   const { year, quarter } = req.query;
-  if (!validYearRX.test(year)) {
+  if (!constants.validYearRX.test(year)) {
     res.status(400).json({ error: 'Incorrect year format' });
-  } else if (!validQuarterRX.test(quarter)) {
+  } else if (!constants.validQuarterRX.test(quarter)) {
     res.status(400).json({ error: 'Incorrect quarter format' });
   } else {
     const projects = await ghapi.getProjects({
@@ -22,16 +23,21 @@ const getProjects = async (req, res, next) => {
 
 const getMilestoneIssues = async (req, res) => {
   const { milestone } = req.query;
-  const query = `repo:mozilla/addons
-    repo:mozilla/addons-server
-    repo:mozilla/addons-frontend
-    repo:mozilla/addons-linter
-    repo:mozilla/addons-code-manager
-    milestone:${milestone}`;
-  const milestoneIssues = await ghapi.getMilestoneIssues({
-    query: query,
-  });
-  res.json(milestoneIssues);
+  if (!constants.validMilestoneRX.test(milestone)) {
+    res.status(400).json({ error: 'Incorrect milestone format' });
+  } else {
+    const query = `repo:mozilla/addons
+      repo:mozilla/addons-server
+      repo:mozilla/addons-frontend
+      repo:mozilla/addons-linter
+      repo:mozilla/addons-code-manager
+      milestone:${milestone}
+      type:issues`;
+    const milestoneIssues = await ghapi.getMilestoneIssues({
+      query: query,
+    });
+    res.json(milestoneIssues);
+  }
 };
 
 const getTeam = async (req, res) => {
@@ -84,5 +90,6 @@ module.exports = {
   getProjects,
   getTeam,
   getIssueCounts,
+  getMilestoneIssues,
   startServer,
 };

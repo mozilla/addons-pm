@@ -258,6 +258,14 @@ class Projects extends Component {
       );
     }
 
+    // Filter null elements. This avoids a case where we have
+    // a projects list that looks like [null, null].
+    if (projects && projects.length) {
+      projects = projects.filter((el) => {
+        return el !== null;
+      });
+    }
+
     return (
       <div>
         <Helmet>

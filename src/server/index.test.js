@@ -3,7 +3,7 @@
 import MockExpressRequest from 'mock-express-request';
 import MockExpressResponse from 'mock-express-response';
 
-import { getProjects, getTeam, getIssueCounts } from './index';
+import { getProjects, getTeam, getIssueCounts, getMilestoneIssues } from './index';
 import ghapi from './ghapi';
 import sinon from 'sinon';
 
@@ -49,6 +49,7 @@ describe('API Server', () => {
     const res = new MockExpressResponse();
     await getProjects(req, res);
     expect(res.statusCode).toEqual(400);
+    expect(res._getJSON()).toEqual({"error": "Incorrect year format"});
   });
 
   it('should return a 400 for an invalid quarter', async () => {
@@ -63,6 +64,21 @@ describe('API Server', () => {
     const res = new MockExpressResponse();
     await getProjects(req, res);
     expect(res.statusCode).toEqual(400);
+    expect(res._getJSON()).toEqual({"error": "Incorrect quarter format"});
+  });
+
+  it('should return a 400 for an invalid milestone', async () => {
+    const req = new MockExpressRequest({
+      method: 'GET',
+      url: '/api/milestone-issues/?milestone=2018.13.32',
+      query: {
+        milestone: '2018.13.32',
+      },
+    });
+    const res = new MockExpressResponse();
+    await getMilestoneIssues(req, res);
+    expect(res.statusCode).toEqual(400);
+    expect(res._getJSON()).toEqual({"error": "Incorrect milestone format"});
   });
 
   it('should return team data', async () => {
