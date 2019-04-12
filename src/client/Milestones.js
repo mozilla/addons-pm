@@ -4,7 +4,12 @@ import { Container, Nav, Navbar, Table } from 'react-bootstrap';
 import TimeAgo from 'react-timeago';
 import queryString from 'query-string';
 
-import Octicon, { Alert, Link, Heart, Person } from '@githubprimer/octicons-react';
+import Octicon, {
+  Alert,
+  Link,
+  Heart,
+  Person,
+} from '@githubprimer/octicons-react';
 
 import { LinkContainer } from 'react-router-bootstrap';
 import { getMilestonePagination } from './utils';
@@ -20,8 +25,6 @@ import {
 import { colors, priorities } from '../const';
 
 import './Milestones.scss';
-
-
 
 class Milestones extends Component {
   state = {
@@ -60,23 +63,38 @@ class Milestones extends Component {
       }
 
       issue.stateLabel = issue.state.toLowerCase();
-      issue.stateLabelColor = issue.state === 'CLOSED' ? colors.closed : colors.open;
+      issue.stateLabelColor =
+        issue.state === 'CLOSED' ? colors.closed : colors.open;
 
-      if (issue.state === 'OPEN' && hasLabel(labels, 'state: pull request ready')) {
+      if (
+        issue.state === 'OPEN' &&
+        hasLabel(labels, 'state: pull request ready')
+      ) {
         issue.stateLabel = 'PR ready';
         issue.stateLabelColor = colors.prReady;
-      } else if (issue.state === 'OPEN' && hasLabel(labels, 'state: in progress')) {
+      } else if (
+        issue.state === 'OPEN' &&
+        hasLabel(labels, 'state: in progress')
+      ) {
         issue.stateLabel = 'in progress';
         issue.stateLabelColor = colors.inProgress;
-      } else if (issue.state === 'CLOSED' && hasLabel(labels, 'state: verified fixed')) {
+      } else if (
+        issue.state === 'CLOSED' &&
+        hasLabel(labels, 'state: verified fixed')
+      ) {
         issue.stateLabel = 'verified fixed';
         issue.stateLabelColor = colors.verified;
-      } else if (issue.state === 'CLOSED' && hasLabel(labels, 'qa: not needed')) {
+      } else if (
+        issue.state === 'CLOSED' &&
+        hasLabel(labels, 'qa: not needed')
+      ) {
         issue.stateLabel = 'closed QA-';
         issue.stateLabelColor = colors.verified;
       }
 
-      issue.stateLabelTextColor = colourIsLight(issue.stateLabelColor) ? '#000' : '#fff';
+      issue.stateLabelTextColor = colourIsLight(issue.stateLabelColor)
+        ? '#000'
+        : '#fff';
 
       if (issue.assignees.nodes.length) {
         issue.assignee = issue.assignees.nodes[0].login;
@@ -121,8 +139,12 @@ class Milestones extends Component {
     // Check if we need to recalculate anything.
     if (prevProps && prevProps.match) {
       const prevMatch = prevProps.match;
-      if (prevMatch.params.milestone === milestone && prevMatch.params.year === year &&
-          prevMatch.params.month === month && prevMatch.params.day === day) {
+      if (
+        prevMatch.params.milestone === milestone &&
+        prevMatch.params.year === year &&
+        prevMatch.params.month === month &&
+        prevMatch.params.day === day
+      ) {
         console.log('No changes to milestone props, skipping update');
         return;
       }
@@ -138,14 +160,18 @@ class Milestones extends Component {
       milestonePagination.start = milestonePagination.current;
     } else {
       milestoneTag = `${year}.${month}.${day}`;
-      milestonePagination = getMilestonePagination({ startDate: new Date(year, month - 1, day) });
+      milestonePagination = getMilestonePagination({
+        startDate: new Date(year, month - 1, day),
+      });
     }
 
     const milestoneIssues = await Client.getMilestoneIssues(milestoneTag);
 
     this.setState({
       pagination: milestonePagination,
-      milestoneIssues: milestoneIssues.data ? this.formatData(milestoneIssues.data.milestone_issues.results) : [],
+      milestoneIssues: milestoneIssues.data
+        ? this.formatData(milestoneIssues.data.milestone_issues.results)
+        : [],
     });
   }
 
@@ -219,11 +245,24 @@ class Milestones extends Component {
   renderAssignee(issue) {
     if (issue.assignees.nodes.length) {
       const issueAssignee = issue.assignees.nodes[0];
-      return <span><img className="avatar" src={issueAssignee.avatarUrl} alt="" /> {issueAssignee.login}</span>
+      return (
+        <span>
+          <img className="avatar" src={issueAssignee.avatarUrl} alt="" />{' '}
+          {issueAssignee.login}
+        </span>
+      );
     } else if (issue.assignee === '01_contributor') {
-      return <span className="contributor"><Octicon icon={Heart} verticalAlign='middle' /> Contributor</span>
+      return (
+        <span className="contributor">
+          <Octicon icon={Heart} verticalAlign="middle" /> Contributor
+        </span>
+      );
     }
-    return <span className="unassigned"><Octicon icon={Person} verticalAlign='middle' /> Unassigned</span>
+    return (
+      <span className="unassigned">
+        <Octicon icon={Person} verticalAlign="middle" /> Unassigned
+      </span>
+    );
   }
 
   renderRows(data) {
@@ -253,23 +292,49 @@ class Milestones extends Component {
         <tr key={`issue-${i}`}>
           <td className="assignee">{this.renderAssignee(issue)}</td>
           <td>
-            <span className={issue.priority || 'unprioritized' }>
-              {issue.priority ? issue.priority.toUpperCase() : <Octicon icon={Alert} />}
+            <span className={issue.priority || 'unprioritized'}>
+              {issue.priority ? (
+                issue.priority.toUpperCase()
+              ) : (
+                <Octicon icon={Alert} />
+              )}
             </span>
           </td>
           <td>
-            <a className="issueLink" href={issue.url} target="_blank" rel="noopener noreferrer">
+            <a
+              className="issueLink"
+              href={issue.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <strong>#{issue.number}:</strong> {issue.title}{' '}
               <Octicon icon={Link} verticalAlign="middle" />
             </a>
-            {issue.hasProject ? <a href={issue.projectUrl} target="_blank" rel="noopener noreferrer" className="projectLink">{issue.projectName}</a> : null}
+            {issue.hasProject ? (
+              <a
+                href={issue.projectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="projectLink"
+              >
+                {issue.projectName}
+              </a>
+            ) : null}
           </td>
           <td>{issue.repository.name.replace('addons-', '')}</td>
           <td>
             <TimeAgo date={issue.updatedAt} />
           </td>
           <td>
-           <span className="label" style={{ backgroundColor: issue.stateLabelColor, color: issue.stateLabelTextColor}}>{issue.stateLabel}</span>
+            <span
+              className="label"
+              style={{
+                backgroundColor: issue.stateLabelColor,
+                color: issue.stateLabelTextColor,
+              }}
+            >
+              {issue.stateLabel}
+            </span>
           </td>
         </tr>,
       );
@@ -296,14 +361,26 @@ class Milestones extends Component {
         >
           <Nav variant="pills">
             <Nav.Item>
-              <LinkContainer to={`/milestones/${this.state.pagination.prevFromStart}/?dir=asc&sort=assignee`} active={false} exact>
+              <LinkContainer
+                to={`/milestones/${
+                  this.state.pagination.prevFromStart
+                }/?dir=asc&sort=assignee`}
+                active={false}
+                exact
+              >
                 <Nav.Link eventKey="prev" className="previous">
                   Previous
                 </Nav.Link>
               </LinkContainer>
             </Nav.Item>
             <Nav.Item>
-              <LinkContainer to={`/milestones/${this.state.pagination.nextFromStart}/?dir=asc&sort=assignee`} active={false} exact>
+              <LinkContainer
+                to={`/milestones/${
+                  this.state.pagination.nextFromStart
+                }/?dir=asc&sort=assignee`}
+                active={false}
+                exact
+              >
                 <Nav.Link eventKey="next" className="next">
                   Next
                 </Nav.Link>
@@ -313,11 +390,13 @@ class Milestones extends Component {
           <Nav variant="pills">
             <Nav.Item>
               <LinkContainer
-                to={`/milestones/${this.state.pagination.current}/?dir=asc&sort=assignee`}
+                to={`/milestones/${
+                  this.state.pagination.current
+                }/?dir=asc&sort=assignee`}
                 isActive={(match, location) => {
                   return (
-                    location.pathname.indexOf(this.state.pagination.current) > -1 ||
-                    location.pathname.indexOf('latest') > -1
+                    location.pathname.indexOf(this.state.pagination.current) >
+                      -1 || location.pathname.indexOf('latest') > -1
                   );
                 }}
               >
@@ -327,7 +406,6 @@ class Milestones extends Component {
               </LinkContainer>
             </Nav.Item>
           </Nav>
-
         </Navbar>
         <Container as="main" bg="light">
           <h2>Issues for milestone: {milestone}</h2>

@@ -1,13 +1,13 @@
-const validYears = [
-  '2018',
-  '2019',
-  '2020',
-];
+const validYears = ['2018', '2019', '2020'];
 
 module.exports = {
   validYears: validYears,
   validYearRX: new RegExp(`^(?:${validYears.join('|')})$`),
-  validMilestoneRX: new RegExp(`^(?:${validYears.join('|')})\\.(?:0[1-9]|1[0-2])\\.(?:0[1-9]|[1-2]\\d|3[0-1])$`),
+  validMilestoneRX: new RegExp(
+    `^(?:${validYears.join(
+      '|',
+    )})\\.(?:0[1-9]|1[0-2])\\.(?:0[1-9]|[1-2]\\d|3[0-1])$`,
+  ),
   validQuarterRX: /^Q[1-4]$/,
   // This defined what team members projects can be filtered by since projects don't have an official
   // assignment.
@@ -24,7 +24,10 @@ module.exports = {
     'rebmullin',
     'willdurand',
   ],
-  GH_API_ROOT: process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3000/api',
+  GH_API_ROOT:
+    process.env.NODE_ENV === 'production'
+      ? '/api'
+      : 'http://localhost:3000/api',
   colors: {
     blocked: '#ffa500',
     closed: '#98ff98',

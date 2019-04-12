@@ -6,7 +6,6 @@ const ghapi = require('./ghapi');
 
 const constants = require('../const');
 
-
 const getProjects = async (req, res, next) => {
   const { year, quarter } = req.query;
   if (!constants.validYearRX.test(year)) {

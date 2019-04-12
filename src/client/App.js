@@ -79,7 +79,9 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route
             exact
-            path={`/milestones/:year(${validYears.join('|')}).:month(0[1-9]|1[0-2]).:day(0[1-9]|[1-2]\\d|3[0-1])/`}
+            path={`/milestones/:year(${validYears.join(
+              '|',
+            )}).:month(0[1-9]|1[0-2]).:day(0[1-9]|[1-2]\\d|3[0-1])/`}
             component={Milestones}
           />
           <Route
@@ -93,7 +95,11 @@ const App = () => {
             path="/contrib/:type(good-first-bugs|maybe-good-first-bugs)/"
             component={Contrib}
           />
-          <Route exact path={`/:year(${validYears.join('|')})/`} component={Home} />
+          <Route
+            exact
+            path={`/:year(${validYears.join('|')})/`}
+            component={Home}
+          />
           <Route
             exact
             path={`/:year(${validYears.join('|')})/:quarter(Q[1-4])/`}
@@ -101,12 +107,18 @@ const App = () => {
           />
           <Route
             exact
-            path={`/:year(${validYears.join('|')})/:quarter(Q[1-4])/:projectType(primary|secondary)/`}
+            path={`/:year(${validYears.join(
+              '|',
+            )})/:quarter(Q[1-4])/:projectType(primary|secondary)/`}
             component={Projects}
           />
           <Route
             exact
-            path={`/:year(${validYears.join('|')})/:quarter(Q[1-4])/:engineer(${validProjectTeamMembers.join('|')})/`}
+            path={`/:year(${validYears.join(
+              '|',
+            )})/:quarter(Q[1-4])/:engineer(${validProjectTeamMembers.join(
+              '|',
+            )})/`}
             component={Projects}
           />
           <Route component={NotFound} />

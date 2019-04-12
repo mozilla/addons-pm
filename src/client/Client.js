@@ -1,4 +1,9 @@
-import { GH_API_ROOT, validQuarterRX, validYearRX, validMilestoneRX } from '../const';
+import {
+  GH_API_ROOT,
+  validQuarterRX,
+  validYearRX,
+  validMilestoneRX,
+} from '../const';
 
 async function getProjects(year, quarter) {
   if (!validYearRX.test(year)) {

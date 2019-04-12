@@ -2,16 +2,12 @@ const gql = require('graphql-tag').default;
 
 const milestoneIssues = gql`
   query getMilestoneIssue($query: String!) {
-    milestone_issues: search(
-      type: ISSUE
-      query: $query
-      first: 100
-    ) {
+    milestone_issues: search(type: ISSUE, query: $query, first: 100) {
       issueCount
       results: edges {
         issue: node {
           ... on Issue {
-            state,
+            state
             number
             updatedAt
             title
