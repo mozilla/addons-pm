@@ -34,7 +34,7 @@
     "start-server": "node src/server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "test-coverage": "npm run test -- --coverage --collectCoverageFrom=src/client/**/*js --collectCoverageFrom=src/server/**/*js",
+    "test-coverage": "npm run test -- --watchAll=false --coverage --collectCoverageFrom=src/client/**/*js --collectCoverageFrom=src/server/**/*js",
     "test-ci": "npm run test-coverage && codecov",
     "eject": "react-scripts eject",
     "lint": "eslint src",
