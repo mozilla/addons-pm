@@ -45,7 +45,6 @@
     "stmux": "stmux -nM -t addons-pm -e 'error,!0 errors,!no errors'",
     "start": "yarn stmux [ 'yarn test' .. [ 'yarn react-scripts start' : 'yarn start-server' ]]"
   },
-  "proxy": "http://localhost:5000",
   "devDependencies": {
     "codecov": "3.3.0",
     "enzyme": "3.9.0",
