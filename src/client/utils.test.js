@@ -5,6 +5,8 @@ import {
   sanitize,
   hasLabel,
   hasLabelContainingString,
+  hexToRgb,
+  colourIsLight,
 } from './utils';
 
 describe('Utils', () => {
@@ -21,6 +23,18 @@ describe('Utils', () => {
       expect.stringMatching('rel="noopener noreferrer"'),
     );
     expect(sanitized).toEqual(expect.stringMatching('target="_blank"'));
+  });
+
+  it('hexToRgb() converts hex to rgb', () => {
+    const { r, g, b } = hexToRgb('#ffffff');
+    expect(r).toEqual(255);
+    expect(g).toEqual(255);
+    expect(b).toEqual(255);
+  });
+
+  it('colourIsLight() returns useful values', () => {
+    expect(colourIsLight('#ffffff')).toEqual(true);
+    expect(colourIsLight('#000000')).not.toEqual(true);
   });
 
   describe('hasLabel()', () => {
