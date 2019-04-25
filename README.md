@@ -18,7 +18,7 @@ This app is a view on the org level projects specific to add-ons.
 
 ### API Token
 
-For the server to be able to make requests you'll need to either expose an `GH_TOKEN` env var or create a `.env` file in the root your checkout (`.env` files are .gitignored by default): 
+For the server to be able to make requests you'll need to either expose an `GH_TOKEN` env var or create a `.env` file in the root your checkout (`.env` files are .gitignored by default):
 
 ```yaml
 GH_TOKEN=SECRET_TOKEN
@@ -27,5 +27,5 @@ GH_TOKEN=SECRET_TOKEN
 You can generate a token here: https://github.com/settings/tokens and you'll need the following scopes:
 
 ```
-public_repo, read:org 
+public_repo, read:org
 ```
