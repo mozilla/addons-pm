@@ -96,17 +96,23 @@ export function getMilestonePagination({
   startDate = new Date(),
 } = {}) {
   // The nearest release milestone to the starting point.
-  const nextMilestone = getNextMilestone({ dayOfWeek, startDate });
+  let nextMilestone = getNextMilestone({ dayOfWeek, startDate });
   const prev = new Date(
     nextMilestone.getFullYear(),
     nextMilestone.getMonth(),
     nextMilestone.getDate() - 7,
   );
-  const next = new Date(
-    nextMilestone.getFullYear(),
-    nextMilestone.getMonth(),
-    nextMilestone.getDate() + 7,
-  );
+
+  // Set next Milestone to 7 days time if we're starting on current milestone date already.
+  if (
+    formatDateToMilestone(startDate) === formatDateToMilestone(nextMilestone)
+  ) {
+    nextMilestone = new Date(
+      nextMilestone.getFullYear(),
+      nextMilestone.getMonth(),
+      nextMilestone.getDate() + 7,
+    );
+  }
 
   // The current milestone closest to today.
   const currentMilestone = getNextMilestone(dayOfWeek);
@@ -117,7 +123,7 @@ export function getMilestonePagination({
     // The startDate milestone (might not be a typical release day).
     start: formatDateToMilestone(startDate),
     // The milestone after the startDate.
-    nextFromStart: formatDateToMilestone(next),
+    nextFromStart: formatDateToMilestone(nextMilestone),
     // The current closest milestone to today.
     current: formatDateToMilestone(currentMilestone),
   };
