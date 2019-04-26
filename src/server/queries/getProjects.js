@@ -24,12 +24,6 @@ const projects = gql`
         }
       }
     }
-    rateLimit {
-      limit
-      cost
-      remaining
-      resetAt
-    }
   }
 `;
 

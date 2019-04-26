@@ -11,24 +11,32 @@ export const goodFirstBugs = {
             url: 'https://github.com/mozilla/addons-linter/issues/2248',
             repository: {
               name: 'addons-linter',
+              __typename: 'Repository',
             },
             labels: {
               nodes: [
                 {
                   name: 'contrib: assigned',
+                  __typename: 'Label',
                 },
                 {
                   name: 'contrib: good first bug',
+                  __typename: 'Label',
                 },
                 {
                   name: 'contrib: mentor assigned',
+                  __typename: 'Label',
                 },
                 {
                   name: 'priority: p5',
+                  __typename: 'Label',
                 },
               ],
+              __typename: 'LabelConnection',
             },
+            __typename: 'Issue',
           },
+          __typename: 'SearchResultItemEdge',
         },
         {
           issue: {
@@ -42,19 +50,26 @@ export const goodFirstBugs = {
               nodes: [
                 {
                   name: 'contrib: good first bug',
+                  __typename: 'Label',
                 },
                 {
                   name: 'contrib: mentor assigned',
+                  __typename: 'Label',
                 },
                 {
                   name: 'priority: p3',
+                  __typename: 'Label',
                 },
                 {
                   name: 'triaged',
+                  __typename: 'Label',
                 },
               ],
+              __typename: 'LabelConnection',
             },
+            __typename: 'Issue',
           },
+          __typename: 'SearchResultItemEdge',
         },
         {
           issue: {
@@ -63,32 +78,43 @@ export const goodFirstBugs = {
             url: 'https://github.com/mozilla/addons/issues/536',
             repository: {
               name: 'addons',
+              __typename: 'Repository',
             },
             labels: {
               nodes: [
                 {
                   name: 'component: reviewer tools',
+                  __typename: 'Label',
                 },
                 {
                   name: 'contrib: good first bug',
+                  __typename: 'Label',
                 },
                 {
                   name: 'contrib: mentor assigned',
+                  __typename: 'Label',
                 },
                 {
                   name: 'contrib: welcome',
+                  __typename: 'Label',
                 },
                 {
                   name: 'priority: p4',
+                  __typename: 'Label',
                 },
                 {
                   name: 'triaged',
+                  __typename: 'Label',
                 },
               ],
+              __typename: 'LabelConnection',
             },
+            __typename: 'Issue',
           },
+          __typename: 'SearchResultItemEdge',
         },
       ],
+      __typename: 'SearchResultItemConnection',
     },
   },
   loading: false,
