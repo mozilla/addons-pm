@@ -21,10 +21,12 @@ const introspectionQueryResultData = require('./fragmentTypes.json');
 
 function createClient() {
   const headers = {};
-  if (process.env.GH_TOKEN) {
-    headers.Authorization = `token ${process.env.GH_TOKEN}`;
-  } else {
-    throw new Error('No GH_TOKEN found');
+  if (process.env.NODE_ENV !== 'test') {
+    if (process.env.GH_TOKEN) {
+      headers.Authorization = `token ${process.env.GH_TOKEN}`;
+    } else {
+      throw new Error('No GH_TOKEN found');
+    }
   }
 
   const fragmentMatcher = new IntrospectionFragmentMatcher({
