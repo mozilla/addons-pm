@@ -12,7 +12,7 @@ import Octicon, {
 } from '@githubprimer/octicons-react';
 
 import { LinkContainer } from 'react-router-bootstrap';
-import { getMilestonePagination } from './utils';
+import { getMilestonePagination, getNextMilestone } from './utils';
 import Client from './Client';
 import {
   alphaSort,
@@ -154,10 +154,10 @@ class Milestones extends Component {
     let milestonePagination;
 
     if (milestone === 'latest') {
-      milestonePagination = getMilestonePagination();
+      milestonePagination = getMilestonePagination({
+        startDate: getNextMilestone(),
+      });
       milestoneTag = milestonePagination.current;
-      // For latest the start date is updated to match the next release since that is used for display.
-      milestonePagination.start = milestonePagination.current;
     } else {
       milestoneTag = `${year}.${month}.${day}`;
       milestonePagination = getMilestonePagination({
