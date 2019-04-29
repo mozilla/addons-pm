@@ -1,10 +1,11 @@
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { goodFirstBugs } from './fixtures/goodFirstBugs';
-import { maybeGoodFirstBugs } from './fixtures/maybeGoodFirstBugs';
 import { issueCounts } from './fixtures/issueCounts';
-import { team } from './fixtures/team';
+import { maybeGoodFirstBugs } from './fixtures/maybeGoodFirstBugs';
+import { milestoneIssues } from './fixtures/milestoneIssues';
 import { projects } from './fixtures/projects';
+import { team } from './fixtures/team';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -15,8 +16,9 @@ global.requestAnimationFrame = function(callback) {
 
 global.testData = {
   goodFirstBugs,
-  maybeGoodFirstBugs,
   issueCounts,
-  team,
+  maybeGoodFirstBugs,
+  milestoneIssues,
   projects,
+  team,
 };

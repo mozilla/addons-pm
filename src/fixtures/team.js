@@ -6,17 +6,25 @@ export const team = {
           nodes: [
             {
               name: 'A user',
-              login: 'testuser',
+              login: 'team-testuser-1',
               avatarUrl: 'https://not-a-real-icon-service.com/testuser?v=3',
+              __typename: 'User',
             },
             {
               name: 'Another user',
-              login: 'testUser-2',
+              login: 'team-testuser-2',
               avatarUrl: 'https://not-a-real-icon-service.com/testuser-2?v=3',
+              __typename: 'User',
             },
           ],
+          __typename: 'TeamMemberConnection',
         },
+        __typename: 'Team',
       },
+      __typename: 'Organization',
     },
   },
+  loading: false,
+  networkStatus: 7,
+  stale: false,
 };

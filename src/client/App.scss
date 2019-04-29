@@ -9,8 +9,8 @@ body {
 }
 
 nav[aria-label='breadcrumb'] {
-  min-width: auto;
   margin-bottom: 10px;
+  min-width: auto;
 }
 
 .navbar.d-flex {
@@ -19,8 +19,8 @@ nav[aria-label='breadcrumb'] {
 
 @media (min-width: 900px) {
   nav[aria-label='breadcrumb'] {
-    min-width: auto;
     margin-bottom: 0;
+    min-width: auto;
   }
 
   .navbar.d-flex {
@@ -43,18 +43,19 @@ nav[aria-label='breadcrumb'] {
 }
 
 .card-header {
-  font-size: 18px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  display: flex;
+  font-size: 18px;
+  justify-content: space-between;
 }
 
 h2.card-header {
   color: #333;
 }
+
 .card-header svg {
-  margin-right: 8px;
   margin-bottom: 4px;
+  margin-right: 8px;
 }
 
 .navbar h1,
@@ -66,6 +67,7 @@ h2.card-header {
 .card .progress {
   width: 100%;
 }
+
 .card .progress,
 .card .progressbar {
   border-radius: 0;
@@ -73,43 +75,43 @@ h2.card-header {
 }
 
 .updated {
-  line-height: 2;
-  font-size: 14px;
   color: #666;
+  font-size: 14px;
+  line-height: 2;
 }
 
 .eng-image {
-  margin-left: 5px;
   border: 2px solid #ccc;
   box-sizing: content-box;
+  margin-left: 5px;
 }
 
 .sidebar {
+  bottom: 0;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+  left: 0;
+  padding: 25px 0 0 0; /* Height of navbar */
   position: sticky;
   top: 25px;
-  bottom: 0;
-  left: 0;
   z-index: -1; /* Behind the navbar */
-  padding: 25px 0 0 0; /* Height of navbar */
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
 .sidebar-sticky {
-  top: 0;
   height: calc(100vh - 50px);
-  padding-top: 0.5rem;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  padding-top: 0.5rem;
+  top: 0;
 }
 
 .sidebar .nav-link {
-  font-weight: 500;
   color: #333;
+  font-weight: 500;
 }
 
 .sidebar .nav-link .feather {
-  margin-right: 4px;
   color: #999;
+  margin-right: 4px;
 }
 
 .sidebar .nav-link.active {
@@ -153,15 +155,15 @@ th a {
   }
 
   &.sort-direction {
-    white-space: nowrap;
     overflow: hidden;
+    white-space: nowrap;
 
     &::after {
-      display: inline-block;
-      content: '';
-      margin: 0 0 2px 5px;
       border-left: 5px solid transparent;
       border-right: 5px solid transparent;
+      content: '';
+      display: inline-block;
+      margin: 0 0 2px 5px;
     }
 
     &.asc::after {
@@ -178,11 +180,13 @@ th a {
 .p2,
 .p3,
 .p4,
-.p5 {
+.p5,
+.unprioritized {
+  background: #666;
   border-radius: 3px;
   color: #fff;
-  padding: 5px 5px 3px;
   font-size: 12px;
+  padding: 5px 5px 3px;
 }
 
 .p1 {
@@ -203,4 +207,29 @@ th a {
 
 .p5 {
   background: #3e0200;
+}
+
+.no,
+.yes {
+  background: green;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 5px 3px;
+}
+
+.no {
+  background: orange;
+}
+
+table {
+  border: 0;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  max-width: 100%;
+  width: 100%;
+}
+
+td.centered {
+  text-align: center;
 }

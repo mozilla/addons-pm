@@ -1,4 +1,9 @@
-import { GH_API_ROOT, validQuarterRX, validYearRX } from './const';
+import {
+  GH_API_ROOT,
+  validQuarterRX,
+  validYearRX,
+  validMilestoneRX,
+} from '../const';
 
 async function getProjects(year, quarter) {
   if (!validYearRX.test(year)) {
@@ -9,10 +14,25 @@ async function getProjects(year, quarter) {
     throw new Error('Invalid Quarter');
   }
 
-  const headers = new Headers();
-  headers.set('Content-Type', 'application/json');
   const response = await fetch(
     `${GH_API_ROOT}/projects/?year=${year}&quarter=${quarter}`,
+    {
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      }),
+    },
+  );
+  checkStatus(response);
+  return parseJSON(response);
+}
+
+async function getMilestoneIssues(milestone) {
+  if (!validMilestoneRX.test(milestone)) {
+    throw new Error('Invalid Milestone');
+  }
+
+  const response = await fetch(
+    `${GH_API_ROOT}/milestone-issues/?milestone=${milestone}`,
     {
       headers: new Headers({
         'Content-Type': 'application/json',
@@ -84,5 +104,6 @@ const Client = {
   getIssueCounts,
   getGoodFirstBugs,
   getMaybeGoodFirstBugs,
+  getMilestoneIssues,
 };
 export default Client;

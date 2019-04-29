@@ -2,7 +2,6 @@ export const projects = {
   data: {
     organization: {
       projects: {
-        totalCount: 15,
         nodes: [
           {
             name: 'Add-ons Q3 2018: Test Project 1',
@@ -27,8 +26,11 @@ export const projects = {
                     name: 'To do',
                     cards: {
                       totalCount: 10,
+                      __typename: 'ProjectCardConnection',
                     },
+                    __typename: 'ProjectColumn',
                   },
+                  __typename: 'ProjectColumnEdge',
                 },
                 {
                   node: {
@@ -36,8 +38,11 @@ export const projects = {
                     name: 'In progress',
                     cards: {
                       totalCount: 1,
+                      __typename: 'ProjectCardConnection',
                     },
+                    __typename: 'ProjectColumn',
                   },
+                  __typename: 'ProjectColumnEdge',
                 },
                 {
                   node: {
@@ -45,11 +50,16 @@ export const projects = {
                     name: 'Done',
                     cards: {
                       totalCount: 6,
+                      __typename: 'ProjectCardConnection',
                     },
+                    __typename: 'ProjectColumn',
                   },
+                  __typename: 'ProjectColumnEdge',
                 },
               ],
+              __typename: 'ProjectColumnConnection',
             },
+            __typename: 'Project',
           },
           {
             name: 'Add-ons Q3 2018: Test Project 2',
@@ -61,33 +71,44 @@ export const projects = {
               edges: [
                 {
                   node: {
-                    id: 'id1',
+                    id: 'id4',
                     name: 'To do',
                     cards: {
                       totalCount: 5,
+                      __typename: 'ProjectCardConnection',
                     },
+                    __typename: 'ProjectColumn',
                   },
+                  __typename: 'ProjectColumnEdge',
                 },
                 {
                   node: {
-                    id: 'id2',
+                    id: 'id5',
                     name: 'In progress',
                     cards: {
                       totalCount: 5,
+                      __typename: 'ProjectCardConnection',
                     },
+                    __typename: 'ProjectColumn',
                   },
+                  __typename: 'ProjectColumnEdge',
                 },
                 {
                   node: {
-                    id: 'id3',
+                    id: 'id6',
                     name: 'Done',
                     cards: {
                       totalCount: 5,
+                      __typename: 'ProjectCardConnection',
                     },
+                    __typename: 'ProjectColumn',
                   },
+                  __typename: 'ProjectColumnEdge',
                 },
               ],
+              __typename: 'ProjectColumnConnection',
             },
+            __typename: 'Project',
           },
           {
             name: 'Add-ons Q3 2018: Test Project 3',
@@ -108,33 +129,44 @@ export const projects = {
               edges: [
                 {
                   node: {
-                    id: 'id1',
+                    id: 'id7',
                     name: 'To do',
                     cards: {
                       totalCount: 1,
+                      __typename: 'ProjectCardConnection',
                     },
+                    __typename: 'ProjectColumn',
                   },
+                  __typename: 'ProjectColumnEdge',
                 },
                 {
                   node: {
-                    id: 'id2',
+                    id: 'id8',
                     name: 'In progress',
                     cards: {
                       totalCount: 1,
+                      __typename: 'ProjectCardConnection',
                     },
+                    __typename: 'ProjectColumn',
                   },
+                  __typename: 'ProjectColumnEdge',
                 },
                 {
                   node: {
-                    id: 'id3',
+                    id: 'id9',
                     name: 'Done',
                     cards: {
                       totalCount: 6,
+                      __typename: 'ProjectCardConnection',
                     },
+                    __typename: 'ProjectColumn',
                   },
+                  __typename: 'ProjectColumnEdge',
                 },
               ],
+              __typename: 'ProjectColumnConnection',
             },
+            __typename: 'Project',
           },
           {
             name: 'Add-ons Q3 2018: Test Project 4',
@@ -155,36 +187,52 @@ export const projects = {
               edges: [
                 {
                   node: {
-                    id: 'id1',
+                    id: 'id10',
                     name: 'To do',
                     cards: {
                       totalCount: 3,
+                      __typename: 'ProjectCardConnection',
                     },
+                    __typename: 'ProjectColumn',
                   },
+                  __typename: 'ProjectColumnEdge',
                 },
                 {
                   node: {
-                    id: 'id2',
+                    id: 'id11',
                     name: 'In progress',
                     cards: {
                       totalCount: 4,
+                      __typename: 'ProjectCardConnection',
                     },
+                    __typename: 'ProjectColumn',
                   },
+                  __typename: 'ProjectColumnEdge',
                 },
                 {
                   node: {
-                    id: 'id3',
+                    id: 'id12',
                     name: 'Done',
                     cards: {
                       totalCount: 6,
+                      __typename: 'ProjectCardConnection',
                     },
+                    __typename: 'ProjectColumn',
                   },
+                  __typename: 'ProjectColumnEdge',
                 },
               ],
+              __typename: 'ProjectColumnConnection',
             },
+            __typename: 'Project',
           },
         ],
+        __typename: 'ProjectConnection',
       },
+      __typename: 'Organization',
     },
   },
+  loading: false,
+  networkStatus: 7,
+  stale: false,
 };

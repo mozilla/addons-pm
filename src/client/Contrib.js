@@ -15,7 +15,7 @@ import {
   hasLabelContainingString,
 } from './utils';
 
-import { priorities } from './const';
+import { priorities } from '../const';
 
 import './Contrib.scss';
 
@@ -244,7 +244,7 @@ class Contrib extends Component {
     data = this.sortData({ dataKey, columnKey: qs.sort, direction: qs.dir });
 
     return (
-      <div>
+      <div className="Contrib">
         <Helmet>
           <title>Contributions</title>
         </Helmet>

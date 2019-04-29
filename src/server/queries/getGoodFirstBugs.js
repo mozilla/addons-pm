@@ -12,6 +12,7 @@ const goodFirstBugs = gql`
       label:"contrib: good first bug"
       is:open
       sort:updated-desc
+      type:issues
       """
       first: 100
     ) {

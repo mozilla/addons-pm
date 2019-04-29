@@ -13,6 +13,6 @@ describe('Projects Page', () => {
       year: '2018',
     };
     const eng = shallow(<Engineer {...fakeProps} />);
-    expect(eng.find('Link').prop('to')).toBe('/2018/Q3/testuser-2/');
+    expect(eng.find('Link').prop('to')).toBe('/2018/Q3/team-testuser-2/');
   });
 });
