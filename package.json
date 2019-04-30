@@ -58,7 +58,7 @@
     "prettier": "1.17.0",
     "pretty-quick": "1.10.0",
     "sinon": "7.3.2",
-    "stylelint": "9.10.1",
+    "stylelint": "10.0.1",
     "stylelint-config-standard": "18.3.0",
     "stylelint-config-suitcss": "14.0.0",
     "stmux": "1.6.1"
