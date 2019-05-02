@@ -9,6 +9,8 @@ const goodFirstBugs = gql`
       repo:mozilla/addons-server
       repo:mozilla/addons-frontend
       repo:mozilla/addons-linter
+      repo:mozilla/web-ext
+      repo:mozilla/webextension-polyfill
       label:"contrib: good first bug"
       is:open
       sort:updated-desc

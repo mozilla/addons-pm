@@ -4,7 +4,7 @@ import { Container, Nav, Navbar, Table } from 'react-bootstrap';
 import TimeAgo from 'react-timeago';
 import queryString from 'query-string';
 
-import Octicon, { Link } from '@githubprimer/octicons-react';
+import Octicon, { Alert, Link } from '@githubprimer/octicons-react';
 
 import { LinkContainer } from 'react-router-bootstrap';
 import Client from './Client';
@@ -199,8 +199,12 @@ class Contrib extends Component {
       rows.push(
         <tr key={`issue-${i}`}>
           <td>
-            <span className={issue.priority}>
-              {issue.priority.toUpperCase()}
+            <span className={issue.priority || 'unprioritized'}>
+              {issue.priority ? (
+                issue.priority.toUpperCase()
+              ) : (
+                <Octicon icon={Alert} />
+              )}
             </span>
           </td>
           <td>
@@ -291,7 +295,9 @@ class Contrib extends Component {
               <tr>
                 <th>{this.renderHeaderLink('priority', 'Priority')}</th>
                 <th>{this.renderHeaderLink('title', 'Issue')}</th>
-                <th>{this.renderHeaderLink('repo', 'Repo')}</th>
+                <th className="repo">
+                  {this.renderHeaderLink('repo', 'Repo')}
+                </th>
                 {type === 'good-first-bugs' ? (
                   <th>{this.renderHeaderLink('assigned', 'Assigned?')}</th>
                 ) : null}
