@@ -56,7 +56,7 @@
     "mock-express-response": "0.2.2",
     "node-sass": "4.12.0",
     "prettier": "1.17.0",
-    "pretty-quick": "1.10.0",
+    "pretty-quick": "1.11.1",
     "sinon": "7.3.2",
     "stylelint": "10.0.1",
     "stylelint-config-standard": "18.3.0",
