@@ -61,7 +61,7 @@
     "stylelint": "10.0.1",
     "stylelint-config-standard": "18.3.0",
     "stylelint-config-suitcss": "14.0.0",
-    "stmux": "1.6.1"
+    "stmux": "1.7.1"
   },
   "browserslist": [
     ">0.2%",
