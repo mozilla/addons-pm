@@ -362,9 +362,7 @@ class Milestones extends Component {
           <Nav variant="pills">
             <Nav.Item>
               <LinkContainer
-                to={`/milestones/${
-                  this.state.pagination.prevFromStart
-                }/?dir=asc&sort=assignee`}
+                to={`/milestones/${this.state.pagination.prevFromStart}/?dir=asc&sort=assignee`}
                 active={false}
                 exact
               >
@@ -375,9 +373,7 @@ class Milestones extends Component {
             </Nav.Item>
             <Nav.Item>
               <LinkContainer
-                to={`/milestones/${
-                  this.state.pagination.nextFromStart
-                }/?dir=asc&sort=assignee`}
+                to={`/milestones/${this.state.pagination.nextFromStart}/?dir=asc&sort=assignee`}
                 active={false}
                 exact
               >
@@ -390,9 +386,7 @@ class Milestones extends Component {
           <Nav variant="pills">
             <Nav.Item>
               <LinkContainer
-                to={`/milestones/${
-                  this.state.pagination.current
-                }/?dir=asc&sort=assignee`}
+                to={`/milestones/${this.state.pagination.current}/?dir=asc&sort=assignee`}
                 isActive={(match, location) => {
                   return (
                     location.pathname.indexOf(this.state.pagination.current) >
