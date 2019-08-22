@@ -9,6 +9,7 @@ const maybeGoodFirstBugs = gql`
       repo:mozilla/addons-server
       repo:mozilla/addons-frontend
       repo:mozilla/addons-linter
+      repo:mozilla/extension-workshop
       repo:mozilla/web-ext
       repo:mozilla/webextension-polyfill
       label:"contrib: maybe good first bug"
