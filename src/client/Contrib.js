@@ -7,7 +7,6 @@ import queryString from 'query-string';
 import Octicon, { Alert, Link } from '@githubprimer/octicons-react';
 
 import { LinkContainer } from 'react-router-bootstrap';
-import Client from './Client';
 import {
   alphaSort,
   dateSort,
@@ -19,12 +18,10 @@ import { priorities } from '../const';
 
 import './Contrib.scss';
 
-class Contrib extends Component {
-  state = {
-    goodFirstBugs: null,
-    maybeGoodFirstBugs: null,
-  };
+// These views display assigment columns.
+const dataKeysWithAssignment = ['goodFirstBugs', 'contribWelcome'];
 
+class BaseContrib extends Component {
   formatData(data) {
     let issues = [];
     data.forEach((item) => {
@@ -62,21 +59,6 @@ class Contrib extends Component {
       className = `${className} ${qs.dir === 'asc' ? ' asc' : ' desc'}`;
     }
     return className;
-  }
-
-  async componentDidMount() {
-    const [goodFirstBugs, maybeGoodFirstBugs] = await Promise.all([
-      Client.getGoodFirstBugs(),
-      Client.getMaybeGoodFirstBugs(),
-    ]);
-    this.setState({
-      goodFirstBugs: this.formatData(
-        goodFirstBugs.data.good_first_bugs.results,
-      ),
-      maybeGoodFirstBugs: this.formatData(
-        maybeGoodFirstBugs.data.maybe_good_first_bugs.results,
-      ),
-    });
   }
 
   sortConfig = {
@@ -168,8 +150,6 @@ class Contrib extends Component {
   renderRows(data) {
     const rows = [];
     const colSpan = 4;
-    const { match } = this.props;
-    const { type } = match.params;
 
     if (!data) {
       return (
@@ -214,10 +194,10 @@ class Contrib extends Component {
             </a>
           </td>
           <td>{issue.repository.name.replace('addons-', '')}</td>
-          {type === 'good-first-bugs' ? (
+          {dataKeysWithAssignment.includes(this.state.dataKey) ? (
             <td className="centered">{this.renderContribAssigned(issue)}</td>
           ) : null}
-          {type === 'good-first-bugs' ? (
+          {dataKeysWithAssignment.includes(this.state.dataKey) ? (
             <td className="centered">{this.renderMentorAssigned(issue)}</td>
           ) : null}
           <td>
@@ -230,22 +210,16 @@ class Contrib extends Component {
   }
 
   render() {
-    const { match, location } = this.props;
-    const { type } = match.params;
+    const { location } = this.props;
     const qs = queryString.parse(location.search);
 
     let data;
-    let dataKey;
+    const dataKey = this.state.dataKey;
 
-    if (type === 'good-first-bugs') {
-      data = this.state.goodFirstBugs;
-      dataKey = 'goodFirstBugs';
-    } else if (type === 'maybe-good-first-bugs') {
-      data = this.state.maybeGoodFirstBugs;
-      dataKey = 'maybeGoodFirstBugs';
+    data = this.state[dataKey];
+    if (qs.sort) {
+      data = this.sortData({ dataKey, columnKey: qs.sort, direction: qs.dir });
     }
-
-    data = this.sortData({ dataKey, columnKey: qs.sort, direction: qs.dir });
 
     return (
       <div className="Contrib">
@@ -287,6 +261,19 @@ class Contrib extends Component {
                 <Nav.Link eventKey="gfb">Good First Bugs</Nav.Link>
               </LinkContainer>
             </Nav.Item>
+            <Nav.Item>
+              <LinkContainer
+                to="/contrib/contrib-welcome/?dir=desc&sort=updatedAt"
+                isActive={(match, location) => {
+                  return (
+                    location.pathname.indexOf('/contrib/contrib-welcome') > -1
+                  );
+                }}
+                exact
+              >
+                <Nav.Link eventKey="gfb">Contrib Welcome</Nav.Link>
+              </LinkContainer>
+            </Nav.Item>
           </Nav>
         </Navbar>
         <Container as="main" bg="light">
@@ -298,10 +285,10 @@ class Contrib extends Component {
                 <th className="repo">
                   {this.renderHeaderLink('repo', 'Repo')}
                 </th>
-                {type === 'good-first-bugs' ? (
+                {dataKeysWithAssignment.includes(dataKey) ? (
                   <th>{this.renderHeaderLink('assigned', 'Assigned?')}</th>
                 ) : null}
-                {type === 'good-first-bugs' ? (
+                {dataKeysWithAssignment.includes(dataKey) ? (
                   <th>
                     {this.renderHeaderLink('mentorAssigned', 'Has Mentor?')}
                   </th>
@@ -319,4 +306,4 @@ class Contrib extends Component {
   }
 }
 
-export default Contrib;
+export default BaseContrib;

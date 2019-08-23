@@ -59,12 +59,18 @@ const getMaybeGoodFirstBugs = async (req, res) => {
   res.json(maybeGoodFirstBugs);
 };
 
+const getContribWelcomeBugs = async (req, res) => {
+  const contribWelcomeBugs = await ghapi.getContribWelcome();
+  res.json(contribWelcomeBugs);
+};
+
 app.get('/api/projects/', getProjects);
 app.get('/api/team/', getTeam);
 app.get('/api/issue-counts/', getIssueCounts);
 app.get('/api/good-first-bugs/', getGoodFirstBugs);
 app.get('/api/maybe-good-first-bugs/', getMaybeGoodFirstBugs);
 app.get('/api/milestone-issues/', getMilestoneIssues);
+app.get('/api/contrib-welcome/', getContribWelcomeBugs);
 
 function startServer() {
   let portOrSocket = process.env.PORT || 5000;
