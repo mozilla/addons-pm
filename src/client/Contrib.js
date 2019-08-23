@@ -27,7 +27,7 @@ class BaseContrib extends Component {
     data.forEach((item) => {
       const issue = {
         ...item.issue,
-        priority: null,
+        priority: '',
         assigned: false,
         mentorAssigned: false,
       };
