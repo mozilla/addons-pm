@@ -73,6 +73,16 @@ async function getGoodFirstBugs() {
   return parseJSON(response);
 }
 
+async function getContribWelcome() {
+  const response = await fetch(`${GH_API_ROOT}/contrib-welcome/`, {
+    headers: new Headers({
+      'Content-Type': 'application/json',
+    }),
+  });
+  checkStatus(response);
+  return parseJSON(response);
+}
+
 async function getMaybeGoodFirstBugs() {
   const response = await fetch(`${GH_API_ROOT}/maybe-good-first-bugs/`, {
     headers: new Headers({
@@ -102,6 +112,7 @@ const Client = {
   getProjects,
   getTeam,
   getIssueCounts,
+  getContribWelcome,
   getGoodFirstBugs,
   getMaybeGoodFirstBugs,
   getMilestoneIssues,

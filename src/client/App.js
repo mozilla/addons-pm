@@ -11,7 +11,9 @@ import Octicon, { MarkGithub } from '@githubprimer/octicons-react';
 import Home from './Home';
 import Dashboard from './Dashboard';
 import Projects from './Projects';
-import Contrib from './Contrib';
+import GoodFirstBugs from './ContribGoodFirstBugs';
+import MaybeGoodFirstBugs from './ContribMaybeGoodFirstBugs';
+import ContribWelcome from './ContribWelcome';
 import Milestones from './Milestones';
 import NotFound from './NotFound';
 
@@ -92,8 +94,18 @@ const App = () => {
           <Route exact path="/dashboard/" component={Dashboard} />
           <Route
             exact
-            path="/contrib/:type(good-first-bugs|maybe-good-first-bugs)/"
-            component={Contrib}
+            path="/contrib/maybe-good-first-bugs/"
+            component={MaybeGoodFirstBugs}
+          />
+          <Route
+            exact
+            path="/contrib/good-first-bugs/"
+            component={GoodFirstBugs}
+          />
+          <Route
+            exact
+            path="/contrib/contrib-welcome/"
+            component={ContribWelcome}
           />
           <Route
             exact

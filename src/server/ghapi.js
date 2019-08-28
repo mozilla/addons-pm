@@ -16,6 +16,8 @@ const getMaybeGoodFirstBugsQuery = require('./queries/getMaybeGoodFirstBugs')
   .maybeGoodFirstBugs;
 const getMilestoneIssuesQuery = require('./queries/getMilestoneIssues')
   .milestoneIssues;
+const getContribWelcomeQuery = require('./queries/getContribWelcome')
+  .contribWelcome;
 
 const introspectionQueryResultData = require('./fragmentTypes.json');
 
@@ -95,6 +97,14 @@ async function getMaybeGoodFirstBugs() {
   return data;
 }
 
+async function getContribWelcome() {
+  const client = createClient();
+  const data = await client.query({
+    query: getContribWelcomeQuery,
+  });
+  return data;
+}
+
 module.exports = {
   getProjects,
   getTeam,
@@ -102,4 +112,5 @@ module.exports = {
   getGoodFirstBugs,
   getMaybeGoodFirstBugs,
   getMilestoneIssues,
+  getContribWelcome,
 };

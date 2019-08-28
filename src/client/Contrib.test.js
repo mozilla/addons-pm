@@ -1,7 +1,9 @@
 /* global testData */
 
 import React from 'react';
-import Contrib from './Contrib';
+import GoodFirstBugs from './ContribGoodFirstBugs';
+import MaybeGoodFirstBugs from './ContribMaybeGoodFirstBugs';
+import ContribWelcome from './ContribWelcome';
 import { mount } from 'enzyme';
 
 import fetchMock from 'fetch-mock';
@@ -14,6 +16,7 @@ describe('Contributions', () => {
       /\/api\/maybe-good-first-bugs\//,
       testData.maybeGoodFirstBugs,
     );
+    fetchMock.mock(/\/api\/contrib-welcome\//, testData.contribWelcome);
   });
 
   afterEach(() => {
@@ -25,19 +28,13 @@ describe('Contributions', () => {
       pathname: '/contributions/good-first-bugs/',
     };
 
-    const fakeMatch = {
-      params: {
-        type: 'good-first-bugs',
-      },
-    };
-
     const wrapper = mount(
       <MemoryRouter>
-        <Contrib location={fakeLocation} match={fakeMatch} />
+        <GoodFirstBugs location={fakeLocation} />
       </MemoryRouter>,
       { disableLifecycleMethods: true },
     );
-    const instance = wrapper.find('Contrib').instance();
+    const instance = wrapper.find('GoodFirstBugs').instance();
     await instance.componentDidMount();
     wrapper.update();
     const issueData = instance.state.goodFirstBugs;
@@ -50,22 +47,35 @@ describe('Contributions', () => {
       pathname: '/contributions/maybe-good-first-bugs/',
     };
 
-    const fakeMatch = {
-      params: {
-        type: 'maybe-good-first-bugs',
-      },
+    const wrapper = mount(
+      <MemoryRouter>
+        <MaybeGoodFirstBugs location={fakeLocation} />
+      </MemoryRouter>,
+      { disableLifecycleMethods: true },
+    );
+    const instance = wrapper.find('MaybeGoodFirstBugs').instance();
+    await instance.componentDidMount();
+    wrapper.update();
+    const issueData = instance.state.maybeGoodFirstBugs;
+    const expectedNumberOfRows = Object.keys(issueData).length;
+    expect(wrapper.find('tbody tr')).toHaveLength(expectedNumberOfRows);
+  });
+
+  it('should render some contrib welcome bugs', async () => {
+    const fakeLocation = {
+      pathname: '/contributions/contrib-welcome/',
     };
 
     const wrapper = mount(
       <MemoryRouter>
-        <Contrib location={fakeLocation} match={fakeMatch} />
+        <ContribWelcome location={fakeLocation} />
       </MemoryRouter>,
       { disableLifecycleMethods: true },
     );
-    const instance = wrapper.find('Contrib').instance();
+    const instance = wrapper.find('ContribWelcome').instance();
     await instance.componentDidMount();
     wrapper.update();
-    const issueData = instance.state.maybeGoodFirstBugs;
+    const issueData = instance.state.contribWelcome;
     const expectedNumberOfRows = Object.keys(issueData).length;
     expect(wrapper.find('tbody tr')).toHaveLength(expectedNumberOfRows);
   });

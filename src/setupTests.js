@@ -6,6 +6,7 @@ import { maybeGoodFirstBugs } from './fixtures/maybeGoodFirstBugs';
 import { milestoneIssues } from './fixtures/milestoneIssues';
 import { projects } from './fixtures/projects';
 import { team } from './fixtures/team';
+import { contribWelcome } from './fixtures/contribWelcome';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -15,6 +16,7 @@ global.requestAnimationFrame = function(callback) {
 };
 
 global.testData = {
+  contribWelcome,
   goodFirstBugs,
   issueCounts,
   maybeGoodFirstBugs,

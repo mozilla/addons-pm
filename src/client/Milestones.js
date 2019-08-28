@@ -346,7 +346,10 @@ class Milestones extends Component {
     const { location } = this.props;
     const qs = queryString.parse(location.search);
     const milestone = this.state.pagination.start || 'Loading...';
-    const data = this.sortData({ columnKey: qs.sort, direction: qs.dir });
+    let data = this.state.milestoneIssues;
+    if (qs.sort) {
+      data = this.sortData({ columnKey: qs.sort, direction: qs.dir });
+    }
 
     return (
       <div className="Milestones">
