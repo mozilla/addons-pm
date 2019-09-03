@@ -265,6 +265,30 @@ class Milestones extends Component {
     );
   }
 
+  renderParticipants(issue) {
+    const alreadyRendered = new Set(
+      issue.assignees.nodes.map((node) => node.id)
+    );
+    return issue.participants.nodes.map((user) => {
+      if (alreadyRendered.has(user.id)) {
+        return null;
+      }
+      alreadyRendered.add(user.id);
+
+      return (
+        <React.Fragment>
+          <img
+            className="avatar"
+            src={user.avatarUrl}
+            title={user.login}
+            alt=""
+          />
+          {' '}
+        </React.Fragment>
+      )
+    });
+  }
+
   renderRows(data) {
     const rows = [];
     const colSpan = 7;
@@ -335,6 +359,9 @@ class Milestones extends Component {
             >
               {issue.stateLabel}
             </span>
+          </td>
+          <td className="participants">
+            {this.renderParticipants(issue)}
           </td>
         </tr>,
       );
@@ -420,6 +447,9 @@ class Milestones extends Component {
                 </th>
                 <th className="state">
                   {this.renderHeaderLink('state', 'State')}
+                </th>
+                <th>
+                  {this.renderHeaderLink('participants', 'Participants')}
                 </th>
               </tr>
             </thead>

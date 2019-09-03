@@ -18,7 +18,8 @@
     text-transform: capitalize;
   }
 
-  .assignee {
+  .assignee,
+  .participants {
     img,
     svg {
       border: 2px solid #ccc;
@@ -26,6 +27,7 @@
       box-sizing: content-box;
       display: inline-block;
       height: 25px;
+      margin-bottom: 2px;
       width: 25px;
     }
 

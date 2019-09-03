@@ -17,6 +17,15 @@ const milestoneIssues = gql`
             }
             assignees(first: 10) {
               nodes {
+                id
+                name
+                login
+                avatarUrl
+              }
+            }
+            participants(first: 10) {
+              nodes {
+                id
                 name
                 login
                 avatarUrl
