@@ -6,6 +6,7 @@ const maybeGoodFirstBugs = gql`
       type: ISSUE
       query: """
       repo:mozilla/addons
+      repo:mozilla/addons-code-manager
       repo:mozilla/addons-server
       repo:mozilla/addons-frontend
       repo:mozilla/addons-linter
