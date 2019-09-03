@@ -1,17 +1,12 @@
 const gql = require('graphql-tag').default;
+const { CONTRIB_REPOS } = require('./utils');
 
 const contribWelcome = gql`
   {
     contrib_welcome: search(
       type: ISSUE
       query: """
-      repo:mozilla/addons
-      repo:mozilla/addons-server
-      repo:mozilla/addons-frontend
-      repo:mozilla/addons-linter
-      repo:mozilla/extension-workshop
-      repo:mozilla/web-ext
-      repo:mozilla/webextension-polyfill
+      ${CONTRIB_REPOS.map((n) => `repo:${n}`).join('\n')}
       label:"contrib: welcome"
       is:open
       sort:updated-desc

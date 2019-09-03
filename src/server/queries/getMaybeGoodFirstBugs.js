@@ -1,17 +1,12 @@
 const gql = require('graphql-tag').default;
+const { CONTRIB_REPOS } = require('./utils');
 
 const maybeGoodFirstBugs = gql`
   {
     maybe_good_first_bugs: search(
       type: ISSUE
       query: """
-      repo:mozilla/addons
-      repo:mozilla/addons-server
-      repo:mozilla/addons-frontend
-      repo:mozilla/addons-linter
-      repo:mozilla/extension-workshop
-      repo:mozilla/web-ext
-      repo:mozilla/webextension-polyfill
+      ${CONTRIB_REPOS.map((n) => `repo:${n}`).join('\n')}
       label:"contrib: maybe good first bug"
       is:open
       sort:updated-desc
