@@ -64,13 +64,23 @@ const getContribWelcomeBugs = async (req, res) => {
   res.json(contribWelcomeBugs);
 };
 
-app.get('/api/projects/', getProjects);
-app.get('/api/team/', getTeam);
-app.get('/api/issue-counts/', getIssueCounts);
-app.get('/api/good-first-bugs/', getGoodFirstBugs);
-app.get('/api/maybe-good-first-bugs/', getMaybeGoodFirstBugs);
-app.get('/api/milestone-issues/', getMilestoneIssues);
-app.get('/api/contrib-welcome/', getContribWelcomeBugs);
+function handleErrors(processRequest) {
+  return async (req, res, next) => {
+    try {
+      await processRequest(req, res, next);
+    } catch (error) {
+      next(error);
+    }
+  };
+}
+
+app.get('/api/projects/', handleErrors(getProjects));
+app.get('/api/team/', handleErrors(getTeam));
+app.get('/api/issue-counts/', handleErrors(getIssueCounts));
+app.get('/api/good-first-bugs/', handleErrors(getGoodFirstBugs));
+app.get('/api/maybe-good-first-bugs/', handleErrors(getMaybeGoodFirstBugs));
+app.get('/api/milestone-issues/', handleErrors(getMilestoneIssues));
+app.get('/api/contrib-welcome/', handleErrors(getContribWelcomeBugs));
 
 function startServer() {
   let portOrSocket = process.env.PORT || 5000;
