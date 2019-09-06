@@ -265,27 +265,45 @@ class Milestones extends Component {
     );
   }
 
-  renderParticipants(issue) {
+  renderReviewers(issue) {
+    if (issue.state !== 'CLOSED') {
+      // We only show reviewers for closed issues.
+      return null;
+    }
+
     const alreadyRendered = new Set(
-      issue.assignees.nodes.map((node) => node.id)
+      issue.assignees.nodes.map((node) => node.id),
     );
-    return issue.participants.nodes.map((user) => {
-      if (alreadyRendered.has(user.id)) {
+
+    return issue.timelineItems.edges.map((item) => {
+      if (!item.event.source.reviews) {
+        // This is not a pull request item.
         return null;
       }
-      alreadyRendered.add(user.id);
 
       return (
         <React.Fragment>
-          <img
-            className="avatar"
-            src={user.avatarUrl}
-            title={user.login}
-            alt=""
-          />
-          {' '}
+          {item.event.source.reviews.edges.map((edge) => {
+            const user = edge.review.author;
+            if (alreadyRendered.has(user.id)) {
+              return null;
+            }
+            alreadyRendered.add(user.id);
+
+            return (
+              <React.Fragment>
+                <img
+                  className="avatar"
+                  src={user.avatarUrl}
+                  title={user.login}
+                  alt=""
+                />
+                {' '}
+              </React.Fragment>
+            );
+          })}
         </React.Fragment>
-      )
+      );
     });
   }
 
@@ -360,9 +378,7 @@ class Milestones extends Component {
               {issue.stateLabel}
             </span>
           </td>
-          <td className="participants">
-            {this.renderParticipants(issue)}
-          </td>
+          <td className="reviewers">{this.renderReviewers(issue)}</td>
         </tr>,
       );
     }
@@ -448,9 +464,7 @@ class Milestones extends Component {
                 <th className="state">
                   {this.renderHeaderLink('state', 'State')}
                 </th>
-                <th>
-                  {this.renderHeaderLink('participants', 'Participants')}
-                </th>
+                <th>{this.renderHeaderLink('reviewers', 'Reviewers')}</th>
               </tr>
             </thead>
             <tbody>{this.renderRows(data)}</tbody>

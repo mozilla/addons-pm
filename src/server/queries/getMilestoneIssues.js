@@ -23,14 +23,6 @@ const milestoneIssues = gql`
                 avatarUrl
               }
             }
-            participants(first: 10) {
-              nodes {
-                id
-                name
-                login
-                avatarUrl
-              }
-            }
             labels(first: 100) {
               nodes {
                 name
@@ -41,6 +33,29 @@ const milestoneIssues = gql`
                 project {
                   name
                   url
+                }
+              }
+            }
+            timelineItems(last: 20, itemTypes: CROSS_REFERENCED_EVENT) {
+              edges {
+                event: node {
+                  ... on CrossReferencedEvent {
+                    source {
+                      ... on PullRequest {
+                        reviews(first: 10, states: APPROVED) {
+                          totalCount
+                          edges {
+                            review: node {
+                              author {
+                                login
+                                avatarUrl
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
