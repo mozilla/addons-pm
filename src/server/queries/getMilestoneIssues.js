@@ -42,7 +42,8 @@ const milestoneIssues = gql`
                   ... on CrossReferencedEvent {
                     source {
                       ... on PullRequest {
-                        reviews(first: 10, states: APPROVED) {
+                        permalink
+                        reviews(last: 10, states: APPROVED) {
                           totalCount
                           edges {
                             review: node {

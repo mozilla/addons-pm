@@ -271,40 +271,31 @@ class Milestones extends Component {
       return null;
     }
 
-    const alreadyRendered = new Set(
-      issue.assignees.nodes.map((node) => node.id),
-    );
+    const reviewers = [];
 
-    return issue.timelineItems.edges.map((item) => {
+    issue.timelineItems.edges.forEach((item) => {
       if (!item.event.source.reviews) {
         // This is not a pull request item.
-        return null;
+        return;
       }
 
-      return (
-        <React.Fragment>
-          {item.event.source.reviews.edges.map((edge) => {
-            const user = edge.review.author;
-            if (alreadyRendered.has(user.id)) {
-              return null;
-            }
-            alreadyRendered.add(user.id);
-
-            return (
-              <React.Fragment>
-                <img
-                  className="avatar"
-                  src={user.avatarUrl}
-                  title={user.login}
-                  alt=""
-                />
-                {' '}
-              </React.Fragment>
-            );
-          })}
-        </React.Fragment>
-      );
+      item.event.source.reviews.edges.forEach(({ review: { author } }) => {
+        reviewers.push(
+          <React.Fragment>
+            <a href={item.event.source.permalink}>
+              <img
+                className="avatar"
+                src={author.avatarUrl}
+                title={`Reviewed by ${author.login}`}
+                alt=""
+              />
+            </a>{' '}
+          </React.Fragment>,
+        );
+      });
     });
+
+    return reviewers;
   }
 
   renderRows(data) {
