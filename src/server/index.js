@@ -106,5 +106,6 @@ module.exports = {
   getTeam,
   getIssueCounts,
   getMilestoneIssues,
+  handleErrors,
   startServer,
 };
