@@ -232,9 +232,8 @@ class Milestones extends Component {
     const { location } = this.props;
     const qs = queryString.parse(location.search);
     return `?${queryString.stringify({
-      dir: defaultSortDir,
-      sort: defaultSort,
-      ...qs,
+      dir: qs.dir || defaultSortDir,
+      sort: qs.sort || defaultSort,
     })}`;
   }
 
@@ -250,7 +249,6 @@ class Milestones extends Component {
       className = `${className} ${classDir}`;
     }
     const query = `?${queryString.stringify({
-      ...qs,
       dir: linkDir,
       sort: column,
     })}`;
