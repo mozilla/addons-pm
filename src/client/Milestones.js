@@ -26,6 +26,9 @@ import { colors, priorities } from '../const';
 
 import './Milestones.scss';
 
+const defaultSort = 'assignee';
+const defaultSortDir = 'asc';
+
 class Milestones extends Component {
   state = {
     milestoneIssues: null,
@@ -158,6 +161,12 @@ class Milestones extends Component {
         startDate: getNextMilestone(),
       });
       milestoneTag = milestonePagination.current;
+      // Update the URL from '/milestones/latest/...' to the permalink URL.
+      this.props.history.push(
+        `/milestones/${
+          milestonePagination.current
+        }/${this.getCurrentSortQueryString()}`,
+      );
     } else {
       milestoneTag = `${year}.${month}.${day}`;
       milestonePagination = getMilestonePagination({
@@ -214,6 +223,16 @@ class Milestones extends Component {
       sorted.reverse();
     }
     return sorted;
+  }
+
+  getCurrentSortQueryString() {
+    const { location } = this.props;
+    const qs = queryString.parse(location.search);
+    return `?${queryString.stringify({
+      dir: defaultSortDir,
+      sort: defaultSort,
+      ...qs,
+    })}`;
   }
 
   renderHeaderLink(column, name) {
@@ -365,7 +384,9 @@ class Milestones extends Component {
           <Nav variant="pills">
             <Nav.Item>
               <LinkContainer
-                to={`/milestones/${this.state.pagination.prevFromStart}/?dir=asc&sort=assignee`}
+                to={`/milestones/${
+                  this.state.pagination.prevFromStart
+                }/${this.getCurrentSortQueryString()}`}
                 active={false}
                 exact
               >
@@ -376,7 +397,9 @@ class Milestones extends Component {
             </Nav.Item>
             <Nav.Item>
               <LinkContainer
-                to={`/milestones/${this.state.pagination.nextFromStart}/?dir=asc&sort=assignee`}
+                to={`/milestones/${
+                  this.state.pagination.nextFromStart
+                }/${this.getCurrentSortQueryString()}`}
                 active={false}
                 exact
               >
@@ -389,7 +412,9 @@ class Milestones extends Component {
           <Nav variant="pills">
             <Nav.Item>
               <LinkContainer
-                to={`/milestones/${this.state.pagination.current}/?dir=asc&sort=assignee`}
+                to={`/milestones/${
+                  this.state.pagination.current
+                }/${this.getCurrentSortQueryString()}`}
                 isActive={(match, location) => {
                   return (
                     location.pathname.indexOf(this.state.pagination.current) >
