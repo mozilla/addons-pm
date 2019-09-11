@@ -5,6 +5,7 @@ import MockExpressRequest from 'mock-express-request';
 import MockExpressResponse from 'mock-express-response';
 
 import {
+  handleErrors,
   getProjects,
   getTeam,
   getIssueCounts,
@@ -12,6 +13,18 @@ import {
 } from './index';
 
 describe('API Server', () => {
+  describe('handleError', () => {
+    const fakeRouteFuncError = (req, res) => {
+      throw new Error('test failure');
+    };
+
+    it('should call next when an error is caught', () => {
+      const fakeNext = jest.fn();
+      handleErrors(fakeRouteFuncError)(null, null, fakeNext);
+      expect(fakeNext).toBeCalled();
+    });
+  });
+
   describe('MileStones', () => {
     beforeEach(() => {
       fetchMock.mock(
