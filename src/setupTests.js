@@ -15,6 +15,8 @@ global.requestAnimationFrame = function(callback) {
   window.setTimeout(callback, 0);
 };
 
+global.scrollTo = function() {};
+
 global.testData = {
   contribWelcome,
   goodFirstBugs,
