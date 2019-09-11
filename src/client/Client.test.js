@@ -31,3 +31,13 @@ describe('Client.checkStatus()', () => {
     }
   });
 });
+
+describe('Client.getMilestones()', () => {
+  it('throws if milestone is invalie', async () => {
+    try {
+      await Client.getMilestoneIssues('whatever');
+    } catch (e) {
+      expect(e.message).toMatch('Invalid Milestone');
+    }
+  });
+});
