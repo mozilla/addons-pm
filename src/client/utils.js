@@ -1,6 +1,5 @@
 import { oneLineTrim } from 'common-tags';
 import DOMPurify from 'dompurify';
-import MarkdownIt from 'markdown-it';
 
 DOMPurify.addHook('afterSanitizeAttributes', function(node) {
   if ('target' in node) {
@@ -17,10 +16,6 @@ if (!String.prototype.padStart) {
     return repeated.repeat(length).substring(0, length - this.length) + this;
   };
 }
-
-export const markdown = new MarkdownIt({
-  linkify: true,
-});
 
 export function hasLabel(issueLabels, labelOrLabelList) {
   const labels = issueLabels || [];
