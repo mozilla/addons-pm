@@ -48,7 +48,7 @@
   "devDependencies": {
     "codecov": "3.5.0",
     "enzyme": "3.10.0",
-    "enzyme-adapter-react-16": "1.14.0",
+    "enzyme-adapter-react-16": "1.15.1",
     "fetch-mock": "7.3.9",
     "jest-enzyme": "7.1.1",
     "mock-express-request": "0.2.2",
