@@ -292,27 +292,37 @@ class Milestones extends Component {
     }
 
     const reviewers = [];
+    const reviewLoginsSeen = [];
 
     issue.timelineItems.edges.forEach((item) => {
       if (!item.event.source.reviews) {
         // This is not a pull request item.
         return;
       }
+      const bodyText = item.event.source.bodyText;
+      const issueTestRx = new RegExp(`Fixes #${issue.number}`, 'i');
 
-      item.event.source.reviews.edges.forEach(({ review: { author } }) => {
-        reviewers.push(
-          <React.Fragment>
-            <a href={item.event.source.permalink}>
-              <img
-                className="avatar"
-                src={author.avatarUrl}
-                title={`Reviewed by ${author.login}`}
-                alt=""
-              />
-            </a>{' '}
-          </React.Fragment>,
-        );
-      });
+      // Only add the review if the PR contains a `Fixes #num` line that
+      // matches the original issue.
+      if (issueTestRx.test(bodyText)) {
+        item.event.source.reviews.edges.forEach(({ review: { author } }) => {
+          if (!reviewLoginsSeen.includes(author.login)) {
+            reviewLoginsSeen.push(author.login);
+            reviewers.push(
+              <React.Fragment key={`${issue.number}-${author.login}`}>
+                <a href={item.event.source.permalink}>
+                  <img
+                    className="avatar"
+                    src={author.avatarUrl}
+                    title={`Reviewed by ${author.login}`}
+                    alt=""
+                  />
+                </a>{' '}
+              </React.Fragment>,
+            );
+          }
+        });
+      }
     });
 
     return reviewers;
@@ -469,12 +479,16 @@ class Milestones extends Component {
           <Table responsive hover>
             <thead>
               <tr>
-                <th>{this.renderHeaderLink('assignee', 'Assignee')}</th>
+                <th className="assignees">
+                  {this.renderHeaderLink('assignee', 'Assignee')}
+                </th>
                 <th>{this.renderHeaderLink('priority', 'Priority')}</th>
                 <th className="issue">
                   {this.renderHeaderLink('title', 'Issue')}
                 </th>
-                <th>{this.renderHeaderLink('repo', 'Repo')}</th>
+                <th className="repo">
+                  {this.renderHeaderLink('repo', 'Repo')}
+                </th>
                 <th className="last-updated">
                   {this.renderHeaderLink('updatedAt', 'Last Update')}
                 </th>

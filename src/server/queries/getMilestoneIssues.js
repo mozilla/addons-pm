@@ -42,6 +42,7 @@ const milestoneIssues = gql`
                   ... on CrossReferencedEvent {
                     source {
                       ... on PullRequest {
+                        bodyText
                         permalink
                         reviews(last: 10, states: APPROVED) {
                           totalCount
