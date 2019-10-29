@@ -285,6 +285,39 @@ class Milestones extends Component {
     );
   }
 
+  renderReviewers(issue) {
+    if (issue.state !== 'CLOSED') {
+      // We only show reviewers for closed issues.
+      return null;
+    }
+
+    const reviewers = [];
+
+    issue.timelineItems.edges.forEach((item) => {
+      if (!item.event.source.reviews) {
+        // This is not a pull request item.
+        return;
+      }
+
+      item.event.source.reviews.edges.forEach(({ review: { author } }) => {
+        reviewers.push(
+          <React.Fragment>
+            <a href={item.event.source.permalink}>
+              <img
+                className="avatar"
+                src={author.avatarUrl}
+                title={`Reviewed by ${author.login}`}
+                alt=""
+              />
+            </a>{' '}
+          </React.Fragment>,
+        );
+      });
+    });
+
+    return reviewers;
+  }
+
   renderRows(data) {
     const rows = [];
     const colSpan = 7;
@@ -356,6 +389,7 @@ class Milestones extends Component {
               {issue.stateLabel}
             </span>
           </td>
+          <td className="reviewers">{this.renderReviewers(issue)}</td>
         </tr>,
       );
     }
@@ -447,6 +481,7 @@ class Milestones extends Component {
                 <th className="state">
                   {this.renderHeaderLink('state', 'State')}
                 </th>
+                <th>{this.renderHeaderLink('reviewers', 'Reviewers')}</th>
               </tr>
             </thead>
             <tbody>{this.renderRows(data)}</tbody>
