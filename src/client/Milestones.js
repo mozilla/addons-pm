@@ -309,7 +309,7 @@ class Milestones extends Component {
           if (!reviewLoginsSeen.includes(author.login)) {
             reviewLoginsSeen.push(author.login);
             reviewers.push(
-              <React.Fragment>
+              <React.Fragment key={`${issue.number}-${author.login}`}>
                 <a href={item.event.source.permalink}>
                   <img
                     className="avatar"
