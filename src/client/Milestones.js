@@ -486,7 +486,9 @@ class Milestones extends Component {
                 <th className="issue">
                   {this.renderHeaderLink('title', 'Issue')}
                 </th>
-                <th className="repo">{this.renderHeaderLink('repo', 'Repo')}</th>
+                <th className="repo">
+                  {this.renderHeaderLink('repo', 'Repo')}
+                </th>
                 <th className="last-updated">
                   {this.renderHeaderLink('updatedAt', 'Last Update')}
                 </th>
