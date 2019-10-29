@@ -271,7 +271,7 @@ class BaseContrib extends Component {
                 }}
                 exact
               >
-                <Nav.Link eventKey="gfb">Contrib Welcome</Nav.Link>
+                <Nav.Link eventKey="cw">Contrib Welcome</Nav.Link>
               </LinkContainer>
             </Nav.Item>
           </Nav>
