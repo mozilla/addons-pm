@@ -103,6 +103,44 @@ class Milestones extends Component {
         issue.assignee = issue.assignees.nodes[0].login;
       }
 
+      issue.reviewers = [];
+      const reviewersListSeen = [];
+
+      if (issue.state === 'CLOSED') {
+        issue.timelineItems.edges.forEach((item) => {
+          if (!item.event.source.reviews) {
+            // This is not a pull request item.
+            return;
+          }
+          const bodyText = item.event.source.bodyText;
+          const issueTestRx = new RegExp(`Fixes #${issue.number}`, 'i');
+
+          // Only add the review if the PR contains a `Fixes #num` line that
+          // matches the original issue.
+          if (issueTestRx.test(bodyText)) {
+            item.event.source.reviews.edges.forEach(
+              ({ review: { author } }) => {
+                if (!reviewersListSeen.includes(author.login)) {
+                  reviewersListSeen.push(author.login);
+                  issue.reviewers.push({
+                    author,
+                    prLink: item.event.source.permalink,
+                  });
+                }
+              },
+            );
+          }
+        });
+      }
+
+      // Quick and dirty way to provide a sortable key for reviewers.
+      issue.reviewersNames = '';
+      if (issue.reviewers.length) {
+        issue.reviewersNames = issue.reviewers
+          .map((item) => item.author.login)
+          .join('-');
+      }
+
       issues.push(issue);
     });
 
@@ -197,6 +235,7 @@ class Milestones extends Component {
     },
     hasProject: {},
     state: {},
+    reviewersNames: {},
   };
 
   sortData({ columnKey, direction } = {}) {
@@ -286,45 +325,21 @@ class Milestones extends Component {
   }
 
   renderReviewers(issue) {
-    if (issue.state !== 'CLOSED') {
-      // We only show reviewers for closed issues.
-      return null;
-    }
-
     const reviewers = [];
-    const reviewLoginsSeen = [];
-
-    issue.timelineItems.edges.forEach((item) => {
-      if (!item.event.source.reviews) {
-        // This is not a pull request item.
-        return;
-      }
-      const bodyText = item.event.source.bodyText;
-      const issueTestRx = new RegExp(`Fixes #${issue.number}`, 'i');
-
-      // Only add the review if the PR contains a `Fixes #num` line that
-      // matches the original issue.
-      if (issueTestRx.test(bodyText)) {
-        item.event.source.reviews.edges.forEach(({ review: { author } }) => {
-          if (!reviewLoginsSeen.includes(author.login)) {
-            reviewLoginsSeen.push(author.login);
-            reviewers.push(
-              <React.Fragment key={`${issue.number}-${author.login}`}>
-                <a href={item.event.source.permalink}>
-                  <img
-                    className="avatar"
-                    src={author.avatarUrl}
-                    title={`Reviewed by ${author.login}`}
-                    alt=""
-                  />
-                </a>{' '}
-              </React.Fragment>,
-            );
-          }
-        });
-      }
+    issue.reviewers.forEach((item) => {
+      reviewers.push(
+        <React.Fragment key={`${issue.number}-${item.author.login}`}>
+          <a href={item.prLink} target="_blank" rel="noopener noreferrer">
+            <img
+              className="avatar"
+              src={item.author.avatarUrl}
+              title={`Reviewed by ${item.author.login}`}
+              alt=""
+            />
+          </a>
+        </React.Fragment>,
+      );
     });
-
     return reviewers;
   }
 
@@ -495,7 +510,7 @@ class Milestones extends Component {
                 <th className="state">
                   {this.renderHeaderLink('state', 'State')}
                 </th>
-                <th>{this.renderHeaderLink('reviewers', 'Reviewers')}</th>
+                <th>{this.renderHeaderLink('reviewersNames', 'Reviewers')}</th>
               </tr>
             </thead>
             <tbody>{this.renderRows(data)}</tbody>
