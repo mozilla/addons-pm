@@ -3,3 +3,32 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.home {
+  &.container {
+    max-width: 1024px;
+  }
+
+  h3 {
+    clear: both;
+    margin-top: 1.5rem;
+  }
+
+  .btn {
+    float: right;
+    min-width: 10em;
+  }
+
+  .octicon {
+    box-sizing: content-box;
+    padding: 0 20px 20px 0;
+  }
+
+  .card {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.filters {
+  margin-left: 10px;
+}

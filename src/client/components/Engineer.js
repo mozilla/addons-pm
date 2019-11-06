@@ -5,7 +5,7 @@ import { Image } from 'react-bootstrap';
 export default function Engineer(props) {
   const { member, year, quarter } = props;
   return (
-    <Link to={`/${year}/${quarter}/${member.login.toLowerCase()}/`}>
+    <Link to={`/projects/${year}/${quarter}/${member.login.toLowerCase()}/`}>
       <Image
         src={member.avatarUrl}
         title={member.login}
