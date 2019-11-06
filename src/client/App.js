@@ -25,12 +25,14 @@ const App = () => {
       <div>
         <Helmet defaultTitle="Add-ons PM" titleTemplate="%s - Add-ons PM" />
         <Navbar bg="dark" variant="dark">
-          <Navbar.Brand>Addons PM</Navbar.Brand>
+          <IndexLinkContainer to="/">
+            <Navbar.Brand>Addons PM</Navbar.Brand>
+          </IndexLinkContainer>
           <Nav className="mr-auto">
             <Nav.Item>
-              <IndexLinkContainer to="/">
+              <LinkContainer to="/projects/latest/">
                 <Nav.Link eventKey={1}>Projects</Nav.Link>
-              </IndexLinkContainer>
+              </LinkContainer>
             </Nav.Item>
             <Nav.Item>
               <LinkContainer
@@ -107,26 +109,22 @@ const App = () => {
             path="/contrib/contrib-welcome/"
             component={ContribWelcome}
           />
+          <Route exact path="/projects/:year(latest)/" component={Projects} />
           <Route
             exact
-            path={`/:year(${validYears.join('|')})/`}
-            component={Home}
-          />
-          <Route
-            exact
-            path={`/:year(${validYears.join('|')})/:quarter(Q[1-4])/`}
+            path={`/projects/:year(${validYears.join('|')})/:quarter(Q[1-4])/`}
             component={Projects}
           />
           <Route
             exact
-            path={`/:year(${validYears.join(
+            path={`/projects/:year(${validYears.join(
               '|',
             )})/:quarter(Q[1-4])/:projectType(primary|secondary)/`}
             component={Projects}
           />
           <Route
             exact
-            path={`/:year(${validYears.join(
+            path={`/projects/:year(${validYears.join(
               '|',
             )})/:quarter(Q[1-4])/:engineer(${validProjectTeamMembers.join(
               '|',

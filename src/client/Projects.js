@@ -8,15 +8,16 @@ import {
   Container,
   Nav,
   Navbar,
+  NavDropdown,
   Row,
   ProgressBar,
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+
 import TimeAgo from 'react-timeago';
 import Octicon, { Clock, Project } from '@githubprimer/octicons-react';
 
 import Client from './Client';
-import BreadcrumbNav from './components/BreadcrumbNav';
 import Engineer from './components/Engineer';
 
 class Projects extends Component {
@@ -37,9 +38,46 @@ class Projects extends Component {
     return await Client.getTeam();
   }
 
+  async componentDidUpdate(prevProps, prevState) {
+    await this.updateComponentData(prevProps, prevState);
+  }
+
   async componentDidMount() {
+    await this.updateComponentData();
+  }
+
+  async updateComponentData(prevProps, prevState) {
     const { match } = this.props;
-    const { year, quarter } = match.params;
+    let { year, quarter } = match.params;
+
+    // Check if we need to recalculate anything.
+    if (prevProps && prevProps.match) {
+      const prevMatch = prevProps.match;
+      if (
+        prevMatch.params.year === year &&
+        prevMatch.params.quarter === quarter
+      ) {
+        console.log('No changes to project props, skipping update');
+        return;
+      }
+    }
+
+    // Scroll to top when new data loads.
+    window.scrollTo(0, 0);
+
+    if (year === 'latest') {
+      // Work out the current year/milestone.
+      const {
+        year: currentYear,
+        quarter: currentQuarter,
+      } = this.getCurrentQuarter();
+      year = currentYear;
+      quarter = currentQuarter;
+
+      // Update the url.
+      this.props.history.push(`/projects/${year}/${quarter}/`);
+    }
+
     // Fetch all data in parallel.
     const [projectData, teamData] = await Promise.all([
       this.getProjects(year, quarter),
@@ -50,6 +88,69 @@ class Projects extends Component {
       projects: this.buildMetaData(projectData),
       team: teamData,
     });
+  }
+
+  getCurrentQuarter() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const quarter = `Q${Math.floor((today.getMonth() + 3) / 3)}`;
+    return {
+      year,
+      quarter,
+    };
+  }
+
+  getPrevQuarter() {
+    const { match } = this.props;
+    let { quarter, year } = match.params;
+
+    if (!quarter || !year) {
+      return {};
+    }
+
+    const numericQuarter = quarter.substr(1);
+    let newQuarter = parseInt(numericQuarter, 10);
+    let newYear = parseInt(year, 10);
+
+    if (newQuarter > 1) {
+      newQuarter = newQuarter - 1;
+    }
+    if (newQuarter === 1) {
+      newQuarter = 4;
+      newYear = newYear - 1;
+    }
+
+    return {
+      year: newYear,
+      quarter: `Q${newQuarter}`,
+    };
+  }
+
+  getNextQuarter() {
+    const { match } = this.props;
+    let { quarter, year } = match.params;
+
+    if (!quarter || !year) {
+      return {};
+    }
+
+    const numericQuarter = quarter.substr(1);
+    let newYear = parseInt(year, 10);
+    let newQuarter = parseInt(numericQuarter, 10);
+
+    if (newQuarter < 4) {
+      newQuarter = newQuarter + 1;
+    }
+
+    if (newQuarter === 4) {
+      newQuarter = 1;
+      newYear = newYear + 1;
+    }
+
+    return {
+      year: newYear,
+      quarter: `Q${newQuarter}`,
+    };
   }
 
   projectSort(a, b) {
@@ -266,6 +367,13 @@ class Projects extends Component {
       });
     }
 
+    const {
+      year: currentYear,
+      quarter: currentQuarter,
+    } = this.getCurrentQuarter();
+    const { year: prevYear, quarter: prevQuarter } = this.getPrevQuarter();
+    const { year: nextYear, quarter: nextQuarter } = this.getNextQuarter();
+
     return (
       <div>
         <Helmet>
@@ -277,31 +385,82 @@ class Projects extends Component {
           className="shadow-sm d-flex justify-content-between"
           sticky="top"
         >
-          <BreadcrumbNav />
           <Nav variant="pills">
             <Nav.Item>
-              <LinkContainer to={`/${year}/${quarter}/primary/`} exact>
-                <Nav.Link>Primary Goals</Nav.Link>
+              <LinkContainer
+                to={`/projects/${prevYear}/${prevQuarter}/`}
+                active={false}
+                exact
+              >
+                <Nav.Link eventKey="prev" className="previous">
+                  Previous
+                </Nav.Link>
               </LinkContainer>
             </Nav.Item>
             <Nav.Item>
-              <LinkContainer to={`/${year}/${quarter}/secondary/`} exact>
-                <Nav.Link>Secondary Goals</Nav.Link>
-              </LinkContainer>
-            </Nav.Item>
-            <Nav.Item>
-              <LinkContainer to={`/${year}/${quarter}/`} exact>
-                <Nav.Link
-                  active={
-                    `/${year}/${quarter}/` === this.props.location.pathname
-                  }
-                >
-                  All Goals
+              <LinkContainer
+                to={`/projects/${nextYear}/${nextQuarter}/`}
+                active={false}
+                exact
+              >
+                <Nav.Link eventKey="next" className="next">
+                  Next
                 </Nav.Link>
               </LinkContainer>
             </Nav.Item>
           </Nav>
+
+          <Nav variant="pills">
+            <Nav.Item>
+              <LinkContainer
+                to={`/projects/${currentYear}/${currentQuarter}/`}
+                exact
+              >
+                <Nav.Link
+                  eventKey="current"
+                  active={
+                    this.props.location.pathname.indexOf(
+                      `/projects/${currentYear}/${currentQuarter}/`,
+                    ) === 0
+                  }
+                >
+                  Current Quarter
+                </Nav.Link>
+              </LinkContainer>
+            </Nav.Item>
+
+            <NavDropdown className="filters" title="Filters" alignRight>
+              <LinkContainer to={`/projects/${year}/${quarter}/`} exact>
+                <NavDropdown.Item
+                  eventKey="all"
+                  href={`/projects/${year}/${quarter}/`}
+                >
+                  All
+                </NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to={`/projects/${year}/${quarter}/primary/`} exact>
+                <NavDropdown.Item
+                  eventKey="primary"
+                  href={`/projects/${year}/${quarter}/primary/`}
+                >
+                  Primary
+                </NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer
+                to={`/projects/${year}/${quarter}/secondary/`}
+                exact
+              >
+                <NavDropdown.Item
+                  eventKey="secondary"
+                  href={`/projects/${year}/${quarter}/secondary/`}
+                >
+                  Secondary
+                </NavDropdown.Item>
+              </LinkContainer>
+            </NavDropdown>
+          </Nav>
         </Navbar>
+
         <Container fluid>
           <Row>
             <Container as="main" bg="light">
