@@ -114,8 +114,7 @@ class Projects extends Component {
 
     if (newQuarter > 1) {
       newQuarter = newQuarter - 1;
-    }
-    if (newQuarter === 1) {
+    } else if (newQuarter === 1) {
       newQuarter = 4;
       newYear = newYear - 1;
     }
@@ -140,9 +139,7 @@ class Projects extends Component {
 
     if (newQuarter < 4) {
       newQuarter = newQuarter + 1;
-    }
-
-    if (newQuarter === 4) {
+    } else if (newQuarter === 4) {
       newQuarter = 1;
       newYear = newYear + 1;
     }

@@ -78,4 +78,20 @@ describe('Projects Page', () => {
     wrapper.update();
     expect(wrapper.find('.card-wrapper')).toHaveLength(1);
   });
+
+  it('should provide the right project link data', async () => {
+    const filteredMatch = { ...fakeMatch };
+    filteredMatch.params = { ...fakeMatch.params, year: '2019', quarter: 'Q3' };
+    const filteredLocation = { pathname: '/2019/Q3/' };
+    const wrapper = mount(
+      <MemoryRouter>
+        <Projects match={filteredMatch} location={filteredLocation} />
+      </MemoryRouter>,
+      { disableLifecycleMethods: true },
+    );
+    const instance = wrapper.find('Projects').instance();
+    const { year, quarter } = await instance.getNextQuarter();
+    expect(year).toBe(2019);
+    expect(quarter).toBe('Q4');
+  });
 });
