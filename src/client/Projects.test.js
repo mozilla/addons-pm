@@ -79,19 +79,87 @@ describe('Projects Page', () => {
     expect(wrapper.find('.card-wrapper')).toHaveLength(1);
   });
 
-  it('should provide the right project link data', async () => {
-    const filteredMatch = { ...fakeMatch };
-    filteredMatch.params = { ...fakeMatch.params, year: '2019', quarter: 'Q3' };
-    const filteredLocation = { pathname: '/2019/Q3/' };
-    const wrapper = mount(
-      <MemoryRouter>
-        <Projects match={filteredMatch} location={filteredLocation} />
-      </MemoryRouter>,
-      { disableLifecycleMethods: true },
-    );
-    const instance = wrapper.find('Projects').instance();
-    const { year, quarter } = await instance.getNextQuarter();
-    expect(year).toBe(2019);
-    expect(quarter).toBe('Q4');
+  describe('getNextQuarter()', () => {
+    it('should provide the right project link data for 2019/Q3', async () => {
+      const filteredMatch = { ...fakeMatch };
+      filteredMatch.params = {
+        ...fakeMatch.params,
+        year: '2019',
+        quarter: 'Q3',
+      };
+      const filteredLocation = { pathname: '/2019/Q3/' };
+      const wrapper = mount(
+        <MemoryRouter>
+          <Projects match={filteredMatch} location={filteredLocation} />
+        </MemoryRouter>,
+        { disableLifecycleMethods: true },
+      );
+      const instance = wrapper.find('Projects').instance();
+      const { year, quarter } = instance.getNextQuarter();
+      expect(year).toBe(2019);
+      expect(quarter).toBe('Q4');
+    });
+
+    it('should provide the right project link data for 2019/Q4', async () => {
+      const filteredMatch = { ...fakeMatch };
+      filteredMatch.params = {
+        ...fakeMatch.params,
+        year: '2019',
+        quarter: 'Q4',
+      };
+      const filteredLocation = { pathname: '/2019/Q4/' };
+      const wrapper = mount(
+        <MemoryRouter>
+          <Projects match={filteredMatch} location={filteredLocation} />
+        </MemoryRouter>,
+        { disableLifecycleMethods: true },
+      );
+      const instance = wrapper.find('Projects').instance();
+      const { year, quarter } = instance.getNextQuarter();
+      expect(year).toBe(2020);
+      expect(quarter).toBe('Q1');
+    });
+  });
+
+  describe('getPrevQuarter()', () => {
+    it('should provide the right project link data for 2019/Q3', async () => {
+      const filteredMatch = { ...fakeMatch };
+      filteredMatch.params = {
+        ...fakeMatch.params,
+        year: '2019',
+        quarter: 'Q3',
+      };
+      const filteredLocation = { pathname: '/2019/Q3/' };
+      const wrapper = mount(
+        <MemoryRouter>
+          <Projects match={filteredMatch} location={filteredLocation} />
+        </MemoryRouter>,
+        { disableLifecycleMethods: true },
+      );
+      const instance = wrapper.find('Projects').instance();
+      const { year, quarter } = instance.getPrevQuarter();
+      expect(year).toBe(2019);
+      expect(quarter).toBe('Q2');
+    });
+
+    it('should provide the right project link data for 2019/Q1', async () => {
+      const filteredMatch = { ...fakeMatch };
+      filteredMatch.params = {
+        ...fakeMatch.params,
+        year: '2019',
+        quarter: 'Q1',
+      };
+      const filteredLocation = { pathname: '/2019/Q1/' };
+      const wrapper = mount(
+        <MemoryRouter>
+          <Projects match={filteredMatch} location={filteredLocation} />
+        </MemoryRouter>,
+        { disableLifecycleMethods: true },
+      );
+      const instance = wrapper.find('Projects').instance();
+      const { year, quarter } = instance.getPrevQuarter();
+      expect(year).toBe(2018);
+      expect(quarter).toBe('Q4');
+    });
   });
 });
