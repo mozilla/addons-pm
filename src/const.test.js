@@ -9,7 +9,7 @@ describe('const.validYearRX', () => {
   it('should not match invalid content', () => {
     expect('201113').not.toMatch(constants.validYearRX);
     expect('1977').not.toMatch(constants.validYearRX);
-    expect('2017').not.toMatch(constants.validYearRX);
+    expect('2016').not.toMatch(constants.validYearRX);
   });
 });
 
@@ -36,7 +36,7 @@ describe('const.validMilestoneRX', () => {
   });
 
   it('should not match invalid content', () => {
-    expect('2017.11.11').not.toMatch(constants.validMilestoneRX);
+    expect('2016.11.11').not.toMatch(constants.validMilestoneRX);
     expect('2019.11.32').not.toMatch(constants.validMilestoneRX);
     expect('2019.13.32').not.toMatch(constants.validMilestoneRX);
     expect('whatever').not.toMatch(constants.validMilestoneRX);
