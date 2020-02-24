@@ -19,7 +19,7 @@
     "graphql": "14.5.8",
     "graphql-tag": "2.10.3",
     "isomorphic-fetch": "2.2.1",
-    "query-string": "6.9.0",
+    "query-string": "6.11.0",
     "react": "16.12.0",
     "react-bootstrap": "1.0.0-beta.14",
     "react-dom": "16.12.0",
