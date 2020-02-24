@@ -1,4 +1,4 @@
-const validYears = ['2018', '2019', '2020'];
+const validYears = ['2017', '2018', '2019', '2020'];
 
 module.exports = {
   validYears: validYears,
@@ -22,6 +22,7 @@ module.exports = {
     'kumar303',
     'muffinresearch',
     'rebmullin',
+    'wagnerand',
     'willdurand',
   ],
   GH_API_ROOT:
