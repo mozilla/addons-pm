@@ -16,7 +16,7 @@
     "common-tags": "1.8.0",
     "dompurify": "2.0.8",
     "dotenv": "8.2.0",
-    "graphql": "14.5.8",
+    "graphql": "14.6.0",
     "graphql-tag": "2.10.3",
     "isomorphic-fetch": "2.2.1",
     "query-string": "6.11.0",
