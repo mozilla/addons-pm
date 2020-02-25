@@ -490,7 +490,7 @@ class Milestones extends Component {
           </Nav>
         </Navbar>
         <Container as="main" bg="light">
-          <h2>Issues for milestone: {milestone}</h2>
+          <h1>Issues for milestone: {milestone}</h1>
           <Table responsive hover>
             <thead>
               <tr>
