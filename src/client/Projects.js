@@ -461,7 +461,6 @@ class Projects extends Component {
         <Container fluid>
           <Row>
             <Container as="main" bg="light">
-              <br />
               <h1>
                 Projects for {quarter} {year}{' '}
                 {projectType
@@ -470,7 +469,6 @@ class Projects extends Component {
                   ? `(${engineer})`
                   : '(All)'}
               </h1>
-              <br />
               {projectsData.data === null ? <p>Loading...</p> : null}
               {projects && projects.length ? (
                 <CardDeck>{projects}</CardDeck>
