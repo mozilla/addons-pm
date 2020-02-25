@@ -113,9 +113,9 @@ class Milestones extends Component {
             return;
           }
           const bodyText = item.event.source.bodyText;
-          const issueTestRx = new RegExp(`Fixes #${issue.number}`, 'i');
+          const issueTestRx = new RegExp(`Fix(?:es)? #${issue.number}`, 'i');
 
-          // Only add the review if the PR contains a `Fixes #num` line that
+          // Only add the review if the PR contains a `Fixes #num` or `Fix #num` line that
           // matches the original issue.
           if (issueTestRx.test(bodyText)) {
             item.event.source.reviews.edges.forEach(
