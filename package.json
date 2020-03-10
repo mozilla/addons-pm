@@ -58,7 +58,7 @@
     "pretty-quick": "2.0.1",
     "sinon": "9.0.0",
     "stmux": "1.8.0",
-    "stylelint": "13.2.0",
+    "stylelint": "13.2.1",
     "stylelint-config-standard": "20.0.0",
     "stylelint-config-suitcss": "14.0.0"
   },
