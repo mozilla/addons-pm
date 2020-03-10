@@ -56,7 +56,7 @@
     "node-sass": "4.13.1",
     "prettier": "1.19.1",
     "pretty-quick": "2.0.1",
-    "sinon": "9.0.0",
+    "sinon": "9.0.1",
     "stmux": "1.8.0",
     "stylelint": "13.2.0",
     "stylelint-config-standard": "20.0.0",
