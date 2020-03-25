@@ -5046,14 +5046,16 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "2.1.1"
 
-fetch-mock@8.3.2:
-  version "8.3.2"
-  resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-8.3.2.tgz#ca07cd0bbf8e9dd299733af364713766b43ab2a0"
-  integrity sha512-RUdLbhIBTvECX20I8htNhmLRrCplCiOP62srst8UQsSV0m8taJe31PBsQybL7OIq5fEf6tnqVGvQ62ZnZ4IFfQ==
+fetch-mock@9.3.1:
+  version "9.3.1"
+  resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-9.3.1.tgz#39685ed6aaa833580cc4e88c8282942950b9a5d5"
+  integrity sha512-zt2QUNYuR1kVCG8vGV+awxe/dtH/ufjpu2EA08v04eAVu3Rnt1P8Df8//VJrtxIx6tAdH+NHuCkb/Z69HUOT9A==
   dependencies:
     babel-runtime "^6.26.0"
     core-js "^3.0.0"
+    debug "^4.1.1"
     glob-to-regexp "^0.4.0"
+    is-subset "^0.1.1"
     lodash.isequal "^4.5.0"
     path-to-regexp "^2.2.1"
     querystring "^0.2.0"
