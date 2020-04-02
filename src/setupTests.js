@@ -11,11 +11,11 @@ import { contribWelcome } from './fixtures/contribWelcome';
 Enzyme.configure({ adapter: new Adapter() });
 
 global.fetch = require('fetch-mock');
-global.requestAnimationFrame = function(callback) {
+global.requestAnimationFrame = function (callback) {
   window.setTimeout(callback, 0);
 };
 
-global.scrollTo = function() {};
+global.scrollTo = function () {};
 
 global.testData = {
   contribWelcome,

@@ -1,7 +1,7 @@
 import { oneLineTrim } from 'common-tags';
 import DOMPurify from 'dompurify';
 
-DOMPurify.addHook('afterSanitizeAttributes', function(node) {
+DOMPurify.addHook('afterSanitizeAttributes', function (node) {
   if ('target' in node) {
     node.setAttribute('target', '_blank');
     node.setAttribute('rel', 'noopener noreferrer');
@@ -12,7 +12,7 @@ DOMPurify.addHook('afterSanitizeAttributes', function(node) {
 if (!String.prototype.padStart) {
   console.log('Polyfilling padStart');
   /* eslint-disable-next-line no-extend-native */
-  String.prototype.padStart = function(length, repeated) {
+  String.prototype.padStart = function (length, repeated) {
     return repeated.repeat(length).substring(0, length - this.length) + this;
   };
 }
@@ -80,10 +80,7 @@ export function getNextMilestone({
 export function formatDateToMilestone(date) {
   return oneLineTrim`${date.getFullYear()}.
     ${(date.getMonth() + 1).toString().padStart(2, '0')}.
-    ${date
-      .getDate()
-      .toString()
-      .padStart(2, '0')}`;
+    ${date.getDate().toString().padStart(2, '0')}`;
 }
 
 export function getMilestonePagination({
