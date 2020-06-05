@@ -12,6 +12,15 @@ const team = gql`
           }
         }
       }
+      outreachy: team(slug: "addons-outreachy") {
+        members(first: 100, membership: ALL) {
+          nodes {
+            name
+            login
+            avatarUrl
+          }
+        }
+      }
     }
   }
 `;

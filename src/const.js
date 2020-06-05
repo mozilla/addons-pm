@@ -24,6 +24,7 @@ module.exports = {
     'rebmullin',
     'wagnerand',
     'willdurand',
+    'xlisachan',
   ],
   GH_API_ROOT:
     process.env.NODE_ENV === 'production'
