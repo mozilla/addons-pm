@@ -43,7 +43,7 @@
     "prettier": "pretty-quick --branch master",
     "stmux": "stmux -nM -t addons-pm -e 'error,!0 errors,!no errors'",
     "stylelint": "stylelint --syntax scss **/*.scss",
-    "start": "yarn stmux [ 'yarn test' .. [ 'yarn react-scripts start' : 'yarn start-server' ]]"
+    "start": "yarn stmux [ 'yarn test' .. [ 'BROWSER=none yarn react-scripts start' : 'yarn start-server' ]]"
   },
   "devDependencies": {
     "codecov": "3.7.0",

@@ -4,12 +4,18 @@ import './App.scss';
 import { Nav, Navbar } from 'react-bootstrap';
 import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap';
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Octicon, { MarkGithub } from '@githubprimer/octicons-react';
 
 import Home from './Home';
-import Dashboard from './Dashboard';
+import DashboardAMO from './DashboardAMO';
+import DashboardWE from './DashboardWE';
 import Projects from './Projects';
 import GoodFirstBugs from './ContribGoodFirstBugs';
 import MaybeGoodFirstBugs from './ContribMaybeGoodFirstBugs';
@@ -45,8 +51,13 @@ const App = () => {
               </LinkContainer>
             </Nav.Item>
             <Nav.Item>
-              <LinkContainer to="/dashboard/">
-                <Nav.Link eventKey={3}>Dashboard</Nav.Link>
+              <LinkContainer to="/dashboards/amo/">
+                <Nav.Link eventKey={3}>AMO Dashboard</Nav.Link>
+              </LinkContainer>
+            </Nav.Item>
+            <Nav.Item>
+              <LinkContainer to="/dashboards/webext/">
+                <Nav.Link eventKey={4}>Webext Dashboard</Nav.Link>
               </LinkContainer>
             </Nav.Item>
             <Nav.Item>
@@ -56,7 +67,7 @@ const App = () => {
                   return location.pathname.indexOf('/contrib') > -1;
                 }}
               >
-                <Nav.Link eventKey={4}>Contributions</Nav.Link>
+                <Nav.Link eventKey={5}>Contributions</Nav.Link>
               </LinkContainer>
             </Nav.Item>
           </Nav>
@@ -93,7 +104,9 @@ const App = () => {
             path="/milestones/:milestone(latest)/"
             component={Milestones}
           />
-          <Route exact path="/dashboard/" component={Dashboard} />
+          <Redirect from="/dashboard/" to="/dashboards/amo/" />
+          <Route exact path="/dashboards/amo/" component={DashboardAMO} />
+          <Route exact path="/dashboards/webext/" component={DashboardWE} />
           <Route
             exact
             path="/contrib/maybe-good-first-bugs/"

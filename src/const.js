@@ -26,7 +26,7 @@ module.exports = {
     'willdurand',
     'xlisachan',
   ],
-  GH_API_ROOT:
+  API_ROOT:
     process.env.NODE_ENV === 'production'
       ? '/api'
       : 'http://localhost:3000/api',

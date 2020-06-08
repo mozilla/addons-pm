@@ -73,7 +73,7 @@ async function getTeam() {
   return data;
 }
 
-async function getIssueCounts() {
+async function getGithubIssueCounts() {
   const client = createClient();
   const data = await client.query({
     query: getIssueCountQuery,
@@ -108,7 +108,7 @@ async function getContribWelcome() {
 module.exports = {
   getProjects,
   getTeam,
-  getIssueCounts,
+  getGithubIssueCounts,
   getGoodFirstBugs,
   getMaybeGoodFirstBugs,
   getMilestoneIssues,

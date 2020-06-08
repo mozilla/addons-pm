@@ -98,9 +98,17 @@ class Home extends Component {
                       This tool is used to give us an overview of what the issue
                       counts look like and highlights any high priority bugs
                     </p>
-                    <LinkContainer to="/dashboard/" exact>
-                      <Button href="/dashboard/" variant="outline-primary">
-                        View Dashboard
+                    <LinkContainer to="/dashboards/amo/" exact>
+                      <Button href="/dashboards/amo/" variant="outline-primary">
+                        View AMO Dashboard
+                      </Button>
+                    </LinkContainer>
+                    <LinkContainer to="/dashboards/webext/" exact>
+                      <Button
+                        href="/dashboards/webext/"
+                        variant="outline-primary"
+                      >
+                        View Web-Extensions Dashboard
                       </Button>
                     </LinkContainer>
                   </Card.Text>

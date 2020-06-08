@@ -3,11 +3,11 @@ import { Helmet } from 'react-helmet';
 import { Container } from 'react-bootstrap';
 
 import Client from './Client';
-import DashCountGroup from './components/DashCountGroup';
+import AMODashCountGroup from './components/AMODashCountGroup';
 
 import './Dashboard.scss';
 
-class Dashboard extends Component {
+class DashboardAMO extends Component {
   state = {
     issueCounts: {
       data: null,
@@ -15,7 +15,7 @@ class Dashboard extends Component {
   };
 
   async getIssueCounts() {
-    return await Client.getIssueCounts();
+    return await Client.getGithubIssueCounts();
   }
 
   async componentDidMount() {
@@ -30,11 +30,12 @@ class Dashboard extends Component {
     const countGroups = [];
     Object.keys(issueCountData).forEach((repo, index) => {
       countGroups.push(
-        DashCountGroup({
-          issueCounts: issueCountData[repo],
-          description: issueCountData[repo].description,
-          repo,
-        }),
+        <AMODashCountGroup
+          key={repo + index}
+          issueCounts={issueCountData[repo]}
+          description={issueCountData[repo].description}
+          repo={repo}
+        />,
       );
     });
     return countGroups;
@@ -47,7 +48,7 @@ class Dashboard extends Component {
       <div className="dashboard">
         <Helmet>
           <body className="dash" />
-          <title>Dashboard</title>
+          <title>AMO Dashboard</title>
         </Helmet>
         <Container as="main">
           <div className="dash-container">
@@ -63,4 +64,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default DashboardAMO;

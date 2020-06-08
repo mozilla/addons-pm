@@ -263,13 +263,11 @@ class Projects extends Component {
             for (const engineer of project.meta.engineers) {
               const teamMembersToSearch = [
                 ...teamData.data.organization.team.members.nodes,
-                ...teamData.data.organization.outreachy.members.nodes
+                ...teamData.data.organization.outreachy.members.nodes,
               ];
-              const foundMember = teamMembersToSearch.find(
-                (item) => {
-                  return item.login.toLowerCase() === engineer.toLowerCase();
-                },
-              );
+              const foundMember = teamMembersToSearch.find((item) => {
+                return item.login.toLowerCase() === engineer.toLowerCase();
+              });
               if (foundMember) {
                 teamMembers.push(foundMember);
               }

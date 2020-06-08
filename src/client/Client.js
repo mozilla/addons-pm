@@ -1,5 +1,5 @@
 import {
-  GH_API_ROOT,
+  API_ROOT,
   validQuarterRX,
   validYearRX,
   validMilestoneRX,
@@ -15,7 +15,7 @@ async function getProjects(year, quarter) {
   }
 
   const response = await fetch(
-    `${GH_API_ROOT}/projects/?year=${year}&quarter=${quarter}`,
+    `${API_ROOT}/projects/?year=${year}&quarter=${quarter}`,
     {
       headers: new Headers({
         'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ async function getMilestoneIssues(milestone) {
   }
 
   const response = await fetch(
-    `${GH_API_ROOT}/milestone-issues/?milestone=${milestone}`,
+    `${API_ROOT}/milestone-issues/?milestone=${milestone}`,
     {
       headers: new Headers({
         'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ async function getMilestoneIssues(milestone) {
 }
 
 async function getTeam() {
-  const response = await fetch(`${GH_API_ROOT}/team/`, {
+  const response = await fetch(`${API_ROOT}/team/`, {
     headers: new Headers({
       'Content-Type': 'application/json',
     }),
@@ -53,8 +53,18 @@ async function getTeam() {
   return parseJSON(response);
 }
 
-async function getIssueCounts() {
-  const response = await fetch(`${GH_API_ROOT}/issue-counts/`, {
+async function getGithubIssueCounts() {
+  const response = await fetch(`${API_ROOT}/github-issue-counts/`, {
+    headers: new Headers({
+      'Content-Type': 'application/json',
+    }),
+  });
+  checkStatus(response);
+  return parseJSON(response);
+}
+
+async function getBugzillaIssueCounts() {
+  const response = await fetch(`${API_ROOT}/bugzilla-issue-counts/`, {
     headers: new Headers({
       'Content-Type': 'application/json',
     }),
@@ -64,7 +74,7 @@ async function getIssueCounts() {
 }
 
 async function getGoodFirstBugs() {
-  const response = await fetch(`${GH_API_ROOT}/good-first-bugs/`, {
+  const response = await fetch(`${API_ROOT}/good-first-bugs/`, {
     headers: new Headers({
       'Content-Type': 'application/json',
     }),
@@ -74,7 +84,7 @@ async function getGoodFirstBugs() {
 }
 
 async function getContribWelcome() {
-  const response = await fetch(`${GH_API_ROOT}/contrib-welcome/`, {
+  const response = await fetch(`${API_ROOT}/contrib-welcome/`, {
     headers: new Headers({
       'Content-Type': 'application/json',
     }),
@@ -84,7 +94,7 @@ async function getContribWelcome() {
 }
 
 async function getMaybeGoodFirstBugs() {
-  const response = await fetch(`${GH_API_ROOT}/maybe-good-first-bugs/`, {
+  const response = await fetch(`${API_ROOT}/maybe-good-first-bugs/`, {
     headers: new Headers({
       'Content-Type': 'application/json',
     }),
@@ -111,7 +121,8 @@ const Client = {
   checkStatus,
   getProjects,
   getTeam,
-  getIssueCounts,
+  getGithubIssueCounts,
+  getBugzillaIssueCounts,
   getContribWelcome,
   getGoodFirstBugs,
   getMaybeGoodFirstBugs,

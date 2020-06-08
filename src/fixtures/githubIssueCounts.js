@@ -1,4 +1,4 @@
-export const issueCounts = {
+export const githubIssueCounts = {
   data: {
     addons: {
       description: '☂ Umbrella repository for Mozilla Addons ✨',

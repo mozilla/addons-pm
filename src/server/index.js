@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 
 const ghapi = require('./ghapi');
+const bzapi = require('./bzapi');
 
 const constants = require('../const');
 
@@ -44,8 +45,13 @@ const getTeam = async (req, res) => {
   res.json(team);
 };
 
-const getIssueCounts = async (req, res) => {
-  const issueCounts = await ghapi.getIssueCounts();
+const getGithubIssueCounts = async (req, res) => {
+  const issueCounts = await ghapi.getGithubIssueCounts();
+  res.json(issueCounts);
+};
+
+const getBugzillaIssueCounts = async (req, res) => {
+  const issueCounts = await bzapi.getBugzillaIssueCounts();
   res.json(issueCounts);
 };
 
@@ -76,7 +82,8 @@ function handleErrors(processRequest) {
 
 app.get('/api/projects/', handleErrors(getProjects));
 app.get('/api/team/', handleErrors(getTeam));
-app.get('/api/issue-counts/', handleErrors(getIssueCounts));
+app.get('/api/github-issue-counts/', handleErrors(getGithubIssueCounts));
+app.get('/api/bugzilla-issue-counts/', handleErrors(getBugzillaIssueCounts));
 app.get('/api/good-first-bugs/', handleErrors(getGoodFirstBugs));
 app.get('/api/maybe-good-first-bugs/', handleErrors(getMaybeGoodFirstBugs));
 app.get('/api/milestone-issues/', handleErrors(getMilestoneIssues));
@@ -104,7 +111,8 @@ if (typeof module !== 'undefined' && !module.parent) {
 module.exports = {
   getProjects,
   getTeam,
-  getIssueCounts,
+  getGithubIssueCounts,
+  getBugzillaIssueCounts,
   getMilestoneIssues,
   handleErrors,
   startServer,

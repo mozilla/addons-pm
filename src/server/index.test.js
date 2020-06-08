@@ -8,7 +8,8 @@ import {
   handleErrors,
   getProjects,
   getTeam,
-  getIssueCounts,
+  getBugzillaIssueCounts,
+  getGithubIssueCounts,
   getMilestoneIssues,
 } from './index';
 
@@ -140,23 +141,49 @@ describe('API Server', () => {
     });
   });
 
-  describe('Dashboard', () => {
+  describe('AMO Dashboard', () => {
     beforeEach(() => {
-      fetchMock.mock('https://api.github.com/graphql', testData.issueCounts);
+      fetchMock.mock(
+        'https://api.github.com/graphql',
+        testData.githubIssueCounts,
+      );
     });
 
     afterEach(() => {
       fetchMock.restore();
     });
 
-    it('should return issue count data', async () => {
+    it('should return github issue count data', async () => {
       const req = new MockExpressRequest({
         method: 'GET',
-        url: '/api/issue-counts/',
+        url: '/api/github-issue-counts/',
       });
       const res = new MockExpressResponse();
-      await getIssueCounts(req, res);
-      expect(res._getJSON()).toEqual(testData.issueCounts);
+      await getGithubIssueCounts(req, res);
+      expect(res._getJSON()).toEqual(testData.githubIssueCounts);
+    });
+  });
+
+  describe('Webext Dashboard', () => {
+    beforeEach(() => {
+      fetchMock.mock(
+        'begin:https://bugzilla.mozilla.org/rest/bug',
+        testData.bugzillaIssueCounts,
+      );
+    });
+
+    afterEach(() => {
+      fetchMock.restore();
+    });
+
+    it('should return bugzilla issue count data', async () => {
+      const req = new MockExpressRequest({
+        method: 'GET',
+        url: '/api/bugzilla-issue-counts/',
+      });
+      const res = new MockExpressResponse();
+      await getBugzillaIssueCounts(req, res);
+      expect(res._getJSON()).toEqual(testData.bugzillaIssueCountsLocal);
     });
   });
 });

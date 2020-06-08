@@ -1,7 +1,9 @@
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { goodFirstBugs } from './fixtures/goodFirstBugs';
-import { issueCounts } from './fixtures/issueCounts';
+import { githubIssueCounts } from './fixtures/githubIssueCounts';
+import { bugzillaIssueCounts } from './fixtures/bugzillaIssueCounts';
+import { bugzillaIssueCountsLocal } from './fixtures/bugzillaIssueCountsLocal';
 import { maybeGoodFirstBugs } from './fixtures/maybeGoodFirstBugs';
 import { milestoneIssues } from './fixtures/milestoneIssues';
 import { projects } from './fixtures/projects';
@@ -18,9 +20,11 @@ global.requestAnimationFrame = function (callback) {
 global.scrollTo = function () {};
 
 global.testData = {
+  bugzillaIssueCounts,
+  bugzillaIssueCountsLocal,
   contribWelcome,
   goodFirstBugs,
-  issueCounts,
+  githubIssueCounts,
   maybeGoodFirstBugs,
   milestoneIssues,
   projects,
