@@ -1,3 +1,3 @@
 export const bugzillaIssueCounts = {
-  bug_count: 20
+  bug_count: 20,
 };
