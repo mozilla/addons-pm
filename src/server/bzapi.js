@@ -8,12 +8,10 @@ const baseAPIURL = 'https://bugzilla.mozilla.org/rest/bug';
 const baseWEBURL = 'https://bugzilla.mozilla.org/buglist.cgi';
 const priorities = ['--', 'P1', 'P2', 'P3', 'P4', 'P5'];
 const severities = ['normal', '--', 'N/A', 'S1', 'S2', 'S3', 'S4'];
-const products = ['Toolkit', 'WebExtensions'];
+const products = ['Toolkit', 'WebExtensions', 'Firefox'];
 
 const defaultParams = {
-  // The string for include_fields can be anything.
-  // This is just to ensure it's not actually pulling any data since we only need a count.
-  include_fields: 'whatever',
+  count_only: true,
   resolution: '---',
   bug_status: ['UNCONFIRMED', 'NEW', 'ASSIGNED', 'REOPENED'],
   limit: 0,
@@ -24,28 +22,30 @@ function fetchIssueCount({ priority, product, bug_severity } = {}) {
   if (params.bug_priority && params.bug_severity) {
     throw new Error('Query only severity or priority independently');
   }
+
   if (bug_severity) {
     delete params.priority;
   }
   if (priority) {
     delete params.bug_severity;
   }
-  // console.log(JSON.stringify(params, null, 2));
+  // console.log(JSON.stringify(params));
 
   if (product === 'Toolkit') {
     params.component = 'Add-ons Manager';
+  } else if (product === 'Firefox') {
+    params.component = 'Extension Compatibility';
   }
   const apiURL = `${baseAPIURL}?${queryString.stringify(params)}`;
   const webParams = { ...params };
-  delete webParams.include_fields;
+  delete webParams.count_only;
   const webURL = `${baseWEBURL}?${queryString.stringify(webParams)}`;
-  // console.log(url);
   return fetch(apiURL, {
     headers: { 'Content-Type': 'application/json' },
   })
     .then((res) => res.json())
     .then((json) => {
-      return { count: json.bugs.length, url: webURL };
+      return { count: json.bug_count, url: webURL };
     });
 }
 
@@ -61,6 +61,7 @@ function getBugzillaIssueCounts() {
         fetchIssueCount({
           product,
           priority,
+          bug_severity: null,
         }).then((result) => {
           let priorityLabel;
           switch (priority) {
@@ -80,6 +81,7 @@ function getBugzillaIssueCounts() {
         fetchIssueCount({
           product,
           bug_severity,
+          priority: null,
         }).then((result) => {
           let severityLabel;
           switch (bug_severity) {
