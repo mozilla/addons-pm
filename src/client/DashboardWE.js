@@ -36,6 +36,10 @@ class DashboardWE extends Component {
       title: 'Web Extensions Component',
       description: 'Browser APIs for Webextensions',
     },
+    Firefox: {
+      title: 'Web Extensions Compatibility',
+      description: 'Compat bugs Webextensions',
+    },
   };
 
   renderChild({ data, dataKey, component, title, warningLimit }) {

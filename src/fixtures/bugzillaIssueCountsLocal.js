@@ -143,4 +143,77 @@ export const bugzillaIssueCountsLocal = {
         'https://bugzilla.mozilla.org/buglist.cgi?bug_severity=normal&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&limit=0&product=WebExtensions&resolution=---',
     },
   },
+
+  Firefox: {
+    'priority-default': {
+      count: 20,
+      url:
+        'https://bugzilla.mozilla.org/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Extension%20Compatibility&limit=0&priority=--&product=Firefox&resolution=---',
+    },
+    'priority-p1': {
+      count: 20,
+      url:
+        'https://bugzilla.mozilla.org/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Extension%20Compatibility&limit=0&priority=P1&product=Firefox&resolution=---',
+    },
+    'priority-p2': {
+      count: 20,
+      url:
+        'https://bugzilla.mozilla.org/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Extension%20Compatibility&limit=0&priority=P2&product=Firefox&resolution=---',
+    },
+    'priority-p3': {
+      count: 20,
+      url:
+        'https://bugzilla.mozilla.org/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Extension%20Compatibility&limit=0&priority=P3&product=Firefox&resolution=---',
+    },
+    'priority-p4': {
+      count: 20,
+      url:
+        'https://bugzilla.mozilla.org/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Extension%20Compatibility&limit=0&priority=P4&product=Firefox&resolution=---',
+    },
+    'priority-p5': {
+      count: 20,
+      url:
+        'https://bugzilla.mozilla.org/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Extension%20Compatibility&limit=0&priority=P5&product=Firefox&resolution=---',
+    },
+    'severity-default': {
+      count: 20,
+      url:
+        'https://bugzilla.mozilla.org/buglist.cgi?bug_severity=--&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Extension%20Compatibility&limit=0&product=Firefox&resolution=---',
+    },
+    'severity-normal': {
+      count: 20,
+      url:
+        'https://bugzilla.mozilla.org/buglist.cgi?bug_severity=normal&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Extension%20Compatibility&limit=0&product=Firefox&resolution=---',
+    },
+    'severity-not-applicable': {
+      count: 20,
+      url:
+        'https://bugzilla.mozilla.org/buglist.cgi?bug_severity=N%2FA&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Extension%20Compatibility&limit=0&product=Firefox&resolution=---',
+    },
+    'severity-s1': {
+      count: 20,
+      url:
+        'https://bugzilla.mozilla.org/buglist.cgi?bug_severity=S1&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Extension%20Compatibility&limit=0&product=Firefox&resolution=---',
+    },
+    'severity-s2': {
+      count: 20,
+      url:
+        'https://bugzilla.mozilla.org/buglist.cgi?bug_severity=S2&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Extension%20Compatibility&limit=0&product=Firefox&resolution=---',
+    },
+    'severity-s3': {
+      count: 20,
+      url:
+        'https://bugzilla.mozilla.org/buglist.cgi?bug_severity=S3&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Extension%20Compatibility&limit=0&product=Firefox&resolution=---',
+    },
+    'severity-s4': {
+      count: 20,
+      url:
+        'https://bugzilla.mozilla.org/buglist.cgi?bug_severity=S4&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Extension%20Compatibility&limit=0&product=Firefox&resolution=---',
+    },
+    total: {
+      count: 20,
+      url:
+        'https://bugzilla.mozilla.org/buglist.cgi?bug_severity&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Extension%20Compatibility&limit=0&priority&product=Firefox&resolution=---',
+    },
+  },
 };
