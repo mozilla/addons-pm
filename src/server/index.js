@@ -55,6 +55,11 @@ const getBugzillaIssueCounts = async (req, res) => {
   res.json(issueCounts);
 };
 
+const getBugzillaNeedInfos = async (req, res) => {
+  const needInfos = await bzapi.getBugzillaNeedInfos();
+  res.json(needInfos);
+};
+
 const getGoodFirstBugs = async (req, res) => {
   const goodFirstBugs = await ghapi.getGoodFirstBugs();
   res.json(goodFirstBugs);
@@ -84,6 +89,7 @@ app.get('/api/projects/', handleErrors(getProjects));
 app.get('/api/team/', handleErrors(getTeam));
 app.get('/api/github-issue-counts/', handleErrors(getGithubIssueCounts));
 app.get('/api/bugzilla-issue-counts/', handleErrors(getBugzillaIssueCounts));
+app.get('/api/bugzilla-need-infos/', handleErrors(getBugzillaNeedInfos));
 app.get('/api/good-first-bugs/', handleErrors(getGoodFirstBugs));
 app.get('/api/maybe-good-first-bugs/', handleErrors(getMaybeGoodFirstBugs));
 app.get('/api/milestone-issues/', handleErrors(getMilestoneIssues));
@@ -113,6 +119,7 @@ module.exports = {
   getTeam,
   getGithubIssueCounts,
   getBugzillaIssueCounts,
+  getBugzillaNeedInfos,
   getMilestoneIssues,
   handleErrors,
   startServer,

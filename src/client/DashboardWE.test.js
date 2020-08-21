@@ -17,6 +17,10 @@ describe('Webext Dashboard', () => {
       /\/api\/bugzilla-issue-counts\//,
       testData.bugzillaIssueCountsLocal,
     );
+    fetchMock.mock(
+      /\/api\/bugzilla-need-infos\//,
+      testData.bugzillaNeedsInfoLocal,
+    );
   });
 
   afterEach(() => {
@@ -33,8 +37,9 @@ describe('Webext Dashboard', () => {
     const instance = wrapper.find('DashboardWE').instance();
     await instance.componentDidMount();
     wrapper.update();
-    const issueData = instance.state.issueCounts;
-    const expectedNumberOfDashGroups = Object.keys(issueData).length;
-    expect(wrapper.find('.card-grp')).toHaveLength(expectedNumberOfDashGroups);
+    // All the dashgroups.
+    expect(wrapper.find('.card-grp')).toHaveLength(4);
+    // The needinfo group.
+    expect(wrapper.find('.card-grp.needinfos')).toHaveLength(1);
   });
 });

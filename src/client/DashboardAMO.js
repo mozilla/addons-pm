@@ -53,7 +53,9 @@ class DashboardAMO extends Component {
         <Container as="main">
           <div className="dash-container">
             {issueCounts.data === null ? (
-              <p>Loading...</p>
+              <div className="loading">
+                <p>Loading...</p>
+              </div>
             ) : (
               this.renderCounts()
             )}

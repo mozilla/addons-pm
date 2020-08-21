@@ -3,7 +3,10 @@ import { Card } from 'react-bootstrap';
 
 export default function DashCountGroup(props) {
   return (
-    <div className="card-grp" key={props.key}>
+    <div
+      className={props.className ? `card-grp ${props.className}` : 'card-grp'}
+      key={props.key}
+    >
       <Card bg="dark" text="white" className="repo-card">
         <Card.Header>{props.title}</Card.Header>
         <Card.Body>

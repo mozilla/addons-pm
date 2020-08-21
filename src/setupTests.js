@@ -4,6 +4,7 @@ import { goodFirstBugs } from './fixtures/goodFirstBugs';
 import { githubIssueCounts } from './fixtures/githubIssueCounts';
 import { bugzillaIssueCounts } from './fixtures/bugzillaIssueCounts';
 import { bugzillaIssueCountsLocal } from './fixtures/bugzillaIssueCountsLocal';
+import { bugzillaNeedsInfoLocal } from './fixtures/bugzillaNeedsInfoLocal';
 import { maybeGoodFirstBugs } from './fixtures/maybeGoodFirstBugs';
 import { milestoneIssues } from './fixtures/milestoneIssues';
 import { projects } from './fixtures/projects';
@@ -22,6 +23,7 @@ global.scrollTo = function () {};
 global.testData = {
   bugzillaIssueCounts,
   bugzillaIssueCountsLocal,
+  bugzillaNeedsInfoLocal,
   contribWelcome,
   goodFirstBugs,
   githubIssueCounts,

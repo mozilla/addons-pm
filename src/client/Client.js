@@ -73,6 +73,16 @@ async function getBugzillaIssueCounts() {
   return parseJSON(response);
 }
 
+async function getBugzillaNeedInfos() {
+  const response = await fetch(`${API_ROOT}/bugzilla-need-infos/`, {
+    headers: new Headers({
+      'Content-Type': 'application/json',
+    }),
+  });
+  checkStatus(response);
+  return parseJSON(response);
+}
+
 async function getGoodFirstBugs() {
   const response = await fetch(`${API_ROOT}/good-first-bugs/`, {
     headers: new Headers({
@@ -123,6 +133,7 @@ const Client = {
   getTeam,
   getGithubIssueCounts,
   getBugzillaIssueCounts,
+  getBugzillaNeedInfos,
   getContribWelcome,
   getGoodFirstBugs,
   getMaybeGoodFirstBugs,
