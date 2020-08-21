@@ -11,33 +11,41 @@ import './DashboardWE.scss';
 
 class DashboardWE extends Component {
   state = {
-    issueCounts: {
-      data: null,
-    },
+    issueCounts: null,
+    needInfos: null,
   };
 
   async getIssueCounts() {
     return await Client.getBugzillaIssueCounts();
   }
 
+  async getNeedInfos() {
+    return await Client.getBugzillaNeedInfos();
+  }
+
   async componentDidMount() {
-    const issueCounts = await this.getIssueCounts();
+    const [issueCounts, needInfos] = await Promise.all([
+      this.getIssueCounts(),
+      this.getNeedInfos(),
+    ]);
+
     this.setState({
-      issueCounts: issueCounts,
+      issueCounts,
+      needInfos,
     });
   }
 
   meta = {
     Toolkit: {
+      title: 'Addons Manager Bugs',
       description: 'Addons Manager related code',
-      title: 'Addons Manager',
     },
     WebExtensions: {
-      title: 'Web Extensions Component',
+      title: 'Web Extensions Bugs',
       description: 'Browser APIs for Webextensions',
     },
     Firefox: {
-      title: 'Web Extensions Compatibility',
+      title: 'Web Extensions Compat Bugs',
       description: 'Compat bugs Webextensions',
     },
   };
@@ -126,23 +134,51 @@ class DashboardWE extends Component {
   renderCounts() {
     const countGroups = [];
     Object.keys(this.state.issueCounts).forEach((component, index) => {
-      countGroups.push(
-        DashCountGroup({
-          key: index + this.meta[component].title,
-          children: this.renderChildren(
-            component,
-            this.state.issueCounts[component],
-          ),
-          title: this.meta[component].title,
-          description: this.meta[component].description,
-        }),
-      );
+      if (this.meta.hasOwnProperty(component)) {
+        countGroups.push(
+          DashCountGroup({
+            key: index + this.meta[component].title,
+            children: this.renderChildren(
+              component,
+              this.state.issueCounts[component],
+            ),
+            title: this.meta[component].title,
+            description: this.meta[component].description,
+          }),
+        );
+      } else {
+        console.log(`countGroup "${component}: added without meta`);
+      }
     });
     return countGroups;
   }
 
+  renderNeedInfos() {
+    const children = [];
+    const data = this.state.needInfos;
+    Object.keys(this.state.needInfos).forEach((nick, index) => {
+      children.push(
+        this.renderChild({
+          data,
+          dataKey: nick,
+          component: nick,
+          title: nick,
+          warningLimit: 5,
+        }),
+      );
+    });
+
+    return DashCountGroup({
+      className: 'needinfos',
+      key: 'needinfos',
+      children,
+      title: 'Need Infos',
+      description: 'Count of need info requests',
+    });
+  }
+
   render() {
-    const issueCounts = this.state.issueCounts;
+    const { issueCounts, needInfos } = this.state;
 
     return (
       <div className="dashboard">
@@ -152,10 +188,10 @@ class DashboardWE extends Component {
         </Helmet>
         <Container as="main">
           <div className="dash-container">
-            {issueCounts.data === null ? (
-              <p>Loading...</p>
+            {issueCounts === null || needInfos === null ? (
+              <div className="loading">Loading...</div>
             ) : (
-              this.renderCounts()
+              [this.renderNeedInfos(), ...this.renderCounts()]
             )}
           </div>
         </Container>
