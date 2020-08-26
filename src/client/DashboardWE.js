@@ -1,55 +1,61 @@
-import React, { Component } from 'react';
+/* eslint-disable react-hooks/rules-of-hooks */
+
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Container } from 'react-bootstrap';
+import useSWR from 'swr';
 
+import { API_ROOT } from '../const';
 import Client from './Client';
 import DashCount from './components/DashCount';
 import DashCountGroup from './components/DashCountGroup';
 
 import './Dashboard.scss';
 
-class DashboardWE extends Component {
-  state = {
-    issueCounts: null,
-    needInfos: null,
-  };
 
-  async getIssueCounts() {
-    return await Client.getBugzillaIssueCounts();
+const meta = {
+  Toolkit: {
+    title: 'Addons Manager Bugs',
+    description: 'Addons Manager related code',
+  },
+  WebExtensions: {
+    title: 'Web Extensions Bugs',
+    description: 'Browser APIs for Webextensions',
+  },
+  Firefox: {
+    title: 'Web Extensions Compat Bugs',
+    description: 'Compat bugs Webextensions',
+  },
+};
+
+
+function DashboardWE() {
+  function getIssueCounts() {
+    const { data, error } = useSWR(`${API_ROOT}/bugzilla-issues-counts/`, async () => {
+      return await Client.getBugzillaIssueCounts();
+    }, { refreshInterval: 30000 });
+    return {
+      data,
+      isLoading: !error && !data,
+      isError: error
+    };
   }
 
-  async getNeedInfos() {
-    return await Client.getBugzillaNeedInfos();
-  }
-
-  async componentDidMount() {
-    const [issueCounts, needInfos] = await Promise.all([
-      this.getIssueCounts(),
-      this.getNeedInfos(),
-    ]);
-
-    this.setState({
-      issueCounts,
-      needInfos,
+  function getNeedInfos() {
+    const { data, error } = useSWR(`${API_ROOT}/bugzilla-need-infos/`, async () => {
+      return await Client.getBugzillaNeedInfos();
     });
+    return {
+      data,
+      isLoading: !error && !data,
+      isError: error
+    };
   }
 
-  meta = {
-    Toolkit: {
-      title: 'Addons Manager Bugs',
-      description: 'Addons Manager related code',
-    },
-    WebExtensions: {
-      title: 'Web Extensions Bugs',
-      description: 'Browser APIs for Webextensions',
-    },
-    Firefox: {
-      title: 'Web Extensions Compat Bugs',
-      description: 'Compat bugs Webextensions',
-    },
-  };
+  const needInfos = getNeedInfos();
+  const issueCounts = getIssueCounts();
 
-  renderChild({ data, dataKey, component, title, warningLimit }) {
+  function renderChild({ data, dataKey, component, title, warningLimit }) {
     const { count, url } = data[dataKey];
     return (
       <DashCount
@@ -62,10 +68,10 @@ class DashboardWE extends Component {
     );
   }
 
-  renderChildren(component, data) {
+  function renderChildren(component, data) {
     const nodes = [];
     nodes.push(
-      this.renderChild({
+      renderChild({
         data,
         dataKey: 'total',
         title: 'total open',
@@ -74,7 +80,7 @@ class DashboardWE extends Component {
       }),
     );
     nodes.push(
-      this.renderChild({
+      renderChild({
         data,
         dataKey: 'severity-default',
         title: 'Untriaged',
@@ -83,7 +89,7 @@ class DashboardWE extends Component {
       }),
     );
     nodes.push(
-      this.renderChild({
+      renderChild({
         data,
         dataKey: 'severity-s1',
         title: 'S1',
@@ -92,7 +98,7 @@ class DashboardWE extends Component {
       }),
     );
     nodes.push(
-      this.renderChild({
+      renderChild({
         data,
         dataKey: 'severity-s2',
         title: 'S2',
@@ -101,7 +107,7 @@ class DashboardWE extends Component {
       }),
     );
     nodes.push(
-      this.renderChild({
+      renderChild({
         data,
         dataKey: 'priority-p1',
         title: 'P1',
@@ -110,7 +116,7 @@ class DashboardWE extends Component {
       }),
     );
     nodes.push(
-      this.renderChild({
+      renderChild({
         data,
         dataKey: 'priority-p2',
         title: 'P2',
@@ -119,7 +125,7 @@ class DashboardWE extends Component {
       }),
     );
     nodes.push(
-      this.renderChild({
+      renderChild({
         data,
         dataKey: 'priority-p3',
         title: 'P3',
@@ -130,19 +136,22 @@ class DashboardWE extends Component {
     return nodes;
   }
 
-  renderCounts() {
+  function renderCounts() {
+    if (!issueCounts.data) {
+      return null;
+    }
     const countGroups = [];
-    Object.keys(this.state.issueCounts).forEach((component, index) => {
-      if (this.meta.hasOwnProperty(component)) {
+    Object.keys(issueCounts.data).forEach((component, index) => {
+      if (meta.hasOwnProperty(component)) {
         countGroups.push(
           DashCountGroup({
-            key: index + this.meta[component].title,
-            children: this.renderChildren(
+            key: index + meta[component].title,
+            children: renderChildren(
               component,
-              this.state.issueCounts[component],
+              issueCounts.data[component],
             ),
-            title: this.meta[component].title,
-            description: this.meta[component].description,
+            title: meta[component].title,
+            description: meta[component].description,
           }),
         );
       } else {
@@ -152,13 +161,12 @@ class DashboardWE extends Component {
     return countGroups;
   }
 
-  renderNeedInfos() {
+  function renderNeedInfos() {
     const children = [];
-    const data = this.state.needInfos;
-    Object.keys(this.state.needInfos).forEach((nick, index) => {
+    Object.keys(needInfos.data).forEach((nick, index) => {
       children.push(
-        this.renderChild({
-          data,
+        renderChild({
+          data: needInfos.data,
           dataKey: nick,
           component: nick,
           title: nick,
@@ -176,27 +184,28 @@ class DashboardWE extends Component {
     });
   }
 
-  render() {
-    const { issueCounts, needInfos } = this.state;
-
-    return (
-      <div className="dashboard">
-        <Helmet>
-          <body className="dash" />
-          <title>Webextension Dashboard</title>
-        </Helmet>
-        <Container as="main">
-          <div className="dash-container">
-            {issueCounts === null || needInfos === null ? (
-              <div className="loading">Loading...</div>
-            ) : (
-              [this.renderNeedInfos(), ...this.renderCounts()]
-            )}
-          </div>
-        </Container>
-      </div>
-    );
+  let isLoading = false;
+  if (needInfos.isLoading || issueCounts.isLoading) {
+    isLoading = true;
   }
+
+  return (
+    <div className="dashboard">
+      <Helmet>
+        <body className="dash" />
+        <title>Webextension Dashboard</title>
+      </Helmet>
+      <Container as="main">
+        <div className="dash-container">
+          {isLoading ? (
+            <div className="loading">Loading...</div>
+          ) : (
+            [renderNeedInfos(), ...renderCounts()]
+          )}
+        </div>
+      </Container>
+    </div>
+  );
 }
 
 export default DashboardWE;
