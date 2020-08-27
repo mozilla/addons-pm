@@ -35,7 +35,8 @@ describe('serverSWR', () => {
     fakeCache.get
       .mockReturnValueOnce({
         response: { test: 'foo-data' },
-        timestamp: new Date().getTime() - 10000000,
+        // Older than 5 minutes in the past in milliseconds.
+        timestamp: new Date().getTime() - (5 * 60 * 1000 + 5),
       })
       .mockReturnValueOnce({
         response: { test: 'new-foo-data' },
