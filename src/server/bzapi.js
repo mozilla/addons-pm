@@ -1,7 +1,7 @@
 // Magically require any env variables defined in a local .env file.
 require('dotenv').config();
 // Polyfill fetch.
-require('isomorphic-fetch');
+const serverSWR = require('./serverSWR');
 const queryString = require('query-string');
 
 const baseAPIURL = 'https://bugzilla.mozilla.org/rest/bug';
@@ -43,13 +43,13 @@ function fetchIssueCount({ priority, product, bug_severity } = {}) {
   const webParams = { ...params };
   delete webParams.count_only;
   const webURL = `${baseWEBURL}?${queryString.stringify(webParams)}`;
-  return fetch(apiURL, {
-    headers: { 'Content-Type': 'application/json' },
-  })
-    .then((res) => res.json())
-    .then((json) => {
-      return { count: json.bug_count, url: webURL };
+  return serverSWR(apiURL, async () => {
+    const res = await fetch(apiURL, {
+      headers: { 'Content-Type': 'application/json' },
     });
+    const json = await res.json();
+    return { count: json.bug_count, url: webURL };
+  });
 }
 
 function getBugzillaIssueCounts() {
@@ -125,9 +125,12 @@ function fetchNeedInfo(email, nick) {
     // Limit UX need-infos to web-ext components and products.
     apiURL = `${apiURL}${webExtOnlyQualifier}`;
   }
-  return fetch(apiURL, {
-    headers: { 'Content-Type': 'application/json' },
-  }).then((res) => res.json());
+  return serverSWR(apiURL, async () => {
+    const result = await fetch(apiURL, {
+      headers: { 'Content-Type': 'application/json' },
+    });
+    return result.json();
+  });
 }
 
 function getBugzillaNeedInfos() {
