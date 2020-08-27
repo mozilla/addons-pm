@@ -12,7 +12,6 @@ import DashCountGroup from './components/DashCountGroup';
 
 import './Dashboard.scss';
 
-
 const meta = {
   Toolkit: {
     title: 'Addons Manager Bugs',
@@ -28,27 +27,33 @@ const meta = {
   },
 };
 
-
 function DashboardWE() {
   function getIssueCounts() {
-    const { data, error } = useSWR(`${API_ROOT}/bugzilla-issues-counts/`, async () => {
-      return await Client.getBugzillaIssueCounts();
-    }, { refreshInterval: 30000 });
+    const { data, error } = useSWR(
+      `${API_ROOT}/bugzilla-issues-counts/`,
+      async () => {
+        return await Client.getBugzillaIssueCounts();
+      },
+      { refreshInterval: 30000 },
+    );
     return {
       data,
       isLoading: !error && !data,
-      isError: error
+      isError: error,
     };
   }
 
   function getNeedInfos() {
-    const { data, error } = useSWR(`${API_ROOT}/bugzilla-need-infos/`, async () => {
-      return await Client.getBugzillaNeedInfos();
-    });
+    const { data, error } = useSWR(
+      `${API_ROOT}/bugzilla-need-infos/`,
+      async () => {
+        return await Client.getBugzillaNeedInfos();
+      },
+    );
     return {
       data,
       isLoading: !error && !data,
-      isError: error
+      isError: error,
     };
   }
 
@@ -146,10 +151,7 @@ function DashboardWE() {
         countGroups.push(
           DashCountGroup({
             key: index + meta[component].title,
-            children: renderChildren(
-              component,
-              issueCounts.data[component],
-            ),
+            children: renderChildren(component, issueCounts.data[component]),
             title: meta[component].title,
             description: meta[component].description,
           }),

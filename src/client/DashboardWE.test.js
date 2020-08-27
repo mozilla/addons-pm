@@ -1,7 +1,7 @@
 /* global testData */
 
 import React from 'react';
-import { render } from '@testing-library/react'
+import { render } from '@testing-library/react';
 import fetchMock from 'fetch-mock';
 
 import DashboardWE from './DashboardWE';
@@ -27,15 +27,15 @@ describe('Webext Dashboard', () => {
   });
 
   it('should render the webextension dashboard groups', async () => {
-    const { findAllByText } = render(
-      <DashboardWE location={fakeLocation} />
-    );
+    const { findAllByText } = render(<DashboardWE location={fakeLocation} />);
 
     // All the dashgroups.
-    const cardGroups = await findAllByText(/.*?/, { selector: '.card-grp' })
+    const cardGroups = await findAllByText(/.*?/, { selector: '.card-grp' });
     expect(cardGroups).toHaveLength(4);
     // The needinfo group.
-    const needInfos = await findAllByText(/.*?/, {selector: '.card-grp.needinfos' });
+    const needInfos = await findAllByText(/.*?/, {
+      selector: '.card-grp.needinfos',
+    });
     expect(needInfos).toHaveLength(1);
   });
 });

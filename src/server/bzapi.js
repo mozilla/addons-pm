@@ -128,7 +128,7 @@ function fetchNeedInfo(email, nick) {
   return serverSWR(apiURL, async () => {
     const result = await fetch(apiURL, {
       headers: { 'Content-Type': 'application/json' },
-    })
+    });
     return result.json();
   });
 }

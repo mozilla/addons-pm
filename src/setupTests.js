@@ -32,3 +32,6 @@ global.testData = {
   projects,
   team,
 };
+
+// Turn off console for tests.
+jest.spyOn(global.console, 'log').mockImplementation(() => jest.fn());

@@ -16,21 +16,29 @@ const TIME_TO_STALE_DEFAULT = 5 * 60 * 1000;
 // Default: 10 Secs
 const STALE_MARGIN_DEFAULT = 10 * 1000;
 
-const serverSWR = async (key, fetcher, { timeToStale=TIME_TO_STALE_DEFAULT, staleMargin=STALE_MARGIN_DEFAULT, swrCache=cache } = {}) => {
+const serverSWR = async (
+  key,
+  fetcher,
+  {
+    timeToStale = TIME_TO_STALE_DEFAULT,
+    staleMargin = STALE_MARGIN_DEFAULT,
+    swrCache = cache,
+  } = {},
+) => {
   async function fetchAndCache() {
     const result = await fetcher();
     const cacheObject = {
       timestamp: new Date().getTime(),
       response: result,
-    }
+    };
     swrCache.set(key, cacheObject);
     return result;
   }
 
-  if (cache.has(key)) {
+  if (swrCache.has(key)) {
     const cachedData = swrCache.get(key);
     const currentTime = new Date().getTime();
-    if (currentTime > (cachedData.timestamp + timeToStale)) {
+    if (currentTime > cachedData.timestamp + timeToStale) {
       cachedData.timestamp = new Date().getTime() + staleMargin;
       cachedData.response.stale = true;
       // Re-insert the cache entry to update the timestamp.
@@ -43,7 +51,6 @@ const serverSWR = async (key, fetcher, { timeToStale=TIME_TO_STALE_DEFAULT, stal
   } else {
     return fetchAndCache();
   }
-}
-
+};
 
 module.exports = serverSWR;
