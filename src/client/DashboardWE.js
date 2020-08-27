@@ -7,7 +7,6 @@ import DashCount from './components/DashCount';
 import DashCountGroup from './components/DashCountGroup';
 
 import './Dashboard.scss';
-import './DashboardWE.scss';
 
 class DashboardWE extends Component {
   state = {
