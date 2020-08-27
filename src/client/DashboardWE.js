@@ -49,6 +49,7 @@ function DashboardWE() {
       async () => {
         return await Client.getBugzillaNeedInfos();
       },
+      { refreshInterval: 30000 },
     );
     return {
       data,
