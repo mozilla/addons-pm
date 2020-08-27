@@ -1,11 +1,10 @@
 /* global testData */
 
 import React from 'react';
-import DashboardWE from './DashboardWE';
-import { mount } from 'enzyme';
-
+import { render } from '@testing-library/react'
 import fetchMock from 'fetch-mock';
-import { MemoryRouter } from 'react-router-dom';
+
+import DashboardWE from './DashboardWE';
 
 const fakeLocation = {
   pathname: '/dashboards/webext/',
@@ -27,19 +26,16 @@ describe('Webext Dashboard', () => {
     fetchMock.restore();
   });
 
-  it('should render some projects', async () => {
-    const wrapper = mount(
-      <MemoryRouter>
-        <DashboardWE location={fakeLocation} />
-      </MemoryRouter>,
-      { disableLifecycleMethods: true },
+  it('should render the webextension dashboard groups', async () => {
+    const { findAllByText } = render(
+      <DashboardWE location={fakeLocation} />
     );
-    const instance = wrapper.find('DashboardWE').instance();
-    await instance.componentDidMount();
-    wrapper.update();
+
     // All the dashgroups.
-    expect(wrapper.find('.card-grp')).toHaveLength(4);
+    const cardGroups = await findAllByText(/.*?/, { selector: '.card-grp' })
+    expect(cardGroups).toHaveLength(4);
     // The needinfo group.
-    expect(wrapper.find('.card-grp.needinfos')).toHaveLength(1);
+    const needInfos = await findAllByText(/.*?/, {selector: '.card-grp.needinfos' });
+    expect(needInfos).toHaveLength(1);
   });
 });

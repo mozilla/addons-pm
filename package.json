@@ -33,7 +33,7 @@
   "scripts": {
     "start-server": "node src/server/index.js",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "test-coverage": "npm run test -- --watchAll=false --coverage --collectCoverageFrom=src/client/**/*js --collectCoverageFrom=src/server/**/*js",
     "test-ci": "npm run test-coverage && codecov",
     "eject": "react-scripts eject",
@@ -47,10 +47,12 @@
     "start": "yarn stmux [ 'yarn test' .. [ 'BROWSER=none yarn react-scripts start' : 'yarn start-server' ]]"
   },
   "devDependencies": {
+    "@testing-library/react": "^10.4.9",
     "codecov": "3.7.2",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.3",
     "fetch-mock": "9.10.7",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "jest-enzyme": "7.1.2",
     "mock-express-request": "0.2.2",
     "mock-express-response": "0.2.2",
