@@ -4,7 +4,9 @@ exports.CONTRIB_REPOS = [
   'mozilla/addons-server',
   'mozilla/addons-frontend',
   'mozilla/addons-linter',
+  'mozilla/dispensary',
   'mozilla/extension-workshop',
+  'mozilla/sign-addon',
   'mozilla/web-ext',
   'mozilla/webextension-polyfill',
 ];
