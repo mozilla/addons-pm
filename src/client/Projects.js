@@ -223,8 +223,8 @@ class Projects extends Component {
 
         // console.log(project.name, { todoCount, inProgressCount, doneCount, totalCount });
 
-        const donePerc = (100 / totalCount) * doneCount;
-        const inProgressPerc = (100 / totalCount) * inProgressCount;
+        const donePerc = totalCount ? (100 / totalCount) * doneCount : 0;
+        const inProgressPerc = totalCount ? (100 / totalCount) * inProgressCount : 0;
         project.meta = {
           ...meta,
           todoCount,
