@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "11.0.4",
-    "codecov": "3.7.2",
+    "codecov": "3.8.0",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.5",
     "fetch-mock": "9.10.7",
