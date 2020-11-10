@@ -47,7 +47,7 @@
     "start": "yarn stmux [ 'yarn test' .. [ 'BROWSER=none yarn react-scripts start' : 'yarn start-server' ]]"
   },
   "devDependencies": {
-    "@testing-library/react": "11.1.0",
+    "@testing-library/react": "11.1.1",
     "codecov": "3.8.1",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.5",
