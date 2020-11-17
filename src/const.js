@@ -1,4 +1,4 @@
-const validYears = ['2017', '2018', '2019', '2020'];
+const validYears = ['2017', '2018', '2019', '2020', '2021'];
 
 module.exports = {
   validYears: validYears,
