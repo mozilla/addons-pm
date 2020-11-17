@@ -9,4 +9,6 @@ exports.CONTRIB_REPOS = [
   'mozilla/sign-addon',
   'mozilla/web-ext',
   'mozilla/webextension-polyfill',
+  'mozilla/webextension-polyfill',
+  'mozilla/FirefoxColor',
 ];
