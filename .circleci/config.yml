@@ -1,0 +1,43 @@
+version: 2.1
+
+references:
+  defaults: &defaults
+    working_directory: ~/addons-pm
+    docker:
+      - image: circleci/node:12
+
+  restore_build_cache: &restore_build_cache
+    restore_cache:
+      keys:
+        - yarn-packages-{{ checksum "yarn.lock" }}
+
+  run_yarn_install: &run_yarn_install
+    run:
+      name: Install Dependencies
+      command: yarn install --immutable
+
+  save_build_cache: &save_build_cache
+    save_cache:
+      key: yarn-packages-{{ checksum "yarn.lock" }}
+      paths:
+        - ~/.cache/yarn
+
+jobs:
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore_build_cache
+      - *run_yarn_install
+      - *save_build_cache
+      - run: yarn run prettier-ci
+      - run: yarn run lint
+      - run: yarn run stylelint
+      - run: yarn run test-ci
+      - run: yarn run build
+
+workflows:
+  version: 2
+  default-workflow:
+    jobs:
+      - test
