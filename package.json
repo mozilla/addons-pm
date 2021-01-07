@@ -28,7 +28,7 @@
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.4",
     "react-timeago": "5.2.0",
-    "swr": "0.3.11"
+    "swr": "0.4.0"
   },
   "scripts": {
     "start-server": "node src/server/index.js",
