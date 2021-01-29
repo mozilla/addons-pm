@@ -7,7 +7,7 @@
 /config/
 /coverage/
 Procfile
-# white-list files we want to process
+# Allow files we want to process
 !*.js
 !*.md
 !*.scss
