@@ -1,26 +1,22 @@
 import useSWR from 'swr';
 import Contrib from 'components/Contrib';
 import { formatContribData } from 'lib/utils/contrib';
-import { API_ROOT } from 'lib/const';
+
+const maybeGoodFirstBugsURL = `${process.env.API_HOST}/api/gh-maybe-good-first-bugs/`;
 
 export async function getServerSideProps() {
-  const maybeGoodFirstBugsURL = `${API_ROOT}/gh-maybe-good-first-bugs/`;
   const maybeGoodFirstBugsResponse = await fetch(maybeGoodFirstBugsURL);
   const maybeGoodFirstBugsData = await maybeGoodFirstBugsResponse.json();
 
   return {
     props: {
       maybeGoodFirstBugsData,
-      maybeGoodFirstBugsURL,
     },
   };
 }
 
 const MaybeGoodFirstBugs = (props) => {
-  const {
-    maybeGoodFirstBugsData: initialMaybeGoodFirstBugsData,
-    maybeGoodFirstBugsURL,
-  } = props;
+  const { maybeGoodFirstBugsData: initialMaybeGoodFirstBugsData } = props;
   const { data: maybeGoodFirstBugsData } = useSWR(
     maybeGoodFirstBugsURL,
     async () => {

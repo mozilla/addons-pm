@@ -1,26 +1,22 @@
 import useSWR from 'swr';
 import Contrib from 'components/Contrib';
 import { formatContribData } from 'lib/utils/contrib';
-import { API_ROOT } from 'lib/const';
+
+const contribWelcomeURL = `${process.env.API_HOST}/api/gh-contrib-welcome/`;
 
 export async function getServerSideProps() {
-  const contribWelcomeURL = `${API_ROOT}/gh-contrib-welcome/`;
   const contribWelcomeResponse = await fetch(contribWelcomeURL);
   const contribWelcomeData = await contribWelcomeResponse.json();
 
   return {
     props: {
       contribWelcomeData,
-      contribWelcomeURL,
     },
   };
 }
 
 const ContribWelcome = (props) => {
-  const {
-    contribWelcomeData: initialContribWelcomeData,
-    contribWelcomeURL,
-  } = props;
+  const { contribWelcomeData: initialContribWelcomeData } = props;
   const { data: contribData } = useSWR(
     contribWelcomeURL,
     async () => {

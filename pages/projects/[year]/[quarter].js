@@ -89,15 +89,16 @@ export async function getServerSideProps(props) {
     throw new Error('Invalid params');
   }
 
-  const { API_HOST } = process.env;
-  const projectURL = `${API_HOST}/api/gh-projects/?${queryString.stringify({
+  const projectURL = `${
+    process.env.API_HOST
+  }/api/gh-projects/?${queryString.stringify({
     quarter,
     year,
   })}`;
 
   const [projectResponse, teamResponse] = await Promise.all([
     fetch(projectURL),
-    fetch(`${API_HOST}/api/gh-team/`),
+    fetch(`${process.env.API_HOST}/api/gh-team/`),
   ]);
 
   const projects = await projectResponse.json();

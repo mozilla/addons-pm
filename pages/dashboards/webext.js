@@ -2,7 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Container } from 'react-bootstrap';
 import useSWR from 'swr';
-import { API_ROOT } from 'lib/const';
 import DashCount from 'components/DashCount';
 import DashCountGroup from 'components/DashCountGroup';
 
@@ -21,8 +20,8 @@ const meta = {
   },
 };
 
-const issueCountURL = `${API_ROOT}/bz-issue-counts/`;
-const needInfoURL = `${API_ROOT}/bz-need-infos/`;
+const issueCountURL = `${process.env.API_HOST}/api/bz-issue-counts/`;
+const needInfoURL = `${process.env.API_HOST}/api/bz-need-infos/`;
 
 export async function getServerSideProps() {
   const [issueCountsResponse, needInfosResponse] = await Promise.all([

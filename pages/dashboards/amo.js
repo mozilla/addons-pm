@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import { Container } from 'react-bootstrap';
 import useSWR from 'swr';
 import AMODashCountGroup from 'components/AMODashCountGroup';
-import { API_ROOT } from 'lib/const';
 
 function renderCounts(issueCountData) {
   const countGroups = [];
@@ -20,7 +19,7 @@ function renderCounts(issueCountData) {
   return countGroups;
 }
 
-const githubIssueCountsURL = `${API_ROOT}/gh-issue-counts/`;
+const githubIssueCountsURL = `${process.env.API_HOST}/api/gh-issue-counts/`;
 
 export async function getServerSideProps() {
   const amoDashResponse = await fetch(githubIssueCountsURL);

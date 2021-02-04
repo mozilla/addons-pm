@@ -163,12 +163,11 @@ function renderRows({ data }) {
 
 export async function getServerSideProps(props) {
   const { milestone } = props.params;
-  const { API_HOST } = process.env;
-  const milestoneIssuesURL = `${API_HOST}/api/gh-milestone-issues/?${queryString.stringify(
-    {
-      milestone,
-    },
-  )}`;
+  const milestoneIssuesURL = `${
+    process.env.API_HOST
+  }/api/gh-milestone-issues/?${queryString.stringify({
+    milestone,
+  })}`;
 
   const milestoneIssueReponse = await fetch(milestoneIssuesURL);
   const milestoneIssueData = await milestoneIssueReponse.json();
