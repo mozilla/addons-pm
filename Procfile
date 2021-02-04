@@ -1,1 +1,1 @@
-web: bin/start-nginx-solo yarn start -p $PORT
+web: bin/start-nginx yarn start -p /tmp/nginx.socket && touch /tmp/app-initialized

@@ -26,7 +26,9 @@ http {
   # Must read the body in 5 seconds.
   client_body_timeout 5;
 
-  upstream node_api_server {
+  # proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=STATIC:10m inactive=7d use_temp_path=off;
+
+  upstream nextjs_upstream {
     server unix:/tmp/nginx.socket fail_timeout=0;
   }
 
@@ -37,45 +39,70 @@ http {
     port_in_redirect off;
 
     more_clear_headers 'X-Powered-By';
-    add_header X-Frame-Options DENY always;
-    add_header X-Content-Type-Options nosniff always;
-    add_header X-XSS-Protection "1; mode=block" always;
-    add_header Strict-Transport-Security max-age=31536000 always;
-    add_header Content-Security-Policy "
-     default-src 'none';
-     base-uri 'self';
-     form-action 'none';
-     object-src 'none';
-     connect-src 'self';
-     font-src 'self';
-     script-src 'self';
-     img-src 'self' https://*.githubusercontent.com/u/;
-     style-src 'self' 'unsafe-inline'" always;
 
-    if ($http_x_forwarded_proto != 'https') {
-      rewrite ^ https://$host$request_uri? permanent;
-    }
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
 
-    location / {
-      root build/;
-      try_files $uri /index.html =404;
-    }
+    location /_next/static {
+      # proxy_cache STATIC;
+      proxy_pass http://nextjs_upstream;
 
-    location /api/ {
-      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-      proxy_set_header Host $http_host;
+      # For testing cache - remove before deploying to production
+      # add_header X-Cache-Status $upstream_cache_status;
 
+      # CSP
       add_header X-Frame-Options DENY always;
       add_header X-Content-Type-Options nosniff always;
-      add_header X-XSS-Protection "1; mode=block" always;
       add_header Strict-Transport-Security max-age=31536000 always;
       add_header Content-Security-Policy "
        default-src 'none';
        base-uri 'none';
        form-action 'none';
        object-src 'none'" always;
+    }
 
-      proxy_pass http://node_api_server;
+    location /static {
+      # proxy_cache STATIC;
+      # proxy_ignore_headers Cache-Control;
+      # proxy_cache_valid 60m;
+      proxy_pass http://nextjs_upstream;
+
+      # For testing cache - remove before deploying to production
+      # add_header X-Cache-Status $upstream_cache_status;
+
+      # CSP
+      add_header X-Frame-Options DENY always;
+      add_header X-Content-Type-Options nosniff always;
+      add_header Strict-Transport-Security max-age=31536000 always;
+      add_header Content-Security-Policy "
+        default-src 'none';
+        base-uri 'none';
+        form-action 'none';
+        object-src 'none'" always;
+    }
+
+    location / {
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+
+      add_header X-Frame-Options DENY always;
+      add_header X-Content-Type-Options nosniff always;
+      add_header Strict-Transport-Security max-age=31536000 always;
+      add_header Content-Security-Policy "
+       default-src 'none';
+       base-uri 'self';
+       form-action 'none';
+       object-src 'none';
+       connect-src 'self';
+       font-src 'self';
+       script-src 'self';
+       img-src 'self' https://*.githubusercontent.com/u/;
+       style-src 'self' 'unsafe-inline'" always;
+
+      proxy_pass http://nextjs_upstream;
     }
   }
 }
