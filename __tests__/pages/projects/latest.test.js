@@ -1,4 +1,4 @@
-import Page, { getServerSideProps } from './latest';
+import Page, { getServerSideProps } from 'pages/projects/latest';
 
 describe('Projects Latest Redirect', () => {
   describe('Page', () => {

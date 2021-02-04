@@ -2,8 +2,7 @@
 import * as nextRouter from 'next/router';
 import React from 'react';
 import { cleanup, render, waitFor, screen } from '@testing-library/react';
-
-import ActiveLink from './ActiveLink';
+import ActiveLink from 'components/ActiveLink';
 
 describe('ActiveLink Component', () => {
   beforeEach(() => {

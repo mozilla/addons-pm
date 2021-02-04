@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-
-import YesNoBool from './YesNoBool';
+import YesNoBool from 'components/YesNoBool';
 
 describe('YesNoBool Component', () => {
   it('renders YES', async () => {

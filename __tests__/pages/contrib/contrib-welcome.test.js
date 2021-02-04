@@ -1,16 +1,15 @@
 import React from 'react';
 import fetchMock from 'fetch-mock';
 import * as nextRouter from 'next/router';
-import ghGoodFirstBugsData from 'fixtures/gh-good-first-bugs';
+import ghContribWelcomeData from 'fixtures/gh-contrib-welcome';
 import { cleanup, render } from '@testing-library/react';
+import ContribWelcome, { getServerSideProps } from 'pages/contrib/contrib-welcome';
 
-import GoodFirstBugs, { getServerSideProps } from './good-first-bugs';
-
-describe('Good First Bugs Page', () => {
+describe('Contrib Welcome Page', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     nextRouter.useRouter = jest.fn();
-    fetchMock.mock(/\/api\/gh-good-first-bugs\//, ghGoodFirstBugsData);
+    fetchMock.mock(/\/api\/gh-contrib-welcome\//, ghContribWelcomeData);
   });
 
   afterEach(() => {
@@ -18,16 +17,16 @@ describe('Good First Bugs Page', () => {
     cleanup();
   });
 
-  it('should render the Good First Bugs Page', async () => {
+  it('should render the Contrib Welcome Page', async () => {
     nextRouter.useRouter.mockImplementation(() => ({
-      pathname: '/contrib/good-first-bugs/',
+      pathname: '/contrib/contrib-welcome/',
       query: {
         dir: 'asc',
         sort: 'updatedAt',
       },
     }));
     const { props } = await getServerSideProps();
-    const { findByRole } = render(<GoodFirstBugs {...props} />);
+    const { findByRole } = render(<ContribWelcome {...props} />);
     const main = await findByRole('main');
     expect(main).toHaveClass('container');
   });
@@ -35,8 +34,8 @@ describe('Good First Bugs Page', () => {
   it('should fetch data via getServerSideProps', async () => {
     const { props: serverProps } = await getServerSideProps();
     expect(
-      serverProps.goodFirstBugsData.data.good_first_bugs.results.length,
+      serverProps.contribWelcomeData.data.contrib_welcome.results.length,
     ).toBe(3);
-    expect(serverProps.goodFirstBugsURL).toMatch(/\/api\/gh-good-first-bugs/);
+    expect(serverProps.contribWelcomeURL).toMatch(/\/api\/gh-contrib-welcome/);
   });
 });

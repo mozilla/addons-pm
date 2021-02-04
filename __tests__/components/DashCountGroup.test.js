@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, waitFor, screen } from '@testing-library/react';
-
-import DashCountGroup from './DashCountGroup';
+import DashCountGroup from 'components/DashCountGroup';
 
 describe('DashCountGroup Component', () => {
   const testData = {

@@ -3,8 +3,7 @@ import fetchMock from 'fetch-mock';
 import * as nextRouter from 'next/router';
 import ghMilestoneIssuesData from 'fixtures/gh-milestone-issues';
 import { cleanup, render } from '@testing-library/react';
-
-import Milestones, { getServerSideProps } from './[milestone]';
+import Milestones, { getServerSideProps } from 'pages/milestones/[milestone]';
 
 describe('Milestone Page', () => {
   let fakeProps;

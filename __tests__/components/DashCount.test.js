@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, waitFor, screen } from '@testing-library/react';
-
-import DashCount from './DashCount';
+import DashCount from 'components/DashCount';
 
 describe('DashCount Component', () => {
   const testData = {

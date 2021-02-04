@@ -1,4 +1,4 @@
-import * as constants from './const';
+import * as constants from 'lib/const';
 
 describe('const.validYearRX', () => {
   it('should match valid content', () => {

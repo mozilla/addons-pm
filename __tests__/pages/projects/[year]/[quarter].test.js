@@ -4,8 +4,7 @@ import * as nextRouter from 'next/router';
 import ghProjectsData from 'fixtures/gh-projects';
 import ghTeamData from 'fixtures/gh-team';
 import { cleanup, render } from '@testing-library/react';
-
-import Projects, { getServerSideProps } from './[quarter]';
+import Projects, { getServerSideProps } from 'pages/projects/[year]/[quarter]';
 
 describe('Projects Page', () => {
   let fakeProps;

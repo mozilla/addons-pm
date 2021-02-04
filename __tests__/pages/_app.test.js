@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-
-import MyApp from './_app';
+import MyApp from 'pages/_app';
 
 function FakeComponent() {
   return <div>test</div>;

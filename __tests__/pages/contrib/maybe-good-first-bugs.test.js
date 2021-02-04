@@ -3,10 +3,9 @@ import fetchMock from 'fetch-mock';
 import * as nextRouter from 'next/router';
 import ghMaybeGoodFirstBugsData from 'fixtures/gh-maybe-good-first-bugs';
 import { cleanup, render } from '@testing-library/react';
-
 import MaybeGoodFirstBugs, {
   getServerSideProps,
-} from './maybe-good-first-bugs';
+} from 'pages/contrib/maybe-good-first-bugs';
 
 describe('Maybe Good First Bugs Page', () => {
   beforeEach(() => {

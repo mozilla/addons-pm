@@ -1,4 +1,4 @@
-import serverSWR from './serverSWR';
+import serverSWR from 'lib/serverSWR';
 
 describe('serverSWR', () => {
   let fakeCache;

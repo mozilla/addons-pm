@@ -2,8 +2,7 @@
 import * as nextRouter from 'next/router';
 import React from 'react';
 import { cleanup, render, waitFor, screen } from '@testing-library/react';
-
-import HeaderLink from './HeaderLink';
+import HeaderLink from 'components/HeaderLink';
 
 describe('HeaderLink Component', () => {
   beforeEach(() => {

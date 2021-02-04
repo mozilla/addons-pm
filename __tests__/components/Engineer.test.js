@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, waitFor, screen } from '@testing-library/react';
-
-import Engineer from './Engineer';
+import Engineer from 'components/Engineer';
 
 describe('Engineer Component', () => {
   const testMember = {

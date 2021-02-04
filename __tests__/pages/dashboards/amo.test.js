@@ -2,8 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import fetchMock from 'fetch-mock';
 import ghIssueCountsData from 'fixtures/gh-issue-counts';
-
-import DashboardAMO from './amo';
+import DashboardAMO from 'pages/dashboards/amo';
 
 const fakeLocation = {
   pathname: '/dashboards/amo/',

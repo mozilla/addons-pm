@@ -1,4 +1,4 @@
-import Page, { getServerSideProps } from './latest';
+import Page, { getServerSideProps } from 'pages/milestones/latest';
 
 describe('Milestones Latest Redirect', () => {
   describe('Page', () => {

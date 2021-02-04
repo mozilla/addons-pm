@@ -3,8 +3,7 @@ import { render } from '@testing-library/react';
 import fetchMock from 'fetch-mock';
 import bzIssueCountsData from 'fixtures/bz-issue-counts';
 import bzNeedInfoData from 'fixtures/bz-need-infos';
-
-import DashboardWE from './webext';
+import DashboardWE from 'pages/dashboards/webext';
 
 const fakeLocation = {
   pathname: '/dashboards/webext/',

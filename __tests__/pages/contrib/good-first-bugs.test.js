@@ -1,16 +1,15 @@
 import React from 'react';
 import fetchMock from 'fetch-mock';
 import * as nextRouter from 'next/router';
-import ghContribWelcomeData from 'fixtures/gh-contrib-welcome';
 import { cleanup, render } from '@testing-library/react';
+import ghGoodFirstBugsData from 'fixtures/gh-good-first-bugs';
+import GoodFirstBugs, { getServerSideProps } from 'pages/contrib/good-first-bugs';
 
-import ContribWelcome, { getServerSideProps } from './contrib-welcome';
-
-describe('Contrib Welcome Page', () => {
+describe('Good First Bugs Page', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     nextRouter.useRouter = jest.fn();
-    fetchMock.mock(/\/api\/gh-contrib-welcome\//, ghContribWelcomeData);
+    fetchMock.mock(/\/api\/gh-good-first-bugs\//, ghGoodFirstBugsData);
   });
 
   afterEach(() => {
@@ -18,16 +17,16 @@ describe('Contrib Welcome Page', () => {
     cleanup();
   });
 
-  it('should render the Contrib Welcome Page', async () => {
+  it('should render the Good First Bugs Page', async () => {
     nextRouter.useRouter.mockImplementation(() => ({
-      pathname: '/contrib/contrib-welcome/',
+      pathname: '/contrib/good-first-bugs/',
       query: {
         dir: 'asc',
         sort: 'updatedAt',
       },
     }));
     const { props } = await getServerSideProps();
-    const { findByRole } = render(<ContribWelcome {...props} />);
+    const { findByRole } = render(<GoodFirstBugs {...props} />);
     const main = await findByRole('main');
     expect(main).toHaveClass('container');
   });
@@ -35,8 +34,8 @@ describe('Contrib Welcome Page', () => {
   it('should fetch data via getServerSideProps', async () => {
     const { props: serverProps } = await getServerSideProps();
     expect(
-      serverProps.contribWelcomeData.data.contrib_welcome.results.length,
+      serverProps.goodFirstBugsData.data.good_first_bugs.results.length,
     ).toBe(3);
-    expect(serverProps.contribWelcomeURL).toMatch(/\/api\/gh-contrib-welcome/);
+    expect(serverProps.goodFirstBugsURL).toMatch(/\/api\/gh-good-first-bugs/);
   });
 });
