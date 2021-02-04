@@ -3,7 +3,9 @@ import fetchMock from 'fetch-mock';
 import * as nextRouter from 'next/router';
 import ghContribWelcomeData from 'fixtures/gh-contrib-welcome';
 import { cleanup, render } from '@testing-library/react';
-import ContribWelcome, { getServerSideProps } from 'pages/contrib/contrib-welcome';
+import ContribWelcome, {
+  getServerSideProps,
+} from 'pages/contrib/contrib-welcome';
 
 describe('Contrib Welcome Page', () => {
   beforeEach(() => {

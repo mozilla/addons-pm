@@ -29,7 +29,7 @@ http {
   # proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=STATIC:10m inactive=7d use_temp_path=off;
 
   upstream nextjs_upstream {
-    server unix:/tmp/nginx.socket fail_timeout=0;
+    server /tmp/nginx.socket;
   }
 
   server {

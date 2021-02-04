@@ -3,7 +3,9 @@ import fetchMock from 'fetch-mock';
 import * as nextRouter from 'next/router';
 import { cleanup, render } from '@testing-library/react';
 import ghGoodFirstBugsData from 'fixtures/gh-good-first-bugs';
-import GoodFirstBugs, { getServerSideProps } from 'pages/contrib/good-first-bugs';
+import GoodFirstBugs, {
+  getServerSideProps,
+} from 'pages/contrib/good-first-bugs';
 
 describe('Good First Bugs Page', () => {
   beforeEach(() => {

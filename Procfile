@@ -1,1 +1,1 @@
-web: bin/start-nginx yarn start -p /tmp/nginx.socket && touch /tmp/app-initialized
+web: bin/start-nginx node bin/server.js
