@@ -1,5 +1,6 @@
 import useSWR from 'swr';
-import Contrib, { formatData } from 'components/Contrib';
+import Contrib from 'components/Contrib';
+import { formatContribData } from 'lib/utils/contrib';
 import { API_ROOT } from 'lib/const';
 
 export async function getServerSideProps() {
@@ -9,14 +10,17 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      data: contribWelcomeData,
+      contribWelcomeData,
       contribWelcomeURL,
     },
   };
 }
 
 const ContribWelcome = (props) => {
-  const { data: initialContribWelcomeData, contribWelcomeURL } = props;
+  const {
+    contribWelcomeData: initialContribWelcomeData,
+    contribWelcomeURL,
+  } = props;
   const { data: contribData } = useSWR(
     contribWelcomeURL,
     async () => {
@@ -29,7 +33,7 @@ const ContribWelcome = (props) => {
 
   return (
     <Contrib
-      contribData={formatData(contribData.data.contrib_welcome.results)}
+      contribData={formatContribData(contribData.data.contrib_welcome.results)}
     />
   );
 };

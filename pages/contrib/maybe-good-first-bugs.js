@@ -1,5 +1,6 @@
 import useSWR from 'swr';
-import Contrib, { formatData } from 'components/Contrib';
+import Contrib from 'components/Contrib';
+import { formatContribData } from 'lib/utils/contrib';
 import { API_ROOT } from 'lib/const';
 
 export async function getServerSideProps() {
@@ -9,14 +10,17 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      data: maybeGoodFirstBugsData,
+      maybeGoodFirstBugsData,
       maybeGoodFirstBugsURL,
     },
   };
 }
 
 const MaybeGoodFirstBugs = (props) => {
-  const { data: initialMaybeGoodFirstBugsData, maybeGoodFirstBugsURL } = props;
+  const {
+    maybeGoodFirstBugsData: initialMaybeGoodFirstBugsData,
+    maybeGoodFirstBugsURL,
+  } = props;
   const { data: maybeGoodFirstBugsData } = useSWR(
     maybeGoodFirstBugsURL,
     async () => {
@@ -29,7 +33,7 @@ const MaybeGoodFirstBugs = (props) => {
 
   return (
     <Contrib
-      contribData={formatData(
+      contribData={formatContribData(
         maybeGoodFirstBugsData.data.maybe_good_first_bugs.results,
       )}
       hasAssignments

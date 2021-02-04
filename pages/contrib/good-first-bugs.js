@@ -1,6 +1,7 @@
 import useSWR from 'swr';
-import Contrib, { formatData } from 'components/Contrib';
+import Contrib from 'components/Contrib';
 import { API_ROOT } from 'lib/const';
+import { formatContribData } from 'lib/utils/contrib';
 
 export async function getServerSideProps() {
   const goodFirstBugsURL = `${API_ROOT}/gh-good-first-bugs/`;
@@ -9,15 +10,18 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      data: goodFirstBugsData,
+      goodFirstBugsData,
       goodFirstBugsURL,
     },
   };
 }
 
 const GoodFirstBugs = (props) => {
-  const { data: initialGoodFirstBugsData, goodFirstBugsURL } = props;
-  const { data: goodFirstBugData } = useSWR(
+  const {
+    goodFirstBugsData: initialGoodFirstBugsData,
+    goodFirstBugsURL,
+  } = props;
+  const { data: goodFirstBugsData } = useSWR(
     goodFirstBugsURL,
     async () => {
       const result = await fetch(goodFirstBugsURL);
@@ -29,7 +33,9 @@ const GoodFirstBugs = (props) => {
 
   return (
     <Contrib
-      contribData={formatData(goodFirstBugData.data.good_first_bugs.results)}
+      contribData={formatContribData(
+        goodFirstBugsData.data.good_first_bugs.results,
+      )}
       hasAssignments
     />
   );

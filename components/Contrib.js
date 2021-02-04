@@ -5,11 +5,9 @@ import { Container, Nav, Navbar, Table } from 'react-bootstrap';
 import TimeAgo from 'react-timeago';
 import { AlertIcon, LinkIcon } from '@primer/octicons-react';
 import { dateSort, numericSort, sortData } from 'lib/utils/sort';
-import { hasLabelContainingString } from 'lib/utils';
 import YesNoBool from 'components/YesNoBool';
 import HeaderLink from 'components/HeaderLink';
 import ActiveLink from 'components/ActiveLink';
-import { priorities } from 'lib/const';
 
 // These views display assignment columns.
 const sortConfig = {
@@ -26,35 +24,6 @@ const sortConfig = {
     sortFunc: dateSort,
   },
 };
-
-export function formatData(data) {
-  const issues = [];
-  data.forEach((item) => {
-    const issue = {
-      ...item.issue,
-      priority: '',
-      assigned: false,
-      mentorAssigned: false,
-    };
-    const labels = issue.labels.nodes || [];
-    priorities.forEach((priority) => {
-      if (hasLabelContainingString(labels, priority)) {
-        issue.priority = priority;
-      }
-    });
-    if (hasLabelContainingString(labels, 'contrib: assigned')) {
-      issue.assigned = true;
-    }
-    if (hasLabelContainingString(labels, 'contrib: mentor assigned')) {
-      issue.mentorAssigned = true;
-    }
-    if (issue.repository && issue.repository.name) {
-      issue.repo = issue.repository.name;
-    }
-    issues.push(issue);
-  });
-  return issues;
-}
 
 function renderRows({ data, hasAssignments }) {
   const rows = [];
@@ -155,6 +124,7 @@ const Contrib = (props) => {
         <Nav variant="pills">
           <Nav.Item>
             <ActiveLink
+              activeClassName="active"
               href="/contrib/maybe-good-first-bugs/?dir=desc&sort=updatedAt"
               passHref
             >
@@ -163,6 +133,7 @@ const Contrib = (props) => {
           </Nav.Item>
           <Nav.Item>
             <ActiveLink
+              activeClassName="active"
               href="/contrib/good-first-bugs/?dir=desc&sort=updatedAt"
               passHref
             >
@@ -171,6 +142,7 @@ const Contrib = (props) => {
           </Nav.Item>
           <Nav.Item>
             <ActiveLink
+              activeClassName="active"
               href="/contrib/contrib-welcome/?dir=desc&sort=updatedAt"
               passHref
             >
