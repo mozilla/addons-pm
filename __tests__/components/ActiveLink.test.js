@@ -16,6 +16,7 @@ describe('ActiveLink Component', () => {
     nextRouter.useRouter.mockImplementation(() => ({
       route: '/',
       asPath: '/',
+      prefetch: jest.fn(() => Promise.resolve()),
     }));
     render(
       <ActiveLink href="/whatever/" activeClassName="active">
@@ -32,6 +33,7 @@ describe('ActiveLink Component', () => {
     nextRouter.useRouter.mockImplementation(() => ({
       route: '/whatever/',
       asPath: '/whatever/',
+      prefetch: jest.fn(() => Promise.resolve()),
     }));
     render(
       <ActiveLink href="/whatever/" activeClassName="active">

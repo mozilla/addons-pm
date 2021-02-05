@@ -19,6 +19,7 @@ describe('HeaderLink Component', () => {
         dir: 'asc',
         sort: 'assignee',
       },
+      prefetch: jest.fn(() => Promise.resolve()),
     }));
     render(<HeaderLink columnKey="assignee" linkText="Assignee" />);
     await waitFor(() => screen.getByRole('link'));
@@ -34,6 +35,7 @@ describe('HeaderLink Component', () => {
         dir: 'desc',
         sort: 'whatever',
       },
+      prefetch: jest.fn(() => Promise.resolve()),
     }));
     render(<HeaderLink columnKey="assignee" linkText="Anything you want" />);
     await waitFor(() => screen.getByRole('link'));
