@@ -164,7 +164,9 @@ function renderRows({ data }) {
 
 export async function getServerSideProps(props) {
   const { milestone } = props.params;
-  const milestoneIssuesURL = getApiURL('/api/gh-milestone-issues/', { milestone });
+  const milestoneIssuesURL = getApiURL('/api/gh-milestone-issues/', {
+    milestone,
+  });
   const milestoneIssueReponse = await fetch(milestoneIssuesURL);
   const milestoneIssueData = await milestoneIssueReponse.json();
 
@@ -186,7 +188,9 @@ const Milestones = (props) => {
   const milestonePagination = getMilestonePagination({
     startDate: new Date(year, month - 1, day),
   });
-  const milestoneIssuesURL = getApiURL('/api/gh-milestone-issues/', { milestone });
+  const milestoneIssuesURL = getApiURL('/api/gh-milestone-issues/', {
+    milestone,
+  });
   const initialMilestoneIssues = props.milestoneIssues;
   const { data: milestoneIssues } = useSWR(
     milestoneIssuesURL,

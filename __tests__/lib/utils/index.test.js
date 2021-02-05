@@ -104,7 +104,9 @@ describe('Utils', () => {
     it('should include host set by env var', () => {
       process.env.API_HOST = 'https://example.com:5000';
       const result = getApiURL('/api/whatever', { param: 'foo bar' });
-      expect(result).toBe('https://example.com:5000/api/whatever?param=foo%20bar');
+      expect(result).toBe(
+        'https://example.com:5000/api/whatever?param=foo%20bar',
+      );
     });
   });
 });
