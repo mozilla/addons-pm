@@ -2,6 +2,7 @@ import React from 'react';
 import useSWR from 'swr';
 import { Helmet } from 'react-helmet';
 import Link from 'next/link';
+import Error from 'next/error';
 import { useRouter } from 'next/router';
 import { Container, Nav, Navbar, Table } from 'react-bootstrap';
 import TimeAgo from 'react-timeago';
@@ -167,19 +168,23 @@ export async function getServerSideProps(props) {
   const milestoneIssuesURL = getApiURL('/api/gh-milestone-issues/', {
     milestone,
   });
-  const milestoneIssueReponse = await fetch(milestoneIssuesURL);
-  const milestoneIssueData = await milestoneIssueReponse.json();
+  const res = await fetch(milestoneIssuesURL);
+  const errorCode = res.ok ? false : res.status;
+  const milestoneIssueData = await res.json();
 
   return {
     props: {
-      milestoneIssues: formatIssueData(
-        milestoneIssueData.data.milestone_issues.results,
-      ),
+      errorCode,
+      milestoneIssues: formatIssueData(milestoneIssueData),
     },
   };
 }
 
 const Milestones = (props) => {
+  if (props.errorCode) {
+    return <Error statusCode={props.errorCode} />;
+  }
+
   const router = useRouter();
   const { sort, dir, milestone } = router.query;
   const {

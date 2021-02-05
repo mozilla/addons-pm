@@ -1,8 +1,8 @@
 import useSWR from 'swr';
-import queryString from 'query-string';
 import { useRouter } from 'next/router';
 import { Helmet } from 'react-helmet';
 import Link from 'next/link';
+import Error from 'next/error';
 import {
   Button,
   Card,
@@ -16,7 +16,6 @@ import {
 } from 'react-bootstrap';
 import TimeAgo from 'react-timeago';
 import { ProjectIcon, ClockIcon } from '@primer/octicons-react';
-import { validYearRX, validQuarterRX } from 'lib/const';
 import { getApiURL, sanitize } from 'lib/utils';
 import {
   getCurrentQuarter,
@@ -38,57 +37,54 @@ export function projectSort(a, b) {
 // during the render.
 function buildMetaData(projectData) {
   const newProjectData = { ...projectData };
-  const augmentedProjects = newProjectData.data.organization.projects.nodes.map(
-    (project) => {
-      const [meta, updatedHTML] = parseProjectMeta(project.bodyHTML);
-      project.bodyHTML = updatedHTML;
-      const todoColumn = project.columns.edges.find((column) => {
-        return column.node.name === 'To do';
-      });
-      const inProgressColumn = project.columns.edges.find((column) => {
-        return column.node.name === 'In progress';
-      });
-      const doneColumn = project.columns.edges.find((column) => {
-        return column.node.name === 'Done';
-      });
-      const todoCount =
-        (todoColumn && parseInt(todoColumn.node.cards.totalCount, 10)) || 0;
-      const inProgressCount =
-        (inProgressColumn &&
-          parseInt(inProgressColumn.node.cards.totalCount, 10)) ||
-        0;
-      const doneCount =
-        (doneColumn && parseInt(doneColumn.node.cards.totalCount, 10)) || 0;
-      const totalCount = todoCount + inProgressCount + doneCount;
+  if (projectData.data) {
+    const augmentedProjects = newProjectData.data.organization.projects.nodes.map(
+      (project) => {
+        const [meta, updatedHTML] = parseProjectMeta(project.bodyHTML);
+        project.bodyHTML = updatedHTML;
+        const todoColumn = project.columns.edges.find((column) => {
+          return column.node.name === 'To do';
+        });
+        const inProgressColumn = project.columns.edges.find((column) => {
+          return column.node.name === 'In progress';
+        });
+        const doneColumn = project.columns.edges.find((column) => {
+          return column.node.name === 'Done';
+        });
+        const todoCount =
+          (todoColumn && parseInt(todoColumn.node.cards.totalCount, 10)) || 0;
+        const inProgressCount =
+          (inProgressColumn &&
+            parseInt(inProgressColumn.node.cards.totalCount, 10)) ||
+          0;
+        const doneCount =
+          (doneColumn && parseInt(doneColumn.node.cards.totalCount, 10)) || 0;
+        const totalCount = todoCount + inProgressCount + doneCount;
 
-      // console.log(project.name, { todoCount, inProgressCount, doneCount, totalCount });
+        // console.log(project.name, { todoCount, inProgressCount, doneCount, totalCount });
 
-      const donePerc = totalCount ? (100 / totalCount) * doneCount : 0;
-      const inProgressPerc = totalCount
-        ? (100 / totalCount) * inProgressCount
-        : 0;
-      project.meta = {
-        ...meta,
-        todoCount,
-        inProgressCount,
-        doneCount,
-        donePerc,
-        inProgressPerc,
-      };
-      return project;
-    },
-  );
-  newProjectData.data.organization.projects.nodes = augmentedProjects;
+        const donePerc = totalCount ? (100 / totalCount) * doneCount : 0;
+        const inProgressPerc = totalCount
+          ? (100 / totalCount) * inProgressCount
+          : 0;
+        project.meta = {
+          ...meta,
+          todoCount,
+          inProgressCount,
+          doneCount,
+          donePerc,
+          inProgressPerc,
+        };
+        return project;
+      },
+    );
+    newProjectData.data.organization.projects.nodes = augmentedProjects;
+  }
   return newProjectData;
 }
 
 export async function getServerSideProps(props) {
   const { year, quarter } = props.params;
-
-  if (!validQuarterRX.test(quarter) || !validYearRX.test(year)) {
-    throw new Error('Invalid params');
-  }
-
   const projectURL = getApiURL('/api/gh-projects/', { quarter, year });
   const teamURL = getApiURL('/api/gh-team/');
   const [projectResponse, teamResponse] = await Promise.all([
@@ -96,11 +92,13 @@ export async function getServerSideProps(props) {
     fetch(teamURL),
   ]);
 
+  const errorCode = projectResponse.ok ? false : projectResponse.status;
   const projects = await projectResponse.json();
   const team = await teamResponse.json();
 
   return {
     props: {
+      errorCode,
       projects: buildMetaData(projects),
       team,
     },
@@ -108,6 +106,10 @@ export async function getServerSideProps(props) {
 }
 
 const Projects = (props) => {
+  if (props.errorCode) {
+    return <Error statusCode={props.errorCode} />;
+  }
+
   const router = useRouter();
   const { year, quarter, projectType, engineer } = router.query;
   const projectURL = getApiURL('/api/gh-projects/', { quarter, year });

@@ -1,4 +1,5 @@
 import useSWR from 'swr';
+import Error from 'next/error';
 import Contrib from 'components/Contrib';
 import { formatContribData } from 'lib/utils/contrib';
 import { getApiURL } from 'lib/utils';
@@ -6,17 +7,23 @@ import { getApiURL } from 'lib/utils';
 const goodFirstBugsURL = getApiURL('/api/gh-good-first-bugs/');
 
 export async function getServerSideProps() {
-  const goodFirstBugsResponse = await fetch(goodFirstBugsURL);
-  const goodFirstBugsData = await goodFirstBugsResponse.json();
+  const res = await fetch(goodFirstBugsURL);
+  const errorCode = res.ok ? false : res.status;
+  const goodFirstBugsData = await res.json();
 
   return {
     props: {
+      errorCode,
       goodFirstBugsData,
     },
   };
 }
 
 const GoodFirstBugs = (props) => {
+  if (props.errorCode) {
+    return <Error statusCode={props.errorCode} />;
+  }
+
   const { goodFirstBugsData: initialGoodFirstBugsData } = props;
   const { data: goodFirstBugsData } = useSWR(
     goodFirstBugsURL,

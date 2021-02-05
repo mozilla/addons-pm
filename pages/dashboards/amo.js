@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import Error from 'next/error';
 import { Container } from 'react-bootstrap';
 import useSWR from 'swr';
 import AMODashCountGroup from 'components/AMODashCountGroup';
@@ -23,17 +24,23 @@ function renderCounts(issueCountData) {
 const githubIssueCountsURL = getApiURL('/api/gh-issue-counts/');
 
 export async function getServerSideProps() {
-  const amoDashResponse = await fetch(githubIssueCountsURL);
-  const amoDashData = await amoDashResponse.json();
+  const res = await fetch(githubIssueCountsURL);
+  const errorCode = res.ok ? false : res.status;
+  const amoDashData = await res.json();
 
   return {
     props: {
+      errorCode,
       issueCounts: amoDashData,
     },
   };
 }
 
 const DashboardAMO = (props) => {
+  if (props.errorCode) {
+    return <Error statusCode={props.errorCode} />;
+  }
+
   const { data, error } = useSWR(
     githubIssueCountsURL,
     async () => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Container } from 'react-bootstrap';
+import Error from 'next/error';
 import useSWR from 'swr';
 import DashCount from 'components/DashCount';
 import DashCountGroup from 'components/DashCountGroup';
@@ -30,11 +31,14 @@ export async function getServerSideProps() {
     fetch(needInfoURL),
   ]);
 
+  const errorCode =
+    issueCountsResponse.ok && needInfosResponse.ok ? false : 500;
   const issueCounts = await issueCountsResponse.json();
   const needInfos = await needInfosResponse.json();
 
   return {
     props: {
+      errorCode,
       issueCounts,
       needInfos,
     },
@@ -42,6 +46,10 @@ export async function getServerSideProps() {
 }
 
 function DashboardWE(props) {
+  if (props.errorCode) {
+    return <Error statusCode={props.errorCode} />;
+  }
+
   function getIssueCounts() {
     const { data, error } = useSWR(
       issueCountURL,
