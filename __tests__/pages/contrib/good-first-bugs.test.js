@@ -38,6 +38,5 @@ describe('Good First Bugs Page', () => {
     expect(
       serverProps.goodFirstBugsData.data.good_first_bugs.results.length,
     ).toBe(3);
-    expect(serverProps.goodFirstBugsURL).toMatch(/\/api\/gh-good-first-bugs/);
   });
 });

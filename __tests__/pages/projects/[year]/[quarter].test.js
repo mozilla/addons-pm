@@ -46,8 +46,5 @@ describe('Projects Page', () => {
     expect(serverProps.projects.data.organization.projects.nodes.length).toBe(
       4,
     );
-    expect(serverProps.projectURL).toMatch(
-      /\/api\/gh-projects\/\?quarter=Q1&year=2021/,
-    );
   });
 });

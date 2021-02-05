@@ -1,8 +1,9 @@
 import useSWR from 'swr';
 import Contrib from 'components/Contrib';
 import { formatContribData } from 'lib/utils/contrib';
+import { getApiURL } from 'lib/utils';
 
-const goodFirstBugsURL = `${process.env.API_HOST}/api/gh-good-first-bugs/`;
+const goodFirstBugsURL = getApiURL('/api/gh-good-first-bugs/');
 
 export async function getServerSideProps() {
   const goodFirstBugsResponse = await fetch(goodFirstBugsURL);

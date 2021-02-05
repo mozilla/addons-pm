@@ -1,13 +1,13 @@
 import useSWR from 'swr';
 import Contrib from 'components/Contrib';
 import { formatContribData } from 'lib/utils/contrib';
+import { getApiURL } from 'lib/utils';
 
-const contribWelcomeURL = `${process.env.API_HOST}/api/gh-contrib-welcome/`;
+const contribWelcomeURL = getApiURL('/api/gh-contrib-welcome/');
 
 export async function getServerSideProps() {
   const contribWelcomeResponse = await fetch(contribWelcomeURL);
   const contribWelcomeData = await contribWelcomeResponse.json();
-
   return {
     props: {
       contribWelcomeData,

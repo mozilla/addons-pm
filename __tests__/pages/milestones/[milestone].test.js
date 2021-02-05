@@ -42,8 +42,5 @@ describe('Milestone Page', () => {
   it('should fetch data via getServerSideProps', async () => {
     const { props: serverProps } = await getServerSideProps(fakeProps);
     expect(serverProps.milestoneIssues.length).toBe(13);
-    expect(serverProps.milestoneIssuesURL).toMatch(
-      /\/api\/gh-milestone-issues\/\?milestone=2021\.01\.21$/,
-    );
   });
 });

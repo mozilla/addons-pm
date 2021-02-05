@@ -1,5 +1,6 @@
 import {
   colourIsLight,
+  getApiURL,
   hasLabel,
   hasLabelContainingString,
   hexToRgb,
@@ -73,6 +74,37 @@ describe('Utils', () => {
 
     it('returns true for partial match', () => {
       expect(hasLabelContainingString(fakeIssueLabels, 'thing')).toEqual(true);
+    });
+  });
+
+  describe('getApiURL()', () => {
+    const OLD_ENV = process.env;
+
+    beforeEach(() => {
+      jest.resetModules();
+      process.env = { ...OLD_ENV };
+    });
+
+    afterAll(() => {
+      process.env = OLD_ENV;
+    });
+
+    it(`should throw if path doesn't contain '/api'`, () => {
+      function checkGetApiUrl() {
+        getApiURL('whatever');
+      }
+      expect(checkGetApiUrl).toThrowError(`Path should start with '/api'`);
+    });
+
+    it('should handle query params', () => {
+      const result = getApiURL('/api/whatever', { param: 'foo bar' });
+      expect(result).toBe('/api/whatever?param=foo%20bar');
+    });
+
+    it('should include host set by env var', () => {
+      process.env.API_HOST = 'https://example.com:5000';
+      const result = getApiURL('/api/whatever', { param: 'foo bar' });
+      expect(result).toBe('https://example.com:5000/api/whatever?param=foo%20bar');
     });
   });
 });

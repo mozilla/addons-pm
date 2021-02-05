@@ -42,8 +42,5 @@ describe('Maybe Good First Bugs Page', () => {
       serverProps.maybeGoodFirstBugsData.data.maybe_good_first_bugs.results
         .length,
     ).toBe(1);
-    expect(serverProps.maybeGoodFirstBugsURL).toMatch(
-      /\/api\/gh-maybe-good-first-bugs/,
-    );
   });
 });

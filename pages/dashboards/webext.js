@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 import useSWR from 'swr';
 import DashCount from 'components/DashCount';
 import DashCountGroup from 'components/DashCountGroup';
+import { getApiURL } from 'lib/utils';
 
 const meta = {
   Toolkit: {
@@ -20,8 +21,8 @@ const meta = {
   },
 };
 
-const issueCountURL = `${process.env.API_HOST}/api/bz-issue-counts/`;
-const needInfoURL = `${process.env.API_HOST}/api/bz-need-infos/`;
+const issueCountURL = getApiURL('/api/bz-issue-counts/');
+const needInfoURL = getApiURL('/api/bz-need-infos/');
 
 export async function getServerSideProps() {
   const [issueCountsResponse, needInfosResponse] = await Promise.all([

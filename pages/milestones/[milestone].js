@@ -14,6 +14,7 @@ import {
 } from '@primer/octicons-react';
 import { getMilestonePagination, formatIssueData } from 'lib/utils/milestones';
 import { dateSort, sortData } from 'lib/utils/sort';
+import { getApiURL } from 'lib/utils';
 import { validMilestoneRX } from 'lib/const';
 import ActiveLink from 'components/ActiveLink';
 import HeaderLink from 'components/HeaderLink';
@@ -163,12 +164,7 @@ function renderRows({ data }) {
 
 export async function getServerSideProps(props) {
   const { milestone } = props.params;
-  const milestoneIssuesURL = `${
-    process.env.API_HOST
-  }/api/gh-milestone-issues/?${queryString.stringify({
-    milestone,
-  })}`;
-
+  const milestoneIssuesURL = getApiURL('/api/gh-milestone-issues/', { milestone });
   const milestoneIssueReponse = await fetch(milestoneIssuesURL);
   const milestoneIssueData = await milestoneIssueReponse.json();
 
@@ -177,7 +173,6 @@ export async function getServerSideProps(props) {
       milestoneIssues: formatIssueData(
         milestoneIssueData.data.milestone_issues.results,
       ),
-      milestoneIssuesURL,
     },
   };
 }
@@ -191,12 +186,12 @@ const Milestones = (props) => {
   const milestonePagination = getMilestonePagination({
     startDate: new Date(year, month - 1, day),
   });
-
+  const milestoneIssuesURL = getApiURL('/api/gh-milestone-issues/', { milestone });
   const initialMilestoneIssues = props.milestoneIssues;
   const { data: milestoneIssues } = useSWR(
-    props.milestoneIssuesURL,
+    milestoneIssuesURL,
     async () => {
-      const result = await fetch(props.milestoneIssuesURL);
+      const result = await fetch(milestoneIssuesURL);
       const json = await result.json();
       return formatIssueData(json);
     },

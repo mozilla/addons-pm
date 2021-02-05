@@ -38,6 +38,5 @@ describe('Contrib Welcome Page', () => {
     expect(
       serverProps.contribWelcomeData.data.contrib_welcome.results.length,
     ).toBe(3);
-    expect(serverProps.contribWelcomeURL).toMatch(/\/api\/gh-contrib-welcome/);
   });
 });

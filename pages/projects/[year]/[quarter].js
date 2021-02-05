@@ -17,7 +17,7 @@ import {
 import TimeAgo from 'react-timeago';
 import { ProjectIcon, ClockIcon } from '@primer/octicons-react';
 import { validYearRX, validQuarterRX } from 'lib/const';
-import { sanitize } from 'lib/utils';
+import { getApiURL, sanitize } from 'lib/utils';
 import {
   getCurrentQuarter,
   getNextQuarter,
@@ -89,16 +89,11 @@ export async function getServerSideProps(props) {
     throw new Error('Invalid params');
   }
 
-  const projectURL = `${
-    process.env.API_HOST
-  }/api/gh-projects/?${queryString.stringify({
-    quarter,
-    year,
-  })}`;
-
+  const projectURL = getApiURL('/api/gh-projects/', { quarter, year });
+  const teamURL = getApiURL('/api/gh-team/');
   const [projectResponse, teamResponse] = await Promise.all([
     fetch(projectURL),
-    fetch(`${process.env.API_HOST}/api/gh-team/`),
+    fetch(teamURL),
   ]);
 
   const projects = await projectResponse.json();
@@ -107,7 +102,6 @@ export async function getServerSideProps(props) {
   return {
     props: {
       projects: buildMetaData(projects),
-      projectURL,
       team,
     },
   };
@@ -116,13 +110,13 @@ export async function getServerSideProps(props) {
 const Projects = (props) => {
   const router = useRouter();
   const { year, quarter, projectType, engineer } = router.query;
-
+  const projectURL = getApiURL('/api/gh-projects/', { quarter, year });
   const teamData = props.team;
   const initialProjectsData = props.projects;
   const { data: projectsData } = useSWR(
-    props.projectURL,
+    projectURL,
     async () => {
-      const result = await fetch(props.projectURL);
+      const result = await fetch(projectURL);
       const json = await result.json();
       return buildMetaData(json);
     },
