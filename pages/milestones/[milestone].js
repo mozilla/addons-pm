@@ -266,7 +266,7 @@ const Milestones = (props) => {
         </Nav>
       </Navbar>
       <Container as="main" bg="light">
-        <h1>Issues for milestone: {milestone}</h1>
+        <h1>Issues for milestone: {milestone.replace(/-/g, '.')}</h1>
         <Table responsive hover>
           <thead>
             <tr>

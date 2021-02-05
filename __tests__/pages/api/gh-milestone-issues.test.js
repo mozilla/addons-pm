@@ -16,9 +16,9 @@ describe('gh-milestone-issues API', () => {
   it('should return a 400 for an invalid milestone', async () => {
     const req = new MockExpressRequest({
       method: 'GET',
-      url: '/api/milestone-issues/?milestone=2018.13.32',
+      url: '/api/milestone-issues/?milestone=2018-13-32',
       query: {
-        milestone: '2018.13.32',
+        milestone: '2018-13-32',
       },
     });
     const res = new MockExpressResponse();
@@ -30,9 +30,9 @@ describe('gh-milestone-issues API', () => {
   it('should return milestone data', async () => {
     const req = new MockExpressRequest({
       method: 'GET',
-      url: '/api/milestone-issues/?milestone=2019.05.09',
+      url: '/api/milestone-issues/?milestone=2019-05-09',
       query: {
-        milestone: '2019.05.09',
+        milestone: '2019-05-09',
       },
     });
     const res = new MockExpressResponse();

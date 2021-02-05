@@ -73,10 +73,14 @@ const query = gql`
 export default async (req, res) => {
   const client = createClient();
 
-  const { milestone } = req.query;
+  let { milestone } = req.query;
+  // Next.js requires us to use `-` in urls instead of `.` due to
+  // https://github.com/vercel/next.js/issues/16617
+
   if (!validMilestoneRX.test(milestone)) {
     res.status(400).json({ error: 'Incorrect milestone format' });
   } else {
+    milestone = milestone.replace(/-/g, '.');
     const variables = {
       query: `repo:mozilla/addons
       repo:mozilla/addons-server

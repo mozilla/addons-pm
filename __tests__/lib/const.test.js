@@ -29,21 +29,21 @@ describe('const.validQuarterRX', () => {
 
 describe('const.validMilestoneRX', () => {
   it('should match valid content', () => {
-    expect('2019.04.04').toMatch(constants.validMilestoneRX);
-    expect('2018.03.12').toMatch(constants.validMilestoneRX);
-    expect('2019.12.31').toMatch(constants.validMilestoneRX);
-    expect('2019.01.01').toMatch(constants.validMilestoneRX);
+    expect('2019-04-04').toMatch(constants.validMilestoneRX);
+    expect('2018-03-12').toMatch(constants.validMilestoneRX);
+    expect('2019-12-31').toMatch(constants.validMilestoneRX);
+    expect('2019-01-01').toMatch(constants.validMilestoneRX);
   });
 
   it('should not match invalid content', () => {
-    expect('2016.11.11').not.toMatch(constants.validMilestoneRX);
-    expect('2019.11.32').not.toMatch(constants.validMilestoneRX);
-    expect('2019.13.32').not.toMatch(constants.validMilestoneRX);
+    expect('2016-11-11').not.toMatch(constants.validMilestoneRX);
+    expect('2019-11-32').not.toMatch(constants.validMilestoneRX);
+    expect('2019-13-32').not.toMatch(constants.validMilestoneRX);
     expect('whatever').not.toMatch(constants.validMilestoneRX);
   });
 
   it('should have named groups', () => {
-    const result = constants.validMilestoneRX.exec('2020.12.11');
+    const result = constants.validMilestoneRX.exec('2020-12-11');
     const { year, day, month } = result.groups;
     expect(year).toEqual('2020');
     expect(month).toEqual('12');

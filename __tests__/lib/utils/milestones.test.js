@@ -19,33 +19,33 @@ describe('Milestone Utils', () => {
       // Note months are zero indexed.
       const startDate = new Date('2019', '3', '9');
       const nextMilestone = getNextMilestone({ startDate, dayOfWeek: 4 });
-      expect(formatDateToMilestone(nextMilestone)).toEqual('2019.04.11');
+      expect(formatDateToMilestone(nextMilestone)).toEqual('2019-04-11');
     });
 
     it('gets the next nearest Thursday when start date is Thursday', () => {
       // Note months are zero indexed.
       const startDate = new Date('2019', '3', '11');
       const nextMilestone = getNextMilestone({ startDate, dayOfWeek: 4 });
-      expect(formatDateToMilestone(nextMilestone)).toEqual('2019.04.11');
+      expect(formatDateToMilestone(nextMilestone)).toEqual('2019-04-11');
     });
 
     it('gets the next nearest Monday', () => {
       // Note months are zero indexed.
       const startDate = new Date('2019', '3', '11');
       const nextMilestone = getNextMilestone({ startDate, dayOfWeek: 1 });
-      expect(formatDateToMilestone(nextMilestone)).toEqual('2019.04.15');
+      expect(formatDateToMilestone(nextMilestone)).toEqual('2019-04-15');
     });
   });
 
   describe('formatDateToMilestone()', () => {
     it('zero fills months and days', () => {
       const startDate = new Date('2019', '3', '9');
-      expect(formatDateToMilestone(startDate)).toEqual('2019.04.09');
+      expect(formatDateToMilestone(startDate)).toEqual('2019-04-09');
     });
 
     it(`doesn't zero fill months and days when not needed`, () => {
       const startDate = new Date('2019', '11', '15');
-      expect(formatDateToMilestone(startDate)).toEqual('2019.12.15');
+      expect(formatDateToMilestone(startDate)).toEqual('2019-12-15');
     });
   });
 
@@ -57,9 +57,9 @@ describe('Milestone Utils', () => {
         startDate,
         dayOfWeek: 4,
       });
-      expect(milestonePagination.prevFromStart).toEqual('2019.04.04');
-      expect(milestonePagination.start).toEqual('2019.04.09');
-      expect(milestonePagination.nextFromStart).toEqual('2019.04.11');
+      expect(milestonePagination.prevFromStart).toEqual('2019-04-04');
+      expect(milestonePagination.start).toEqual('2019-04-09');
+      expect(milestonePagination.nextFromStart).toEqual('2019-04-11');
       expect(milestonePagination.current).toEqual(
         formatDateToMilestone(getNextMilestone()),
       );
@@ -72,9 +72,9 @@ describe('Milestone Utils', () => {
         startDate,
         dayOfWeek: 4,
       });
-      expect(milestonePagination.prevFromStart).toEqual('2019.04.04');
-      expect(milestonePagination.start).toEqual('2019.04.11');
-      expect(milestonePagination.nextFromStart).toEqual('2019.04.18');
+      expect(milestonePagination.prevFromStart).toEqual('2019-04-04');
+      expect(milestonePagination.start).toEqual('2019-04-11');
+      expect(milestonePagination.nextFromStart).toEqual('2019-04-18');
       expect(milestonePagination.current).toEqual(
         formatDateToMilestone(getNextMilestone()),
       );

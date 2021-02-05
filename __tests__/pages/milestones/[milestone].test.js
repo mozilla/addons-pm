@@ -14,7 +14,7 @@ describe('Milestone Page', () => {
     fetchMock.mock(/\/api\/gh-milestone-issues\//, ghMilestoneIssuesData);
     fakeProps = {
       params: {
-        milestone: '2021.01.21',
+        milestone: '2021-01-21',
       },
     };
   });
@@ -26,9 +26,9 @@ describe('Milestone Page', () => {
 
   it('should render the Milestone Page', async () => {
     nextRouter.useRouter.mockImplementation(() => ({
-      pathname: '/milestones/2021.01.21/',
+      pathname: '/milestones/2021-01-21/',
       query: {
-        milestone: '2021.01.21',
+        milestone: '2021-01-21',
         dir: 'asc',
         sort: 'assignee',
       },
