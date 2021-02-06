@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 import Error from 'next/error';
 import useSWR from 'swr';
 import DashCount from 'components/DashCount';
+import DashBlank from 'components/DashBlank';
 import DashCountGroup from 'components/DashCountGroup';
 import { getApiURL } from 'lib/utils';
 
@@ -24,23 +25,36 @@ const meta = {
 
 const issueCountURL = getApiURL('/api/bz-issue-counts/');
 const needInfoURL = getApiURL('/api/bz-need-infos/');
+const whiteboardURL = getApiURL('/api/bz-whiteboard-tags/');
 
 export async function getServerSideProps() {
-  const [issueCountsResponse, needInfosResponse] = await Promise.all([
+  const [
+    issueCountsResponse,
+    needInfosResponse,
+    whiteboardResponse,
+  ] = await Promise.all([
     fetch(issueCountURL),
     fetch(needInfoURL),
+    fetch(whiteboardURL),
   ]);
 
   const errorCode =
-    issueCountsResponse.ok && needInfosResponse.ok ? false : 500;
-  const issueCounts = await issueCountsResponse.json();
-  const needInfos = await needInfosResponse.json();
+    issueCountsResponse.ok && needInfosResponse.ok && whiteboardResponse.ok
+      ? false
+      : 500;
+
+  const [issueCounts, needInfos, whiteboardTags] = await Promise.all([
+    issueCountsResponse.json(),
+    needInfosResponse.json(),
+    whiteboardResponse.json(),
+  ]);
 
   return {
     props: {
       errorCode,
       issueCounts,
       needInfos,
+      whiteboardTags,
     },
   };
 }
@@ -82,8 +96,25 @@ function DashboardWE(props) {
     };
   }
 
+  function getWhiteboardTags() {
+    const { data, error } = useSWR(
+      whiteboardURL,
+      async () => {
+        const result = await fetch(whiteboardURL);
+        return result.json();
+      },
+      { refreshInterval: 90000, initialData: props.whiteboardTags },
+    );
+    return {
+      data,
+      isLoading: !error && !data,
+      isError: error,
+    };
+  }
+
   const needInfos = getNeedInfos();
   const issueCounts = getIssueCounts();
+  const whiteboardTags = getWhiteboardTags();
 
   function renderChild({ data, dataKey, component, title, warningLimit }) {
     const { count, url } = data[dataKey];
@@ -92,24 +123,20 @@ function DashboardWE(props) {
         count={count}
         key={component + title}
         title={title}
-        warning={warningLimit && count >= warningLimit}
+        warningLimit={warningLimit}
         link={url}
       />
     );
   }
 
   function renderChildren(component, data) {
-    const nodes = [];
-    nodes.push(
+    return [
       renderChild({
         data,
         dataKey: 'total',
         title: 'total open',
-        warningLimit: null,
         component,
       }),
-    );
-    nodes.push(
       renderChild({
         data,
         dataKey: 'severity-default',
@@ -117,8 +144,6 @@ function DashboardWE(props) {
         warningLimit: 15,
         component,
       }),
-    );
-    nodes.push(
       renderChild({
         data,
         dataKey: 'severity-s1',
@@ -126,8 +151,6 @@ function DashboardWE(props) {
         warningLimit: 1,
         component,
       }),
-    );
-    nodes.push(
       renderChild({
         data,
         dataKey: 'severity-s2',
@@ -135,8 +158,6 @@ function DashboardWE(props) {
         warningLimit: 10,
         component,
       }),
-    );
-    nodes.push(
       renderChild({
         data,
         dataKey: 'priority-p1',
@@ -144,8 +165,6 @@ function DashboardWE(props) {
         warningLimit: 10,
         component,
       }),
-    );
-    nodes.push(
       renderChild({
         data,
         dataKey: 'priority-p2',
@@ -153,17 +172,13 @@ function DashboardWE(props) {
         warningLimit: 20,
         component,
       }),
-    );
-    nodes.push(
       renderChild({
         data,
         dataKey: 'priority-p3',
         title: 'P3',
-        warningLimit: null,
         component,
       }),
-    );
-    return nodes;
+    ];
   }
 
   function renderCounts() {
@@ -203,12 +218,39 @@ function DashboardWE(props) {
       );
     });
 
+    children.push(<DashBlank key="ni-blank-1" />);
+    children.push(<DashBlank key="ni-blank-2" />);
+
     return DashCountGroup({
       className: 'needinfos',
       key: 'needinfos',
       children,
       title: 'Need Infos',
       description: 'Count of need info requests',
+    });
+  }
+
+  function renderWhiteBoardTags() {
+    const children = [];
+    Object.keys(whiteboardTags.data).forEach((tag) => {
+      children.push(
+        renderChild({
+          data: whiteboardTags.data,
+          dataKey: tag,
+          component: tag,
+          title: tag,
+        }),
+      );
+    });
+
+    children.push(<DashBlank key="ni-blank-1" />);
+
+    return DashCountGroup({
+      className: 'whiteboardtags',
+      key: 'whiteboardtags',
+      children,
+      title: 'Whiteboard Tags',
+      description: 'Whiteboard Tags to track',
     });
   }
 
@@ -228,7 +270,7 @@ function DashboardWE(props) {
           {isLoading ? (
             <div className="loading">Loading...</div>
           ) : (
-            [renderNeedInfos(), ...renderCounts()]
+            [renderNeedInfos(), ...renderCounts(), renderWhiteBoardTags()]
           )}
         </div>
       </Container>

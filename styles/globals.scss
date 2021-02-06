@@ -475,18 +475,22 @@ body.dash {
       color: #ccc;
       font-weight: 200;
       text-shadow: -1px -1px rgba(0, 0, 0, 0.8);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
     }
 
-    .repo-card .card-header {
-      font-weight: 400;
+    .title-card {
+      flex: 0 0 13.5vw;
+
+      .card-header {
+        font-weight: 400;
+      }
     }
   }
 
   .card svg text {
     font-size: 2vw;
-  }
-
-  .card-grp.needinfos .card {
-    background: #38383d !important;
   }
 }

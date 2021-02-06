@@ -6,7 +6,7 @@ describe('DashCount Component', () => {
   const testData = {
     link: 'https://example.com/link',
     title: 'title',
-    warning: false,
+    warningLimit: 12,
     count: 10,
   };
 
@@ -25,7 +25,7 @@ describe('DashCount Component', () => {
   });
 
   it('renders count data with warning', async () => {
-    render(<DashCount {...testData} warning />);
+    render(<DashCount {...testData} warningLimit="10" />);
     await waitFor(() => screen.getByRole('link'));
     expect(screen.getByRole('link')).toHaveAttribute(
       'href',

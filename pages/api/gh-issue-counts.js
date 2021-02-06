@@ -25,6 +25,9 @@ const query = gql`
     open_p2s: issues(states: OPEN, labels: "priority: p2") {
       totalCount
     }
+    open_p3s: issues(states: OPEN, labels: "priority: p3") {
+      totalCount
+    }
     open_prs: pullRequests(states: OPEN) {
       totalCount
     }

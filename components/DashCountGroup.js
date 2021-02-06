@@ -8,7 +8,7 @@ export default function DashCountGroup(props) {
       key={props.key}
       data-testid="dashcountgroup"
     >
-      <Card bg="dark" text="white" className="repo-card">
+      <Card bg="dark" text="white" className="title-card">
         <Card.Header data-testid="dashcountgroup-title">
           {props.title}
         </Card.Header>

@@ -18,6 +18,10 @@ export default {
         totalCount: 2,
         __typename: 'IssueConnection',
       },
+      open_p3s: {
+        totalCount: 3,
+        __typename: 'IssueConnection',
+      },
       open_prs: {
         totalCount: 0,
         __typename: 'PullRequestConnection',
@@ -40,6 +44,10 @@ export default {
       },
       open_p2s: {
         totalCount: 1,
+        __typename: 'IssueConnection',
+      },
+      open_p3s: {
+        totalCount: 5,
         __typename: 'IssueConnection',
       },
       open_prs: {
@@ -66,6 +74,10 @@ export default {
         totalCount: 3,
         __typename: 'IssueConnection',
       },
+      open_p3s: {
+        totalCount: 6,
+        __typename: 'IssueConnection',
+      },
       open_prs: {
         totalCount: 10,
         __typename: 'PullRequestConnection',
@@ -90,6 +102,10 @@ export default {
         totalCount: 0,
         __typename: 'IssueConnection',
       },
+      open_p3s: {
+        totalCount: 4,
+        __typename: 'IssueConnection',
+      },
       open_prs: {
         totalCount: 2,
         __typename: 'PullRequestConnection',
@@ -112,6 +128,10 @@ export default {
       },
       open_p2s: {
         totalCount: 0,
+        __typename: 'IssueConnection',
+      },
+      open_p3s: {
+        totalCount: 4,
         __typename: 'IssueConnection',
       },
       open_prs: {
