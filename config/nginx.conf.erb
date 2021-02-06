@@ -46,6 +46,10 @@ http {
     proxy_set_header Host $host;
     proxy_cache_bypass $http_upgrade;
 
+    if ($http_x_forwarded_proto != 'https') {
+      rewrite ^ https://$host$request_uri? permanent;
+    }
+
     location /_next/static {
       # proxy_cache STATIC;
       proxy_pass http://nextjs_upstream;
