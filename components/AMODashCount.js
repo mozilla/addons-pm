@@ -4,7 +4,7 @@ import DashCount from './DashCount';
 
 export default function AMODashCount(props) {
   const repo = props.repo.replace(/_/g, '-');
-  let warningLimit = null;
+  let warningLimit;
   let issuesLink = oneLineTrim`https://github.com/mozilla/${repo}/issues?
     utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen`;
 
