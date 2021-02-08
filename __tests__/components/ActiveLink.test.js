@@ -21,8 +21,7 @@ describe('ActiveLink Component', () => {
         <a>test-link</a>
       </ActiveLink>,
     );
-    await waitFor(() => screen.getByRole('link'));
-    const link = screen.getByRole('link');
+    const link = await waitFor(() => screen.getByRole('link'));
     expect(link).toHaveAttribute('href', '/whatever/');
     expect(link).not.toHaveClass('active');
   });
@@ -38,8 +37,7 @@ describe('ActiveLink Component', () => {
         <a>test-link</a>
       </ActiveLink>,
     );
-    await waitFor(() => screen.getByRole('link'));
-    const link = screen.getByRole('link');
+    const link = await waitFor(() => screen.getByRole('link'));
     expect(link).toHaveAttribute('href', '/whatever/');
     expect(link).toHaveClass('active');
   });
