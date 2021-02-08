@@ -20,6 +20,14 @@
     "react/jsx-curly-newline": "off",
     "react/jsx-no-undef": ["on", { "allowGlobals": true }]
     // Modify rules.
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["invalidHref", "preferButton"]
+      }
+    ],
     "react/no-unescaped-entities": "off",
     "react/prop-types": "off",
     "import/no-extraneous-dependencies": "off",
