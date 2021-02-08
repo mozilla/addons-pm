@@ -18,7 +18,7 @@
     "operator-linebreak": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-curly-newline": "off",
-    "react/jsx-no-undef": ["on", { "allowGlobals": true }]
+    "react/jsx-no-undef": ["on", { "allowGlobals": true }],
     // Modify rules.
     "jsx-a11y/anchor-is-valid": [
       "error",
