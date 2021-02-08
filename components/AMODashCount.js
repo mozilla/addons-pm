@@ -1,4 +1,3 @@
-import React from 'react';
 import { oneLineTrim } from 'common-tags';
 
 import DashCount from './DashCount';

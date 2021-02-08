@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import * as nextRouter from 'next/router';
-import React from 'react';
 import { cleanup, render, waitFor, screen } from '@testing-library/react';
 import HeaderLink from 'components/HeaderLink';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import fetchMock from 'fetch-mock';
 import * as nextRouter from 'next/router';
 import { cleanup, render } from '@testing-library/react';

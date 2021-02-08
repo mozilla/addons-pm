@@ -1,5 +1,3 @@
-import React from 'react';
-
 import AMODashCount from './AMODashCount';
 import DashCountGroup from './DashCountGroup';
 

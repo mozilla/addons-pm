@@ -1,4 +1,3 @@
-import React from 'react';
 import useSWR from 'swr';
 import { Helmet } from 'react-helmet';
 import Link from 'next/link';

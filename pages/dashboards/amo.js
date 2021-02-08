@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet';
 import Error from 'next/error';
 import { Container } from 'react-bootstrap';

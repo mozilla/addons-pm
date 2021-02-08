@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function YesNoBool(props) {
   const { bool, extraClasses } = props;
   const yesOrNo = bool === true ? 'yes' : 'no';

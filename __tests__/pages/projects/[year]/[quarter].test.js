@@ -1,4 +1,3 @@
-import React from 'react';
 import fetchMock from 'fetch-mock';
 import * as nextRouter from 'next/router';
 import ghProjectsData from 'fixtures/gh-projects';

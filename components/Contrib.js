@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useRouter } from 'next/router';
 import { Container, Nav, Navbar, Table } from 'react-bootstrap';

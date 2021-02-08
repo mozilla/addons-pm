@@ -18,6 +18,7 @@
     "operator-linebreak": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-curly-newline": "off",
+    "react/jsx-no-undef": ["on", { "allowGlobals": true }]
     // Modify rules.
     "react/no-unescaped-entities": "off",
     "react/prop-types": "off",
@@ -29,6 +30,5 @@
     "no-nested-ternary": "off",
     // This can be off as Next imports React.
     "react/react-in-jsx-scope": "off",
-
   }
 }
