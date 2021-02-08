@@ -494,3 +494,33 @@ body.dash {
     font-size: 2vw;
   }
 }
+
+.Contrib {
+  .contributor,
+  .mentor {
+    background: green;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 5px 3px;
+
+    &.not-assigned {
+      background: orange;
+    }
+  }
+
+  .not-found {
+    background: url('../public/images/blue-berror.svg') no-repeat 50% 50%;
+    min-height: 450px;
+    padding-top: 10px;
+    text-align: center;
+  }
+
+  .last-updated {
+    min-width: 9em;
+  }
+
+  th.repo {
+    width: 11em;
+  }
+}

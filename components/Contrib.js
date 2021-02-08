@@ -27,7 +27,7 @@ const sortConfig = {
 
 function renderRows({ data, hasAssignments }) {
   const rows = [];
-  const colSpan = 4;
+  const colSpan = 6;
 
   if (!data) {
     return (
