@@ -23,10 +23,10 @@ describe('bz-need-infos API', () => {
   });
 
   it('should return bugzilla need info data', async () => {
-    process.env.BZ_USERS = `{
-      "testuser": "testuser@example.com",
-      "testuser2": "testuser2@example.com"
-    }`;
+    process.env.BZ_USERS = JSON.stringify({
+      testuser: 'testuser@example.com',
+      testuser2: 'testuser2@example.com',
+    });
     const req = new MockExpressRequest({
       method: 'GET',
       url: '/api/bugzilla-issue-counts/',
