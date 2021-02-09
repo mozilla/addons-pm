@@ -1,7 +1,7 @@
 import { render, waitFor, screen } from '@testing-library/react';
 import DashCountGroup from 'components/DashCountGroup';
 
-describe('DashCountGroup Component', () => {
+describe(__filename, () => {
   const testData = {
     className: 'test-class',
     title: 'test title',

@@ -4,7 +4,7 @@ import MockExpressResponse from 'mock-express-response';
 import getMilestones from 'pages/api/gh-milestone-issues';
 import milestoneData from 'fixtures/gh-milestone-issues';
 
-describe('gh-milestone-issues API', () => {
+describe(__filename, () => {
   beforeEach(() => {
     fetchMock.once('https://api.github.com/graphql', milestoneData);
   });

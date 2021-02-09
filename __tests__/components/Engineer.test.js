@@ -1,7 +1,7 @@
 import { render, waitFor, screen } from '@testing-library/react';
 import Engineer from 'components/Engineer';
 
-describe('Engineer Component', () => {
+describe(__filename, () => {
   const testMember = {
     avatarUrl: 'https://example.com/testuser',
     login: 'jane bloggs',

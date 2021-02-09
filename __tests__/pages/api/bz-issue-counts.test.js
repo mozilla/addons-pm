@@ -5,7 +5,7 @@ import getBZIssueCounts from 'pages/api/bz-issue-counts';
 import bzIssueCountSingleData from 'fixtures/bz-issue-count-single';
 import bzIssueCountsData from 'fixtures/bz-issue-counts';
 
-describe('bz-issue-counts API', () => {
+describe(__filename, () => {
   beforeEach(() => {
     fetchMock.mock(
       'begin:https://bugzilla.mozilla.org/rest/bug',

@@ -4,7 +4,7 @@ import MockExpressResponse from 'mock-express-response';
 import getProjects from 'pages/api/gh-projects';
 import projectData from 'fixtures/gh-projects';
 
-describe('gh-projects API', () => {
+describe(__filename, () => {
   beforeEach(() => {
     fetchMock.once('https://api.github.com/graphql', projectData);
   });

@@ -2,7 +2,7 @@ import * as nextRouter from 'next/router';
 import { cleanup, render, waitFor, screen } from '@testing-library/react';
 import ActiveLink from 'components/ActiveLink';
 
-describe('ActiveLink Component', () => {
+describe(__filename, () => {
   beforeEach(() => {
     nextRouter.useRouter = jest.fn();
   });

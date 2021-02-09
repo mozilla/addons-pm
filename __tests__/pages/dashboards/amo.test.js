@@ -4,7 +4,7 @@ import fetchMock from 'fetch-mock';
 import ghIssueCountsData from 'fixtures/gh-issue-counts';
 import DashboardAMO, { getServerSideProps } from 'pages/dashboards/amo';
 
-describe('AMO Dashboard', () => {
+describe(__filename, () => {
   beforeEach(() => {
     nextRouter.useRouter = jest.fn();
     fetchMock.mock(/\/api\/gh-issue-counts\//, ghIssueCountsData);

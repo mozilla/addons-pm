@@ -1,6 +1,6 @@
 import { alphaSort, dateSort, numericSort, sortData } from 'lib/utils/sort';
 
-describe('Sort Utils', () => {
+describe(__filename, () => {
   describe('dateSort()', () => {
     const data = [
       { date: '2019-03-25T17:27:07Z' },

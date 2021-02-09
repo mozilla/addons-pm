@@ -5,7 +5,7 @@ import ghTeamData from 'fixtures/gh-team';
 import { cleanup, render } from '@testing-library/react';
 import Projects, { getServerSideProps } from 'pages/projects/[year]/[quarter]';
 
-describe('Projects Page', () => {
+describe(__filename, () => {
   let fakeProps;
 
   beforeEach(() => {

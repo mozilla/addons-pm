@@ -6,7 +6,7 @@ import MaybeGoodFirstBugs, {
   getServerSideProps,
 } from 'pages/contrib/maybe-good-first-bugs';
 
-describe('Maybe Good First Bugs Page', () => {
+describe(__filename, () => {
   beforeEach(() => {
     nextRouter.useRouter = jest.fn();
     fetchMock.mock(

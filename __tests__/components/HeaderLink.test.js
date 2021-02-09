@@ -2,7 +2,7 @@ import * as nextRouter from 'next/router';
 import { cleanup, render, waitFor, screen } from '@testing-library/react';
 import HeaderLink from 'components/HeaderLink';
 
-describe('HeaderLink Component', () => {
+describe(__filename, () => {
   beforeEach(() => {
     nextRouter.useRouter = jest.fn();
   });

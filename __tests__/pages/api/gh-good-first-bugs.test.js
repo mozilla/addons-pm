@@ -4,7 +4,7 @@ import MockExpressResponse from 'mock-express-response';
 import getGoodFirstBugs from 'pages/api/gh-good-first-bugs';
 import goodFirstBugsData from 'fixtures/gh-good-first-bugs';
 
-describe('gh-good-first-bugs API', () => {
+describe(__filename, () => {
   beforeEach(() => {
     fetchMock.mock('https://api.github.com/graphql', goodFirstBugsData);
   });

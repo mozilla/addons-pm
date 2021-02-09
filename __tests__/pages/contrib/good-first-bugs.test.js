@@ -6,7 +6,7 @@ import GoodFirstBugs, {
   getServerSideProps,
 } from 'pages/contrib/good-first-bugs';
 
-describe('Good First Bugs Page', () => {
+describe(__filename, () => {
   beforeEach(() => {
     nextRouter.useRouter = jest.fn();
     fetchMock.mock(/\/api\/gh-good-first-bugs\//, ghGoodFirstBugsData);

@@ -4,7 +4,7 @@ import ghMilestoneIssuesData from 'fixtures/gh-milestone-issues';
 import { cleanup, render } from '@testing-library/react';
 import Milestones, { getServerSideProps } from 'pages/milestones/[milestone]';
 
-describe('Milestone Page', () => {
+describe(__filename, () => {
   let fakeProps;
 
   beforeEach(() => {

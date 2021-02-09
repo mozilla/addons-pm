@@ -1,6 +1,6 @@
 import { formatContribData } from 'lib/utils/contrib';
 
-describe('lib/utils/contrib', () => {
+describe(__filename, () => {
   describe('formatContribData()', () => {
     const testIssues = [
       {

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import YesNoBool from 'components/YesNoBool';
 
-describe('YesNoBool Component', () => {
+describe(__filename, () => {
   it('renders YES', async () => {
     // eslint-disable-next-line react/jsx-boolean-value
     render(<YesNoBool bool={true} />);

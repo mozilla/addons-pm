@@ -7,7 +7,7 @@ import {
   sanitize,
 } from 'lib/utils';
 
-describe('Utils', () => {
+describe(__filename, () => {
   it('sanitize() sanitizes bad markup', () => {
     const sanitized = sanitize(
       '<a href="javascript: alert(document.cookie)">foo</a>',

@@ -1,7 +1,7 @@
 import { render, waitFor, screen } from '@testing-library/react';
 import DashCount from 'components/DashCount';
 
-describe('DashCount Component', () => {
+describe(__filename, () => {
   const testData = {
     link: 'https://example.com/link',
     title: 'title',

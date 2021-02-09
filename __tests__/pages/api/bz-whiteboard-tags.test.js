@@ -5,7 +5,7 @@ import getWhiteboardTags from 'pages/api/bz-whiteboard-tags';
 import bzWhiteobardTagsSingleData from 'fixtures/bz-whiteboard-tags-single';
 import bzWhiteboardTagsData from 'fixtures/bz-whiteboard-tags';
 
-describe('bz-whiteboard-tags API', () => {
+describe(__filename, () => {
   beforeEach(() => {
     fetchMock.mock(
       'begin:https://bugzilla.mozilla.org/rest/bug',

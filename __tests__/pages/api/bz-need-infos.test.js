@@ -5,7 +5,7 @@ import getBZNeedInfos from 'pages/api/bz-need-infos';
 import bzNeedsInfoSingleData from 'fixtures/bz-need-infos-single';
 import bzNeedsInfoData from 'fixtures/bz-need-infos';
 
-describe('bz-need-infos API', () => {
+describe(__filename, () => {
   const OLD_ENV = process.env;
 
   beforeEach(() => {

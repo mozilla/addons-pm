@@ -1,5 +1,8 @@
 {
-  "extends": "amo",
+  "extends": [
+    "amo",
+    "plugin:amo/recommended"
+  ],
   "env": {
     "jest/globals": true
   },
@@ -12,8 +15,8 @@
   },
   "rules": {
     // These rules are not compatible with Prettier.
-    "implicit-arrow-linebreak": "off",
-    "indent": "off",
+    // "implicit-arrow-linebreak": "off",
+    // "indent": "off",
     "no-mixed-operators": "off",
     "operator-linebreak": "off",
     "react/jsx-one-expression-per-line": "off",

@@ -13,7 +13,7 @@ import {
 } from 'lib/utils/milestones';
 import { colors } from 'lib/const';
 
-describe('Milestone Utils', () => {
+describe(__filename, () => {
   describe('getNextMilestone()', () => {
     it('gets the next nearest Thursday', () => {
       // Note months are zero indexed.

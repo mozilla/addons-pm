@@ -6,7 +6,7 @@ import bzNeedInfoData from 'fixtures/bz-need-infos';
 import bzWhiteboardTagData from 'fixtures/bz-whiteboard-tags';
 import DashboardWE, { getServerSideProps } from 'pages/dashboards/webext';
 
-describe('Webext Dashboard', () => {
+describe(__filename, () => {
   beforeEach(() => {
     nextRouter.useRouter = jest.fn();
     fetchMock.mock(/\/api\/bz-issue-counts\//, bzIssueCountsData);

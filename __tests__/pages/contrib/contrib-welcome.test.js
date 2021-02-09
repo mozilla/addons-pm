@@ -6,7 +6,7 @@ import ContribWelcome, {
   getServerSideProps,
 } from 'pages/contrib/contrib-welcome';
 
-describe('Contrib Welcome Page', () => {
+describe(__filename, () => {
   beforeEach(() => {
     nextRouter.useRouter = jest.fn();
     fetchMock.mock(/\/api\/gh-contrib-welcome\//, ghContribWelcomeData);

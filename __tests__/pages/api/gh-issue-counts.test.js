@@ -4,7 +4,7 @@ import MockExpressResponse from 'mock-express-response';
 import getIssueCounts from 'pages/api/gh-issue-counts';
 import issueCountData from 'fixtures/gh-issue-counts';
 
-describe('gh-issue-counts API', () => {
+describe(__filename, () => {
   beforeEach(() => {
     fetchMock.mock('https://api.github.com/graphql', issueCountData);
   });

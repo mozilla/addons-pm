@@ -1,6 +1,6 @@
 import Page, { getServerSideProps } from 'pages/milestones/latest';
 
-describe('Milestones Latest Redirect', () => {
+describe(__filename, () => {
   describe('Page', () => {
     it('should return null from Page', () => {
       expect(Page()).toBe(null);

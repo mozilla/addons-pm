@@ -1,6 +1,6 @@
 import serverSWR from 'lib/serverSWR';
 
-describe('serverSWR', () => {
+describe(__filename, () => {
   let fakeCache;
   let fakeFetcher;
 

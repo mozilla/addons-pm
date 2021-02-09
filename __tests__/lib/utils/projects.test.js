@@ -5,7 +5,7 @@ import {
   parseProjectMeta,
 } from 'lib/utils/projects';
 
-describe('Project Utils', () => {
+describe(__filename, () => {
   describe('getCurrentQuarter()', () => {
     it('should provide the quarter and year', () => {
       const startDate = new Date('2019', '3', '9');

@@ -4,7 +4,7 @@ import MockExpressResponse from 'mock-express-response';
 import getContribWelcome from 'pages/api/gh-contrib-welcome';
 import contribWelcomeData from 'fixtures/gh-contrib-welcome';
 
-describe('gh-contrib-welcome API', () => {
+describe(__filename, () => {
   beforeEach(() => {
     fetchMock.mock('https://api.github.com/graphql', contribWelcomeData);
   });
