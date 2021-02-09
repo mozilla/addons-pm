@@ -26,7 +26,7 @@ http {
   # Must read the body in 5 seconds.
   client_body_timeout 5;
 
-  # proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=STATIC:10m inactive=7d use_temp_path=off;
+  proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=STATIC:10m inactive=7d use_temp_path=off;
 
   upstream nextjs_upstream {
     server unix:/tmp/nginx.socket fail_timeout=0;
@@ -50,61 +50,49 @@ http {
       rewrite ^ https://$host$request_uri? permanent;
     }
 
+    # A default restrictive CSP that should always be overriden by location blocks.
+    include sec-headers-base.conf;
+
+    # All the JS / CSS served by next.
     location /_next/static {
-      # proxy_cache STATIC;
+      # Next.js serves far-futures expires itself.
+      # This caching will have nginx serve statics (after the first request)
+      # rather than hitting the app-server.
+      proxy_cache STATIC;
       proxy_pass http://nextjs_upstream;
 
       # For testing cache - remove before deploying to production
-      # add_header X-Cache-Status $upstream_cache_status;
+      add_header X-Cache-Status $upstream_cache_status;
 
-      # CSP
-      add_header X-Frame-Options DENY always;
-      add_header X-Content-Type-Options nosniff always;
-      add_header Strict-Transport-Security max-age=31536000 always;
-      add_header Content-Security-Policy "
-       default-src 'none';
-       base-uri 'none';
-       form-action 'none';
-       object-src 'none'" always;
+      # Full sec headers so error pages work.
+      include sec-headers.conf;
     }
 
+    # Serves static files added to public/static
     location /static {
-      # proxy_cache STATIC;
-      # proxy_ignore_headers Cache-Control;
+      # proxy_cache static;
+      # proxy_ignore_headers cache-control;
       # proxy_cache_valid 60m;
+
+      # add_header x-cache-status $upstream_cache_status;
+
+      # Full sec headers so error pages work.
+      include sec-headers.conf;
+
       proxy_pass http://nextjs_upstream;
+    }
 
-      # For testing cache - remove before deploying to production
-      # add_header X-Cache-Status $upstream_cache_status;
-
-      # CSP
-      add_header X-Frame-Options DENY always;
-      add_header X-Content-Type-Options nosniff always;
-      add_header Strict-Transport-Security max-age=31536000 always;
-      add_header Content-Security-Policy "
-        default-src 'none';
-        base-uri 'none';
-        form-action 'none';
-        object-src 'none'" always;
+    location /api {
+      # Full sec headers so error pages work.
+      include sec-headers.conf;
+      proxy_pass http://nextjs_upstream;
     }
 
     location / {
       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
       proxy_set_header Host $http_host;
 
-      add_header X-Frame-Options DENY always;
-      add_header X-Content-Type-Options nosniff always;
-      add_header Strict-Transport-Security max-age=31536000 always;
-      add_header Content-Security-Policy "
-       default-src 'none';
-       base-uri 'self';
-       form-action 'none';
-       object-src 'none';
-       connect-src 'self';
-       font-src 'self';
-       script-src 'self';
-       img-src 'self' https://*.githubusercontent.com/u/;
-       style-src 'self' 'unsafe-inline'" always;
+      include sec-headers.conf;
 
       proxy_pass http://nextjs_upstream;
     }
