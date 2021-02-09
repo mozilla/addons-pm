@@ -70,11 +70,11 @@ http {
 
     # Serves static files added to public/static
     location /static {
-      proxy_cache static;
-      proxy_ignore_headers cache-control;
+      proxy_cache STATIC;
+      proxy_ignore_headers Cache-Control;
       proxy_cache_valid 60m;
 
-      add_header x-cache-status $upstream_cache_status;
+      add_header X-Cache-Status $upstream_cache_status;
 
       # Full sec headers so error pages work.
       include sec-headers.conf;
