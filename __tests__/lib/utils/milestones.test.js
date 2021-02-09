@@ -108,13 +108,13 @@ describe(__filename, () => {
         },
       };
       setIssuePriorityProp(testIssue);
-      expect(testIssue.priority).toBe(null);
+      expect(testIssue.priority).toEqual(null);
     });
 
     it('should set priority to null if no labels exist', () => {
       const issueWithNoLabels = {};
       setIssuePriorityProp(issueWithNoLabels);
-      expect(issueWithNoLabels.priority).toBe(null);
+      expect(issueWithNoLabels.priority).toEqual(null);
     });
   });
 
@@ -130,7 +130,7 @@ describe(__filename, () => {
         },
       };
       setIsContribProp(testIssue);
-      expect(testIssue.isContrib).toBe(true);
+      expect(testIssue.isContrib).toEqual(true);
     });
 
     it('should set isContrib to false if contrib label is missing', () => {
@@ -145,13 +145,13 @@ describe(__filename, () => {
       };
 
       setIsContribProp(testIssue);
-      expect(testIssue.isContrib).toBe(false);
+      expect(testIssue.isContrib).toEqual(false);
     });
 
     it('should set isContrib to false if no labels exist', () => {
       const issueWithNoLabels = {};
       setIsContribProp(issueWithNoLabels);
-      expect(issueWithNoLabels.isContrib).toBe(false);
+      expect(issueWithNoLabels.isContrib).toEqual(false);
     });
   });
 
@@ -211,7 +211,7 @@ describe(__filename, () => {
         },
       };
       setProjectProps(testIssue);
-      expect(testIssue.hasProject).toBe(true);
+      expect(testIssue.hasProject).toEqual(true);
       expect(testIssue.projectName).toEqual('Project Name');
       expect(testIssue.projectUrl).toEqual(
         'https://example.com/example-project-1',
@@ -221,7 +221,7 @@ describe(__filename, () => {
     it('should set hasProject to false if no project data exists', () => {
       const testIssue = {};
       setProjectProps(testIssue);
-      expect(testIssue.hasProject).toBe(false);
+      expect(testIssue.hasProject).toEqual(false);
     });
   });
 
@@ -273,7 +273,7 @@ describe(__filename, () => {
     it('should set a reviewer', () => {
       setReviewerDetails(testIssue);
       expect(testIssue.reviewers[0].author.login).toEqual('example-user-2');
-      expect(testIssue.reviewers[1]).toBe(undefined);
+      expect(testIssue.reviewers[1]).toEqual(undefined);
     });
 
     it('should set multiple reviewers', () => {
@@ -318,8 +318,8 @@ describe(__filename, () => {
         },
       };
       setStateLabels(testIssue);
-      expect(testIssue.stateLabel).toBe('closed');
-      expect(testIssue.stateLabelColor).toBe(colors.closed);
+      expect(testIssue.stateLabel).toEqual('closed');
+      expect(testIssue.stateLabelColor).toEqual(colors.closed);
     });
 
     it('should set a default stateLabel for open issue', () => {
@@ -334,8 +334,8 @@ describe(__filename, () => {
         },
       };
       setStateLabels(testIssue);
-      expect(testIssue.stateLabel).toBe('open');
-      expect(testIssue.stateLabelColor).toBe(colors.open);
+      expect(testIssue.stateLabel).toEqual('open');
+      expect(testIssue.stateLabelColor).toEqual(colors.open);
     });
 
     it('should set stateLabel for pr ready', () => {
@@ -350,8 +350,8 @@ describe(__filename, () => {
         },
       };
       setStateLabels(testIssue);
-      expect(testIssue.stateLabel).toBe('PR ready');
-      expect(testIssue.stateLabelColor).toBe(colors.prReady);
+      expect(testIssue.stateLabel).toEqual('PR ready');
+      expect(testIssue.stateLabelColor).toEqual(colors.prReady);
     });
 
     it('should set stateLabel for verified fixed', () => {
@@ -366,8 +366,8 @@ describe(__filename, () => {
         },
       };
       setStateLabels(testIssue);
-      expect(testIssue.stateLabel).toBe('verified fixed');
-      expect(testIssue.stateLabelColor).toBe(colors.verified);
+      expect(testIssue.stateLabel).toEqual('verified fixed');
+      expect(testIssue.stateLabelColor).toEqual(colors.verified);
     });
 
     it('should set stateLabel for in progress', () => {
@@ -382,8 +382,8 @@ describe(__filename, () => {
         },
       };
       setStateLabels(testIssue);
-      expect(testIssue.stateLabel).toBe('in progress');
-      expect(testIssue.stateLabelColor).toBe(colors.inProgress);
+      expect(testIssue.stateLabel).toEqual('in progress');
+      expect(testIssue.stateLabelColor).toEqual(colors.inProgress);
     });
 
     it('should set stateLabel for qa not needed', () => {
@@ -398,8 +398,8 @@ describe(__filename, () => {
         },
       };
       setStateLabels(testIssue);
-      expect(testIssue.stateLabel).toBe('closed QA-');
-      expect(testIssue.stateLabelColor).toBe(colors.verified);
+      expect(testIssue.stateLabel).toEqual('closed QA-');
+      expect(testIssue.stateLabelColor).toEqual(colors.verified);
     });
   });
 

@@ -35,6 +35,6 @@ describe(__filename, () => {
     const { props: serverProps } = await getServerSideProps();
     expect(
       serverProps.contribWelcomeData.data.contrib_welcome.results.length,
-    ).toBe(3);
+    ).toEqual(3);
   });
 });

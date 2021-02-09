@@ -39,6 +39,6 @@ describe(__filename, () => {
 
   it('should fetch data via getServerSideProps', async () => {
     const { props: serverProps } = await getServerSideProps(fakeProps);
-    expect(serverProps.milestoneIssues.length).toBe(13);
+    expect(serverProps.milestoneIssues.length).toEqual(13);
   });
 });

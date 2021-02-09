@@ -3,7 +3,7 @@ import Page, { getServerSideProps } from 'pages/projects/latest';
 describe(__filename, () => {
   describe('Page', () => {
     it('should return null from Page', () => {
-      expect(Page()).toBe(null);
+      expect(Page()).toEqual(null);
     });
   });
 

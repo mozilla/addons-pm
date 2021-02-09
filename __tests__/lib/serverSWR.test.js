@@ -21,13 +21,13 @@ describe(__filename, () => {
     });
     const result = await serverSWR('foo', fakeFetcher, { swrCache: fakeCache });
     // calls[0][0] first call and first arg.
-    expect(fakeCache.has.mock.calls[0][0]).toBe('foo');
-    expect(fakeCache.get.mock.calls[0][0]).toBe('foo');
+    expect(fakeCache.has.mock.calls[0][0]).toEqual('foo');
+    expect(fakeCache.get.mock.calls[0][0]).toEqual('foo');
     // Based on the time being older than now, the fetcher shouldn't be called.
-    expect(fakeFetcher.mock.calls.length).toBe(0);
+    expect(fakeFetcher.mock.calls.length).toEqual(0);
     // Based on the time being older than now, there should be nothing new to cache.
-    expect(fakeCache.set.mock.calls.length).toBe(0);
-    expect(result.test).toBe('foo-data');
+    expect(fakeCache.set.mock.calls.length).toEqual(0);
+    expect(result.test).toEqual('foo-data');
   });
 
   it('should return stale data first, followed by fresh data', async () => {
@@ -44,19 +44,19 @@ describe(__filename, () => {
       });
     const result = await serverSWR('foo', fakeFetcher, { swrCache: fakeCache });
     // calls[0][0] first call and first arg.
-    expect(fakeCache.has.mock.calls[0][0]).toBe('foo');
-    expect(fakeCache.get.mock.calls[0][0]).toBe('foo');
+    expect(fakeCache.has.mock.calls[0][0]).toEqual('foo');
+    expect(fakeCache.get.mock.calls[0][0]).toEqual('foo');
     // Based on the time being newer than cached data the fetcher should be called.
-    expect(fakeFetcher.mock.calls.length).toBe(1);
+    expect(fakeFetcher.mock.calls.length).toEqual(1);
     // Based on the time being newer than now, the cache should be updated with a new
     // timestamp to prevent premature re-fetches as well as providing the new data.
-    expect(fakeCache.set.mock.calls.length).toBe(2);
+    expect(fakeCache.set.mock.calls.length).toEqual(2);
     // Data should be stale the first time.
-    expect(result.test).toBe('foo-data');
+    expect(result.test).toEqual('foo-data');
     const newResult = await serverSWR('foo', fakeFetcher, {
       swrCache: fakeCache,
     });
     // On the second call it should be fresh.
-    expect(newResult.test).toBe('new-foo-data');
+    expect(newResult.test).toEqual('new-foo-data');
   });
 });

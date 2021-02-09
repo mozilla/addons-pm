@@ -35,6 +35,6 @@ describe(__filename, () => {
     const { props: serverProps } = await getServerSideProps();
     expect(
       serverProps.goodFirstBugsData.data.good_first_bugs.results.length,
-    ).toBe(3);
+    ).toEqual(3);
   });
 });

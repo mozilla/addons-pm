@@ -39,6 +39,6 @@ describe(__filename, () => {
     expect(
       serverProps.maybeGoodFirstBugsData.data.maybe_good_first_bugs.results
         .length,
-    ).toBe(1);
+    ).toEqual(1);
   });
 });

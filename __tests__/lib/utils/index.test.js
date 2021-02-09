@@ -98,13 +98,13 @@ describe(__filename, () => {
 
     it('should handle query params', () => {
       const result = getApiURL('/api/whatever', { param: 'foo bar' });
-      expect(result).toBe('/api/whatever?param=foo%20bar');
+      expect(result).toEqual('/api/whatever?param=foo%20bar');
     });
 
     it('should include host set by env var', () => {
       process.env.API_HOST = 'https://example.com:5000';
       const result = getApiURL('/api/whatever', { param: 'foo bar' });
-      expect(result).toBe(
+      expect(result).toEqual(
         'https://example.com:5000/api/whatever?param=foo%20bar',
       );
     });

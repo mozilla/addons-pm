@@ -57,8 +57,8 @@ describe(__filename, () => {
         direction: 'asc',
         sortConfig,
       });
-      expect(sorted[0].letters).toBe('aabbcc');
-      expect(sorted[3].letters).toBe('cccddd');
+      expect(sorted[0].letters).toEqual('aabbcc');
+      expect(sorted[3].letters).toEqual('cccddd');
     });
 
     it('sorts standard data by specified direction', () => {
@@ -68,8 +68,8 @@ describe(__filename, () => {
         direction: 'desc',
         sortConfig,
       });
-      expect(sorted[0].letters).toBe('cccddd');
-      expect(sorted[3].letters).toBe('aabbcc');
+      expect(sorted[0].letters).toEqual('cccddd');
+      expect(sorted[3].letters).toEqual('aabbcc');
     });
 
     it('sorts dates', () => {
@@ -79,8 +79,8 @@ describe(__filename, () => {
         direction: 'asc',
         sortConfig,
       });
-      expect(sorted[0].date).toBe('2016-06-25T10:07:07Z');
-      expect(sorted[3].date).toBe('2019-03-25T17:27:07Z');
+      expect(sorted[0].date).toEqual('2016-06-25T10:07:07Z');
+      expect(sorted[3].date).toEqual('2019-03-25T17:27:07Z');
     });
 
     it('sorts dates by specified direction', () => {
@@ -90,13 +90,13 @@ describe(__filename, () => {
         direction: 'desc',
         sortConfig,
       });
-      expect(sorted[0].date).toBe('2019-03-25T17:27:07Z');
-      expect(sorted[3].date).toBe('2016-06-25T10:07:07Z');
+      expect(sorted[0].date).toEqual('2019-03-25T17:27:07Z');
+      expect(sorted[3].date).toEqual('2016-06-25T10:07:07Z');
     });
 
     it('returns data unchanged if falsey', () => {
       const sorted = sortData({ data: null });
-      expect(sorted).toBe(null);
+      expect(sorted).toEqual(null);
     });
   });
 });

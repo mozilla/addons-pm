@@ -41,7 +41,7 @@ describe(__filename, () => {
 
   it('should fetch data via getServerSideProps', async () => {
     const { props: serverProps } = await getServerSideProps(fakeProps);
-    expect(serverProps.projects.data.organization.projects.nodes.length).toBe(
+    expect(serverProps.projects.data.organization.projects.nodes.length).toEqual(
       4,
     );
   });
