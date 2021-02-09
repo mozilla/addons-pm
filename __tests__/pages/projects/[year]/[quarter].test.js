@@ -9,7 +9,6 @@ describe('Projects Page', () => {
   let fakeProps;
 
   beforeEach(() => {
-    jest.clearAllMocks();
     nextRouter.useRouter = jest.fn();
     fetchMock.mock(/\/api\/gh-projects\//, ghProjectsData);
     fetchMock.mock(/\/api\/gh-team\//, ghTeamData);

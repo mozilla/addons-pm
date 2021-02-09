@@ -6,7 +6,6 @@ import DashboardAMO, { getServerSideProps } from 'pages/dashboards/amo';
 
 describe('AMO Dashboard', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
     nextRouter.useRouter = jest.fn();
     fetchMock.mock(/\/api\/gh-issue-counts\//, ghIssueCountsData);
   });

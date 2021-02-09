@@ -8,7 +8,6 @@ describe('Milestone Page', () => {
   let fakeProps;
 
   beforeEach(() => {
-    jest.clearAllMocks();
     nextRouter.useRouter = jest.fn();
     fetchMock.mock(/\/api\/gh-milestone-issues\//, ghMilestoneIssuesData);
     fakeProps = {

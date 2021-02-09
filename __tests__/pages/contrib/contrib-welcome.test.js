@@ -8,7 +8,6 @@ import ContribWelcome, {
 
 describe('Contrib Welcome Page', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
     nextRouter.useRouter = jest.fn();
     fetchMock.mock(/\/api\/gh-contrib-welcome\//, ghContribWelcomeData);
   });

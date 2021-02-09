@@ -4,7 +4,6 @@ import HeaderLink from 'components/HeaderLink';
 
 describe('HeaderLink Component', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
     nextRouter.useRouter = jest.fn();
   });
 

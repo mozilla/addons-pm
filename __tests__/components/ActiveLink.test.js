@@ -4,7 +4,6 @@ import ActiveLink from 'components/ActiveLink';
 
 describe('ActiveLink Component', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
     nextRouter.useRouter = jest.fn();
   });
 

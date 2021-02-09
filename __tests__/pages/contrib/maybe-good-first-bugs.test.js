@@ -8,7 +8,6 @@ import MaybeGoodFirstBugs, {
 
 describe('Maybe Good First Bugs Page', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
     nextRouter.useRouter = jest.fn();
     fetchMock.mock(
       /\/api\/gh-maybe-good-first-bugs\//,

@@ -8,7 +8,6 @@ import GoodFirstBugs, {
 
 describe('Good First Bugs Page', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
     nextRouter.useRouter = jest.fn();
     fetchMock.mock(/\/api\/gh-good-first-bugs\//, ghGoodFirstBugsData);
   });

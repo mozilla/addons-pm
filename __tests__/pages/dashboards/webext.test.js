@@ -8,7 +8,6 @@ import DashboardWE, { getServerSideProps } from 'pages/dashboards/webext';
 
 describe('Webext Dashboard', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
     nextRouter.useRouter = jest.fn();
     fetchMock.mock(/\/api\/bz-issue-counts\//, bzIssueCountsData);
     fetchMock.mock(/\/api\/bz-need-infos\//, bzNeedInfoData);
