@@ -169,7 +169,7 @@ const Projects = (props) => {
           currentProjectType === 'primary' &&
           project.meta.goalType === 'secondary' ? (
             <h2 className="project-type">Secondary</h2>
-            ) : null}
+          ) : null}
           <Card bg={project.meta.goalType === 'primary' ? 'muted' : 'light'}>
             <Card.Header as="h2">
               <span>
@@ -209,7 +209,8 @@ const Projects = (props) => {
             />
             <Card.Footer bg="light">
               <span className="updated float-left">
-                <ClockIcon /> Updated <TimeAgo date={project.updatedAt} />
+                <ClockIcon /> Updated
+                <TimeAgo date={project.updatedAt} />
               </span>
               <Button
                 href={project.url}
@@ -319,8 +320,8 @@ const Projects = (props) => {
               {projectType
                 ? `(${projectType})`
                 : engineer
-                  ? `(${engineer})`
-                  : '(All)'}
+                ? `(${engineer})`
+                : '(All)'}
             </h1>
             {projectsData.data === null ? <p>Loading...</p> : null}
             {projects && projects.length ? (

@@ -15,13 +15,9 @@
   },
   "rules": {
     // These rules are not compatible with Prettier.
-    // "implicit-arrow-linebreak": "off",
-    // "indent": "off",
-    "no-mixed-operators": "off",
+    "indent": "off",
     "operator-linebreak": "off",
     "react/jsx-one-expression-per-line": "off",
-    "react/jsx-curly-newline": "off",
-    "react/jsx-no-undef": [0, { "allowGlobals": true }],
     // Modify rules.
     "jsx-a11y/anchor-is-valid": [
       "error",
