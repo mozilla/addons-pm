@@ -237,7 +237,7 @@ function DashboardWE(props) {
           data: whiteboardTags.data,
           dataKey: tag,
           component: tag,
-          title: tag,
+          title: tag.replace('stockwell', 'STW'),
         }),
       );
     });
@@ -254,7 +254,7 @@ function DashboardWE(props) {
   }
 
   let isLoading = false;
-  if (needInfos.isLoading || issueCounts.isLoading) {
+  if (needInfos.isLoading || issueCounts.isLoading || whiteboardTags.isLoading) {
     isLoading = true;
   }
 
