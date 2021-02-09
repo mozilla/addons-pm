@@ -1,13 +1,11 @@
 import Page, { getServerSideProps } from 'pages/projects/latest';
 
 describe(__filename, () => {
-  describe('Page', () => {
-    it('should return null from Page', () => {
-      expect(Page()).toEqual(null);
-    });
+  it("should not render anything as it's a redirect", () => {
+    expect(Page()).toEqual(null);
   });
 
-  describe('getServerSideProps', async () => {
+  it('should return redirect data', async () => {
     const fakeProps = {
       query: {
         foo: 'bar',
