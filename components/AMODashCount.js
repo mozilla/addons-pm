@@ -18,12 +18,12 @@ export default function AMODashCount(props) {
   if (props.title.includes('p1')) {
     issuesLink = oneLineTrim`https://github.com/mozilla/${repo}/issues?
       utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22priority:%20p1%22`;
-    warningLimit = 0;
+    warningLimit = 1;
   }
   if (props.title.includes('p2')) {
     issuesLink = oneLineTrim`https://github.com/mozilla/${repo}/issues?
       utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22priority:%20p2%22`;
-    warningLimit = 0;
+    warningLimit = 1;
   }
   if (props.title.includes('p3')) {
     issuesLink = oneLineTrim`https://github.com/mozilla/${repo}/issues?
