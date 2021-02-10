@@ -206,7 +206,7 @@ const Projects = (props) => {
             />
             <Card.Footer bg="light">
               <span className="updated float-left">
-                <ClockIcon /> Updated
+                <ClockIcon /> Updated&nbsp;
                 <TimeAgo date={project.updatedAt} />
               </span>
               <Button
