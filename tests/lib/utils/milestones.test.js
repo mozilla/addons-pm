@@ -4,7 +4,6 @@ import {
   getMilestonePagination,
   getNextMilestone,
   setAssigneeProp,
-  setIsContribProp,
   setIssuePriorityProp,
   setProjectProps,
   setStateLabels,
@@ -118,9 +117,12 @@ describe(__filename, () => {
     });
   });
 
-  describe('setIsContribProp()', () => {
+  describe('setAssigneeProp', () => {
     it('should set isContrib if a contributor is assigned', () => {
       const testIssue = {
+        assignees: {
+          nodes: [],
+        },
         labels: {
           nodes: [
             {
@@ -129,12 +131,15 @@ describe(__filename, () => {
           ],
         },
       };
-      setIsContribProp(testIssue);
+      setAssigneeProp(testIssue);
       expect(testIssue.isContrib).toEqual(true);
     });
 
     it('should set isContrib to false if contrib label is missing', () => {
       const testIssue = {
+        assignees: {
+          nodes: [],
+        },
         labels: {
           nodes: [
             {
@@ -144,18 +149,20 @@ describe(__filename, () => {
         },
       };
 
-      setIsContribProp(testIssue);
+      setAssigneeProp(testIssue);
       expect(testIssue.isContrib).toEqual(false);
     });
 
     it('should set isContrib to false if no labels exist', () => {
-      const issueWithNoLabels = {};
-      setIsContribProp(issueWithNoLabels);
+      const issueWithNoLabels = {
+        assignees: {
+          nodes: [],
+        },
+      };
+      setAssigneeProp(issueWithNoLabels);
       expect(issueWithNoLabels.isContrib).toEqual(false);
     });
-  });
 
-  describe('setAssigneeProp', () => {
     it('should set assignee if provided', () => {
       const testIssue = {
         assignees: {
@@ -181,17 +188,6 @@ describe(__filename, () => {
       };
       setAssigneeProp(testIssue);
       expect(testIssue.assignee).toEqual('00_unassigned');
-    });
-
-    it('should not set assignee if the issue has isContrib set to true', () => {
-      const testIssue = {
-        isContrib: true,
-        assignees: {
-          nodes: [],
-        },
-      };
-      setAssigneeProp(testIssue);
-      expect(testIssue.assignee).not.toEqual('00_unassigned');
     });
   });
 
