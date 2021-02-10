@@ -2,7 +2,7 @@ import fetchMock from 'fetch-mock';
 import MockExpressRequest from 'mock-express-request';
 import MockExpressResponse from 'mock-express-response';
 import getProjects from 'pages/api/gh-projects';
-import projectData from 'fixtures/gh-projects';
+import projectData from 'tests/fixtures/gh-projects';
 
 describe(__filename, () => {
   beforeEach(() => {

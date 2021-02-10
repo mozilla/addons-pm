@@ -1,9 +1,9 @@
 import { cleanup, render } from '@testing-library/react';
 import * as nextRouter from 'next/router';
 import fetchMock from 'fetch-mock';
-import bzIssueCountsData from 'fixtures/bz-issue-counts';
-import bzNeedInfoData from 'fixtures/bz-need-infos';
-import bzWhiteboardTagData from 'fixtures/bz-whiteboard-tags';
+import bzIssueCountsData from 'tests/fixtures/bz-issue-counts';
+import bzNeedInfoData from 'tests/fixtures/bz-need-infos';
+import bzWhiteboardTagData from 'tests/fixtures/bz-whiteboard-tags';
 import DashboardWE, { getServerSideProps } from 'pages/dashboards/webext';
 
 describe(__filename, () => {

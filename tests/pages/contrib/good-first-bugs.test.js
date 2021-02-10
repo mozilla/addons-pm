@@ -1,18 +1,15 @@
 import fetchMock from 'fetch-mock';
 import * as nextRouter from 'next/router';
-import ghMaybeGoodFirstBugsData from 'fixtures/gh-maybe-good-first-bugs';
 import { cleanup, render } from '@testing-library/react';
-import MaybeGoodFirstBugs, {
+import ghGoodFirstBugsData from 'tests/fixtures/gh-good-first-bugs';
+import GoodFirstBugs, {
   getServerSideProps,
-} from 'pages/contrib/maybe-good-first-bugs';
+} from 'pages/contrib/good-first-bugs';
 
 describe(__filename, () => {
   beforeEach(() => {
     nextRouter.useRouter = jest.fn();
-    fetchMock.mock(
-      /\/api\/gh-maybe-good-first-bugs\//,
-      ghMaybeGoodFirstBugsData,
-    );
+    fetchMock.mock(/\/api\/gh-good-first-bugs\//, ghGoodFirstBugsData);
   });
 
   afterEach(() => {
@@ -20,16 +17,16 @@ describe(__filename, () => {
     cleanup();
   });
 
-  it('should render the Maybe Good First Bugs Page', async () => {
+  it('should render the Good First Bugs Page', async () => {
     nextRouter.useRouter.mockImplementation(() => ({
-      pathname: '/contrib/maybe-good-first-bugs/',
+      pathname: '/contrib/good-first-bugs/',
       query: {
         dir: 'asc',
         sort: 'updatedAt',
       },
     }));
     const { props } = await getServerSideProps();
-    const { findByRole } = render(<MaybeGoodFirstBugs {...props} />);
+    const { findByRole } = render(<GoodFirstBugs {...props} />);
     const main = await findByRole('main');
     expect(main).toHaveClass('container');
   });
@@ -37,8 +34,7 @@ describe(__filename, () => {
   it('should fetch data via getServerSideProps', async () => {
     const { props: serverProps } = await getServerSideProps();
     expect(
-      serverProps.maybeGoodFirstBugsData.data.maybe_good_first_bugs.results
-        .length,
-    ).toEqual(1);
+      serverProps.goodFirstBugsData.data.good_first_bugs.results.length,
+    ).toEqual(3);
   });
 });

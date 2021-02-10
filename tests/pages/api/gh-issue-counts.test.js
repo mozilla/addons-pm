@@ -1,26 +1,25 @@
 import fetchMock from 'fetch-mock';
 import MockExpressRequest from 'mock-express-request';
 import MockExpressResponse from 'mock-express-response';
-import getTeam from 'pages/api/gh-team';
-import teamData from 'fixtures/gh-team';
+import getIssueCounts from 'pages/api/gh-issue-counts';
+import issueCountData from 'tests/fixtures/gh-issue-counts';
 
 describe(__filename, () => {
   beforeEach(() => {
-    fetchMock.mock('https://api.github.com/graphql', teamData);
+    fetchMock.mock('https://api.github.com/graphql', issueCountData);
   });
 
   afterEach(() => {
     fetchMock.restore();
-    fetchMock.reset();
   });
 
-  it('should return team data', async () => {
+  it('should return issue count data', async () => {
     const req = new MockExpressRequest({
       method: 'GET',
-      url: '/api/gh-team/',
+      url: '/api/gh-issue-counts/',
     });
     const res = new MockExpressResponse();
-    await getTeam(req, res);
-    expect(res._getJSON()).toEqual(teamData);
+    await getIssueCounts(req, res);
+    expect(res._getJSON()).toEqual(issueCountData);
   });
 });

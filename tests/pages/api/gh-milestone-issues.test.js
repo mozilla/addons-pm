@@ -2,7 +2,7 @@ import fetchMock from 'fetch-mock';
 import MockExpressRequest from 'mock-express-request';
 import MockExpressResponse from 'mock-express-response';
 import getMilestones from 'pages/api/gh-milestone-issues';
-import milestoneData from 'fixtures/gh-milestone-issues';
+import milestoneData from 'tests/fixtures/gh-milestone-issues';
 
 describe(__filename, () => {
   beforeEach(() => {

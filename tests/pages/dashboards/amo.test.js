@@ -1,7 +1,7 @@
 import { cleanup, render } from '@testing-library/react';
 import * as nextRouter from 'next/router';
 import fetchMock from 'fetch-mock';
-import ghIssueCountsData from 'fixtures/gh-issue-counts';
+import ghIssueCountsData from 'tests/fixtures/gh-issue-counts';
 import DashboardAMO, { getServerSideProps } from 'pages/dashboards/amo';
 
 describe(__filename, () => {

@@ -2,8 +2,8 @@ import fetchMock from 'fetch-mock';
 import MockExpressRequest from 'mock-express-request';
 import MockExpressResponse from 'mock-express-response';
 import getBZIssueCounts from 'pages/api/bz-issue-counts';
-import bzIssueCountSingleData from 'fixtures/bz-issue-count-single';
-import bzIssueCountsData from 'fixtures/bz-issue-counts';
+import bzIssueCountSingleData from 'tests/fixtures/bz-issue-count-single';
+import bzIssueCountsData from 'tests/fixtures/bz-issue-counts';
 
 describe(__filename, () => {
   beforeEach(() => {

@@ -2,7 +2,7 @@ import fetchMock from 'fetch-mock';
 import MockExpressRequest from 'mock-express-request';
 import MockExpressResponse from 'mock-express-response';
 import getContribWelcome from 'pages/api/gh-contrib-welcome';
-import contribWelcomeData from 'fixtures/gh-contrib-welcome';
+import contribWelcomeData from 'tests/fixtures/gh-contrib-welcome';
 
 describe(__filename, () => {
   beforeEach(() => {

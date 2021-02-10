@@ -2,7 +2,7 @@ import fetchMock from 'fetch-mock';
 import MockExpressRequest from 'mock-express-request';
 import MockExpressResponse from 'mock-express-response';
 import getMaybeGoodFirstBugs from 'pages/api/gh-maybe-good-first-bugs';
-import maybeGoodFirstBugsData from 'fixtures/gh-maybe-good-first-bugs';
+import maybeGoodFirstBugsData from 'tests/fixtures/gh-maybe-good-first-bugs';
 
 describe(__filename, () => {
   beforeEach(() => {

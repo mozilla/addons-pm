@@ -2,8 +2,8 @@ import fetchMock from 'fetch-mock';
 import MockExpressRequest from 'mock-express-request';
 import MockExpressResponse from 'mock-express-response';
 import getBZNeedInfos from 'pages/api/bz-need-infos';
-import bzNeedsInfoSingleData from 'fixtures/bz-need-infos-single';
-import bzNeedsInfoData from 'fixtures/bz-need-infos';
+import bzNeedsInfoSingleData from 'tests/fixtures/bz-need-infos-single';
+import bzNeedsInfoData from 'tests/fixtures/bz-need-infos';
 
 describe(__filename, () => {
   const OLD_ENV = process.env;

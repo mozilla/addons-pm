@@ -2,8 +2,8 @@ import fetchMock from 'fetch-mock';
 import MockExpressRequest from 'mock-express-request';
 import MockExpressResponse from 'mock-express-response';
 import getWhiteboardTags from 'pages/api/bz-whiteboard-tags';
-import bzWhiteobardTagsSingleData from 'fixtures/bz-whiteboard-tags-single';
-import bzWhiteboardTagsData from 'fixtures/bz-whiteboard-tags';
+import bzWhiteobardTagsSingleData from 'tests/fixtures/bz-whiteboard-tags-single';
+import bzWhiteboardTagsData from 'tests/fixtures/bz-whiteboard-tags';
 
 describe(__filename, () => {
   beforeEach(() => {
