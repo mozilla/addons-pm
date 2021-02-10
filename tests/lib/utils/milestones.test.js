@@ -182,6 +182,17 @@ describe(__filename, () => {
       setAssigneeProp(testIssue);
       expect(testIssue.assignee).toEqual('00_unassigned');
     });
+
+    it('should not set assignee if the issue has isContrib set to true', () => {
+      const testIssue = {
+        isContrib: true,
+        assignees: {
+          nodes: [],
+        },
+      };
+      setAssigneeProp(testIssue);
+      expect(testIssue.assignee).not.toEqual('00_unassigned');
+    });
   });
 
   describe('setRepoProp', () => {
