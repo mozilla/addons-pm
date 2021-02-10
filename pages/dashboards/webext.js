@@ -254,7 +254,11 @@ function DashboardWE(props) {
   }
 
   let isLoading = false;
-  if (needInfos.isLoading || issueCounts.isLoading || whiteboardTags.isLoading) {
+  if (
+    needInfos.isLoading ||
+    issueCounts.isLoading ||
+    whiteboardTags.isLoading
+  ) {
     isLoading = true;
   }
 
