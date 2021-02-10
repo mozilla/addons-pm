@@ -1,12 +1,35 @@
 import '../styles/globals.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'nprogress/nprogress.css';
 
 import { Nav, Navbar } from 'react-bootstrap';
 import { MarkGithubIcon } from '@primer/octicons-react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
+import NProgress from 'nprogress';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+  React.useEffect(() => {
+    const routeChangeStart = () => {
+      NProgress.start();
+    };
+    const routeChangeComplete = () => {
+      NProgress.done();
+    };
+
+    router.events.on('routeChangeStart', routeChangeStart);
+    router.events.on('routeChangeComplete', routeChangeComplete);
+    router.events.on('routeChangeError', routeChangeComplete);
+    return () => {
+      router.events.off('routeChangeStart', routeChangeStart);
+      router.events.off('routeChangeComplete', routeChangeComplete);
+      router.events.off('routeChangeError', routeChangeComplete);
+    };
+  });
+
   return (
     <div data-testid="app-wrapper">
       <Helmet defaultTitle="Add-ons PM" titleTemplate="%s - Add-ons PM" />
