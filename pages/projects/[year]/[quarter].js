@@ -60,9 +60,6 @@ function buildMetaData(projectData) {
         const doneCount =
           (doneColumn && parseInt(doneColumn.node.cards.totalCount, 10)) || 0;
         const totalCount = todoCount + inProgressCount + doneCount;
-
-        // console.log(project.name, { todoCount, inProgressCount, doneCount, totalCount });
-
         const donePerc = totalCount ? (100 / totalCount) * doneCount : 0;
         const inProgressPerc = totalCount
           ? (100 / totalCount) * inProgressCount
