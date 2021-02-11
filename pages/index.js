@@ -35,10 +35,8 @@ export default function Home() {
                     view is a way to provide an overview of the projects per
                     quarter for just our team.
                   </p>
-                  <Link href="/projects/latest/" exact>
-                    <Button href="/projects/latest/" variant="outline-primary">
-                      View Projects
-                    </Button>
+                  <Link href="/projects/latest/" passHref>
+                    <Button variant="outline-primary">View Projects</Button>
                   </Link>
                 </Card.Text>
               </Col>
@@ -65,13 +63,11 @@ export default function Home() {
                     milestone and preview what's being worked on for the
                     following week as part of our weekly Engineering stand-up.
                   </p>
-                  <Link href="/milestones/latest/" exact>
-                    <Button
-                      href="/milestones/latest/"
-                      variant="outline-primary"
-                    >
-                      View Milestones
-                    </Button>
+                  <Link
+                    href="/milestones/latest/?dir=asc&sort=assignee"
+                    passHref
+                  >
+                    <Button variant="outline-primary">View Milestones</Button>
                   </Link>
                 </Card.Text>
               </Col>
@@ -93,16 +89,13 @@ export default function Home() {
                     issue counts look like and highlights any high priority
                     bugs.
                   </p>
-                  <Link href="/dashboards/amo/" exact>
-                    <Button href="/dashboards/amo/" variant="outline-primary">
+                  <Link href="/dashboards/amo/" passHref>
+                    <Button variant="outline-primary">
                       View AMO Dashboard
                     </Button>
                   </Link>
-                  <Link href="/dashboards/webext/" exact>
-                    <Button
-                      href="/dashboards/webext/"
-                      variant="outline-primary"
-                    >
+                  <Link href="/dashboards/webext/" passHref>
+                    <Button variant="outline-primary">
                       View Web-Extensions Dashboard
                     </Button>
                   </Link>
@@ -126,11 +119,11 @@ export default function Home() {
                     contributor to work on, this data is used as part of the
                     bi-weekly contributor bug review.
                   </p>
-                  <Link href="/contrib/maybe-good-first-bugs/?dir=desc&sort=updatedAt">
-                    <Button
-                      href="/contrib/maybe-good-first-bugs/?dir=d3esc&sort-updatedAt"
-                      variant="outline-primary"
-                    >
+                  <Link
+                    href="/contrib/maybe-good-first-bugs/?dir=desc&sort=updatedAt"
+                    passHref
+                  >
+                    <Button variant="outline-primary">
                       View Contributions
                     </Button>
                   </Link>
