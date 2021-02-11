@@ -38,7 +38,7 @@
     "swr": "0.4.2"
   },
   "devDependencies": {
-    "@babel/core": "7.12.9",
+    "@babel/core": "7.12.13",
     "@testing-library/jest-dom": "5.11.6",
     "@testing-library/react": "11.2.2",
     "babel-eslint": "10.1.0",
