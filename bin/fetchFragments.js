@@ -1,9 +1,13 @@
-// Magically require any env variables defined in a local .env file.
-require('dotenv').config();
+const path = require('path');
+const fs = require('fs');
 
 const fetch = require('node-fetch');
-const fs = require('fs');
-const path = require('path');
+const { loadEnvConfig } = require('@next/env');
+
+// Require env variables.
+const dev = process.env.NODE_ENV !== 'production';
+loadEnvConfig(path.join(__dirname, '../'), dev);
+
 const headers = { 'Content-Type': 'application/json' };
 
 if (process.env.GH_TOKEN) {
@@ -14,7 +18,7 @@ if (process.env.GH_TOKEN) {
 
 fetch(`https://api.github.com/graphql`, {
   method: 'POST',
-  headers: headers,
+  headers,
   body: JSON.stringify({
     variables: {},
     query: `
@@ -40,12 +44,14 @@ fetch(`https://api.github.com/graphql`, {
     );
     result.data.__schema.types = filteredData;
     fs.writeFile(
-      path.join(__dirname, '../src/server/fragmentTypes.json'),
+      path.join(__dirname, '../lib/fragmentTypes.json'),
       JSON.stringify(result.data),
       (err) => {
         if (err) {
+          // eslint-disable-next-line no-console
           console.error('Error writing fragmentTypes file', err);
         } else {
+          // eslint-disable-next-line no-console
           console.log('Fragment types successfully extracted!');
         }
       },

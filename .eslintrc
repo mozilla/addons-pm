@@ -1,6 +1,41 @@
 {
-  "extends": "react-app",
+  "extends": [
+    "amo",
+    "plugin:amo/recommended"
+  ],
+  "env": {
+    "jest/globals": true
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "jest"
+  ],
+  "globals": {
+    "fetch": true
+  },
   "rules": {
-    "react-hooks/rules-of-hooks": "warn",
+    // These rules are not compatible with Prettier.
+    "indent": "off",
+    "operator-linebreak": "off",
+    "react/jsx-one-expression-per-line": "off",
+    // Modify rules.
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["invalidHref", "preferButton"]
+      }
+    ],
+    "react/no-unescaped-entities": "off",
+    "react/prop-types": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "operator-assignment": "off",
+    "no-param-reassign": "off",
+    "no-nested-ternary": "off",
+    // This can be off as Next imports React.
+    "react/react-in-jsx-scope": "off",
   }
 }
