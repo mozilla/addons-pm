@@ -34,7 +34,7 @@
     "react-helmet": "6.1.0",
     "react-timeago": "5.2.0",
     "sass": "1.29.0",
-    "swr": "0.3.9"
+    "swr": "0.4.2"
   },
   "devDependencies": {
     "@babel/core": "7.12.9",
