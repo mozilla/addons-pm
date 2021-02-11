@@ -7,12 +7,12 @@ module.exports = {
   coverageDirectory: '.coverage',
   coveragePathIgnorePatterns: [
     '<rootDir>/node_modules/',
-    '<rootDir>/fixtures/',
     '<rootDir>/.next/',
     '<rootDir>/.coverage/',
     '<rootDir>/jest.config.js',
     '<rootDir>/jest.setup.js',
     '<rootDir>/next.config.js',
+    '<rootDir>/tests/',
   ],
   // Module lookup ordering.
   moduleDirectories: ['<rootDir>', 'node_modules'],
