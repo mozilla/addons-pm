@@ -18,9 +18,7 @@ This app is a view on the org level projects specific to add-ons.
 
 ### Environment Variables
 
-The server requires setting some required environment variables. To do this
-create a `.env.local` file in the root of your checkout (Note: `.env.local`
-files are .gitignored) and add the following:
+The server requires setting some required environment variables. To do this create a `.env.local` file in the root of your checkout (Note: `.env.local` files are .gitignored) and add the following:
 
 #### GH_TOKEN
 
@@ -28,8 +26,7 @@ files are .gitignored) and add the following:
 GH_TOKEN=this-should-be-a-personal-access-token
 ```
 
-You can generate a personal access token token here:
-https://github.com/settings/tokens and you'll need the following scopes:
+You can generate a personal access token token here: https://github.com/settings/tokens and you'll need the following scopes:
 
 ```
 public_repo, read:org
@@ -37,8 +34,7 @@ public_repo, read:org
 
 #### BZ_USERS
 
-For needinfos to work the BZ_USERS env var should contain nicknames and
-Bugzilla users.
+For needinfos to work the BZ_USERS env var should contain nicknames and Bugzilla users.
 
 ```yaml
 BZ_USERS={"name": "bz-email@example.com", "name2": "bz-email@example.com"}
