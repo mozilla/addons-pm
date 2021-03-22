@@ -19,6 +19,9 @@ const query = gql`
     ) {
       totalCount
     }
+    open_prod_bugs: issues(states: OPEN, labels: "type: prod_bug") {
+      totalCount
+    }
     open_p1s: issues(states: OPEN, labels: "priority: p1") {
       totalCount
     }
@@ -41,6 +44,9 @@ const query = gql`
       ...issueCounts
     }
     addons_frontend: repository(name: "addons-frontend", owner: "mozilla") {
+      ...issueCounts
+    }
+    addons_blog: repository(name: "addons-blog", owner: "mozilla") {
       ...issueCounts
     }
     addons_linter: repository(name: "addons-linter", owner: "mozilla") {

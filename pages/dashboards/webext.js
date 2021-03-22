@@ -242,7 +242,7 @@ function DashboardWE(props) {
       );
     });
 
-    children.push(<DashBlank key="ni-blank-1" />);
+    // children.push(<DashBlank key="ni-blank-1" />);
 
     return DashCountGroup({
       className: 'whiteboardtags',
