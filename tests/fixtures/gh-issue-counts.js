@@ -10,6 +10,10 @@ export default {
         totalCount: 102,
         __typename: 'IssueConnection',
       },
+      open_prod_bugs: {
+        totalCount: 0,
+        __typename: 'IssueConnection',
+      },
       open_p1s: {
         totalCount: 0,
         __typename: 'IssueConnection',
@@ -36,6 +40,10 @@ export default {
       },
       triaged: {
         totalCount: 380,
+        __typename: 'IssueConnection',
+      },
+      open_prod_bugs: {
+        totalCount: 0,
         __typename: 'IssueConnection',
       },
       open_p1s: {
@@ -66,6 +74,10 @@ export default {
         totalCount: 357,
         __typename: 'IssueConnection',
       },
+      open_prod_bugs: {
+        totalCount: 0,
+        __typename: 'IssueConnection',
+      },
       open_p1s: {
         totalCount: 0,
         __typename: 'IssueConnection',
@@ -84,6 +96,38 @@ export default {
       },
       __typename: 'Repository',
     },
+    addons_blog: {
+      description: 'Blog content builder for AMO',
+      total_issues: {
+        totalCount: 3,
+        __typename: 'IssueConnection',
+      },
+      triaged: {
+        totalCount: 0,
+        __typename: 'IssueConnection',
+      },
+      open_prod_bugs: {
+        totalCount: 0,
+        __typename: 'IssueConnection',
+      },
+      open_p1s: {
+        totalCount: 0,
+        __typename: 'IssueConnection',
+      },
+      open_p2s: {
+        totalCount: 0,
+        __typename: 'IssueConnection',
+      },
+      open_p3s: {
+        totalCount: 0,
+        __typename: 'IssueConnection',
+      },
+      open_prs: {
+        totalCount: 0,
+        __typename: 'PullRequestConnection',
+      },
+      __typename: 'Repository',
+    },
     addons_linter: {
       description: '🔍 Firefox Add-ons linter, written in JavaScript. 👁',
       total_issues: {
@@ -92,6 +136,10 @@ export default {
       },
       triaged: {
         totalCount: 86,
+        __typename: 'IssueConnection',
+      },
+      open_prod_bugs: {
+        totalCount: 0,
         __typename: 'IssueConnection',
       },
       open_p1s: {
@@ -120,6 +168,10 @@ export default {
       },
       triaged: {
         totalCount: 53,
+        __typename: 'IssueConnection',
+      },
+      open_prod_bugs: {
+        totalCount: 0,
         __typename: 'IssueConnection',
       },
       open_p1s: {

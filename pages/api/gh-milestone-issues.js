@@ -85,6 +85,7 @@ export default async (req, res) => {
       query: `repo:mozilla/addons
       repo:mozilla/addons-server
       repo:mozilla/addons-frontend
+      repo:mozilla/addons-blog
       repo:mozilla/addons-linter
       repo:mozilla/addons-code-manager
       milestone:${milestone}
