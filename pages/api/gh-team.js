@@ -4,7 +4,7 @@ import createClient from 'lib/ghapi';
 const query = gql`
   query getAddonsTeam {
     organization(login: "mozilla") {
-      team(slug: "addons-service-developers") {
+      team(slug: "addons-core") {
         members(first: 100, membership: ALL) {
           nodes {
             name
