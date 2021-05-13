@@ -223,7 +223,7 @@ function DashboardWE(props) {
           data: whiteboardTags.data,
           dataKey: tag,
           component: tag,
-          title: tag.replace('stockwell', 'STW'),
+          title: tag,
         }),
       );
     });
