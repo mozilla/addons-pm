@@ -30,7 +30,7 @@ describe(__filename, () => {
 
     // All the dashgroups.
     const cardGroups = await findAllByText(/.*?/, { selector: '.card-grp' });
-    expect(cardGroups).toHaveLength(5);
+    expect(cardGroups).toHaveLength(4);
     // The needinfo group.
     const needInfos = await findAllByText(/.*?/, {
       selector: '.card-grp.needinfos',
