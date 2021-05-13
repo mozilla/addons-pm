@@ -350,6 +350,14 @@ td.centered {
     text-transform: capitalize;
   }
 
+  .assignee span {
+    text-overflow: ellipsis;
+    max-width: 11em;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
   .assignee,
   .reviewers {
     img,

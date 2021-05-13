@@ -48,7 +48,7 @@ function renderAssignee(issue) {
   if (issue.assignees.nodes.length) {
     const issueAssignee = issue.assignees.nodes[0];
     return (
-      <span>
+      <span title={issueAssignee.login}>
         <img className="avatar" src={issueAssignee.avatarUrl} alt="" />{' '}
         {issueAssignee.login}
       </span>
