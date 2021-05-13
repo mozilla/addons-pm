@@ -16,10 +16,6 @@ const meta = {
     title: 'Web Extensions Bugs',
     description: 'Browser APIs for Webextensions',
   },
-  Firefox: {
-    title: 'Web Extensions Compat Bugs',
-    description: 'Compat bugs Webextensions',
-  },
 };
 
 const issueCountURL = getApiURL('/api/bz-issue-counts/');
@@ -86,7 +82,7 @@ function DashboardWE(props) {
         const result = await fetch(needInfoURL);
         return result.json();
       },
-      { refreshInterval: 90000, initialData: props.needInfos },
+      { refreshInterval: 45000, initialData: props.needInfos },
     );
     return {
       data,
@@ -102,7 +98,7 @@ function DashboardWE(props) {
         const result = await fetch(whiteboardURL);
         return result.json();
       },
-      { refreshInterval: 90000, initialData: props.whiteboardTags },
+      { refreshInterval: 45000, initialData: props.whiteboardTags },
     );
     return {
       data,
@@ -130,12 +126,6 @@ function DashboardWE(props) {
 
   function renderChildren(component, data) {
     return [
-      renderChild({
-        data,
-        dataKey: 'total',
-        title: 'total open',
-        component,
-      }),
       renderChild({
         data,
         dataKey: 'severity-default',
@@ -171,12 +161,8 @@ function DashboardWE(props) {
         warningLimit: 20,
         component,
       }),
-      renderChild({
-        data,
-        dataKey: 'priority-p3',
-        title: 'P3',
-        component,
-      }),
+      <DashBlank key={`${component}-blank-1`} />,
+      <DashBlank key={`${component}-blank-2`} />,
     ];
   }
 
@@ -271,7 +257,7 @@ function DashboardWE(props) {
           {isLoading ? (
             <div className="loading">Loading...</div>
           ) : (
-            [renderNeedInfos(), ...renderCounts(), renderWhiteBoardTags()]
+            [renderWhiteBoardTags(), ...renderCounts(), renderNeedInfos()]
           )}
         </div>
       </Container>
