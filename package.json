@@ -46,7 +46,7 @@
     "codecov": "3.8.2",
     "eslint": "7.26.0",
     "eslint-config-amo": "4.6.0",
-    "eslint-plugin-amo": "1.14.0",
+    "eslint-plugin-amo": "1.15.0",
     "fetch-mock": "9.11.0",
     "jest": "26.6.3",
     "mock-express-request": "0.2.2",
