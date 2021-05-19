@@ -351,11 +351,11 @@ td.centered {
   }
 
   .assignee span {
-    text-overflow: ellipsis;
-    max-width: 11em;
     display: inline-block;
-    white-space: nowrap;
+    max-width: 11em;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .assignee,
