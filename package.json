@@ -24,7 +24,7 @@
     "graphql": "15.4.0",
     "graphql-tag": "2.12.4",
     "isomorphic-fetch": "3.0.0",
-    "jsdom": "16.5.3",
+    "jsdom": "16.6.0",
     "next": "10.2.0",
     "nprogress": "0.2.0",
     "object-hash": "2.1.1",
