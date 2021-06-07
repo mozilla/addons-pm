@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import fetchMock from 'fetch-mock';
 import * as nextRouter from 'next/router';
 import ghMilestoneIssuesData from 'tests/fixtures/gh-milestone-issues';

@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import * as nextRouter from 'next/router';
 import { cleanup, render, waitFor, screen } from '@testing-library/react';
 import ActiveLink from 'components/ActiveLink';

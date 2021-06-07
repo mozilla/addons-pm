@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { cleanup, render } from '@testing-library/react';
 import * as nextRouter from 'next/router';
 import fetchMock from 'fetch-mock';
