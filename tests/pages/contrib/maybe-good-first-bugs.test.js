@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import fetchMock from 'fetch-mock';
 import * as nextRouter from 'next/router';
 import ghMaybeGoodFirstBugsData from 'tests/fixtures/gh-maybe-good-first-bugs';
