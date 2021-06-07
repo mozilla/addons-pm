@@ -38,8 +38,8 @@ export function projectSort(a, b) {
 function buildMetaData(projectData) {
   const newProjectData = { ...projectData };
   if (projectData.data) {
-    const augmentedProjects = newProjectData.data.organization.projects.nodes.map(
-      (project) => {
+    const augmentedProjects =
+      newProjectData.data.organization.projects.nodes.map((project) => {
         const [meta, updatedHTML] = parseProjectMeta(project.bodyHTML);
         project.bodyHTML = updatedHTML;
         const todoColumn = project.columns.edges.find((column) => {
@@ -73,8 +73,7 @@ function buildMetaData(projectData) {
           inProgressPerc,
         };
         return project;
-      },
-    );
+      });
     newProjectData.data.organization.projects.nodes = augmentedProjects;
   }
   return newProjectData;

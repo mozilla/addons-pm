@@ -23,15 +23,12 @@ const needInfoURL = getApiURL('/api/bz-need-infos/');
 const whiteboardURL = getApiURL('/api/bz-whiteboard-tags/');
 
 export async function getServerSideProps() {
-  const [
-    issueCountsResponse,
-    needInfosResponse,
-    whiteboardResponse,
-  ] = await Promise.all([
-    fetch(issueCountURL),
-    fetch(needInfoURL),
-    fetch(whiteboardURL),
-  ]);
+  const [issueCountsResponse, needInfosResponse, whiteboardResponse] =
+    await Promise.all([
+      fetch(issueCountURL),
+      fetch(needInfoURL),
+      fetch(whiteboardURL),
+    ]);
 
   const errorCode =
     issueCountsResponse.ok && needInfosResponse.ok && whiteboardResponse.ok
