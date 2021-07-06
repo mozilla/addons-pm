@@ -44,7 +44,7 @@
     "babel-eslint": "10.1.0",
     "babel-jest": "27.0.6",
     "codecov": "3.8.2",
-    "eslint": "7.29.0",
+    "eslint": "7.30.0",
     "eslint-config-amo": "4.8.0",
     "eslint-plugin-amo": "1.17.0",
     "fetch-mock": "9.11.0",
