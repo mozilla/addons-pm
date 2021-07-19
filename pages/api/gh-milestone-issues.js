@@ -1,6 +1,7 @@
 import gql from 'graphql-tag';
 import createClient from 'lib/ghapi';
 import { validMilestoneRX } from 'lib/const';
+import { oneLine } from 'common-tags';
 
 const query = gql`
   query getMilestoneIssue($query: String!) {
@@ -82,7 +83,7 @@ export default async (req, res) => {
   } else {
     milestone = milestone.replace(/-/g, '.');
     const variables = {
-      query: `repo:mozilla/addons
+      query: oneLine`repo:mozilla/addons
       repo:mozilla/addons-server
       repo:mozilla/addons-frontend
       repo:mozilla/addons-blog
