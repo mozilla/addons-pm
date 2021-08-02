@@ -6089,7 +6089,7 @@ pretty-format@^26.0.0, pretty-format@^26.6.2:
     ansi-styles "^4.0.0"
     react-is "^17.0.1"
 
-pretty-format@^27.0.6:
+pretty-format@^27.0.2, pretty-format@^27.0.6:
   version "27.0.6"
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-27.0.6.tgz#ab770c47b2c6f893a21aefc57b75da63ef49a11f"
   integrity sha512-8tGD7gBIENgzqA+UBzObyWqQ5B778VIFZA/S66cclyd5YkFLYs2Js7gxDKf0MXtTc9zcS7t1xhdfcElJ3YIvkQ==
@@ -7245,10 +7245,10 @@ stylelint-config-standard@22.0.0:
   dependencies:
     stylelint-config-recommended "^5.0.0"
 
-stylelint-config-suitcss@15.0.0:
-  version "15.0.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-suitcss/-/stylelint-config-suitcss-15.0.0.tgz#9c25f2487e210e95138535fa40a61452cd6e8e36"
-  integrity sha512-MVkhy8oPuFt1I2+TKqdKxukstNQ5oQDHtztBVNVL6uS2ZwRGE2hqq+Hc1Q5bXZswH6ApoQfdbjCmS8N3avwsBg==
+stylelint-config-suitcss@16.0.0:
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/stylelint-config-suitcss/-/stylelint-config-suitcss-16.0.0.tgz#ab7046f1d360bbc13a6883deb741731939c96ad3"
+  integrity sha512-3tfBIUeIY6VW9jIafPte8w+1S3zaVK1UFtpToFRb04fOP6TCRlrtrQQEs6gZ9MlRrbEvsaNPJdjYpan2xO9sNw==
   dependencies:
     stylelint-order "^4.1.0"
     stylelint-suitcss "^3.0.0"
