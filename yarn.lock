@@ -711,10 +711,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.10.1.tgz#728ecd95ab207aab8a9a4e421f0422db329232be"
   integrity sha512-HnUhk1Sy9IuKrxEMdIRCxpIqPw6BFsbYSEUO9p/hNw5sMld/+3OLMWQP80F8/db9qsv3qUjs7ZR5bS/R+iinXw==
 
-"@primer/octicons-react@15.0.1":
-  version "15.0.1"
-  resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-15.0.1.tgz#06338e5f77ab99f6b61cacb975faeb7e920c6bb3"
-  integrity sha512-djNecGG6HAwjn64UCam2mz4o1M2KYUM490uNalH+o2PI4KI3xhs1JtXDP3h3Cn7h777lPS14Ic46TD+/p7ULxA==
+"@primer/octicons-react@15.1.0":
+  version "15.1.0"
+  resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-15.1.0.tgz#0f68700d1196e0a65b5e782483d5207914cd6e62"
+  integrity sha512-KxKShchstSiZDVZ3aUF9WREdAoV45bzIgAbPcKfrT08+2T4nVQZGYtwDqlHT4/TLpmVIv2Si7hRHBhTWiADe4Q==
 
 "@restart/context@^2.1.4":
   version "2.1.4"
