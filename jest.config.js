@@ -4,11 +4,10 @@ module.exports = {
   clearMocks: true,
   collectCoverageFrom: ['**/*.{js,jsx}'],
   // The directory where Jest should output its coverage files
-  coverageDirectory: '.coverage',
   coveragePathIgnorePatterns: [
     '<rootDir>/node_modules/',
     '<rootDir>/.next/',
-    '<rootDir>/.coverage/',
+    '<rootDir>/coverage/',
     '<rootDir>/jest.config.js',
     '<rootDir>/jest.setup.js',
     '<rootDir>/next.config.js',
