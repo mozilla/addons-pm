@@ -22,7 +22,7 @@
     "common-tags": "1.8.0",
     "dompurify": "2.3.3",
     "graphql": "15.7.2",
-    "graphql-tag": "2.12.5",
+    "graphql-tag": "2.12.6",
     "isomorphic-fetch": "3.0.0",
     "jsdom": "16.7.0",
     "next": "11.1.2",
