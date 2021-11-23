@@ -19,7 +19,7 @@
     "apollo-boost": "0.4.9",
     "bootstrap": "4.6.1",
     "classnames": "2.3.1",
-    "common-tags": "1.8.0",
+    "common-tags": "1.8.2",
     "dompurify": "2.3.3",
     "graphql": "15.7.2",
     "graphql-tag": "2.12.6",
