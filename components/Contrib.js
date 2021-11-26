@@ -117,7 +117,7 @@ const Contrib = (props) => {
       <Navbar
         variant="muted"
         bg="light"
-        className="shadow-sm d-flex justify-content-between"
+        className="shadow-sm d-flex justify-content-between px-3"
         sticky="top"
       >
         <Nav variant="pills">

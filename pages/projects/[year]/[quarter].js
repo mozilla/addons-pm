@@ -6,7 +6,6 @@ import Error from 'next/error';
 import {
   Button,
   Card,
-  CardDeck,
   Container,
   Nav,
   Navbar,
@@ -204,14 +203,14 @@ const Projects = (props) => {
               }}
             />
             <Card.Footer bg="light">
-              <span className="updated float-left">
+              <span className="updated float-start">
                 <ClockIcon /> Updated&nbsp;
                 <TimeAgo date={project.updatedAt} />
               </span>
               <Button
                 href={project.url}
                 size="sm"
-                className="float-right"
+                className="float-end"
                 variant="outline-primary"
                 target="_blank"
                 rel="noreferrer noopener"
@@ -255,7 +254,7 @@ const Projects = (props) => {
       <Navbar
         variant="muted"
         bg="light"
-        className="shadow-sm d-flex justify-content-between"
+        className="shadow-sm d-flex justify-content-between px-3"
         sticky="top"
       >
         <Nav variant="pills">
@@ -286,7 +285,7 @@ const Projects = (props) => {
             </ActiveLink>
           </Nav.Item>
 
-          <NavDropdown className="filters" title="Filters" alignRight>
+          <NavDropdown className="filters" title="Filters" align="end">
             <Link href={`/projects/${year}/${quarter}/`} passHref>
               <NavDropdown.Item eventKey="all">All</NavDropdown.Item>
             </Link>
@@ -321,7 +320,7 @@ const Projects = (props) => {
             </h1>
             {projectsData.data === null ? <p>Loading...</p> : null}
             {projects && projects.length ? (
-              <CardDeck>{projects}</CardDeck>
+              <div>{projects}</div>
             ) : projects && projects.length === 0 ? (
               <p>There are no Projects available for this quarter yet</p>
             ) : null}

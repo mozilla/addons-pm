@@ -9,7 +9,11 @@ body {
 
 a {
   color: #007bff;
-  text-decoration: none;
+  text-decoration: none !important;
+}
+
+.bg-dark {
+  background-color: #343a40 !important;
 }
 
 * {
@@ -204,7 +208,7 @@ nav .breadcrumb {
 .project-type {
   color: #666;
   font-size: 22px;
-  margin: 20px 0 15px 15px;
+  margin: 20px 0 15px 0;
 }
 
 div.table-responsive {
@@ -218,6 +222,7 @@ table.table {
     background: #f8f9fa;
     position: sticky;
     top: 55px;
+    border-top: 1px solid #dee2e6;
 
     &::after {
       border-bottom: 2px solid #dee2e6;

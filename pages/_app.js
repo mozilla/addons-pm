@@ -1,5 +1,5 @@
-import '../styles/globals.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/globals.scss';
 import 'nprogress/nprogress.css';
 
 import { Nav, Navbar } from 'react-bootstrap';
@@ -33,8 +33,8 @@ function MyApp({ Component, pageProps }) {
   return (
     <div data-testid="app-wrapper">
       <Helmet defaultTitle="Add-ons PM" titleTemplate="%s - Add-ons PM" />
-      <Navbar bg="dark" variant="dark">
-        <Nav className="mr-auto">
+      <Navbar bg="dark" variant="dark" className="px-3">
+        <Nav className="me-auto">
           <Nav.Item>
             <Link href="/" passHref>
               <Nav.Link className="navbar-brand" eventKey={0}>
@@ -71,7 +71,7 @@ function MyApp({ Component, pageProps }) {
             </Link>
           </Nav.Item>
         </Nav>
-        <Nav className="mr-sm-2">
+        <Nav className="me-sm-2">
           <Nav.Item>
             <Nav.Link
               data-ref="src"
