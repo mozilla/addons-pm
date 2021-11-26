@@ -15,7 +15,7 @@ export default function Engineer(props) {
           title={member.login}
           alt={member.login}
           roundedCircle
-          className="float-right eng-image"
+          className="float-end eng-image"
           height="35"
         />
       </a>
