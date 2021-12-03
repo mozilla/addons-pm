@@ -31,7 +31,7 @@ const ContribWelcome = (props) => {
       const json = await result.json();
       return json;
     },
-    { initialData: initialContribWelcomeData, refreshInterval: 30000 },
+    { fallbackData: initialContribWelcomeData, refreshInterval: 30000 },
   );
 
   return (

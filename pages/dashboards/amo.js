@@ -46,7 +46,7 @@ const DashboardAMO = (props) => {
       const result = await fetch(githubIssueCountsURL);
       return result.json();
     },
-    { refreshInterval: 30000, initialData: props.issueCounts },
+    { refreshInterval: 30000, fallbackData: props.issueCounts },
   );
 
   const isLoading = !error && !data;

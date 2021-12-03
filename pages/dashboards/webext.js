@@ -63,7 +63,7 @@ function DashboardWE(props) {
         const result = await fetch(issueCountURL);
         return result.json();
       },
-      { refreshInterval: 30000, initialData: props.issueCounts },
+      { refreshInterval: 30000, fallbackData: props.issueCounts },
     );
     return {
       data,
@@ -79,7 +79,7 @@ function DashboardWE(props) {
         const result = await fetch(needInfoURL);
         return result.json();
       },
-      { refreshInterval: 45000, initialData: props.needInfos },
+      { refreshInterval: 45000, fallbackData: props.needInfos },
     );
     return {
       data,
@@ -95,7 +95,7 @@ function DashboardWE(props) {
         const result = await fetch(whiteboardURL);
         return result.json();
       },
-      { refreshInterval: 45000, initialData: props.whiteboardTags },
+      { refreshInterval: 45000, fallbackData: props.whiteboardTags },
     );
     return {
       data,
