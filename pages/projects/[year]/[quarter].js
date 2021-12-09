@@ -117,7 +117,7 @@ const Projects = (props) => {
       const json = await result.json();
       return buildMetaData(json);
     },
-    { initialData: initialProjectsData, refreshInterval: 30000 },
+    { fallbackData: initialProjectsData, refreshInterval: 30000 },
   );
 
   let projects = null;

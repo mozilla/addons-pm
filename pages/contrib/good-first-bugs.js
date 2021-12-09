@@ -32,7 +32,7 @@ const GoodFirstBugs = (props) => {
       const json = await result.json();
       return json;
     },
-    { initialData: initialGoodFirstBugsData, refreshInterval: 30000 },
+    { fallbackData: initialGoodFirstBugsData, refreshInterval: 30000 },
   );
 
   return (

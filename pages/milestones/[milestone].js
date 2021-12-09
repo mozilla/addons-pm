@@ -204,7 +204,7 @@ const Milestones = (props) => {
       const json = await result.json();
       return formatIssueData(json);
     },
-    { initialData: initialMilestoneIssues, refreshInterval: 30000 },
+    { fallbackData: initialMilestoneIssues, refreshInterval: 30000 },
   );
 
   let data = milestoneIssues;
