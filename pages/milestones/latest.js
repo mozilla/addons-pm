@@ -13,7 +13,7 @@ export async function getServerSideProps(oldProps) {
     props.query = {};
   }
 
-  props.query = { dir: 'asc', sort: 'assignee', ...props.query }
+  props.query = { dir: 'asc', sort: 'assignee', ...props.query };
   queryParams = `?${queryString.stringify(props.query)}`;
 
   const milestonePagination = getMilestonePagination({
