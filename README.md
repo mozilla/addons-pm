@@ -39,3 +39,38 @@ For needinfos to work the BZ_USERS env var should contain nicknames and Bugzilla
 ```yaml
 BZ_USERS={"name": "bz-email@example.com", "name2": "bz-email@example.com"}
 ```
+
+### Deployment
+
+The current method used to deploy to Heroku is via git. To do that you'll need to setup the relevant branches and then, as long as you have rights to the apps in Heroku, you'll be able to do a release by pushing to the relevant remote repo.
+
+Pushing to the a remote repo will start the deployment process and you'll get feedback in the terminal. For more details on this process see: https://devcenter.heroku.com/articles/git
+
+#### Requirements
+
+Install the [heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+
+Add heroku git repos:
+
+```sh
+git remote add staging https://git.heroku.com/addons-pm-staging.git
+git remote add production https://git.heroku.com/addons-pm.git
+```
+
+#### Pushing to stage
+
+Double check you're on the revision you want to deploy.
+
+```sh
+heroku login
+git push staging
+```
+
+#### Pushing to prod
+
+Double check you're currently on the revision you want to deploy.
+
+```sh
+heroku login
+git push production
+```
