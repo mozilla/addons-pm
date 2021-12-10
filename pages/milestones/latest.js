@@ -13,13 +13,7 @@ export async function getServerSideProps(oldProps) {
     props.query = {};
   }
 
-  if (typeof props.query.dir === 'undefined') {
-    props.query.dir = 'asc';
-  }
-
-  if (typeof props.query.sort === 'undefined') {
-    props.query.sort = 'assignee';
-  }
+  props.query = { dir: 'asc', sort: 'assignee', ...props.query }
   queryParams = `?${queryString.stringify(props.query)}`;
 
   const milestonePagination = getMilestonePagination({
