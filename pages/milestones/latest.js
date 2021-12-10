@@ -5,11 +5,22 @@ export default function Page() {
   return null;
 }
 
-export async function getServerSideProps(props) {
+export async function getServerSideProps(oldProps) {
   let queryParams = '';
-  if (props.query) {
-    queryParams = `?${queryString.stringify(props.query)}`;
+  const props = { ...oldProps };
+
+  if (!props.query) {
+    props.query = {};
   }
+
+  if (typeof props.query.dir === 'undefined') {
+    props.query.dir = 'asc';
+  }
+
+  if (typeof props.query.sort === 'undefined') {
+    props.query.sort = 'assignee';
+  }
+  queryParams = `?${queryString.stringify(props.query)}`;
 
   const milestonePagination = getMilestonePagination({
     startDate: getNextMilestone(),
