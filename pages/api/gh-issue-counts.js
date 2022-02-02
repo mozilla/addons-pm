@@ -58,6 +58,12 @@ const query = gql`
     ) {
       ...issueCounts
     }
+    extension_workshop: repository(
+      name: "extension-workshop"
+      owner: "mozilla"
+    ) {
+      ...issueCounts
+    }
   }
 `;
 
