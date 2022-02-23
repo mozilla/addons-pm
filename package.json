@@ -21,7 +21,7 @@
     "classnames": "2.3.1",
     "common-tags": "1.8.2",
     "dompurify": "2.3.6",
-    "graphql": "15.8.0",
+    "graphql": "16.3.0",
     "graphql-tag": "2.12.6",
     "isomorphic-fetch": "3.0.0",
     "jsdom": "18.1.1",
