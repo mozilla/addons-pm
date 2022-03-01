@@ -55,6 +55,6 @@
     "prettier": "2.5.1",
     "stylelint": "13.13.1",
     "stylelint-config-standard": "22.0.0",
-    "stylelint-config-suitcss": "17.0.0"
+    "stylelint-config-suitcss": "18.0.0"
   }
 }
