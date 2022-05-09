@@ -726,10 +726,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.5.tgz#db5a11bf66bdab39569719555b0f76e138d7bd64"
   integrity sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==
 
-"@primer/octicons-react@17.0.0":
-  version "17.0.0"
-  resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-17.0.0.tgz#c16ac8671edee682a513b1afa8a004c7c5b1d767"
-  integrity sha512-/9VLaNVNWwmTFgFlaxO3r+4GbqiG05ytkDLbKxBAdBiOJLadUPo6P0k+/zJdp8No/S2bBNvEtZNNk5zQj87H4w==
+"@primer/octicons-react@17.1.0":
+  version "17.1.0"
+  resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-17.1.0.tgz#a152212e0080b1fda07ceeb3da3f10b467e032ab"
+  integrity sha512-LSVCGCdvWvWiU+Yu2iqT2TVLX2EOpLPlU+PY0hoztQ7LFfB9Un5qJi8yooaZ2n6kzetG5FsZLSjwLz3RcMjkjA==
 
 "@react-aria/ssr@^3.0.1":
   version "3.1.2"
