@@ -134,15 +134,11 @@ const Projects = (props) => {
       const teamMembers = [];
       if (teamData.data) {
         for (const eng of project.meta.engineers) {
-          const teamMembersToSearch = [
-            ...teamData.data.organization.team.members.nodes,
-            ...teamData.data.organization.outreachy.members.nodes,
-          ];
-          const foundMember = teamMembersToSearch.find((item) => {
-            return item.login.toLowerCase() === eng.toLowerCase();
+          const foundMember = teamData.data.search.edges.find((item) => {
+            return item.node.login.toLowerCase() === eng.toLowerCase();
           });
           if (foundMember) {
-            teamMembers.push(foundMember);
+            teamMembers.push(foundMember.node);
           }
         }
       }

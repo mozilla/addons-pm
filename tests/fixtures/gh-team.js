@@ -1,47 +1,39 @@
 export default {
   data: {
-    organization: {
-      team: {
-        members: {
-          nodes: [
-            {
-              name: 'A user',
-              login: 'team-testuser-1',
-              avatarUrl: 'https://not-a-real-icon-service.com/testuser?v=3',
-              __typename: 'User',
-            },
-            {
-              name: 'Another user',
-              login: 'team-testuser-2',
-              avatarUrl: 'https://not-a-real-icon-service.com/testuser-2?v=3',
-              __typename: 'User',
-            },
-          ],
-          __typename: 'TeamMemberConnection',
+    search: {
+      edges: [
+        {
+          node: {
+            id: 'SomeId==',
+            avatarUrl: 'https://avatars.githubusercontent.com/u/zzz?v=4',
+            login: 'testuser-1',
+            name: 'A User',
+            __typename: 'User',
+          },
+          __typename: 'SearchResultItemEdge',
         },
-        __typename: 'Team',
-      },
-      outreachy: {
-        members: {
-          nodes: [
-            {
-              name: 'A user',
-              login: 'team-testuser-1',
-              avatarUrl: 'https://not-a-real-icon-service.com/testuser?v=3',
-              __typename: 'User',
-            },
-            {
-              name: 'Another user 3',
-              login: 'team-testuser-3',
-              avatarUrl: 'https://not-a-real-icon-service.com/testuser-3?v=3',
-              __typename: 'User',
-            },
-          ],
-          __typename: 'TeamMemberConnection',
+        {
+          node: {
+            id: 'AnotherId==',
+            avatarUrl: 'https://avatars.githubusercontent.com/u/yyyy?v=4',
+            login: 'testuser-2',
+            name: 'Another User',
+            __typename: 'User',
+          },
+          __typename: 'SearchResultItemEdge',
         },
-        __typename: 'Team',
-      },
-      __typename: 'Organization',
+        {
+          node: {
+            id: 'AThirdId==',
+            avatarUrl: 'https://avatars.githubusercontent.com/u/xxxx?v=4',
+            login: 'testuser-3',
+            name: 'A Third User',
+            __typename: 'User',
+          },
+          __typename: 'SearchResultItemEdge',
+        },
+      ],
+      __typename: 'SearchResultItemConnection',
     },
   },
   loading: false,
