@@ -28,7 +28,9 @@ describe(__filename, () => {
   });
 
   it('should render the Milestone Page', async () => {
-    mockRouter.setCurrentUrl("/milestones/2021-01-21/?milestone=2021-01-21&dir=asc&sort=assignee");
+    mockRouter.setCurrentUrl(
+      '/milestones/2021-01-21/?milestone=2021-01-21&dir=asc&sort=assignee',
+    );
     const { props } = await getServerSideProps(fakeProps);
     const { findByRole } = render(<Milestones {...props} />);
     const main = await findByRole('main');

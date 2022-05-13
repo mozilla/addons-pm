@@ -23,7 +23,7 @@ describe(__filename, () => {
   });
 
   it('should render the Good First Bugs Page', async () => {
-    mockRouter.setCurrentUrl("/contrib/good-first-bugs?dir=asc&sort=updatedAt");
+    mockRouter.setCurrentUrl('/contrib/good-first-bugs?dir=asc&sort=updatedAt');
     const { props } = await getServerSideProps();
     const { findByRole } = render(<GoodFirstBugs {...props} />);
     const main = await findByRole('main');

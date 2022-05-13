@@ -31,7 +31,7 @@ describe(__filename, () => {
   });
 
   it('should render the Projects Page', async () => {
-    mockRouter.setCurrentUrl("/projects/2021/Q1/?year=2021&quarter=Q1");
+    mockRouter.setCurrentUrl('/projects/2021/Q1/?year=2021&quarter=Q1');
     const { props } = await getServerSideProps(fakeProps);
     const { findByRole } = render(<Projects {...props} />);
     const main = await findByRole('main');

@@ -21,7 +21,7 @@ describe(__filename, () => {
   });
 
   it('should render the AMO dashboard', async () => {
-    mockRouter.setCurrentUrl("/dashboards/amo/");
+    mockRouter.setCurrentUrl('/dashboards/amo/');
     const { props } = await getServerSideProps();
     const { findByRole, findAllByText } = render(<DashboardAMO {...props} />);
     const main = await findByRole('main');

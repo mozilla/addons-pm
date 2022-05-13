@@ -12,7 +12,7 @@ describe(__filename, () => {
   afterEach(cleanup);
 
   it('provides opposite sort direction if column matches', async () => {
-    mockRouter.setCurrentUrl("/foo/?dir=asc&sort=assignee");
+    mockRouter.setCurrentUrl('/foo/?dir=asc&sort=assignee');
     render(<HeaderLink columnKey="assignee" linkText="Assignee" />);
     await waitFor(() => screen.getByRole('link'));
     const link = screen.getByRole('link');
@@ -21,7 +21,7 @@ describe(__filename, () => {
   });
 
   it("provides default sort direction if column doesn't match", async () => {
-    mockRouter.setCurrentUrl("/foo/?dir=desc&sort=whatever");
+    mockRouter.setCurrentUrl('/foo/?dir=desc&sort=whatever');
     render(<HeaderLink columnKey="assignee" linkText="Anything you want" />);
     await waitFor(() => screen.getByRole('link'));
     const link = screen.getByRole('link');

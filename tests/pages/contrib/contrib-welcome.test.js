@@ -23,7 +23,9 @@ describe(__filename, () => {
   });
 
   it('should render the Contrib Welcome Page', async () => {
-    mockRouter.setCurrentUrl("/contrib/contrib-welcome/?dir=asc&sort=updatedAt");
+    mockRouter.setCurrentUrl(
+      '/contrib/contrib-welcome/?dir=asc&sort=updatedAt',
+    );
     const { props } = await getServerSideProps();
     const { findByRole } = render(<ContribWelcome {...props} />);
     const main = await findByRole('main');

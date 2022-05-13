@@ -24,7 +24,7 @@ describe(__filename, () => {
   });
 
   it('provides active link', async () => {
-    mockRouter.setCurrentUrl("/whatever");
+    mockRouter.setCurrentUrl('/whatever');
     render(
       <ActiveLink href="/whatever" activeClassName="active">
         <a>test-link</a>

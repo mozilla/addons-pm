@@ -25,7 +25,7 @@ describe(__filename, () => {
   });
 
   it('should render the AMO dashboard', async () => {
-    mockRouter.setCurrentUrl("/dashboards/webext/");
+    mockRouter.setCurrentUrl('/dashboards/webext/');
     const { props } = await getServerSideProps();
     const { findByRole, findAllByText } = render(<DashboardWE {...props} />);
     const main = await findByRole('main');
