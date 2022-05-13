@@ -2,25 +2,19 @@
  * @jest-environment jsdom
  */
 
-import * as nextRouter from 'next/router';
+import mockRouter from 'next-router-mock';
 import { cleanup, render, waitFor, screen } from '@testing-library/react';
 import ActiveLink from 'components/ActiveLink';
 
-describe(__filename, () => {
-  beforeEach(() => {
-    nextRouter.useRouter = jest.fn();
-  });
+// eslint-disable-next-line global-require
+jest.mock('next/router', () => require('next-router-mock'));
 
+describe(__filename, () => {
   afterEach(cleanup);
 
   it('provides non-active link', async () => {
-    nextRouter.useRouter.mockImplementation(() => ({
-      route: '/',
-      asPath: '/',
-      prefetch: jest.fn(() => Promise.resolve()),
-    }));
     render(
-      <ActiveLink href="/whatever/" activeClassName="active">
+      <ActiveLink href="/whatever" activeClassName="active">
         <a>test-link</a>
       </ActiveLink>,
     );
@@ -30,13 +24,9 @@ describe(__filename, () => {
   });
 
   it('provides active link', async () => {
-    nextRouter.useRouter.mockImplementation(() => ({
-      route: '/whatever/',
-      asPath: '/whatever/',
-      prefetch: jest.fn(() => Promise.resolve()),
-    }));
+    mockRouter.setCurrentUrl('/whatever');
     render(
-      <ActiveLink href="/whatever/" activeClassName="active">
+      <ActiveLink href="/whatever" activeClassName="active">
         <a>test-link</a>
       </ActiveLink>,
     );

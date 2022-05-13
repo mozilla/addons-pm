@@ -3,16 +3,18 @@
  */
 
 import fetchMock from 'fetch-mock';
-import * as nextRouter from 'next/router';
+import mockRouter from 'next-router-mock';
 import ghMilestoneIssuesData from 'tests/fixtures/gh-milestone-issues';
 import { cleanup, render } from '@testing-library/react';
 import Milestones, { getServerSideProps } from 'pages/milestones/[milestone]';
+
+// eslint-disable-next-line global-require
+jest.mock('next/router', () => require('next-router-mock'));
 
 describe(__filename, () => {
   let fakeProps;
 
   beforeEach(() => {
-    nextRouter.useRouter = jest.fn();
     fetchMock.mock(/\/api\/gh-milestone-issues\//, ghMilestoneIssuesData);
     fakeProps = {
       params: {
@@ -27,14 +29,9 @@ describe(__filename, () => {
   });
 
   it('should render the Milestone Page', async () => {
-    nextRouter.useRouter.mockImplementation(() => ({
-      pathname: '/milestones/2021-01-21/',
-      query: {
-        milestone: '2021-01-21',
-        dir: 'asc',
-        sort: 'assignee',
-      },
-    }));
+    mockRouter.setCurrentUrl(
+      '/milestones/2021-01-21/?milestone=2021-01-21&dir=asc&sort=assignee',
+    );
     const { props } = await getServerSideProps(fakeProps);
     const { findByRole } = render(<Milestones {...props} />);
     const main = await findByRole('main');

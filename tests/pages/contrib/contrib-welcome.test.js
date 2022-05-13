@@ -3,16 +3,18 @@
  */
 
 import fetchMock from 'fetch-mock';
-import * as nextRouter from 'next/router';
+import mockRouter from 'next-router-mock';
 import ghContribWelcomeData from 'tests/fixtures/gh-contrib-welcome';
 import { cleanup, render } from '@testing-library/react';
 import ContribWelcome, {
   getServerSideProps,
 } from 'pages/contrib/contrib-welcome';
 
+// eslint-disable-next-line global-require
+jest.mock('next/router', () => require('next-router-mock'));
+
 describe(__filename, () => {
   beforeEach(() => {
-    nextRouter.useRouter = jest.fn();
     fetchMock.mock(/\/api\/gh-contrib-welcome\//, ghContribWelcomeData);
   });
 
@@ -22,13 +24,9 @@ describe(__filename, () => {
   });
 
   it('should render the Contrib Welcome Page', async () => {
-    nextRouter.useRouter.mockImplementation(() => ({
-      pathname: '/contrib/contrib-welcome/',
-      query: {
-        dir: 'asc',
-        sort: 'updatedAt',
-      },
-    }));
+    mockRouter.setCurrentUrl(
+      '/contrib/contrib-welcome/?dir=asc&sort=updatedAt',
+    );
     const { props } = await getServerSideProps();
     const { findByRole } = render(<ContribWelcome {...props} />);
     const main = await findByRole('main');
