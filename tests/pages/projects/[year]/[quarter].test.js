@@ -9,6 +9,7 @@ import ghTeamData from 'tests/fixtures/gh-team';
 import { cleanup, render } from '@testing-library/react';
 import Projects, { getServerSideProps } from 'pages/projects/[year]/[quarter]';
 
+// eslint-disable-next-line global-require
 jest.mock('next/router', () => require('next-router-mock'));
 
 describe(__filename, () => {

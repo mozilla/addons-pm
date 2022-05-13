@@ -8,6 +8,7 @@ import fetchMock from 'fetch-mock';
 import ghIssueCountsData from 'tests/fixtures/gh-issue-counts';
 import DashboardAMO, { getServerSideProps } from 'pages/dashboards/amo';
 
+// eslint-disable-next-line global-require
 jest.mock('next/router', () => require('next-router-mock'));
 
 describe(__filename, () => {

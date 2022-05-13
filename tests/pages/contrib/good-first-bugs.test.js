@@ -10,6 +10,7 @@ import GoodFirstBugs, {
   getServerSideProps,
 } from 'pages/contrib/good-first-bugs';
 
+// eslint-disable-next-line global-require
 jest.mock('next/router', () => require('next-router-mock'));
 
 describe(__filename, () => {

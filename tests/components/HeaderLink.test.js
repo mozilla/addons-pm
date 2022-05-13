@@ -6,6 +6,7 @@ import mockRouter from 'next-router-mock';
 import { cleanup, render, waitFor, screen } from '@testing-library/react';
 import HeaderLink from 'components/HeaderLink';
 
+// eslint-disable-next-line global-require
 jest.mock('next/router', () => require('next-router-mock'));
 
 describe(__filename, () => {

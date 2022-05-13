@@ -8,6 +8,7 @@ import ghMilestoneIssuesData from 'tests/fixtures/gh-milestone-issues';
 import { cleanup, render } from '@testing-library/react';
 import Milestones, { getServerSideProps } from 'pages/milestones/[milestone]';
 
+// eslint-disable-next-line global-require
 jest.mock('next/router', () => require('next-router-mock'));
 
 describe(__filename, () => {

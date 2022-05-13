@@ -10,6 +10,7 @@ import bzNeedInfoData from 'tests/fixtures/bz-need-infos';
 import bzWhiteboardTagData from 'tests/fixtures/bz-whiteboard-tags';
 import DashboardWE, { getServerSideProps } from 'pages/dashboards/webext';
 
+// eslint-disable-next-line global-require
 jest.mock('next/router', () => require('next-router-mock'));
 
 describe(__filename, () => {

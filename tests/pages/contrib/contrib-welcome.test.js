@@ -10,6 +10,7 @@ import ContribWelcome, {
   getServerSideProps,
 } from 'pages/contrib/contrib-welcome';
 
+// eslint-disable-next-line global-require
 jest.mock('next/router', () => require('next-router-mock'));
 
 describe(__filename, () => {
