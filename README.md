@@ -29,7 +29,7 @@ GH_TOKEN=this-should-be-a-personal-access-token
 You can generate a personal access token token here: https://github.com/settings/tokens and you'll need the following scopes:
 
 ```
-public_repo
+public_repo, read:org
 ```
 
 #### BZ_USERS
