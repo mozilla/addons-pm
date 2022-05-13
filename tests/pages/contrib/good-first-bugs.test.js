@@ -3,16 +3,18 @@
  */
 
 import fetchMock from 'fetch-mock';
-import * as nextRouter from 'next/router';
+import mockRouter from 'next-router-mock';
 import { cleanup, render } from '@testing-library/react';
 import ghGoodFirstBugsData from 'tests/fixtures/gh-good-first-bugs';
 import GoodFirstBugs, {
   getServerSideProps,
 } from 'pages/contrib/good-first-bugs';
 
+// eslint-disable-next-line global-require
+jest.mock('next/router', () => require('next-router-mock'));
+
 describe(__filename, () => {
   beforeEach(() => {
-    nextRouter.useRouter = jest.fn();
     fetchMock.mock(/\/api\/gh-good-first-bugs\//, ghGoodFirstBugsData);
   });
 
@@ -22,13 +24,7 @@ describe(__filename, () => {
   });
 
   it('should render the Good First Bugs Page', async () => {
-    nextRouter.useRouter.mockImplementation(() => ({
-      pathname: '/contrib/good-first-bugs/',
-      query: {
-        dir: 'asc',
-        sort: 'updatedAt',
-      },
-    }));
+    mockRouter.setCurrentUrl('/contrib/good-first-bugs?dir=asc&sort=updatedAt');
     const { props } = await getServerSideProps();
     const { findByRole } = render(<GoodFirstBugs {...props} />);
     const main = await findByRole('main');

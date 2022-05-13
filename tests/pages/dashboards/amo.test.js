@@ -3,14 +3,16 @@
  */
 
 import { cleanup, render } from '@testing-library/react';
-import * as nextRouter from 'next/router';
+import mockRouter from 'next-router-mock';
 import fetchMock from 'fetch-mock';
 import ghIssueCountsData from 'tests/fixtures/gh-issue-counts';
 import DashboardAMO, { getServerSideProps } from 'pages/dashboards/amo';
 
+// eslint-disable-next-line global-require
+jest.mock('next/router', () => require('next-router-mock'));
+
 describe(__filename, () => {
   beforeEach(() => {
-    nextRouter.useRouter = jest.fn();
     fetchMock.mock(/\/api\/gh-issue-counts\//, ghIssueCountsData);
   });
 
@@ -20,9 +22,7 @@ describe(__filename, () => {
   });
 
   it('should render the AMO dashboard', async () => {
-    nextRouter.useRouter.mockImplementation(() => ({
-      pathname: '/dashboards/amo/',
-    }));
+    mockRouter.setCurrentUrl('/dashboards/amo/');
     const { props } = await getServerSideProps();
     const { findByRole, findAllByText } = render(<DashboardAMO {...props} />);
     const main = await findByRole('main');
