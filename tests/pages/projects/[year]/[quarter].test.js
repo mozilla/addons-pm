@@ -3,17 +3,18 @@
  */
 
 import fetchMock from 'fetch-mock';
-import * as nextRouter from 'next/router';
+import mockRouter from 'next-router-mock';
 import ghProjectsData from 'tests/fixtures/gh-projects';
 import ghTeamData from 'tests/fixtures/gh-team';
 import { cleanup, render } from '@testing-library/react';
 import Projects, { getServerSideProps } from 'pages/projects/[year]/[quarter]';
 
+jest.mock('next/router', () => require('next-router-mock'));
+
 describe(__filename, () => {
   let fakeProps;
 
   beforeEach(() => {
-    nextRouter.useRouter = jest.fn();
     fetchMock.mock(/\/api\/gh-projects\//, ghProjectsData);
     fetchMock.mock(/\/api\/gh-team\//, ghTeamData);
     fakeProps = {
@@ -30,13 +31,7 @@ describe(__filename, () => {
   });
 
   it('should render the Projects Page', async () => {
-    nextRouter.useRouter.mockImplementation(() => ({
-      pathname: '/projects/2021/Q1/',
-      query: {
-        year: '2021',
-        quarter: 'Q1',
-      },
-    }));
+    mockRouter.setCurrentUrl("/projects/2021/Q1/?year=2021&quarter=Q1");
     const { props } = await getServerSideProps(fakeProps);
     const { findByRole } = render(<Projects {...props} />);
     const main = await findByRole('main');
