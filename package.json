@@ -52,7 +52,7 @@
     "jest": "27.5.1",
     "mock-express-request": "0.2.2",
     "mock-express-response": "0.3.0",
-    "next-router-mock": "0.6.9",
+    "next-router-mock": "0.6.10",
     "prettier": "2.6.2",
     "stylelint": "13.13.1",
     "stylelint-config-standard": "22.0.0",
