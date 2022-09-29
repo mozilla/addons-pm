@@ -1,7 +1,7 @@
 html,
 body {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -157,9 +157,9 @@ h2.card-header {
 
 .sidebar {
   bottom: 0;
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+  box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
   left: 0;
-  padding: 25px 0 0 0; /* Height of navbar */
+  padding: 25px 0 0; /* Height of navbar */
   position: sticky;
   top: 25px;
   z-index: -1; /* Behind the navbar */
@@ -208,7 +208,7 @@ nav .breadcrumb {
 .project-type {
   color: #666;
   font-size: 22px;
-  margin: 20px 0 15px 0;
+  margin: 20px 0 15px;
 }
 
 div.table-responsive {
@@ -434,12 +434,12 @@ body.dash {
       fill: #fff;
       font-family: sans-serif;
       font-size: 3.5rem;
-      text-shadow: -1px -1px rgba(0, 0, 0, 0.1);
+      text-shadow: -1px -1px rgb(0 0 0 / 10%);
     }
   }
 
   .warning circle {
-    fill: rgb(222, 80, 41);
+    fill: rgb(222 80 41);
   }
 
   .total circle {
@@ -490,7 +490,7 @@ body.dash {
       font-weight: 200;
       overflow: hidden;
       text-overflow: ellipsis;
-      text-shadow: -1px -1px rgba(0, 0, 0, 0.8);
+      text-shadow: -1px -1px rgb(0 0 0 / 80%);
       white-space: nowrap;
     }
 
