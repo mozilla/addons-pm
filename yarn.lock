@@ -1018,6 +1018,15 @@
     expect "^29.0.0"
     pretty-format "^29.0.0"
 
+"@types/jsdom@^20.0.0":
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/@types/jsdom/-/jsdom-20.0.0.tgz#4414fb629465167f8b7b3804b9e067bdd99f1791"
+  integrity sha512-YfAchFs0yM1QPDrLm2VHe+WHGtqms3NXnXAMolrgrVP6fgBHHXy1ozAbo/dFtPNtZC/m66bPiCTWYmqp1F14gA==
+  dependencies:
+    "@types/node" "*"
+    "@types/tough-cookie" "*"
+    parse5 "^7.0.0"
+
 "@types/json-schema@^7.0.9":
   version "7.0.11"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
@@ -1113,6 +1122,11 @@
   integrity sha512-SBwbxYoyPIvxHbeHxTZX2Pe/74F/tX2/D3mMvzabdeJ25bBojfW0TyB8BHrbq/9zaaKICJZjLP+8r6AeZMFCuQ==
   dependencies:
     "@types/jest" "*"
+
+"@types/tough-cookie@*":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@types/tough-cookie/-/tough-cookie-4.0.2.tgz#6286b4c7228d58ab7866d19716f3696e03a09397"
+  integrity sha512-Q5vtl1W5ue16D+nIaW8JWebSSraJVlK+EthKn7e7UcD4KWsaSJ8BqGPXNaPghgtcn/fhvrN17Tv8ksUsQpiplw==
 
 "@types/unist@*", "@types/unist@^2.0.0", "@types/unist@^2.0.2":
   version "2.0.6"
@@ -3547,6 +3561,20 @@ jest-each@^29.1.0:
     jest-util "^29.1.0"
     pretty-format "^29.1.0"
 
+jest-environment-jsdom@^29.0.0:
+  version "29.1.1"
+  resolved "https://registry.yarnpkg.com/jest-environment-jsdom/-/jest-environment-jsdom-29.1.1.tgz#33e849e96138493420020de3a4f459e253925a96"
+  integrity sha512-bXmOu26O4W/pszWgaUNCfFBMy8hqSz/SOcGKhqJ2ICYlNEUAXBk77eYkO57/Pmn9kNXVG18A8xwVQlZAzZzJ7Q==
+  dependencies:
+    "@jest/environment" "^29.1.1"
+    "@jest/fake-timers" "^29.1.1"
+    "@jest/types" "^29.1.0"
+    "@types/jsdom" "^20.0.0"
+    "@types/node" "*"
+    jest-mock "^29.1.1"
+    jest-util "^29.1.0"
+    jsdom "^20.0.0"
+
 jest-environment-node@^29.1.1:
   version "29.1.1"
   resolved "https://registry.yarnpkg.com/jest-environment-node/-/jest-environment-node-29.1.1.tgz#10f1782b74e17fcf782ff51df79f2b0cee135851"
@@ -3862,7 +3890,7 @@ js-yaml@^4.1.0:
   dependencies:
     argparse "^2.0.1"
 
-jsdom@20.0.0:
+jsdom@20.0.0, jsdom@^20.0.0:
   version "20.0.0"
   resolved "https://registry.yarnpkg.com/jsdom/-/jsdom-20.0.0.tgz#882825ac9cc5e5bbee704ba16143e1fa78361ebf"
   integrity sha512-x4a6CKCgx00uCmP+QakBDFXwjAJ69IkkIWHmtmjd3wvXPcdOS44hfX2vqkOQrVrq8l9DhNNADZRXaCEWvgXtVA==
