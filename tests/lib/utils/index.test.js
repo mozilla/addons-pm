@@ -93,7 +93,7 @@ describe(__filename, () => {
       function checkGetApiUrl() {
         getApiURL('whatever');
       }
-      expect(checkGetApiUrl).toThrowError(`Path should start with '/api'`);
+      expect(checkGetApiUrl).toThrow(`Path should start with '/api'`);
     });
 
     it('should handle query params', () => {
