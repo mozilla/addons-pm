@@ -55,7 +55,7 @@
     "mock-express-response": "0.3.0",
     "next-router-mock": "0.8.0",
     "prettier": "2.7.1",
-    "stylelint": "14.14.1",
+    "stylelint": "14.15.0",
     "stylelint-config-prettier-scss": "0.0.1",
     "stylelint-config-standard": "29.0.0",
     "stylelint-config-standard-scss": "6.1.0",
