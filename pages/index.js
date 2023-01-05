@@ -63,7 +63,11 @@ export default function Home() {
                     milestone and preview what's being worked on for the
                     following week as part of our weekly Engineering stand-up.
                   </p>
-                  <Link href="/milestones/latest/?dir=asc&sort=assignee" passHref legacyBehavior>
+                  <Link
+                    href="/milestones/latest/?dir=asc&sort=assignee"
+                    passHref
+                    legacyBehavior
+                  >
                     <Button variant="outline-primary">View Milestones</Button>
                   </Link>
                 </Card.Text>
@@ -119,7 +123,8 @@ export default function Home() {
                   <Link
                     href="/contrib/maybe-good-first-bugs/?dir=desc&sort=updatedAt"
                     passHref
-                    legacyBehavior>
+                    legacyBehavior
+                  >
                     <Button variant="outline-primary">
                       View Contributions
                     </Button>

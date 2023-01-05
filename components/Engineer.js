@@ -8,17 +8,18 @@ export default function Engineer(props) {
       href={`/projects/${year}/${quarter}/?engineer=${encodeURIComponent(
         member.login.toLowerCase(),
       )}`}
-    legacyBehavior>
-    <a>
-      <Image
-        src={member.avatarUrl}
-        title={member.login}
-        alt={member.login}
-        roundedCircle
-        className="float-end eng-image"
-        height="35"
-      />
-    </a>
+      legacyBehavior
+    >
+      <a>
+        <Image
+          src={member.avatarUrl}
+          title={member.login}
+          alt={member.login}
+          roundedCircle
+          className="float-end eng-image"
+          height="35"
+        />
+      </a>
     </Link>
   );
 }

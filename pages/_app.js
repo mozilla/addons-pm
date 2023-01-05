@@ -48,7 +48,11 @@ function MyApp({ Component, pageProps }) {
             </Link>
           </Nav.Item>
           <Nav.Item>
-            <Link href="/milestones/latest/?dir=asc&sort=assignee" passHref legacyBehavior>
+            <Link
+              href="/milestones/latest/?dir=asc&sort=assignee"
+              passHref
+              legacyBehavior
+            >
               <Nav.Link eventKey={2}>Milestones</Nav.Link>
             </Link>
           </Nav.Item>
@@ -66,7 +70,8 @@ function MyApp({ Component, pageProps }) {
             <Link
               href="/contrib/maybe-good-first-bugs/?dir=desc&sort=updatedAt"
               passHref
-              legacyBehavior>
+              legacyBehavior
+            >
               <Nav.Link eventKey={5}>Contributions</Nav.Link>
             </Link>
           </Nav.Item>
