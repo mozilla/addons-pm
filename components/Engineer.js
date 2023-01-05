@@ -4,12 +4,12 @@ import { Image } from 'react-bootstrap';
 export default function Engineer(props) {
   const { member, year, quarter } = props;
   return (
-    (<Link
+    <Link
       href={`/projects/${year}/${quarter}/?engineer=${encodeURIComponent(
         member.login.toLowerCase(),
       )}`}
-    >
-
+    legacyBehavior>
+    <a>
       <Image
         src={member.avatarUrl}
         title={member.login}
@@ -18,7 +18,7 @@ export default function Engineer(props) {
         className="float-end eng-image"
         height="35"
       />
-
-    </Link>)
+    </a>
+    </Link>
   );
 }
