@@ -35,7 +35,7 @@ export default function Home() {
                     view is a way to provide an overview of the projects per
                     quarter for just our team.
                   </p>
-                  <Link href="/projects/latest/" passHref>
+                  <Link href="/projects/latest/" passHref legacyBehavior>
                     <Button variant="outline-primary">View Projects</Button>
                   </Link>
                 </Card.Text>
@@ -63,10 +63,7 @@ export default function Home() {
                     milestone and preview what's being worked on for the
                     following week as part of our weekly Engineering stand-up.
                   </p>
-                  <Link
-                    href="/milestones/latest/?dir=asc&sort=assignee"
-                    passHref
-                  >
+                  <Link href="/milestones/latest/?dir=asc&sort=assignee" passHref legacyBehavior>
                     <Button variant="outline-primary">View Milestones</Button>
                   </Link>
                 </Card.Text>
@@ -89,12 +86,12 @@ export default function Home() {
                     issue counts look like and highlights any high priority
                     bugs.
                   </p>
-                  <Link href="/dashboards/amo/" passHref>
+                  <Link href="/dashboards/amo/" passHref legacyBehavior>
                     <Button variant="outline-primary">
                       View AMO Dashboard
                     </Button>
                   </Link>
-                  <Link href="/dashboards/webext/" passHref>
+                  <Link href="/dashboards/webext/" passHref legacyBehavior>
                     <Button variant="outline-primary">
                       View Web-Extensions Dashboard
                     </Button>
@@ -122,7 +119,7 @@ export default function Home() {
                   <Link
                     href="/contrib/maybe-good-first-bugs/?dir=desc&sort=updatedAt"
                     passHref
-                  >
+                    legacyBehavior>
                     <Button variant="outline-primary">
                       View Contributions
                     </Button>

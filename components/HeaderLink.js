@@ -22,8 +22,11 @@ export default function HeaderLink(props) {
   };
 
   return (
-    <Link href={{ pathname: router.pathname, query }} passHref>
-      <a className={className}>{linkText}</a>
+    <Link
+      href={{ pathname: router.pathname, query }}
+      passHref
+      className={className}>
+      {linkText}
     </Link>
   );
 }

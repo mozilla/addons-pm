@@ -255,14 +255,14 @@ const Projects = (props) => {
       >
         <Nav variant="pills">
           <Nav.Item>
-            <Link href={`/projects/${prevYear}/${prevQuarter}/`} passHref>
+            <Link href={`/projects/${prevYear}/${prevQuarter}/`} passHref legacyBehavior>
               <Nav.Link eventKey="prev" className="previous" active={false}>
                 Previous
               </Nav.Link>
             </Link>
           </Nav.Item>
           <Nav.Item>
-            <Link href={`/projects/${nextYear}/${nextQuarter}/`} passHref>
+            <Link href={`/projects/${nextYear}/${nextQuarter}/`} passHref legacyBehavior>
               <Nav.Link eventKey="next" className="next" active={false}>
                 Next
               </Nav.Link>
@@ -282,19 +282,19 @@ const Projects = (props) => {
           </Nav.Item>
 
           <NavDropdown className="filters" title="Filters" align="end">
-            <Link href={`/projects/${year}/${quarter}/`} passHref>
+            <Link href={`/projects/${year}/${quarter}/`} passHref legacyBehavior>
               <NavDropdown.Item eventKey="all">All</NavDropdown.Item>
             </Link>
             <Link
               href={`/projects/${year}/${quarter}/?projectType=primary`}
               passHref
-            >
+              legacyBehavior>
               <NavDropdown.Item eventKey="primary">Primary</NavDropdown.Item>
             </Link>
             <Link
               href={`/projects/${year}/${quarter}/?projectType=secondary`}
               passHref
-            >
+              legacyBehavior>
               <NavDropdown.Item eventKey="secondary">
                 Secondary
               </NavDropdown.Item>

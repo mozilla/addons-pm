@@ -36,29 +36,29 @@ function MyApp({ Component, pageProps }) {
       <Navbar bg="dark" variant="dark" className="px-3">
         <Nav className="me-auto">
           <Nav.Item>
-            <Link href="/" passHref>
+            <Link href="/" passHref legacyBehavior>
               <Nav.Link className="navbar-brand" eventKey={0}>
                 Addons PM
               </Nav.Link>
             </Link>
           </Nav.Item>
           <Nav.Item>
-            <Link href="/projects/latest/" passHref>
+            <Link href="/projects/latest/" passHref legacyBehavior>
               <Nav.Link eventKey={1}>Projects</Nav.Link>
             </Link>
           </Nav.Item>
           <Nav.Item>
-            <Link href="/milestones/latest/?dir=asc&sort=assignee" passHref>
+            <Link href="/milestones/latest/?dir=asc&sort=assignee" passHref legacyBehavior>
               <Nav.Link eventKey={2}>Milestones</Nav.Link>
             </Link>
           </Nav.Item>
           <Nav.Item>
-            <Link href="/dashboards/amo/" passHref>
+            <Link href="/dashboards/amo/" passHref legacyBehavior>
               <Nav.Link eventKey={3}>AMO Dashboard</Nav.Link>
             </Link>
           </Nav.Item>
           <Nav.Item>
-            <Link href="/dashboards/webext/" passHref>
+            <Link href="/dashboards/webext/" passHref legacyBehavior>
               <Nav.Link eventKey={4}>Webext Dashboard</Nav.Link>
             </Link>
           </Nav.Item>
@@ -66,7 +66,7 @@ function MyApp({ Component, pageProps }) {
             <Link
               href="/contrib/maybe-good-first-bugs/?dir=desc&sort=updatedAt"
               passHref
-            >
+              legacyBehavior>
               <Nav.Link eventKey={5}>Contributions</Nav.Link>
             </Link>
           </Nav.Item>

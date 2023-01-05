@@ -230,7 +230,7 @@ const Milestones = (props) => {
                 milestonePagination.prevFromStart
               }/${getCurrentSortQueryString()}`}
               passHref
-            >
+              legacyBehavior>
               <Nav.Link eventKey="prev" className="previous" active={false}>
                 Previous
               </Nav.Link>
@@ -242,7 +242,7 @@ const Milestones = (props) => {
                 milestonePagination.nextFromStart
               }/${getCurrentSortQueryString()}`}
               passHref
-            >
+              legacyBehavior>
               <Nav.Link eventKey="next" className="next" active={false}>
                 Next
               </Nav.Link>
