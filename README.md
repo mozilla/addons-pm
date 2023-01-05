@@ -34,7 +34,7 @@ public_repo, read:org
 
 #### BZ_USERS
 
-For needinfos to work the BZ_USERS env var should contain nicknames and Bugzilla users.
+For needinfos to work the `BZ_USERS` env var should contain nicknames and Bugzilla users.
 
 ```yaml
 BZ_USERS={"name": "bz-email@example.com", "name2": "bz-email@example.com"}
