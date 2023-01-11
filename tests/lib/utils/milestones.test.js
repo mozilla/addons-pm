@@ -86,7 +86,7 @@ describe(__filename, () => {
         labels: {
           nodes: [
             {
-              name: 'priority: p1',
+              name: 'priority:p1',
             },
           ],
         },
@@ -143,7 +143,7 @@ describe(__filename, () => {
         labels: {
           nodes: [
             {
-              name: 'priority: p1',
+              name: 'priority:p1',
             },
           ],
         },
@@ -319,7 +319,7 @@ describe(__filename, () => {
         labels: {
           nodes: [
             {
-              name: 'priority: p1',
+              name: 'priority:p1',
             },
           ],
         },
@@ -335,7 +335,7 @@ describe(__filename, () => {
         labels: {
           nodes: [
             {
-              name: 'priority: p1',
+              name: 'priority:p1',
             },
           ],
         },
@@ -428,7 +428,7 @@ describe(__filename, () => {
                 labels: {
                   nodes: [
                     {
-                      name: 'priority: p1',
+                      name: 'priority:p1',
                     },
                   ],
                 },
@@ -467,7 +467,7 @@ describe(__filename, () => {
                 labels: {
                   nodes: [
                     {
-                      name: 'priority: p2',
+                      name: 'priority:p2',
                     },
                   ],
                 },

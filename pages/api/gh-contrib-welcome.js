@@ -33,7 +33,7 @@ export default async (req, res) => {
   const client = createClient();
   const variables = {
     query: oneLine`${contribRepos.map((n) => `repo:${n}`).join('\n')}
-      label:"contrib: welcome"
+      label:"contrib:welcome"
       is:open
       sort:updated-desc
       type:issues`,

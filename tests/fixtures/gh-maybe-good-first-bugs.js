@@ -20,7 +20,7 @@ export default {
                   __typename: 'Label',
                 },
                 {
-                  name: 'priority: p4',
+                  name: 'priority:p4',
                   __typename: 'Label',
                 },
                 {

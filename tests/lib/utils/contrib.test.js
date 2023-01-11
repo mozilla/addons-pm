@@ -16,7 +16,7 @@ describe(__filename, () => {
           labels: {
             nodes: [
               {
-                name: 'priority: p1',
+                name: 'priority:p1',
               },
               {
                 name: 'contrib: assigned',
@@ -48,7 +48,7 @@ describe(__filename, () => {
           labels: {
             nodes: [
               {
-                name: 'priority: p2',
+                name: 'priority:p2',
               },
               {
                 name: 'contrib: mentor assigned',
