@@ -29,7 +29,7 @@ export default {
                   __typename: 'Label',
                 },
                 {
-                  name: 'priority: p5',
+                  name: 'priority:p5',
                   __typename: 'Label',
                 },
               ],
@@ -60,7 +60,7 @@ export default {
                   __typename: 'Label',
                 },
                 {
-                  name: 'priority: p3',
+                  name: 'priority:p3',
                   __typename: 'Label',
                 },
                 {
@@ -103,7 +103,7 @@ export default {
                   __typename: 'Label',
                 },
                 {
-                  name: 'priority: p4',
+                  name: 'priority:p4',
                   __typename: 'Label',
                 },
                 {

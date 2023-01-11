@@ -10,25 +10,25 @@ const query = gql`
     triaged: issues(
       states: OPEN
       labels: [
-        "priority: p1"
-        "priority: p2"
-        "priority: p3"
-        "priority: p4"
-        "priority: p5"
+        "priority:p1"
+        "priority:p2"
+        "priority:p3"
+        "priority:p4"
+        "priority:p5"
       ]
     ) {
       totalCount
     }
-    open_prod_bugs: issues(states: OPEN, labels: "type: prod_bug") {
+    open_prod_bugs: issues(states: OPEN, labels: "type:prod_bug") {
       totalCount
     }
-    open_p1s: issues(states: OPEN, labels: "priority: p1") {
+    open_p1s: issues(states: OPEN, labels: "priority:p1") {
       totalCount
     }
-    open_p2s: issues(states: OPEN, labels: "priority: p2") {
+    open_p2s: issues(states: OPEN, labels: "priority:p2") {
       totalCount
     }
-    open_p3s: issues(states: OPEN, labels: "priority: p3") {
+    open_p3s: issues(states: OPEN, labels: "priority:p3") {
       totalCount
     }
     open_prs: pullRequests(states: OPEN) {

@@ -42,7 +42,7 @@ export default {
                   __typename: 'Label',
                 },
                 {
-                  name: 'priority: p4',
+                  name: 'priority:p4',
                   __typename: 'Label',
                 },
                 {
@@ -139,7 +139,7 @@ export default {
                   __typename: 'Label',
                 },
                 {
-                  name: 'priority: p3',
+                  name: 'priority:p3',
                   __typename: 'Label',
                 },
                 {
@@ -223,7 +223,7 @@ export default {
                   __typename: 'Label',
                 },
                 {
-                  name: 'priority: p3',
+                  name: 'priority:p3',
                   __typename: 'Label',
                 },
                 {
@@ -316,7 +316,7 @@ export default {
                   __typename: 'Label',
                 },
                 {
-                  name: 'priority: p2',
+                  name: 'priority:p2',
                   __typename: 'Label',
                 },
                 {
@@ -401,7 +401,7 @@ export default {
                   __typename: 'Label',
                 },
                 {
-                  name: 'priority: p3',
+                  name: 'priority:p3',
                   __typename: 'Label',
                 },
                 {
@@ -489,7 +489,7 @@ export default {
                   __typename: 'Label',
                 },
                 {
-                  name: 'priority: p3',
+                  name: 'priority:p3',
                   __typename: 'Label',
                 },
               ],
@@ -566,7 +566,7 @@ export default {
             labels: {
               nodes: [
                 {
-                  name: 'priority: p3',
+                  name: 'priority:p3',
                   __typename: 'Label',
                 },
                 {
@@ -664,7 +664,7 @@ export default {
                   __typename: 'Label',
                 },
                 {
-                  name: 'priority: p4',
+                  name: 'priority:p4',
                   __typename: 'Label',
                 },
                 {
@@ -753,7 +753,7 @@ export default {
                   __typename: 'Label',
                 },
                 {
-                  name: 'priority: p3',
+                  name: 'priority:p3',
                   __typename: 'Label',
                 },
                 {
@@ -856,7 +856,7 @@ export default {
                   __typename: 'Label',
                 },
                 {
-                  name: 'priority: p2',
+                  name: 'priority:p2',
                   __typename: 'Label',
                 },
                 {
@@ -966,7 +966,7 @@ export default {
                   __typename: 'Label',
                 },
                 {
-                  name: 'priority: p3',
+                  name: 'priority:p3',
                   __typename: 'Label',
                 },
                 {
@@ -1117,7 +1117,7 @@ export default {
                   __typename: 'Label',
                 },
                 {
-                  name: 'priority: p3',
+                  name: 'priority:p3',
                   __typename: 'Label',
                 },
                 {
@@ -1230,7 +1230,7 @@ export default {
                   __typename: 'Label',
                 },
                 {
-                  name: 'priority: p5',
+                  name: 'priority:p5',
                   __typename: 'Label',
                 },
                 {
