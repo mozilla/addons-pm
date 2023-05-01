@@ -47,7 +47,7 @@
     "eslint": "8.38.0",
     "eslint-config-amo": "5.7.0",
     "eslint-config-next": "13.2.4",
-    "eslint-plugin-amo": "1.21.0",
+    "eslint-plugin-amo": "1.24.0",
     "fetch-mock": "9.11.0",
     "jest": "29.5.0",
     "jest-environment-jsdom": "29.5.0",
