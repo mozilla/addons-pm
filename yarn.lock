@@ -4259,10 +4259,10 @@ negotiator@0.6.3:
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
 
-next-router-mock@0.9.3:
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/next-router-mock/-/next-router-mock-0.9.3.tgz#8287e96d76d4c7b3720bc9078b148c2b352f1567"
-  integrity sha512-jl8eFe71LpMVGeBMpoxILkGfEgGY7IfLy8XPyv05/o61p5oQRNpoMmk46VMxRIpt0fI8XcvznBZKpDK6vbYQcQ==
+next-router-mock@0.9.10:
+  version "0.9.10"
+  resolved "https://registry.yarnpkg.com/next-router-mock/-/next-router-mock-0.9.10.tgz#c651ff556ad66cbcda30d4ebeadf575516fe42a3"
+  integrity sha512-bK6sRb/xGNFgHVUZuvuApn6KJBAKTPiP36A7a9mO77U4xQO5ukJx9WHlU67Tv8AuySd09pk0+Hu8qMVIAmLO6A==
 
 next@13.0.2:
   version "13.0.2"
