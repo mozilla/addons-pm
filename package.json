@@ -44,7 +44,7 @@
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "14.0.0",
     "babel-jest": "29.5.0",
-    "eslint": "8.38.0",
+    "eslint": "8.51.0",
     "eslint-config-amo": "5.7.0",
     "eslint-config-next": "13.2.4",
     "eslint-plugin-amo": "1.21.0",
