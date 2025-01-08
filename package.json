@@ -1,6 +1,4 @@
 {
-  "name": "addons-pm",
-  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -60,6 +58,5 @@
     "stylelint-config-standard": "29.0.0",
     "stylelint-config-standard-scss": "6.1.0",
     "stylelint-config-suitcss": "18.0.0"
-
   }
 }
